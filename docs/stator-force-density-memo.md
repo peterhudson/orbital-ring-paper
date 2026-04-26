@@ -4,7 +4,7 @@
 First-pass force-density memo for the coaxial stator / rotor interface.
 This memo asks a narrower question than the previous ones:
 
-Given the required guide force density from the moving rotor, what magnetic interface area and field pressure are implied, and when do those requirements become implactical?
+Given the required guide force density from the moving rotor, what magnetic interface area and field pressure are implied, and when do those requirements become impractical?
 
 ## 1. Starting point from Stage 1
 For a rotor with linear mass density μ moving at speed v through a path of curvature κ = 1/R, the required guide force per unit rotor length is
