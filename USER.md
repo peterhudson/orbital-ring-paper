@@ -19,6 +19,7 @@ _Learn about the person you're helping. Update this as you go._
 - Primary current project: design a non-rocket mass-to-orbit system, likely an active support structure such as a launch loop, orbital ring, or Atlas tower.
 - Strong view: reusable rockets are still fundamentally inefficient for large-scale mass delivery to orbit.
 - Wants this effort treated as a serious technical and strategic program, not idle sci-fi.
+- For review PDFs, prefers mobile-friendly formatting: larger base font, proper rendered equations, minimal headers/footers, and page numbers retained.
 
 ---
 
