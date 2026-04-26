@@ -56,7 +56,7 @@ For the first-pass model, we ignore:
 
 Those matter later. Right now we want the governing scaling laws.
 
-## 2. Effective tension of the moving rotor
+## 2. Momentum-flux force scale of the moving rotor
 Take a small element of rotor moving along a curved centerline.
 The rate of momentum change required to turn that moving mass is
 
@@ -64,59 +64,78 @@ The rate of momentum change required to turn that moving mass is
 
 per unit length.
 
-This is identical to the transverse load relation for a tensioned string, so the moving rotor is mechanically analogous to a cable under an effective tension
+So the distributed guide force required to bend the rotor path is
 
-T_eff = μ v^2
+f_guide = μ v^2 κ = μ v^2 / R
 
-This is the single most important result in the memo.
+This is the first-order force law that matters most for the concept.
+It says a fast-moving rotor really can push on the stator when the stator forces it to follow a curved path.
 
-It means the rotor behaves like a very highly tensioned internal cable whose tension is produced dynamically by mass flow rather than by a conventional anchor load.
+This is best understood as momentum redirection, not as ordinary structural preload.
+The rotor wants to continue in a straight line.
+The stator, via magnetic levitation and guidance, forces it onto a curved path.
+The rotor pushes back on the stator with equal and opposite force.
 
-## 3. Support force from curvature
-If the stator bends the rotor with curvature κ, the distributed reaction on the stator is
+## 3. Equivalent tension model, and why it is only an equivalence
+For a continuous flexible rotor, the same curved-path force balance can be written in the same form as a tensioned string.
+That leads to an equivalent dynamic tension scale
 
-f_support = T_eff κ = μ v^2 κ
+T_eq = μ v^2
 
-Equivalent forms:
-- f_support = μ v^2 / R
-- F_bend ≈ T_eff θ for a short bend through angle θ
-- More exactly, total force across a bend is F = 2 T_eff sin(θ/2)
+because a tensioned string under curvature κ gives a transverse load per length of
 
-Implications:
-- Straight guideway, κ = 0, gives no net transverse support force
-- Force comes from imposed turning of the rotor path
-- Large support force requires either large effective tension or tight curvature
+f = T κ
 
-This strongly suggests that geometry is not incidental. It is the actuator.
+Matching that to the momentum-flux result gives T_eq = μ v^2.
 
-## 4. Material speed limit and specific-strength ceiling
-Because T_eff = μ v^2, rotor stress scales as
+This equivalence is useful, but it must not be over-read.
+T_eq is not automatically the literal material tension carried by the rotor.
+It is the equivalent line-force scale associated with turning the moving mass stream.
 
-σ_eff = T_eff / A = ρ v^2
+That distinction matters:
+- If the rotor is a train of slugs or carriages, T_eq is clearly not literal cable tension.
+- If the rotor is a continuous cable but is continuously guided by distributed magnetic forces, T_eq is still primarily a momentum-flux equivalence, not automatically an axial material stress.
+- T_eq becomes literal tensile force only in special cases where the curvature load is actually carried internally as end-to-end cable tension.
 
-where:
-- A = rotor cross-sectional area
-- ρ = rotor material density
+So for this program, the safest primary intuition is:
 
-Therefore the rotor speed is limited by allowable stress:
+moving mass stream + imposed curvature -> guide force on rotor -> equal and opposite reaction on stator
+
+## 4. What actually sets rotor speed limits
+The previous draft overstated this section by treating T_eq as if it were always literal cable tension. That was too broad.
+
+A rotor is not generically limited by
 
 v_max ≈ sqrt(σ_allow / ρ)
 
-This is a brutal and useful result. It says the concept is fundamentally specific-strength limited.
+just because it is moving quickly.
+A moving guided mass stream can travel much faster than that without suffering an axial stress of ρ v^2.
+That is exactly why concepts like orbital rings are not immediately ruled out by ordinary material specific strength.
 
-Approximate upper-bound speeds from material specific strength:
+For a continuously guided magnetically suspended rotor, the relevant first-order speed limits are instead likely to come from:
+- required guide force density, f_guide = μ v^2 κ
+- achievable magnetic pressure across practical gaps
+- local bending and flexure limits if the rotor is a literal cable or belt
+- end-turn geometry and any regions where the rotor must reverse direction tightly
+- joints, splices, fatigue, creep, abrasion, and inspection limits
+- loss mechanisms that scale badly with v, including drag, eddy currents, hysteresis, and internal damping
+- control bandwidth, wave propagation, and dynamic stability
+- failure containment and safe spin-down
 
-| Material class | Density ρ (kg/m^3) | Allowable stress σ_allow (GPa, rough) | v_max (m/s, rough) |
-| --- | ---: | ---: | ---: |
-| Steel cable | 7850 | 1.0 | 357 |
-| Aramid / Kevlar-class fiber | 1440 | 3.0 | 1443 |
-| UHMWPE-class fiber | 970 | 3.0 | 1759 |
-| Carbon fiber composite tendon | 1800 | 4.0 | 1491 |
+A specific-strength ceiling of the form
 
-These are not design values. They are first-order ceilings before fatigue, joints, abrasion, thermal effects, flexure losses, and safety factors.
+v_max ≈ sqrt(σ_allow / ρ)
 
-Takeaway:
-The concept gets dramatically more interesting with high-specific-strength fibers, but those materials bring their own fatigue, joining, creep, and thermal headaches.
+still matters in some special cases, for example:
+- if the rotor is actually tension-dominated
+- if unsupported spans force the rotor to carry its own curvature load internally
+- if local geometry or end-turns induce true axial stress comparable to the momentum-turning load scale
+
+But it is not a universal speed limit for the guided rotor concept.
+
+Corrected takeaway:
+The concept is not first ruled by material tensile stress from speed alone.
+It is first ruled by whether the stator can guide and contain a high-speed momentum stream with acceptable force density, losses, dynamics, and failure behavior.
 
 ## 5. Support-force density examples
 Use:
