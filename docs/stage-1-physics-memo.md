@@ -8,35 +8,29 @@ Its job is to reveal scaling laws, hard limits, and likely failure bottlenecks e
 ## Executive summary
 The core physics is encouraging in one narrow sense:
 
-A fast moving internal rotor behaves like a cable with an effective tension
+A fast moving internal rotor is a momentum stream. If the stator forces that stream to follow a curved path with curvature κ = 1 / R, the required guide force per unit length is
 
-T_eff = μ v^2
+f_support = μ v^2 κ = μ v^2 / R
 
 where:
 - μ = rotor mass per unit length (kg/m)
 - v = rotor speed (m/s)
-
-If the stator forces that rotor to follow a curved path with curvature κ = 1 / R, the reaction force transferred to the stator is
-
-f_support = T_eff κ = μ v^2 κ = μ v^2 / R
-
-where f_support is force per unit length.
+- κ = path curvature (1/m)
+- R = local radius of curvature (m)
 
 That means the concept has a real mechanism for generating structural support force.
 It is not nonsense.
 
-But the same equations immediately reveal the central problem:
-
-The support force comes bundled with enormous stored kinetic energy.
+The central problem is that the same scaling that makes large support forces possible also creates large stored kinetic energy.
 
 Energy per unit length is
 
-e_k = (1/2) μ v^2 = T_eff / 2
+e_k = (1/2) μ v^2
 
-So every increase in effective support tension also increases hazard.
+So every increase in force scale also increases hazard.
 
 This concept is therefore not primarily limited by whether it can make force.
-It is limited by whether it can do so with survivable materials, magnetic force density, acceptable losses, and graceful failure handling.
+It is limited by whether it can do so with survivable guide-force density, acceptable losses, stable control, and graceful failure handling.
 
 ## 1. Idealized model
 We model one active-support member as:
@@ -143,9 +137,9 @@ Use:
 - case A: v = 1000 m/s
 - case B: v = 1500 m/s
 
-Then:
-- case A: T_eff = 10 MN
-- case B: T_eff = 22.5 MN
+Then the momentum-turning force scale is:
+- case A: μ v^2 = 10 MN
+- case B: μ v^2 = 22.5 MN
 
 Now compute support force per unit length for several radii:
 
@@ -157,7 +151,7 @@ Now compute support force per unit length for several radii:
 | 10 kg/m at 1500 m/s | 100 m | 0.01 1/m | 225 kN/m |
 
 So yes, substantial force per meter is available in principle.
-But notice what is happening: the attractive force numbers only appear once the rotor is carrying very large effective tension and very large kinetic energy.
+But notice what is happening: the attractive force numbers only appear once the rotor is carrying a very large momentum-turning force scale and very large kinetic energy.
 
 ## 6. Stored energy and why this is scary
 Rotor kinetic energy per unit length is
@@ -238,14 +232,14 @@ The architecture therefore strongly prefers:
 ## 9. What the member can and cannot do
 ### It can do
 - generate real distributed transverse force through curvature reaction
-- act like a dynamically tensioned internal support element
+- act as a guided high-momentum internal support mechanism
 - potentially create outward pressure in helical or inflatable geometries
 
 ### It cannot do for free
 - create arbitrary compressive support in a perfectly straight member
 - ignore curvature geometry
 - ignore containment and spin-down
-- escape specific-strength limits
+- escape guide-force, loss, and stability limits
 - escape dynamics by hand-waving to "maglev"
 
 ## 10. Immediate red flags
@@ -271,8 +265,8 @@ As the concept scales up, stored energy scales with length. A member that is mer
 2. Low-pressure operation is probably mandatory.
    Atmospheric drag at high speed will be punishing.
 
-3. Rotor material selection is a first-order program decision.
-   Specific strength dominates the ceiling.
+3. Rotor material and topology are first-order program decisions.
+   The main issues are not speed alone, but bend tolerance, fatigue, splice design, loss mechanisms, and inspectability.
 
 4. Geometry must be designed together with control.
    The structural form and the actuator problem are the same problem.
@@ -291,7 +285,7 @@ Stage 2 should build from this memo and derive:
 ## 13. Bottom line
 The single-member concept is physically real in the sense that it has a valid support-force mechanism:
 
-moving rotor -> effective tension -> curvature reaction -> distributed support force
+moving rotor -> imposed curvature -> guide force on rotor -> equal and opposite reaction on stator -> distributed support force
 
 So the concept survives the first smell test.
 
@@ -300,5 +294,5 @@ It buys structural force by carrying large momentum and large stored kinetic ene
 
 My current judgment is:
 - the concept is promising enough to justify serious work
-- the real bottlenecks are likely containment, control, and failure management more than raw force production
+- the real bottlenecks are likely containment, control, guide-force density, and failure management more than raw force production
 - the next step should be a Stage 2 dynamics memo plus a more explicit force-density check for specific magnetic topologies
