@@ -21,8 +21,8 @@ Do not start by picking a favorite megastructure.
 Start by defining the physics, economics, materials, control, construction, and deployment constraints that determine which concepts are actually viable.
 
 ## Immediate priorities
-1. Build a concept evaluation framework
-2. Compare launch loop vs orbital ring vs Atlas tower vs adjacent concepts
-3. Identify the hardest blockers for each
-4. Find a staged path from present-day industry to first deployment
+1. Establish the first rung: a compelling active-support demonstrator
+2. Turn the coaxial levitated-rotor concept into a real engineering program
+3. Identify the hardest blockers in dynamics, control, force transfer, and failure handling
+4. Build a staged path from active-support demonstrators to orbital infrastructure
 5. Turn this into a serious technical program, not just a sci-fi sketch
