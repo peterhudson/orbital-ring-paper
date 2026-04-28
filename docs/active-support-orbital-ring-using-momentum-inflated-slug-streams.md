@@ -88,6 +88,8 @@ while preserving:
 
 This is a major architectural clarification. A simple mirrored two-lane pair is useful, but it is probably not the universal final building block.
 
+**Suggested Figure 1. Four-lane balanced cell on a cylindrical tube.** Draw the tube in cross-section and in a short cutaway perspective. Show four helical lanes, labeled by handedness and axial travel direction, with arrows on each lane. Use colored vector arrows to indicate which momentum components cancel, axial, circumferential, and angular, and which effects remain, common-mode pressure and commanded tug authority. The point of the figure is to let the reader see why a two-lane pair is not enough once the lanes are helical.
+
 ### 2.2 Three scales of the problem
 
 The concept is easiest to think about in three coupled scales.
@@ -128,6 +130,8 @@ It is closer to:
 - segmented for fault isolation
 - coupled to sparse tether or support nodes
 - using internal momentum-flux control to redistribute load and shape rather than relying on passive bending stiffness alone
+
+**Suggested Figure 2. Ring-level architecture schematic.** Show a short segment of the full orbital ring as a large hollow tube carrying many internal helical lanes. Include sparse tether or support nodes, segmented sector boundaries, local control hardware, and one or two highlighted azimuthal sectors where tug authority is applied. The picture should make clear that the ring is an actively supported segmented machine, not a passive pipe.
 
 That is a more honest and more interesting machine.
 
@@ -627,6 +631,8 @@ For a helix on a cylinder of radius \(a\), with helix angle \(\alpha\) measured 
 
 This curvature generates the local outward reaction on the tube.
 
+**Suggested Figure 3. Helical lane geometry and local force decomposition.** Show one helical lane wrapped around a cylindrical tube, with the tangent vector resolved into axial component \(u=v\cos\alpha\) and circumferential component \(v_\theta=v\sin\alpha\). Also show the local inward guide force on the slug and the equal outward reaction on the tube wall. The figure should make the curvature argument visually obvious before the pressure equations arrive.
+
 ### 8.2 Continuous-stream equivalent pressure
 
 For \(N\) identical continuous helical streams with line density \(\mu\), speed \(v\), and angle \(\alpha\), the average equivalent pressure is
@@ -766,6 +772,8 @@ while preserving:
 - axial or tangential tug authority
 - azimuthally selective moment generation
 
+**Suggested Figure 4. Four-lane cell with controlled tug sectors.** Show the same balanced cell, but now mark one sector where selected lanes are sped up and an opposed sector where matched compensation occurs. Draw the resulting distributed tug forces and the induced bending moment on the tube cross-section. The purpose is to help the reader understand how the architecture can preserve global momentum balance while still generating a useful commanded moment.
+
 ### 9.4 Tug authority from speed transitions
 
 For a mirrored pair selected for axial tug, a speed change \(\Delta v\) across a transition produces axial boundary tug
@@ -853,6 +861,8 @@ For \(a\ll R\), local inflation and macro lift approximately separate:
 \[
 \kappa_\mathrm{macro} \approx \frac{\cos^2\alpha}{R}.
 \]
+
+**Suggested Figure 5. Separation of local inflation and macro lift geometry.** Show a large Earth-centered ring with one small enlarged inset of the local tube. In the inset, draw the helical lane on the tube and label \(\kappa_\mathrm{local}\). On the ring-scale view, draw the same lane's ring-tangential component turning around Earth and label \(\kappa_\mathrm{macro}\). The figure should visually separate the two curvatures so the reader does not confuse local inflation with global lofting.
 
 ### 10.2 Net lift from one lane
 
@@ -1061,6 +1071,8 @@ The 8 km/s line is especially punishing because it is only slightly above orbita
 
 The lift formula is linear in \(w_p\). If the passive structure weight doubles, the required momentum flux doubles.
 
+That sounds simple, but it is actually where several hard gates re-enter the problem. The passive structure weight is not just shell mass. It is where the unresolved burdens of guidance, power, thermal rejection, containment, maintenance access, and payload attachment all return to the lift equation.
+
 That means the paper needs at least a screening weight budget. A notional optimistic-to-heavy range might look like this:
 
 | Passive subsystem | Screening range (kN/m) |
@@ -1099,6 +1111,8 @@ w_p = w_\mathrm{shell} + w_\mathrm{guide} + w_\mathrm{power} + w_\mathrm{thermal
 
 Even if each term remains uncertain, the decomposition matters because different research results move different terms.
 
+In other words, \(w_p\) is not merely an input to Gate 6. It is also an output of Gates 2, 7, and 8. A realistic design loop has to close all of them together.
+
 ### 10.10.2 Sensitivity to \(w_p\)
 
 At 80 km altitude with \(u = 10\,\mathrm{km/s}\), the lift formula gives approximately:
@@ -1110,6 +1124,20 @@ At 80 km altitude with \(u = 10\,\mathrm{km/s}\), the lift formula gives approxi
 | 20 kN/m | \(1.69\times10^{11}\,\mathrm{N}\) |
 
 This is why the passive-weight budget is not bookkeeping. It is one of the primary feasibility levers.
+
+### 10.10.3 Gate 6 is really the closure point for several other gates
+
+By the time the paper reaches the lift equation, the main design question is no longer just, "How much upward force is required?" It is, "Can the entire machine close on itself without the support hardware becoming the main thing that needs support?"
+
+The coupled loop looks like this:
+
+1. more passive hardware raises \(w_p\)
+2. higher \(w_p\) raises the required momentum-flux scale \(A\)
+3. higher \(A\) raises stored kinetic energy per unit length and tends to worsen steady losses
+4. worse energy and loss burdens demand more containment, thermal hardware, and infrastructure
+5. those additions raise \(w_p\) again
+
+This is the central systems-engineering warning of the concept. If the loop converges, the machine may be feasible in principle. If it diverges, no amount of local cleverness in one subsystem rescues the full architecture.
 
 ### 10.11 Gate 6 status
 
@@ -1221,6 +1249,10 @@ In this context, segmentation likely has to mean several layers at once:
 - controlled braking paths that preferentially dump energy into designated hardware
 - bypass modes so one failed cell does not demand immediate global shutdown
 
+This is also where Gate 7 reconnects directly to Gate 6. Every element added to localize faults, catch failed slugs, or absorb dump energy tends to add mass, volume, complexity, or thermal burden. Safety architecture is therefore not a postscript to the lift problem. It is one of the main inputs to \(w_p\).
+
+**Suggested Figure 6. Multi-layer fault isolation architecture.** Show one tube segment divided into short energetic cells inside a longer structural bay. Draw electromagnetic isolation gates, passive catcher structure, dump resistors or designated absorber hardware, and a bypass path around a failed cell. The point is to convey that "segmentation" here means layered isolation and controlled failure routing, not merely occasional bulkheads.
+
 That is a much stronger requirement than simply placing occasional valves or barriers along a long tube.
 
 ### 11.4 Fault tree items that deserve explicit treatment
@@ -1282,7 +1314,13 @@ The major unknown losses likely include:
 - transition-zone losses
 - losses induced by nearby containment structures
 
-A final paper needs a loss taxonomy with scaling laws, not just a list.
+A final paper needs a loss taxonomy with scaling laws, not just a list. A useful first-pass closure model is
+
+\[
+P'_\mathrm{loss} = P'_\mathrm{gas} + P'_\mathrm{guide} + P'_\mathrm{switch} + P'_\mathrm{control} + P'_\mathrm{cryo} + P'_\mathrm{misc},
+\]
+
+with each term expressed per metre of ring. The purpose is not to pretend the coefficients are known yet. It is to force the architecture to state where the steady heat actually comes from.
 
 ### 12.3 Residual-gas drag warning
 
@@ -1316,6 +1354,8 @@ where \(A'_f\) is an effective frontal area per metre of lane. If one uses a pur
 | \(10^{-2}\,\mathrm{Pa}\) | 58 W/m |
 
 These are not catastrophic by themselves, but they are only one loss channel, and they scale directly with effective frontal area and as \(v^3\). If the actual guide geometry presents more area, or if vacuum quality degrades, the penalty rises quickly.
+
+That matters because vacuum hardware is not free. Better pumping, tighter seals, more robust lane isolation, and thicker vacuum structure all tend to push back into \(w_p\).
 
 ### 12.4 Thermal rejection feedback loop
 
@@ -1352,6 +1392,18 @@ This table is one of the clearest reasons Gate 8 matters. If the true steady los
 ### 12.4.1 A better way to think about Gate 8
 
 The point of this section is not that the concept is already thermally doomed. It is that the loss budget must be solved at the same level of seriousness as the lift budget. Once that is explicit, the thermal system stops looking like secondary plumbing and starts looking like one of the main structural drivers.
+
+### 12.4.2 The coupled closure loop
+
+At full scale, Gates 6, 7, and 8 should be thought of as one coupled closure problem rather than three independent checkboxes.
+
+\[
+w_p \uparrow \Rightarrow A \uparrow \Rightarrow E'_\mathrm{kin} \uparrow \text{ and } P'_\mathrm{loss} \uparrow \Rightarrow w_\mathrm{contain}, w_\mathrm{thermal}, w_\mathrm{power} \uparrow \Rightarrow w_p \uparrow.
+\]
+
+That loop does not prove failure, but it does explain why seemingly separate design questions keep collapsing onto the same few variables. A light shell with ugly thermal hardware is not a light ring. A beautifully efficient guide system with no credible fault containment is not a feasible ring either. The full concept stands or falls on whether this loop closes with enough margin to remain operationally sane.
+
+**Suggested Figure 7. Closure-loop diagram linking lift, losses, and containment.** Draw a textbook-style systems loop with arrows from passive weight \(w_p\) to required throughput \(A\), then to stored energy per length and steady loss density, then to containment, thermal, and power hardware, and then back to \(w_p\). Add short annotations on each arrow, for example "more lift required," "more heat to reject," and "more support hardware." This should be the figure that helps the reader understand the whole paper at a glance.
 
 ### 12.5 What a stronger next version of this section should contain
 
@@ -1424,6 +1476,8 @@ Show active stiffness, visible lightness, and safe shutdown at human legibility 
 **Stage F, public landmark demonstrator**
 
 A guyed or truss-assisted active tube in the hundreds-of-metres class creates the Eiffel Tower moment, not because it imitates the final ring, but because it makes the new structural regime obvious.
+
+**Suggested Figure 8. Demonstrator ladder.** Draw a vertical or left-to-right progression from benchtop force demonstrator to helical inflation tube, four-lane balanced-cell rig, distributed-transition rig, architectural active tube, and finally a public landmark. Each stage should show what new principle is being proven and what dangerous scale jump is still being avoided.
 
 ### 13.4 Program principle
 
@@ -1551,15 +1605,23 @@ If neither happens, the ring remains physically interesting but operationally br
 
 The concept has a real physics spine. A guided moving mass stream can produce support force through momentum redirection. A helical arrangement can convert part of that force into local inflation pressure and hoop prestress. A four-lane balanced cell can, at least in first-order architecture, cancel unwanted momentum and angular momentum while preserving useful pressure and tug channels. Distributed speed transitions appear to preserve integrated tug authority without requiring literal fill-and-drain hardware at ordinary stations.
 
-But the concept also inherits severe burdens from the same physics that makes it powerful. It stores enormous kinetic energy. It demands very fast local guide control. It depends on practical guide-force density at realistic gap and thermal margin. It needs aggressive segmentation and containment. And for a true orbital ring, it appears to require very large superorbital axial momentum flux. Local inflation is not the dominant full-scale burden. Macro lift throughput is.
+The main value of this draft is that it now separates three claims that are easy to blur together:
+
+1. the support-force mechanism is physically real
+2. the helical architecture is useful for local pressure, prestress, and control
+3. a full orbital ring still lives or dies on macro-scale throughput, loss closure, and failure localization
+
+That separation matters because it shows both where the concept is strongest and where it is harshest. The concept is strongest at the level of local physics and architectural coherence. It is harshest where passive weight, stored energy, losses, thermal rejection, and containment all feed back into one another.
 
 The most important mature statement of the concept is therefore this:
 
 > The helical tube is not itself the main lift mechanism. It is a way of turning a much larger axial momentum-flux machine into local pressure, prestress, and control authority.
 
-That statement is both the promise and the warning.
+That statement is both the promise and the warning. It explains why the architecture is not nonsense, and also why it is probably far harder than a first visual intuition suggests.
 
-The next stage of work should focus on six things:
+In its present form, the concept does not look ruled out by a single immediate contradiction. It does look threatened by a coupled closure problem. If the real passive-weight budget, steady loss density, and failure-isolation architecture all come in better than this first-pass screening fears, the idea deserves deeper simulation and staged experiments. If they do not, the likely failure mode will be clear: the active support system and its safety hardware become so heavy and so operationally demanding that the ring is no longer an attractive path to orbit.
+
+The next stage of work should therefore focus on six things:
 
 1. a parameterized slug and stator force-density model
 2. a realistic local control and delay model
@@ -1568,4 +1630,4 @@ The next stage of work should focus on six things:
 5. a first parametric loss and thermal budget
 6. a demonstrator plan that proves the structural principle before attempting orbital-scale energy density
 
-If those close even partially, the concept deserves deeper simulation and staged experimental work. If they do not, the failure mode will be clear, quantitative, and useful.
+If those close even partially, the concept deserves deeper simulation and staged experimental work. If they do not, the failure mode will be clear, quantitative, and useful, which is still a successful outcome for a paper whose purpose is to test a seductive but extreme idea against actual engineering reality.
