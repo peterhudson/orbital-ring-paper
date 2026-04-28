@@ -608,7 +608,7 @@ A = N_p \dot{m} \, u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
 That sounds like a simple scaling law, but it closes several hard subsystems into one loop:
 
 \[
-w_p \, \uparrow \;\Longrightarrow\; A \, \uparrow \;\Longrightarrow\; E'_{\mathrm{kin}} \, \uparrow,\; P'_{\mathrm{loss}} \, \uparrow \;\Longrightarrow\; w_{\mathrm{contain}},\, w_{\mathrm{thermal}},\, w_{\mathrm{power}} \, \uparrow \;\Longrightarrow\; w_p \, \uparrow
+w_p \to A \to \left(E_{\mathrm{kin}},\; P_{\mathrm{loss}}\right) \to \left(w_{\mathrm{contain}},\; w_{\mathrm{thermal}},\; w_{\mathrm{power}}\right) \to w_p
 \]
 
 In words:
