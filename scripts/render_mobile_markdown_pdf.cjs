@@ -27,7 +27,7 @@ async function main() {
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]'], ['$$', '$$']]
       },
-      chtml: { scale: 1.02 },
+      chtml: { scale: 0.96 },
       startup: { typeset: false }
     };
   </script>
@@ -35,8 +35,8 @@ async function main() {
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <style>
     @page {
-      size: 148mm 210mm;
-      margin: 12mm 12mm 16mm 12mm;
+      size: 210mm 297mm;
+      margin: 16mm 16mm 18mm 16mm;
     }
     :root {
       color-scheme: light;
@@ -54,8 +54,8 @@ async function main() {
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.42;
+      font-size: 14px;
+      line-height: 1.4;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -70,15 +70,15 @@ async function main() {
       break-after: avoid-page;
     }
     h1 {
-      font-size: 1.65rem;
+      font-size: 1.85rem;
       margin-top: 0;
     }
     h2 {
-      font-size: 1.22rem;
+      font-size: 1.32rem;
       padding-top: 0.15rem;
     }
     h3 {
-      font-size: 1.02rem;
+      font-size: 1.08rem;
     }
     p, ul, ol, blockquote, table {
       margin: 0 0 0.82em;
@@ -127,7 +127,7 @@ async function main() {
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
     th, td {
       border-bottom: 1px solid var(--rule);
@@ -185,7 +185,7 @@ async function main() {
 </html>`;
 
   const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', headless: true, args: ['--no-sandbox'] });
-  const page = await browser.newPage({ viewport: { width: 900, height: 1400 }, deviceScaleFactor: 1.5 });
+  const page = await browser.newPage({ viewport: { width: 1240, height: 1754 }, deviceScaleFactor: 1.5 });
   await page.setContent(html, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => document.body.dataset.rendered === 'true', { timeout: 30000 });
   await page.emulateMedia({ media: 'print' });
@@ -197,7 +197,7 @@ async function main() {
     displayHeaderFooter: true,
     headerTemplate: '<div></div>',
     footerTemplate: '<div style="width:100%; font-size:9px; color:#6b7280; text-align:center; margin:0 auto;"><span class="pageNumber"></span></div>',
-    margin: { top: '12mm', right: '12mm', bottom: '16mm', left: '12mm' }
+    margin: { top: '16mm', right: '16mm', bottom: '18mm', left: '16mm' }
   });
   await browser.close();
   console.log(outputPath);
