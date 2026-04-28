@@ -1451,6 +1451,54 @@ The concept is most likely to fail if one or more of these turn out badly:
 
 That is a useful list because it turns the project into something testable.
 
+### 14.1 The main assumption forks still left in the paper
+
+At this stage, most of the broad conceptual structure is holding up. The parts that could still materially move the conclusion are narrower than before.
+
+The most important remaining forks are these:
+
+#### Fork A, what kind of passive structure is the tube really?
+
+There is a major difference between:
+
+- a membrane-first active shell that relies heavily on internal prestress, and
+- a hybrid shell or truss-assisted tube that uses active support to reduce, rather than replace, passive structural depth.
+
+That choice moves \(w_p\), safety philosophy, and demonstrator strategy all at once. It may be the single biggest architectural fork still open.
+
+#### Fork B, what guide technology family is realistic?
+
+There is also a major difference between:
+
+- normal-conducting guides with aggressive active control,
+- superconducting or partially superconducting guides,
+- and hybrid architectures that use passive magnetic bias plus active trim.
+
+That choice moves gap, force density, losses, thermal burden, and control bandwidth together. In other words, it changes several gates at once.
+
+#### Fork C, how local can failure really be made?
+
+If faults can only access a tiny local inventory, the safety story may become difficult but not absurd. If faults can couple into many metres or many sectors of moving inventory, the concept likely becomes unacceptable very quickly.
+
+This is why containment is not just a materials question. It is a coupling and architecture question.
+
+#### Fork D, how far above orbital speed does the design need to operate?
+
+The macro-lift burden is extremely sensitive near the orbital threshold. If the operating point must remain only slightly above \(u_\mathrm{orb}\), throughput becomes punishing. If the architecture tolerates a materially higher \(u\), throughput improves, but stored energy and likely loss mechanisms worsen.
+
+That is one of the main remaining system-level trade curves.
+
+### 14.2 What would most change my present conclusion
+
+Right now my central conclusion is that macro-lift throughput is the dominant full-scale burden.
+
+That conclusion would change materially only if one of two things turned out to be true:
+
+1. the real passive-weight budget can be driven far below the current screening range, or
+2. the architecture can tolerate a much better operating point in \(u\), lane count, and failure isolation than the present first-pass picture suggests.
+
+If neither happens, the ring remains physically interesting but operationally brutal.
+
 ---
 
 ## 15. Open technical questions
