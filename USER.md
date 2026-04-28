@@ -11,7 +11,7 @@ _Learn about the person you're helping. Update this as you go._
 - **Name:** Hudson
 - **What to call them:** Hudson
 - **Timezone:**
-- **Notes:**
+- **Notes:** Prefers the smartest non-Pro model by default; for now wants ChatGPT 5.4 in high thinking mode for the main agent and subagents. Revisit only when newer non-Pro models appear.
 
 ## Context
 
