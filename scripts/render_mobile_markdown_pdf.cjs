@@ -1,21 +1,14 @@
 #!/usr/bin/env node
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const { chromium } = require('playwright');
+const os = require('node:os');
+const { execFile } = require('node:child_process');
+const { promisify } = require('node:util');
 
-async function main() {
-  const [inputArg, outputArg, titleArg] = process.argv.slice(2);
-  if (!inputArg || !outputArg) {
-    console.error('Usage: node render_mobile_markdown_pdf.cjs <input.md> <output.pdf> [title]');
-    process.exit(1);
-  }
+const execFileAsync = promisify(execFile);
 
-  const inputPath = path.resolve(inputArg);
-  const outputPath = path.resolve(outputArg);
-  const title = titleArg || path.basename(inputPath, path.extname(inputPath));
-  const markdown = await fs.readFile(inputPath, 'utf8');
-
-  const html = `<!doctype html>
+function buildHtml(markdown, title) {
+  return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -183,23 +176,76 @@ async function main() {
   </script>
 </body>
 </html>`;
+}
 
+async function renderWithPlaywright(html, outputPath) {
+  const { chromium } = require('playwright');
   const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', headless: true, args: ['--no-sandbox'] });
-  const page = await browser.newPage({ viewport: { width: 1240, height: 1754 }, deviceScaleFactor: 1.5 });
-  await page.setContent(html, { waitUntil: 'networkidle' });
-  await page.waitForFunction(() => document.body.dataset.rendered === 'true', { timeout: 30000 });
-  await page.emulateMedia({ media: 'print' });
+  try {
+    const page = await browser.newPage({ viewport: { width: 1240, height: 1754 }, deviceScaleFactor: 1.5 });
+    await page.setContent(html, { waitUntil: 'networkidle' });
+    await page.waitForFunction(() => document.body.dataset.rendered === 'true', { timeout: 30000 });
+    await page.emulateMedia({ media: 'print' });
+    await page.pdf({
+      path: outputPath,
+      printBackground: true,
+      preferCSSPageSize: true,
+      displayHeaderFooter: true,
+      headerTemplate: '<div></div>',
+      footerTemplate: '<div style="width:100%; font-size:9px; color:#6b7280; text-align:center; margin:0 auto;"><span class="pageNumber"></span></div>',
+      margin: { top: '16mm', right: '16mm', bottom: '18mm', left: '16mm' }
+    });
+  } finally {
+    await browser.close();
+  }
+}
+
+async function renderWithChromiumCli(html, outputPath) {
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'openclaw-pdf-'));
+  const tempHtmlPath = path.join(tempDir, 'render.html');
+  try {
+    await fs.writeFile(tempHtmlPath, html, 'utf8');
+    await execFileAsync('/usr/bin/chromium', [
+      '--headless=new',
+      '--disable-gpu',
+      '--no-sandbox',
+      '--allow-file-access-from-files',
+      '--run-all-compositor-stages-before-draw',
+      '--virtual-time-budget=30000',
+      '--no-pdf-header-footer',
+      '--print-to-pdf-no-header',
+      `--print-to-pdf=${outputPath}`,
+      tempHtmlPath.startsWith('/') ? `file://${tempHtmlPath}` : tempHtmlPath
+    ], { maxBuffer: 10 * 1024 * 1024 });
+  } finally {
+    await fs.rm(tempDir, { recursive: true, force: true });
+  }
+}
+
+async function main() {
+  const [inputArg, outputArg, titleArg] = process.argv.slice(2);
+  if (!inputArg || !outputArg) {
+    console.error('Usage: node render_mobile_markdown_pdf.cjs <input.md> <output.pdf> [title]');
+    process.exit(1);
+  }
+
+  const inputPath = path.resolve(inputArg);
+  const outputPath = path.resolve(outputArg);
+  const title = titleArg || path.basename(inputPath, path.extname(inputPath));
+  const markdown = await fs.readFile(inputPath, 'utf8');
+  const html = buildHtml(markdown, title);
+
   await fs.mkdir(path.dirname(outputPath), { recursive: true });
-  await page.pdf({
-    path: outputPath,
-    printBackground: true,
-    preferCSSPageSize: true,
-    displayHeaderFooter: true,
-    headerTemplate: '<div></div>',
-    footerTemplate: '<div style="width:100%; font-size:9px; color:#6b7280; text-align:center; margin:0 auto;"><span class="pageNumber"></span></div>',
-    margin: { top: '16mm', right: '16mm', bottom: '18mm', left: '16mm' }
-  });
-  await browser.close();
+
+  try {
+    await renderWithPlaywright(html, outputPath);
+  } catch (error) {
+    if (error && error.code !== 'MODULE_NOT_FOUND') {
+      console.warn(`Playwright render failed, falling back to Chromium CLI: ${error.message}`);
+    }
+    await renderWithChromiumCli(html, outputPath);
+  }
+
   console.log(outputPath);
 }
 
