@@ -602,13 +602,13 @@ This is why the helical angle has to stay small at full scale. The ring needs it
 Let passive structural and hardware weight per unit ring length be \(w_p\). The lift requirement can be written as
 
 \[
-A = N_p\dot m u \ge \frac{w_p}{2\left(\frac{1}{R}-\frac{g_h}{u^2}\right)}.
+A = N_p \dot{m} \, u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
 \]
 
 That sounds like a simple scaling law, but it closes several hard subsystems into one loop:
 
 \[
-w_p \uparrow \Rightarrow A \uparrow \Rightarrow E'_\mathrm{kin}\uparrow \text{ and } P'_\mathrm{loss}\uparrow \Rightarrow w_\mathrm{contain},w_\mathrm{thermal},w_\mathrm{power}\uparrow \Rightarrow w_p\uparrow.
+w_p \, \uparrow \;\Longrightarrow\; A \, \uparrow \;\Longrightarrow\; E'_{\mathrm{kin}} \, \uparrow,\; P'_{\mathrm{loss}} \, \uparrow \;\Longrightarrow\; w_{\mathrm{contain}},\, w_{\mathrm{thermal}},\, w_{\mathrm{power}} \, \uparrow \;\Longrightarrow\; w_p \, \uparrow
 \]
 
 In words:
