@@ -1075,6 +1075,42 @@ That means the paper needs at least a screening weight budget. A notional optimi
 
 This is deliberately broad. The point is not precision. The point is that even a seemingly light \(10\,\mathrm{kN/m}\) ring may already be optimistic.
 
+A useful way to read the table is as three rough bands:
+
+- **optimistic:** \(w_p \sim 5\) to \(10\,\mathrm{kN/m}\)
+- **reference:** \(w_p \sim 10\) to \(20\,\mathrm{kN/m}\)
+- **heavy:** \(w_p \sim 20\) to \(40+\,\mathrm{kN/m}\)
+
+The problem is that several of the most dangerous subsystems are also the least mature ones. Thermal hardware, containment, and vacuum infrastructure are exactly the areas where a naive estimate can be low by a large factor.
+
+### 10.10.1 The passive-weight model must be solved iteratively
+
+It is not really correct to choose \(w_p\) once and move on. The architecture appears to require an iteration loop:
+
+\[
+A \rightarrow \text{stored energy and losses} \rightarrow \text{thermal and containment hardware} \rightarrow w_p \rightarrow A.
+\]
+
+That loop means a paper that treats \(w_p\) as an arbitrary constant is missing part of the physics of the system. A more mature version of this work should therefore replace the single symbol \(w_p\) with a subsystem model of the form
+
+\[
+w_p = w_\mathrm{shell} + w_\mathrm{guide} + w_\mathrm{power} + w_\mathrm{thermal} + w_\mathrm{contain} + w_\mathrm{services} + w_\mathrm{payload}.
+\]
+
+Even if each term remains uncertain, the decomposition matters because different research results move different terms.
+
+### 10.10.2 Sensitivity to \(w_p\)
+
+At 80 km altitude with \(u = 10\,\mathrm{km/s}\), the lift formula gives approximately:
+
+| Passive weight \(w_p\) | Required \(A\) |
+|---:|---:|
+| 5 kN/m | \(4.22\times10^{10}\,\mathrm{N}\) |
+| 10 kN/m | \(8.44\times10^{10}\,\mathrm{N}\) |
+| 20 kN/m | \(1.69\times10^{11}\,\mathrm{N}\) |
+
+This is why the passive-weight budget is not bookkeeping. It is one of the primary feasibility levers.
+
 ### 10.11 Gate 6 status
 
 The macro-lift equations are coherent. They do not kill the concept by contradiction.
@@ -1150,6 +1186,42 @@ This is why segmentation cannot be treated as an afterthought. The architecture 
 - exclusion-volume analysis
 
 The safety standard should be graceful degradation, not perfect operation.
+
+### 11.3.1 A brutal segment-length implication
+
+If the local energy density available to a fault is \(E'_\mathrm{kin}\), then a maximum allowed failing segment energy \(E_\mathrm{seg,max}\) implies
+
+\[
+L_\mathrm{seg,max} \sim \frac{E_\mathrm{seg,max}}{E'_\mathrm{kin}}.
+\]
+
+Using the 10 km/s, 10 kN/m screening case,
+
+\[
+E'_\mathrm{kin} \sim 8.44\times10^{10}\,\mathrm{J/m}.
+\]
+
+That leads to alarming characteristic lengths:
+
+| Maximum failing energy | Implied \(L_\mathrm{seg,max}\) |
+|---:|---:|
+| 1 GJ | 0.012 m |
+| 10 GJ | 0.12 m |
+| 100 GJ | 1.18 m |
+
+These numbers should not be over-interpreted, because a real failure may not access the full local inventory. But they make one thing very clear: safety cannot rely on metre-scale or kilometre-scale segmentation alone if the energetic coupling is broad. The design must strongly limit how much moving inventory is allowed to participate in any single fault.
+
+### 11.3.2 What architectural segmentation probably means here
+
+In this context, segmentation likely has to mean several layers at once:
+
+- electromagnetic isolation between neighboring active cells
+- mechanical catcher structure that localizes contact events
+- power-electronics isolation so a bad command does not propagate far
+- controlled braking paths that preferentially dump energy into designated hardware
+- bypass modes so one failed cell does not demand immediate global shutdown
+
+That is a much stronger requirement than simply placing occasional valves or barriers along a long tube.
 
 ### 11.4 Fault tree items that deserve explicit treatment
 
@@ -1228,6 +1300,23 @@ P_D = F_D v = \frac12 \rho C_D A_f v^3.
 
 The \(v^3\) scaling is severe. This strongly suggests that the lanes require excellent vacuum or near-vacuum conditions.
 
+For screening work, it is useful to write the drag power per unit lane length as
+
+\[
+P'_D = \frac12 \rho C_D A'_f v^3,
+\]
+
+where \(A'_f\) is an effective frontal area per metre of lane. If one uses a purely illustrative value \(C_D A'_f = 10^{-3}\,\mathrm{m^2/m}\), \(v = 10\,\mathrm{km/s}\), and a 300 K ideal-gas estimate for residual air density, the resulting drag power per metre is approximately:
+
+| Residual pressure | Drag power per metre of lane |
+|---:|---:|
+| \(10^{-5}\,\mathrm{Pa}\) | 0.058 W/m |
+| \(10^{-4}\,\mathrm{Pa}\) | 0.58 W/m |
+| \(10^{-3}\,\mathrm{Pa}\) | 5.8 W/m |
+| \(10^{-2}\,\mathrm{Pa}\) | 58 W/m |
+
+These are not catastrophic by themselves, but they are only one loss channel, and they scale directly with effective frontal area and as \(v^3\). If the actual guide geometry presents more area, or if vacuum quality degrades, the penalty rises quickly.
+
 ### 12.4 Thermal rejection feedback loop
 
 In vacuum or near-space, steady waste heat is mostly rejected radiatively unless actively transported elsewhere. Radiative flux is roughly
@@ -1243,6 +1332,26 @@ This creates a nasty feedback loop:
 \]
 
 That loop is one reason the passive weight budget cannot be separated from the loss model.
+
+A useful screening relation is
+
+\[
+A'_\mathrm{rad} = \frac{P'_\mathrm{loss}}{q_\mathrm{rad}},
+\]
+
+where \(A'_\mathrm{rad}\) is required radiator area per metre of ring, \(P'_\mathrm{loss}\) is waste heat per metre, and \(q_\mathrm{rad}\) is usable radiative heat flux. If one adopts a rough screening value \(q_\mathrm{rad} \sim 500\,\mathrm{W/m^2}\) and radiator areal mass \(m''_\mathrm{rad} \sim 5\,\mathrm{kg/m^2}\), then the implied radiator burden is:
+
+| Waste heat per metre | Radiator area per metre | Radiator weight per metre |
+|---:|---:|---:|
+| 1 kW/m | 2 m²/m | 0.10 kN/m |
+| 10 kW/m | 20 m²/m | 0.98 kN/m |
+| 100 kW/m | 200 m²/m | 9.8 kN/m |
+
+This table is one of the clearest reasons Gate 8 matters. If the true steady loss density is only in the low-kW-per-metre range, the radiator burden may be important but not fatal. If it climbs into the 10 to 100 kW/m range, radiator mass alone can become a major fraction of the whole passive weight budget.
+
+### 12.4.1 A better way to think about Gate 8
+
+The point of this section is not that the concept is already thermally doomed. It is that the loss budget must be solved at the same level of seriousness as the lift budget. Once that is explicit, the thermal system stops looking like secondary plumbing and starts looking like one of the main structural drivers.
 
 ### 12.5 What a stronger next version of this section should contain
 
