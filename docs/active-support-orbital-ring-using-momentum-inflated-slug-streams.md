@@ -181,53 +181,13 @@ That observation cuts directly against naive pictures of a single giant monolith
 
 ---
 
-## 5. Distributed control and why fill-and-drain is not required
-
-If macro-control is to come from lane-speed modulation, the next question is whether changing speed requires literal insertion and removal of slugs at every control station. For ordinary control sections, the answer appears to be no.
-
-Let slug headway be \(h\). In a locally uniform region with lane speed \(v\), the center-to-center spacing is
-
-\[
-s = vh.
-\]
-
-A commanded speed field changes occupancy by compressing or expanding that spacing. That means useful control can be produced by distributed acceleration and deceleration zones without ordinary fill-and-drain hardware.
-
-For monotone slowdown from \(v_0\) to \(v_1<v_0\), the minimum spacing is
-
-\[
-s_\mathrm{min} = h v_1,
-\]
-
-so collision avoidance requires
-
-\[
-hv_1 \ge \ell_s + g_\mathrm{min},
-\]
-
-where \(\ell_s\) is slug length and \(g_\mathrm{min}\) is minimum allowed gap.
-
-For an upward ramp, incomplete actuation can let a trailing slug catch a slower incumbent. A useful first delay bound is
-
-\[
-\tau_d < \frac{h v_0 - (\ell_s + g_\mathrm{min})}{v_1-v_0},
-\]
-
-where \(\tau_d\) is total sensing, computation, actuation, and field-establishment delay.
-
-The result is conceptually important. A lane can support smooth distributed transition zones in which slug spacing changes kinematically. That means the macro-control architecture can be based on continuous tug fields rather than on exotic station hardware every time one wants to make a moment.
-
-**Suggested Figure 5. Distributed speed transition without fill and drain.** Show a slug train entering a gradual slowdown region, with spacing shrinking smoothly through the transition and then becoming uniform again. Add a second panel with a speed-up region. The point is to let the reader see that occupancy change can occur through spacing evolution alone.
-
----
-
-## 6. Helical lanes in a lightweight fabric torus
+## 5. Helical lanes in a lightweight fabric torus
 
 The helical fabric-torus architecture is the first major payoff of the paper.
 
 Instead of asking a fast lane to remain straight in free space, the architecture places the lane on an intentionally curved helical path wrapped around a very large tensile membrane tube. The tube should be imagined as a lightweight fabric torus, likely made from a high-tensile membrane family rather than a heavy rigid shell. "Fabric sock around the world" is crude language, but it is not the wrong mental image.
 
-### 6.1 Helical curvature turns instability into pressure
+### 5.1 Helical curvature turns instability into pressure
 
 For a helix on a cylinder of radius \(a\), with helix angle \(\alpha\) measured relative to the tube axis,
 
@@ -271,7 +231,7 @@ p_\mathrm{eq} = \frac{N_p\dot m u\tan^2\alpha}{\pi a^2}.
 
 So the helical lanes actively inflate the torus.
 
-### 6.2 Membrane hoop tension creates a locally stiff substrate
+### 5.2 Membrane hoop tension creates a locally stiff substrate
 
 Equivalent pressure \(p_\mathrm{eq}\) creates hoop membrane force per unit axial length
 
@@ -293,9 +253,9 @@ Put differently, the lane is no longer trying to define its own path in empty sp
 
 Lanes could in principle be mounted on the inner or outer surface of the membrane, or on shallow truss or rib hardware attached directly to it. The point is not the exact attachment detail at this stage. The point is that the inflated membrane becomes the thing the lane pushes against.
 
-**Suggested Figure 6. Helical lane inflating a fabric torus.** Draw a cutaway of the torus wall with shallow-angle helical lanes attached to it. Show the lane reaction pressing outward, the membrane carrying hoop tension, and secondary hardware mounted to the now-prestressed wall. The figure should make clear that the membrane is not decorative cladding. It is the structural reaction surface for the helical lanes.
+**Suggested Figure 5. Helical lane inflating a fabric torus.** Draw a cutaway of the torus wall with shallow-angle helical lanes attached to it. Show the lane reaction pressing outward, the membrane carrying hoop tension, and secondary hardware mounted to the now-prestressed wall. The figure should make clear that the membrane is not decorative cladding. It is the structural reaction surface for the helical lanes.
 
-### 6.3 Why the helix angle is likely small
+### 5.3 Why the helix angle is likely small
 
 The architecture wants helical curvature for local prestress, but it also wants most of the speed to remain ring-tangential so the orbital ring can loft itself. That trade pushes the design toward shallow helical angles.
 
@@ -343,7 +303,7 @@ Using a screening case with \(a=50\,\mathrm{m}\), altitude 80 km, \(u=10\,\mathr
 
 That is a striking result. Once macro lift matters, the optimal helical bias may be very small. This supports exactly the picture advocated here: a large torus with many shallow-angle helical lanes, not a steeply wrapped screw conveyor.
 
-### 6.4 What the inflated torus does and does not solve
+### 5.4 What the inflated torus does and does not solve
 
 The inflated fabric torus solves an important local problem. It gives the lanes a reaction structure, creates local rigidity, and provides a platform for hardware.
 
@@ -353,7 +313,7 @@ That second problem is where the four-lane balanced cell becomes essential.
 
 ---
 
-## 7. The four-lane balanced cell
+## 6. The four-lane balanced cell
 
 A simple mirrored pair is useful, but it is not enough for a helical architecture.
 
@@ -392,7 +352,19 @@ At the same time it preserves:
 
 This is not a decorative symmetry argument. It is the architecture that makes the helical torus usable as a control machine rather than merely a pressurized tube.
 
-**Suggested Figure 7. Four-lane balanced cell.** Show the four lane helices in cross-section and in a short perspective cutaway, with arrows labeling handedness and travel direction. Use color-coded momentum vectors to show cancellation of axial, circumferential, and angular components. Then indicate the common-mode pressure channel that remains. The figure should make the cell feel like a genuine machine primitive.
+**Suggested Figure 6. Four-lane balanced cell.** Show the four lane helices in cross-section and in a short perspective cutaway, with arrows labeling handedness and travel direction. Use color-coded momentum vectors to show cancellation of axial, circumferential, and angular components. Then indicate the common-mode pressure channel that remains. The figure should make the cell feel like a genuine machine primitive.
+
+---
+
+## 7. Local rigidity is not global rigidity
+
+At this point the architecture has solved an important local problem. The helical lanes can inflate and prestress the fabric torus, and the four-lane cell can remove hidden steady momentum and torque channels.
+
+But a locally stiff torus is not yet a globally well-aligned orbital ring.
+
+A 100 m diameter prestressed membrane can still be flexible at long wavelength. The ring still has to respond to tether loads, payload-launch impulses, gravity-gradient effects, construction asymmetries, and wobble modes. So the next question is the decisive one: can the helical lane architecture produce a real macro-scale control channel?
+
+That is the paper's main result.
 
 ---
 
@@ -402,78 +374,194 @@ This is the second major payoff of the architecture, and arguably the main resul
 
 The inflated torus makes a locally stiff substrate. The four-lane balanced cell makes that substrate actively controllable at long wavelength.
 
-### 8.1 Tug comes from speed transitions
+### 8.1 The quantity being controlled is momentum flux
 
-For a mirrored pair selected to produce axial tug, a speed change \(\Delta v\) across a transition produces net axial tug
+Let \(e_z\) be the local tangent direction of the torus centerline. One lane in a four-lane cell has axial sign \(\sigma=\pm 1\), total speed \(v\), helix angle \(\alpha\), and ring-tangential speed component
 
 \[
-F_\mathrm{tug,1} = 2\dot m \Delta v \cos\alpha.
+u = v\cos\alpha.
 \]
 
-If \(N_s\) paired modules participate in one azimuthal sector,
+Its axial momentum flux is therefore
 
 \[
-F_\mathrm{sector} = 2N_s \dot m \Delta v \cos\alpha.
+\Pi_z = \sigma \dot m u = \sigma \dot m v\cos\alpha.
 \]
 
-That result is important because it comes from speed modulation alone. Ordinary control points do not need to insert or remove slugs from the lane. They need to establish distributed acceleration and deceleration fields.
-
-If the transition is smoothed over axial width \(\lambda\), the tug becomes a distributed load density
+If a stationary control section changes the lane speed from \(v_\mathrm{in}\) to \(v_\mathrm{out}\), the axial momentum flux changes by
 
 \[
-q_z(x) = -2N_s\dot m \cos\alpha\,\frac{dv}{dx}.
+\Delta \Pi_z = \sigma \dot m (v_\mathrm{out}-v_\mathrm{in})\cos\alpha.
 \]
 
-Integrating across the transition gives
+By momentum conservation, the integrated axial force applied to the structure is the negative of that change,
 
 \[
-|F_z| = 2N_s\dot m \Delta v \cos\alpha.
+F_{z,\mathrm{lane}} = -\Delta \Pi_z.
 \]
 
-So smoothing reduces peak local force density without destroying total tug authority.
-
-### 8.2 Opposed sectors create bending moments
-
-Apply such tug fields in opposed azimuthal sectors of a torus of radius \(a\). Then one gets a bending moment of order
+For a \(+z\)-traveling lane slowed through the section, it is convenient to define the positive slowdown magnitude
 
 \[
-M \sim a F_\mathrm{sector}.
+\Delta v = v_\mathrm{in}-v_\mathrm{out} > 0.
 \]
 
-A more explicit opposed-sector estimate with sector width \(\Delta\phi\) is
+Then the structure receives a forward tug of magnitude
 
 \[
-M_\mathrm{pair} = 4aN_s\dot m\Delta v\cos\alpha\,C_\mathrm{sec}(\Delta\phi),
+F_{\mathrm{lane}} = \dot m \Delta v\cos\alpha.
+\]
+
+That is the basic control primitive. A speed transition changes momentum flux, and the structure feels the equal and opposite reaction.
+
+### 8.2 Why a mirrored pair doubles the tug instead of canceling it
+
+Now consider the mirrored counter-moving partner in the same balanced cell. Its steady axial momentum is opposite, but if it traverses the mirrored stationary speed profile from the opposite direction, its structural tug has the **same sign** as the first lane.
+
+This is the key point that is easy to miss.
+
+The pair is not canceling because both lanes are being considered in the same spatial control section, not as abstract momenta written at one instant. Each lane loses axial momentum in its own direction of travel as it crosses the slowdown region, and in both cases the structure receives the same axial reaction.
+
+So for one mirrored pair,
+
+\[
+F_{\mathrm{pair}} = 2\dot m \Delta v\cos\alpha.
+\]
+
+If \(N_s\) paired modules participate in one azimuthal sector, then
+
+\[
+F_{\mathrm{sector}} = 2N_s\dot m \Delta v\cos\alpha.
+\]
+
+That is already enough to show that a balanced four-lane architecture can produce real net structural tug without sacrificing its steady-state momentum cancellation.
+
+**Suggested Figure 7. Why the pair adds instead of cancels.** Draw two mirrored counter-moving lanes passing through the same stationary slowdown section from opposite directions. Show the incoming and outgoing momentum flux arrows for each lane and the resulting structural reaction arrows, emphasizing that the reactions point the same way even though the steady lane momenta are opposite.
+
+### 8.3 Distributed tug fields
+
+The control section need not be a hard boundary. In fact, a distributed transition is usually better because it lowers peak local force density.
+
+Let the participating lanes follow a smooth speed profile \(v(x)\) through a sector. Then the structural tug density for one mirrored pair is
+
+\[
+q_z(x) = -2\dot m\cos\alpha\,\frac{dv}{dx}.
+\]
+
+For \(N_s\) paired modules in the sector,
+
+\[
+q_{z,\mathrm{sector}}(x) = -2N_s\dot m\cos\alpha\,\frac{dv}{dx}.
+\]
+
+Integrating over the transition width gives
+
+\[
+F_{\mathrm{sector}} = \int q_{z,\mathrm{sector}}(x)\,dx = 2N_s\dot m\Delta v\cos\alpha.
+\]
+
+So a distributed tug field preserves the same integrated authority as a hard transition while spreading the load over a useful finite distance.
+
+### 8.4 Why fill and drain are not required
+
+The remaining concern is whether such speed modulation requires literal insertion and removal of slugs at every ordinary control section. For the architecture considered here, the answer is no.
+
+Let slug number flux be \(J\), so that
+
+\[
+\dot m = J m_s,
+\]
+
+where \(m_s\) is mass per slug. In steady flow through a lane with local speed \(v(x)\), number continuity gives
+
+\[
+n(x) = \frac{J}{v(x)},
+\]
+
+where \(n(x)\) is slug number density along the lane. Equivalently, if \(h=1/J\) is time headway, then the center-to-center spacing in a locally uniform region is
+
+\[
+s(x) = \frac{1}{n(x)} = v(x)h.
+\]
+
+So a slowdown region automatically compresses spacing and raises local occupancy, while a speed-up region automatically expands spacing and lowers it. No source term is required. The lane stores more or less slug inventory simply because the same flux is moving more slowly or more quickly through that region.
+
+That is the clean kinematic reason why ordinary tug fields do not require fill-and-drain hardware.
+
+The main constraints are instead collision and delay limits. For a monotone slowdown from \(v_0\) to \(v_1<v_0\), the minimum spacing becomes
+
+\[
+s_\mathrm{min} = h v_1,
+\]
+
+so collision avoidance requires
+
+\[
+h v_1 \ge \ell_s + g_\mathrm{min},
+\]
+
+where \(\ell_s\) is slug length and \(g_\mathrm{min}\) is the minimum allowable gap.
+
+For an upward ramp, incomplete actuation can let a trailing slug catch a slower incumbent. A useful first delay bound is
+
+\[
+\tau_d < \frac{h v_0 - (\ell_s + g_\mathrm{min})}{v_1-v_0},
+\]
+
+where \(\tau_d\) is total sensing, computation, actuation, and field-establishment delay.
+
+So the issue is not that mass must be added or removed in ordinary control sections. The issue is that the transition profile has to respect spacing and delay constraints.
+
+**Suggested Figure 8. Distributed tug field without fill and drain.** Show a slowdown region in which slug spacing compresses smoothly as slugs enter, followed by a matched speed-up region where spacing re-expands. Label \(n=J/v\) and \(s=vh\). The figure should make clear that local occupancy changes because transport speed changes, not because slugs are literally injected or removed inside the control section.
+
+### 8.5 Opposed sectors create bending moments
+
+Now place such tug fields in opposed azimuthal sectors of a torus of radius \(a\). Then the sector tugs form a couple.
+
+At the level of order of magnitude,
+
+\[
+M \sim 2a F_{\mathrm{sector}}.
+\]
+
+A more explicit finite-sector estimate is
+
+\[
+M_{\mathrm{pair}} = 4aN_s\dot m\Delta v\cos\alpha\,C_\mathrm{sec}(\Delta\phi),
 \]
 
 with
 
 \[
-C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}.
+C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2},
 \]
 
-This is the macro-control primitive. By accelerating selected lanes in one sector and compensating them elsewhere, the ring can generate controlled long-wavelength moments while keeping the cell balanced in the aggregate.
+where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite angular extent.
 
-### 8.3 What this control channel is for
+This is the macro-control mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus.
+
+### 8.6 Global bookkeeping and compensating zones
+
+The ring is not creating net momentum from nowhere. A slowdown region that tugs one way must be paired with an acceleration region elsewhere, or with a station that exchanges energy and momentum with the rest of the infrastructure.
+
+What the architecture offers is not free net force. It offers a way to **redistribute** momentum flux and the associated structural reaction in space. That is exactly what a shape-control system needs.
+
+The important result is that this redistribution can be accomplished internally, in balanced four-lane cells, by smooth speed fields. One does not need monolithic moving hoops or routine fill-and-drain hardware throughout the ring to generate useful macro moments.
+
+### 8.7 What this control channel is for
 
 The point is not only to suppress abstract wobble. The same mechanism is the natural candidate for handling:
 
 - long-wavelength orbital-ring alignment,
 - tether loads,
-- local payload-launch impulses,
+- payload-launch impulses,
 - construction asymmetries,
 - thermal distortion,
 - and other slow or moderate disturbances that act on the ring at large scale.
 
 A useful way to say it is this: the helical lanes pay twice. First they inflate and prestress the torus. Then, because they are grouped into balanced cells, they provide a distributed internal actuation system for macro-scale shape control.
 
-### 8.4 Why this is different from a simple rotor ring
-
-A simple monolithic rotor picture treats moving momentum mainly as a support source. The architecture proposed here treats moving momentum as both a support source and a spatially distributed control resource.
-
-That is the novel structural-control idea the paper is trying to surface.
-
-**Suggested Figure 8. Distributed tug fields and macro-control.** Show a short ring segment with one pair of opposed azimuthal sectors highlighted. In each highlighted sector, draw gradual acceleration and deceleration zones in the participating lanes, along with the resulting axial tug vectors and net bending moment on the torus cross-section. A second panel should show the same mechanism acting on a global orbital-ring arc to resist a tether load or wobble mode.
+**Suggested Figure 9. Opposed tug sectors generating a ring-scale moment.** Show a torus cross-section with two opposed azimuthal sectors highlighted, each containing distributed slowdown or speed-up zones in the participating lanes. Draw the resulting axial tug vectors and the net bending couple. Add a second panel showing the same mechanism acting on a long orbital-ring arc to oppose a tether load or wobble mode.
 
 ---
 
@@ -533,51 +621,11 @@ In words:
 
 The concept stands or falls on whether this loop converges.
 
-### 9.3 Safety, losses, and thermal rejection are still existential
-
-At one representative screening point, altitude 80 km, \(u=10\,\mathrm{km/s}\), and \(w_p=10\,\mathrm{kN/m}\), the required momentum-flux scale is roughly
-
-\[
-A \sim 8.44\times10^{10}\,\mathrm{N}.
-\]
-
-That same scale is also a warning about kinetic energy per unit length. Using the fixed-flux slug-train estimate, the moving energy inventory is of the same order,
-
-\[
-E'_\mathrm{kin} \sim N_p\dot m u = A \sim 8.44\times10^{10}\,\mathrm{J/m},
-\]
-
-which is roughly 20 tons TNT equivalent per metre.
-
-That is why failure localization, catcher structure, dump paths, and segment isolation are architectural requirements rather than safety afterthoughts.
-
-Losses are similarly dangerous because radiator mass pushes back into \(w_p\). With a rough radiative rejection capability of \(q_\mathrm{rad}\sim 500\,\mathrm{W/m^2}\) and radiator areal mass around \(5\,\mathrm{kg/m^2}\), a steady loss density of 100 kW per metre implies roughly 200 m\(^2\) of radiator area per metre and nearly \(9.8\,\mathrm{kN/m}\) of radiator weight by itself. That is enough to become a first-order structural term.
-
-So the architecture may be conceptually strong and still prove operationally brutal.
-
-**Suggested Figure 9. Closure-loop reality check.** Draw a systems loop linking passive weight \(w_p\), required momentum flux \(A\), stored energy per metre, steady losses, containment hardware, thermal hardware, and then back to \(w_p\). This figure should serve as the paper's main cautionary diagram: the invention may solve the control architecture without yet solving the practicality loop.
+**Suggested Figure 10. Macro-lift versus local-control separation.** Show a large Earth-centered orbital ring with one local inset. In the large view, highlight the ring-tangential momentum component responsible for macro lift. In the inset, highlight the shallow helical lanes and opposed-sector tug fields responsible for local prestress and macro-shape control. The figure should remind the reader that this paper mainly solves a control architecture, not the entire full-scale closure problem.
 
 ---
 
-## 10. A staged development path
-
-Because the architecture combines force generation, control, prestressed membrane structure, and very high moving energy, it should be developed in stages.
-
-1. **Bench force demonstrator.** Measure the momentum-redirection law directly.
-2. **Single-lane guide demonstrator.** Show local magnetic guidance and convective control margins.
-3. **Perturbation demonstrator.** Show the anti-restoring behavior of a straight lane and the stabilizing role of a surrounding reaction structure.
-4. **Helical membrane demonstrator.** Show measurable inflation pressure and local stiffening in a small fabric tube.
-5. **Four-lane balanced-cell demonstrator.** Show momentum cancellation with preserved pressure and control channels.
-6. **Distributed-transition demonstrator.** Show that smooth speed modulation produces real tug fields without routine fill-and-drain hardware.
-7. **Architectural active-tube demonstrator.** Show a visible lightweight structure whose stiffness clearly comes from internal momentum rather than passive bulk.
-
-A public demonstrator should prioritize safety and legibility over maximum size. The right public message is not "we already built an orbital ring." It is "active internal momentum can make a lightweight membrane structure carry load and be controllable in a way passive structure alone cannot."
-
-**Suggested Figure 10. Demonstrator ladder.** Draw a progression from bench guide-force rig to helical fabric tube, four-lane balanced cell, distributed-transition rig, and finally an architectural active-tube demonstrator. Label the principle proven at each step and the dangerous scale jump being intentionally deferred.
-
----
-
-## 11. Conclusion
+## 10. Conclusion
 
 This paper argues for a specific architectural idea, not for immediate engineering closure.
 
@@ -589,9 +637,11 @@ Those two ideas belong together. The inflated torus without the balanced control
 
 A major motivation for this architecture is that straight high-speed lanes and simple monolithic rotors are not passively self-stabilizing under curvature perturbation. The stream pushes into existing curvature. The helical fabric torus is therefore not merely a convenient geometry. It is a way to supply the reaction structure and control channels that a viable ring would need anyway.
 
-That does not make the full orbital ring easy. Macro lift still demands superorbital ring-tangential momentum flux. Stored energy per metre is extreme. Safety, containment, losses, and thermal rejection all remain potentially decisive. The honest conclusion is therefore two-sided.
+The main control result can be stated compactly. A distributed speed field changes lane momentum flux. In a mirrored counter-moving pair, the structural reactions from the two lanes add rather than cancel in the stationary control section. In a four-lane balanced cell, those pairwise tug fields can be placed in opposed sectors to generate controlled ring-scale moments while maintaining first-order momentum balance in steady operation. That is the paper's strongest claim.
+
+That does not make the full orbital ring easy. Macro lift still demands superorbital ring-tangential momentum flux, and the full closure problem remains severe. The honest conclusion is therefore two-sided.
 
 - As a **control-capable architecture**, this concept is substantially stronger than a simple rotor-around-Earth picture.
 - As a **practical megastructure**, it still faces severe closure problems.
 
-That is a useful result. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated. If the concept advances, it should advance by proving those ingredients experimentally in that order.
+That is a useful result. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated.
