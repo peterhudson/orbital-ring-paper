@@ -28,8 +28,8 @@ function buildHtml(markdown, title) {
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <style>
     @page {
-      size: 210mm 297mm;
-      margin: 16mm 16mm 18mm 16mm;
+      size: 8.5in 11in;
+      margin: 0.65in 0.65in 0.72in 0.65in;
     }
     :root {
       color-scheme: light;
@@ -182,7 +182,7 @@ async function renderWithPlaywright(html, outputPath) {
   const { chromium } = require('playwright');
   const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', headless: true, args: ['--no-sandbox'] });
   try {
-    const page = await browser.newPage({ viewport: { width: 1240, height: 1754 }, deviceScaleFactor: 1.5 });
+    const page = await browser.newPage({ viewport: { width: 1275, height: 1650 }, deviceScaleFactor: 1.5 });
     await page.setContent(html, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => document.body.dataset.rendered === 'true', { timeout: 30000 });
     await page.emulateMedia({ media: 'print' });
@@ -193,7 +193,7 @@ async function renderWithPlaywright(html, outputPath) {
       displayHeaderFooter: true,
       headerTemplate: '<div></div>',
       footerTemplate: '<div style="width:100%; font-size:9px; color:#6b7280; text-align:center; margin:0 auto;"><span class="pageNumber"></span></div>',
-      margin: { top: '16mm', right: '16mm', bottom: '18mm', left: '16mm' }
+      margin: { top: '0.65in', right: '0.65in', bottom: '0.72in', left: '0.65in' }
     });
   } finally {
     await browser.close();
