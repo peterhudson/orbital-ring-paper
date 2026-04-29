@@ -116,8 +116,6 @@ Because the local numbers are easy to underestimate, the corresponding whole-rin
 
 That table does not refute the architecture, but it does place the reference case firmly in the megastructure regime. Even the paper's nominally light reference point already involves tens of billions of kilograms of passive and moving inventory.
 
-**Suggested Figure 1. Overall concept sketch.** Show a world-encircling torus with roughly 100 m diameter, rendered as a lightweight fabric membrane rather than a solid pipe. Include a local cutaway showing several shallow-angle helical lanes attached to the membrane and one enlarged inset showing a four-lane balanced cell. The image should make the paper's core claim visible in one glance: the same helical lane system gives both local prestress and macro-scale actuation authority.
-
 **Figure conventions used throughout.** Do not draw steep helices, a rigid pipe, or only a small number of lanes. Do not depict local prestress as a literal gas pressure unless the homogenization step is indicated. Do not draw the tug actuator as a single thruster or brake; it should appear as a distributed speed-gradient zone. If the reference case is drawn, show it as a low-orbit world ring, not as a tiny deep-space loop floating far from Earth.
 
 The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-scale actuation result. Only then does it turn to the harder practicality screens: macro lift throughput, atmospheric environment, fault-domain architecture, and closure.
@@ -168,8 +166,6 @@ q_{\mathrm{lift,lane}} = \dot m\left(\frac{u}{R} - \frac{g_h}{u}\right)
 \]
 
 where \(R\) is ring radius and \(g_h\) is gravity at altitude. At this point it is enough to note that local helix curvature and Earth-scale curvature are separate channels and must not be conflated.
-
-**Suggested Figure 2. Momentum-redirection force law.** Draw one curved guide segment with slugs moving along it. Show the tangent velocity, the local radius of curvature, the inward guide force on the slug, and the equal outward reaction on the guide. Include both labels \(f=\mu v^2\kappa\) and \(f=\dot m v\kappa\) so the reader sees immediately that the same geometry applies to continuous and discrete pictures.
 
 ---
 
@@ -265,8 +261,6 @@ A credible architecture therefore needs layered control:
 
 The orbital ring cannot be treated as a single centralized control loop.
 
-**Suggested Figure 3. One lane as a guided control problem.** Show a single lane with magnetic stator modules, guide gap, slug train, sensors, and fast local controllers. Include a disturbance entering from the left and being convected downstream. The figure should make it obvious that the lane problem is distributed and time-critical, not a quasi-static guideway.
-
 ---
 
 ## 4. Why straight lanes and monolithic rotors do not provide passive self-centering by momentum redirection alone
@@ -310,8 +304,6 @@ That has the **same sign as the displacement**. If the lane is displaced upward 
 This is not yet a complete stability model. Real dynamics also involve beam stiffness, membrane stiffness, damping, actuator delay, boundary conditions, and control law. But it is enough to establish the key point: a straight high-speed lane does not passively self-center by momentum redirection alone. The moving stream behaves like an anti-restoring curvature follower unless the surrounding structure and controls provide compensating reaction.
 
 That observation cuts directly against naive pictures of a single giant monolithic rotor or a set of parallel straight rotors simply going around Earth. Such concepts may contain enough momentum to generate support in principle, but they do not automatically contain a good structural answer to perturbations.
-
-**Suggested Figure 4. Anti-restoring behavior of a perturbed straight lane.** Show a nominally straight lane with a small sinusoidal bend. Draw the local curvature and the stream reaction arrows pushing into the bend rather than away from it. Under the drawing, show the short derivation \(q_\mathrm{stream}\approx -T_\mathrm{eq}y_{xx}\rightarrow +T_\mathrm{eq}k^2y\). This figure should be the moment where the reader understands why a simple straight rotor picture is incomplete.
 
 ---
 
@@ -418,8 +410,6 @@ with positive damping and adequate phase margin required separately. In other wo
 Put differently, the torus gives the lane something real to push against. It does not let the paper claim that the instability problem has disappeared.
 
 Lanes could in principle be mounted on the inner or outer surface of the membrane, or on shallow truss or rib hardware attached directly to it. The point is not the exact attachment detail at this stage. The point is that the prestressed membrane becomes the structural reaction surface for the helical lanes.
-
-**Suggested Figure 5. Helical lane inflating the membrane guide shell.** Draw a cutaway of the torus wall with shallow-angle helical lanes attached to it. Show the lane reaction pressing outward, the membrane carrying hoop tension, and secondary hardware mounted to the now-prestressed wall. Add a second overlay showing a small perturbation about the nominal helical path, with labels indicating that the steady load becomes prestress but incremental stability still depends on membrane stiffness, guide stiffness, and active damping. The lanes should be drawn as nearly axial with only slight azimuthal drift, not as a steep barber-pole helix.
 
 ### 5.4 Why the helix angle is likely small
 
@@ -565,8 +555,6 @@ The same severity appears as phase tolerance. In the 10 kg row, 1% headway accur
 
 Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.
 
-**Suggested Figure 6. Four-lane balanced cell.** Show the four lane helices in cross-section and in a short perspective cutaway, with arrows labeling handedness and travel direction. Use color-coded momentum vectors to show cancellation of axial, circumferential, and angular components. Then indicate the common-mode pressure channel that remains. The helices should be drawn with very shallow apparent winding, consistent with the small-\(\alpha\) regime. The figure should make the cell feel like a genuine machine primitive.
-
 ---
 
 ## 7. Distributed tug fields and macro-scale ring actuation
@@ -650,8 +638,6 @@ If one only needs the magnitude, this becomes
 \]
 
 For constant \(\alpha\), \(|\Delta u| = \cos\alpha |\Delta v|\).
-
-**Suggested Figure 7. Why the pair adds instead of cancels.** Draw two mirrored counter-moving lanes passing through the same stationary speed-gradient section from opposite directions. Show one lane accelerating and the other decelerating, while the structural reaction arrows point the same way. The figure should make clear that the common sign comes from the fixed spatial gradient, not from two same-direction braking events.
 
 ### 7.3 Distributed tug fields
 
@@ -790,8 +776,6 @@ For time-varying control profiles, the continuity constraint is stronger still. 
 So the no-fill/no-drain claim applies only to steady or slowly varying speed fields. A controller cannot arbitrarily command \(u(s,t)\) without launching density and headway waves through the lane. Dynamic control therefore requires phase and inventory management so that those waves do not create collision, starvation, or excessive headway error.
 
 So the issue is not that mass must be added or removed in ordinary control sections. The issue is that the speed profile has to respect both static spacing limits and dynamic continuity.
-
-**Suggested Figure 8. Distributed tug field without fill and drain.** Show a low-speed pocket in which slug spacing compresses smoothly as slugs enter, followed by a higher-speed return where spacing re-expands. Label \(n=J/v\) and \(s=vh\). Mark the entry and exit ramps as the actual tug-generating zones, with opposite force signs, and make clear that useful macro-scale actuation comes from placing those gradients at deliberately chosen positions. The figure should also show that local occupancy changes because transport speed changes, not because slugs are literally injected or removed inside the control section.
 
 ### 7.6 The tug actuator is also a high-power energy exchanger
 
@@ -960,8 +944,6 @@ The point is not only to suppress abstract wobble. The same mechanism is the nat
 
 A useful way to say it is this: the helical lanes pay twice. First they inflate and prestress the torus. Then, because they are grouped into balanced cells, they provide a distributed internal actuation system for macro-scale shape control.
 
-**Suggested Figure 9. Opposed tug sectors generating a ring-scale moment.** Show a torus cross-section with two opposed azimuthal sectors highlighted, each containing distributed speed-gradient zones in the participating lanes. Draw the resulting axial tug vectors and the net bending couple. Add a second panel showing the same mechanism acting on a long orbital-ring arc to oppose a tether load or wobble mode.
-
 ---
 
 ## 8. Remaining closure screens
@@ -1096,8 +1078,6 @@ The paper does not yet answer how billions of slugs are inserted, how the stream
 At the same time, the helical membrane concept may create deployment options that more monolithic orbital-ring sketches do not obviously possess. A membrane-and-lane system could in principle be assembled in a compact geometry, perhaps even a very large folded terrestrial or near-terrestrial staging geometry, brought to partial prestress at comparatively high helix angle, and then unfolded or reconfigured as more ring-tangential throughput comes online. In that picture, some commissioning cells might temporarily favor higher \(\alpha\) for prestress and handling margin, then later be reconfigured toward shallower steady-state \(\alpha\) once enough lift throughput exists elsewhere in the ring.
 
 That idea is speculative, and this paper does not claim it as solved. But it is a real architectural question raised by the helical torus concept: the geometry that is best for deployment or early commissioning may not be the geometry that is best for final orbital operation. Modular lane segments and staged reconfiguration could therefore matter as much as the steady-state actuation primitive itself.
-
-**Suggested Figure 10. Macro lift versus local actuation separation.** Show a large Earth-centered orbital ring with one local inset. In the large view, highlight the ring-tangential momentum component responsible for macro lift. In the inset, highlight the shallow helical lanes and opposed-sector tug fields responsible for local prestress and macro-shape actuation. The figure should remind the reader that this paper mainly identifies an actuation architecture, not the entire full-scale closure problem.
 
 ---
 
