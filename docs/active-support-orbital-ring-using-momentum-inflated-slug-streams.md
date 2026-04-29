@@ -172,7 +172,7 @@ A lane is not merely static curvature plus average force. The stream is convecte
 t_\mathrm{conv} \sim \frac{\lambda}{v},
 \]
 
-where \(\lambda\) is disturbance wavelength. At \(v=10\,\mathrm{km/s}\), a 100 m disturbance convects past in 10 ms, a 10 m disturbance in 1 ms, and a 1 m disturbance in 0.1 ms. High speed helps force generation and hurts control.
+where \(\lambda\) is disturbance wavelength. At \(v=10~\mathrm{km/s}\), a 100 m disturbance convects past in 10 ms, a 10 m disturbance in 1 ms, and a 1 m disturbance in 0.1 ms. High speed helps force generation and hurts control.
 
 Using lateral displacement \(y(x,t)\) along a lane coordinate \(x\), the convective derivative is
 
@@ -302,10 +302,10 @@ So the helical lanes create a steady outward load channel that can inflate the t
 
 The pressure language is useful, but it is an azimuthally averaged approximation. The real loads are applied through discrete lanes, ribs, or lane carriers.
 
-The averaging is only justified when lane pitch, rib stiffness, and membrane shear transfer are fine enough that the discrete loads appear smooth at the wavelengths of interest. At \(a=50\,\mathrm{m}\), the circumference is about
+The averaging is only justified when lane pitch, rib stiffness, and membrane shear transfer are fine enough that the discrete loads appear smooth at the wavelengths of interest. At \(a=50~\mathrm{m}\), the circumference is about
 
 \[
-2\pi a \approx 314\,\mathrm{m}.
+2\pi a \approx 314~\mathrm{m}.
 \]
 
 If the torus carries on the order of 300 lanes, the pitch is about 1 m and a pressure-like description may be reasonable for long-wave structural modes. If it carries only a few tens of lanes, the loading is much less pressure-like and the discrete rib-and-membrane mechanics become first-order.
@@ -341,7 +341,7 @@ K_\mathrm{tot}(k,\omega) = K_\mathrm{membrane}(k,\omega) + K_\mathrm{guide}(k,\o
 Then, for a sinusoidal perturbation of wavenumber \(k\), the real part must satisfy
 
 \[
-\mathrm{Re}\,K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
+\mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
 \]
 
 with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest.
@@ -396,7 +396,7 @@ For small angles,
 \alpha_\mathrm{opt} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
 \]
 
-Using a screening case with \(a=50\,\mathrm{m}\), altitude 80 km, \(u=10\,\mathrm{km/s}\), and \(\Gamma=10\), one gets
+Using a screening case with \(a=50~\mathrm{m}\), altitude 80 km, \(u=10~\mathrm{km/s}\), and \(\Gamma=10\), one gets
 
 \[
 \alpha_\mathrm{opt} \approx 0.78^\circ.
@@ -404,10 +404,10 @@ Using a screening case with \(a=50\,\mathrm{m}\), altitude 80 km, \(u=10\,\mathr
 
 That is a striking result. Once macro lift matters, the optimal helical bias may be very small. This supports exactly the picture advocated here: a large torus with many shallow-angle helical lanes, not a steeply wrapped screw conveyor.
 
-At \(a=50\,\mathrm{m}\) and \(\alpha \approx 0.78^\circ\), one full wrap pitch is about
+At \(a=50~\mathrm{m}\) and \(\alpha \approx 0.78^\circ\), one full wrap pitch is about
 
 \[
-\frac{2\pi a}{\tan\alpha} \approx \frac{314\,\mathrm{m}}{0.014} \approx 22\,\mathrm{km}.
+\frac{2\pi a}{\tan\alpha} \approx \frac{314~\mathrm{m}}{0.014} \approx 22~\mathrm{km}.
 \]
 
 That is visually important. The intended architecture is not a steep screw or barber pole. It is a field of many nearly axial lanes with only a very slight azimuthal drift.
@@ -429,11 +429,11 @@ A simple mirrored pair is useful, but it is not enough for a helical architectur
 If one chooses a mirrored helical pair with tangent vectors
 
 \[
-t_x = \cos\alpha\,e_s + \sin\alpha\,e_\theta,
+t_x = \cos\alpha e_s + \sin\alpha e_\theta,
 \]
 
 \[
-t_y = -\cos\alpha\,e_s + \sin\alpha\,e_\theta,
+t_y = -\cos\alpha e_s + \sin\alpha e_\theta,
 \]
 
 then the axial components cancel, but the circumferential components add. That means a two-lane pair can still carry steady circumferential momentum and angular momentum around the torus.
@@ -547,7 +547,7 @@ If one only needs the magnitude, this becomes
 |F_{\mathrm{sector}}| = 2N_s\dot m |\Delta u|.
 \]
 
-For constant \(\alpha\), \(|\Delta u| = \cos\alpha\,|\Delta v|\).
+For constant \(\alpha\), \(|\Delta u| = \cos\alpha |\Delta v|\).
 
 **Suggested Figure 7. Why the pair adds instead of cancels.** Draw two mirrored counter-moving lanes passing through the same stationary speed-gradient section from opposite directions. Show one lane accelerating and the other decelerating, while the structural reaction arrows point the same way. The figure should make clear that the common sign comes from the fixed spatial gradient, not from two same-direction braking events.
 
@@ -572,7 +572,7 @@ q_{s,\mathrm{sector}}(s) = -2N_s\dot m \frac{du}{ds}.
 Integrating over the transition width gives
 
 \[
-F_{\mathrm{sector}} = \int q_{s,\mathrm{sector}}(s)\,ds = -2N_s\dot m \Delta u.
+F_{\mathrm{sector}} = \int q_{s,\mathrm{sector}}(s) ds = -2N_s\dot m \Delta u.
 \]
 
 So a distributed tug field preserves the same integrated authority as a hard transition while spreading the load over a useful finite distance.
@@ -590,7 +590,7 @@ M \sim 2a |F_{\mathrm{sector}}|.
 A more explicit finite-sector estimate is
 
 \[
-M_{\mathrm{pair}} = 4aN_s\dot m |\Delta u|\,C_\mathrm{sec}(\Delta\phi)
+M_{\mathrm{pair}} = 4aN_s\dot m |\Delta u| C_\mathrm{sec}(\Delta\phi)
 \]
 
 with
@@ -634,7 +634,7 @@ That is the clean kinematic reason why ordinary tug fields do not require fill-a
 It is also important to state where the force actually comes from. The force is generated at the speed-gradient zones, not in a uniform low-speed pocket by itself. A closed low-speed pocket that returns to its starting speed has zero net integrated tug,
 
 \[
-\int -2\dot m \frac{du}{ds}\,ds = -2\dot m\Delta u = 0,
+\int -2\dot m \frac{du}{ds} ds = -2\dot m\Delta u = 0,
 \]
 
 so its entry and exit ramps produce equal and opposite tugs at different positions. Useful macro-control therefore comes from placing those opposite gradient zones deliberately in space, so they generate internal load, bending moment, or stress redistribution where desired.
@@ -682,39 +682,39 @@ The tug equations are momentum-flux equations, but a reviewer will immediately a
 For one lane, the exact finite power transfer across a section that changes speed from \(u_1\) to \(u_2\) is
 
 \[
-P_{\mathrm{lane}} = \frac{1}{2}\dot m\left(u_2^2-u_1^2\right) = \dot m \bar u\,\Delta u
+P_{\mathrm{lane}} = \frac{1}{2}\dot m\left(u_2^2-u_1^2\right) = \dot m \bar u \Delta u
 \]
 
 where \(\bar u=(u_1+u_2)/2\). For small \(\Delta u\), this reduces to
 
 \[
-P_{\mathrm{lane}} \approx \dot m u \, \Delta u.
+P_{\mathrm{lane}} \approx \dot m u   \Delta u.
 \]
 
 Using the force magnitude \(|F_{\mathrm{lane}}| = \dot m |\Delta u|\), this is
 
 \[
-P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}| \, u.
+P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}|   u.
 \]
 
-At \(u \sim 10\,\mathrm{km/s}\), even modest structural tug implies enormous power exchange. A 1 MN tug at 10 km/s corresponds to roughly 10 GW.
+At \(u \sim 10~\mathrm{km/s}\), even modest structural tug implies enormous power exchange. A 1 MN tug at 10 km/s corresponds to roughly 10 GW.
 
 For the notional ring used throughout the paper, the more relevant number is larger. Take the screening passive load to be
 
 \[
-w_p = 10\,\mathrm{kN/m}.
+w_p = 10~\mathrm{kN/m}.
 \]
 
 Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of
 
 \[
-0.01 \times 10{,}000\,\mathrm{N/m} \times 100{,}000\,\mathrm{m} = 10\,\mathrm{MN}.
+0.01 \times 10{,}000~\mathrm{N/m} \times 100{,}000~\mathrm{m} = 10~\mathrm{MN}.
 \]
 
 So the grounded long-wave control example for this hypothetical ring is 10 MN, not 1 MN. At 10 km/s that implies roughly
 
 \[
-10\,\mathrm{MN} \times 10\,\mathrm{km/s} = 100\,\mathrm{GW}
+10~\mathrm{MN} \times 10~\mathrm{km/s} = 100~\mathrm{GW}
 \]
 
 of exchanged power.
@@ -722,10 +722,10 @@ of exchanged power.
 If the notional 300-lane cross-section participates broadly in that correction, the mean integrated axial contribution is only about
 
 \[
-\frac{10\,\mathrm{MN}}{300} \approx 33\,\mathrm{kN}
+\frac{10~\mathrm{MN}}{300} \approx 33~\mathrm{kN}
 \]
 
-per lane. The surprising quantity is therefore not force per lane. It is the power associated with making even a small speed change at \(10\,\mathrm{km/s}\).
+per lane. The surprising quantity is therefore not force per lane. It is the power associated with making even a small speed change at \(10~\mathrm{km/s}\).
 
 That does not by itself kill the architecture, because a mirrored pair in a fixed gradient can ideally exchange energy locally: one lane is accelerated while the other is decelerated. But it does mean the tug-field actuator is not a gentle trim system. It is a very high-power bidirectional momentum-and-energy exchanger.
 
@@ -769,7 +769,7 @@ The fractional lift sensitivity is therefore
 \frac{\delta q_\mathrm{lift}}{q_\mathrm{lift}} = \frac{\left(\frac{1}{R} + \frac{g_h}{u^2}\right)}{\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}\frac{\delta u}{u}.
 \]
 
-At the illustrative 80 km, \(u=10\,\mathrm{km/s}\) screening point, that multiplier is about 4.2. So a 1% local speed modulation produces roughly a 4% local lift modulation in the participating lift stream.
+At the illustrative 80 km, \(u=10~\mathrm{km/s}\) screening point, that multiplier is about 4.2. So a 1% local speed modulation produces roughly a 4% local lift modulation in the participating lift stream.
 
 The same speed field therefore actuates three coupled outputs: axial tug, local pressure, and local lift. A real machine would need a control-allocation layer that distributes commands across the four lanes and across neighboring sectors so that desired tug, pressure trim, and lift trim are separated as well as possible.
 
@@ -782,37 +782,37 @@ The key point for controllability is that the scary 4.2 multiplier is not the wh
 Then the integrated lift side-effect of a tug command is
 
 \[
-\Delta W_{\mathrm{lift,sector}} = L\,\delta q_\mathrm{lift} = \beta L \, F_{\mathrm{sector}}.
+\Delta W_{\mathrm{lift,sector}} = L \delta q_\mathrm{lift} = \beta L   F_{\mathrm{sector}}.
 \]
 
 So the troublesome coupling is governed by the dimensionless factor \(\beta L\), not by the 4.2 local sensitivity alone.
 
-At the illustrative 80 km, \(u=10\,\mathrm{km/s}\) point,
+At the illustrative 80 km, \(u=10~\mathrm{km/s}\) point,
 
 \[
-\beta \approx 2.5\times 10^{-7}\,\mathrm{m^{-1}},
-\qquad
-\beta^{-1} \approx 4{,}000\,\mathrm{km}.
+\beta \approx 2.5\times 10^{-7}~\mathrm{m^{-1}},
+ 
+\beta^{-1} \approx 4{,}000~\mathrm{km}.
 \]
 
 That means any control sector much shorter than a few thousand kilometres sits in a weak-coupling regime. For example,
 
-- if \(L=100\,\mathrm{km}\), then \(\beta L \approx 0.025\),
-- if \(L=250\,\mathrm{km}\), then \(\beta L \approx 0.063\).
+- if \(L=100~\mathrm{km}\), then \(\beta L \approx 0.025\),
+- if \(L=250~\mathrm{km}\), then \(\beta L \approx 0.063\).
 
 So a 10 MN tug over a 100 km control sector carries only about
 
 \[
-\Delta W_{\mathrm{lift,sector}} \approx 0.025 \times 10\,\mathrm{MN} = 250\,\mathrm{kN}
+\Delta W_{\mathrm{lift,sector}} \approx 0.025 \times 10~\mathrm{MN} = 250~\mathrm{kN}
 \]
 
 of integrated lift side-effect over that sector. Spread back over a 1000 km neighboring compensation arc, that is only
 
 \[
-\frac{250\,\mathrm{kN}}{1000\,\mathrm{km}} = 0.25\,\mathrm{N/m},
+\frac{250~\mathrm{kN}}{1000~\mathrm{km}} = 0.25~\mathrm{N/m},
 \]
 
-which is still just \(2.5\times 10^{-5}\) of the screening \(10\,\mathrm{kN/m}\) supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about
+which is still just \(2.5\times 10^{-5}\) of the screening \(10~\mathrm{kN/m}\) supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about
 
 \[
 \frac{\delta u}{u} \sim \frac{2.5\times 10^{-5}}{4.2} \approx 6\times 10^{-6}.
@@ -825,19 +825,19 @@ This gives the basic convergence result. If control sectors are short compared w
 A useful way to name that problem is with a local linearized control map. Write
 
 \[
-\delta y = \mathbf{M}\,\delta u
+\delta y = \mathbf{M} \delta u
 \]
 
 with output vector
 
 \[
-\delta y = \left(\delta F_s,\; \delta p_\mathrm{eq},\; \delta q_\mathrm{lift}\right)^T
+\delta y = \left(\delta F_s,  \delta p_\mathrm{eq},  \delta q_\mathrm{lift}\right)^T
 \]
 
 and lane-command vector
 
 \[
-\delta u = \left(\delta u_1,\; \delta u_2,\; \delta u_3,\; \delta u_4\right)^T.
+\delta u = \left(\delta u_1,  \delta u_2,  \delta u_3,  \delta u_4\right)^T.
 \]
 
 where \(\mathbf{M}\) depends on lane placement, handedness, sector participation, and the current operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
@@ -908,7 +908,7 @@ This is why the helical angle has to stay small at full scale. The ring needs it
 Let passive structural and hardware weight per unit ring length be \(w_p\). The lift requirement can be written as
 
 \[
-A_\mathrm{pair} = N_p \dot m \, u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
+A_\mathrm{pair} = N_p \dot m   u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
 \]
 
 where \(A_\mathrm{pair}\) is the paired-module momentum-flux scale and the total paired-lane contribution is \(2A_\mathrm{pair}\).
@@ -916,7 +916,7 @@ where \(A_\mathrm{pair}\) is the paired-module momentum-flux scale and the total
 That sounds like a simple scaling law, but it closes several hard subsystems into one loop:
 
 \[
-w_p \to A_\mathrm{pair} \to \left(E_{\mathrm{kin}},\; P_{\mathrm{loss}}\right) \to \left(w_{\mathrm{contain}},\; w_{\mathrm{thermal}},\; w_{\mathrm{power}}\right) \to w_p
+w_p \to A_\mathrm{pair} \to \left(E_{\mathrm{kin}},  P_{\mathrm{loss}}\right) \to \left(w_{\mathrm{contain}},  w_{\mathrm{thermal}},  w_{\mathrm{power}}\right) \to w_p
 \]
 
 In words:
@@ -929,31 +929,31 @@ In words:
 
 The concept stands or falls on whether this loop converges.
 
-One brutal scale number is worth stating explicitly. In the illustrative 80 km, \(u=10\,\mathrm{km/s}\) screening case,
+One brutal scale number is worth stating explicitly. In the illustrative 80 km, \(u=10~\mathrm{km/s}\) screening case,
 
 \[
-\frac{u^2}{R} - g_h \approx 5.9\,\mathrm{m/s^2}.
+\frac{u^2}{R} - g_h \approx 5.9~\mathrm{m/s^2}.
 \]
 
 So supporting even
 
 \[
-w_p = 10\,\mathrm{kN/m}
+w_p = 10~\mathrm{kN/m}
 \]
 
 of passive weight requires moving-stream line density of about
 
 \[
-\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{5.9} \approx 1700\,\mathrm{kg/m}.
+\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{5.9} \approx 1700~\mathrm{kg/m}.
 \]
 
 The corresponding kinetic energy per metre is then
 
 \[
-E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 85\,\mathrm{GJ/m}.
+E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 85~\mathrm{GJ/m}.
 \]
 
-That is the energy scale associated with the notional \(10\,\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the energy scale.
+That is the energy scale associated with the notional \(10~\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the energy scale.
 
 ### 8.3 The 80 km screening case has a serious environment caveat
 
