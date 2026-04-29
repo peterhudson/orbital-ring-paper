@@ -763,13 +763,7 @@ Then the integrated lift side-effect of a tug command is
 
 So the troublesome coupling is governed by the dimensionless factor \(\beta L\), not by the 4.2 local sensitivity alone.
 
-At the illustrative 80 km, \(u=10~\mathrm{km/s}\) point,
-
-\[
-\beta \approx 2.5\times 10^{-7}~\mathrm{m^{-1}},
- 
-\beta^{-1} \approx 4{,}000~\mathrm{km}.
-\]
+At the illustrative 80 km, u = 10 km/s point, beta is about 2.5 × 10^-7 per metre, and the corresponding inverse length scale is about 4,000 km.
 
 That means any control sector much shorter than a few thousand kilometres sits in a weak-coupling regime. For example,
 
