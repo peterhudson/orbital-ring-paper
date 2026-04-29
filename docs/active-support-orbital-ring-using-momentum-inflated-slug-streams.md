@@ -84,7 +84,7 @@ So the pair-averaged lift law used later in the paper,
 q_{\mathrm{lift,pair}} \approx 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
 \]
 
-is the leading-order result when \(U_g \ll u\). The first-order \(\pm 2U_g u/R\) correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, \(U_g\approx 0.50~\mathrm{km/s}\), so the retained correction is only about \((U_g/u)^2 \approx 2.5\times10^{-3}\) of the main \(u^2/R\) term when \(u=10~\mathrm{km/s}\).
+is the leading-order result when \(U_g \ll u\). The first-order \(\pm 2U_g u/R\) correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, Ug is about 0.50 km/s, so the retained correction is only about 0.25% of the main ring-curvature term in this reference case.
 
 This does not solve the broader orbital-dynamics problem. Station-keeping, tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open. But it does put the macro-lift bookkeeping in one explicit inertial frame and explains why the simpler guide-relative expression is a reasonable leading-order screen for symmetric lane pairs.
 
@@ -101,7 +101,7 @@ To keep later screens anchored, the paper uses one primary bookkeeping case unle
 | Lane count | about 300 | Discrete-lane and balanced-cell screens |
 | Prestress ratio \(\Gamma\) | 10 baseline, 30 to 100 sensitivity | Lower-bound shell-prestress screen |
 
-This is a bookkeeping case, not an optimized design. It is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
+This is a bookkeeping case, not an optimized design. The 500 km altitude is only a convenient reference point, and none of the other ring parameters in this test case are claimed to be optimal. The case is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
 
 Because the local numbers are easy to underestimate, the corresponding whole-ring inventory is worth stating early:
 
@@ -1071,17 +1071,7 @@ The harder message is that the moving-energy burden scales linearly with passive
 
 So the closure loop is not a subtle second-order effect. If containment, thermal hardware, guide modules, ribs, and fault isolation drive passive weight up by a factor of only a few, the moving-energy burden rises by the same factor.
 
-### 8.3 Reference altitude choice: 500 km primary, 80 km stress-test
-
-The 80 km altitude used in earlier drafts is better read as a stress-test case than as a credible operating reference. A 40,000 km class stationary structure at roughly that altitude would face atmospheric interaction, drag variability, upper-atmosphere heating, reactive-species exposure, materials degradation, and likely large station-keeping loads.
-
-For the present draft, the primary numerical example is therefore moved to 500 km altitude, which removes most of the atmospheric objection while leaving the basic macro-lift screening surprisingly similar. At 10 km/s, the net outward acceleration is about 5.9 m/s² at 80 km and about 6.1 m/s² at 500 km. The throughput problem therefore does not disappear at higher altitude, but the environment becomes less obviously self-defeating.
-
-That said, 500 km is not environment-free. A world-scale active structure there would still face orbital debris, atomic oxygen, radiation, thermal cycling, station-keeping demands, collision avoidance, and maintenance burden. So the altitude change removes one severe objection, but it does not solve the space-environment problem.
-
-The 80 km case remains useful only as a lower-altitude stress test. The 500 km case is the more reasonable notional reference for the rest of the paper.
-
-### 8.4 Fault domains still need an explicit architecture
+### 8.3 Fault domains still need an explicit architecture
 
 The helical membrane guide shell should not be interpreted as a containment solution by itself. Any serious version of the architecture would still require physical segmentation into independently isolated sectors, energy-isolating gates, sacrificial catchers, controlled dump paths, distributed braking, and faulted-section bypass.
 
@@ -1097,7 +1087,7 @@ At the notional 82 GJ/m energy density, even a 1 km isolated fault domain still 
 
 The right conclusion is not merely that fault isolation is required. It is that fault isolation is likely one of the dominant feasibility gates for any real machine built around this primitive.
 
-### 8.5 Startup, deployment, shutdown, and reconfiguration remain open
+### 8.4 Startup, deployment, shutdown, and reconfiguration remain open
 
 The present draft is still strongly steady-state. That is a real limitation and should be admitted directly.
 
@@ -1173,11 +1163,7 @@ So this appendix still does not prove stability. But it does name the minimum te
 
 It is still useful to ask whether the actuation channel is at least numerically commensurate with some long-wave disturbances. A deliberately crude screen can do that without pretending to prove closed-loop stability.
 
-Take the 500 km reference case with total moving-stream line density \(\lambda_\mathrm{stream}\approx1600~\mathrm{kg/m}\) and ring-tangential speed \(u=10~\mathrm{km/s}\). The corresponding follower-force scale for the whole moving stream is roughly
-
-\[
-T_{\mathrm{eq,tot}} \approx \lambda_\mathrm{stream}u^2 \approx 1.6\times10^{11}~\mathrm{N}.
-\]
+Take the 500 km reference case with a total moving-stream line density of about 1,600 kg/m and ring-tangential speed of 10 km/s. The corresponding follower-force scale for the whole moving stream is roughly 1.6 × 10^11 N.
 
 For a sinusoidal long-wave displacement \(y = Y\sin(ks)\), the destabilizing follower contribution per unit ring length is of order
 
@@ -1193,11 +1179,7 @@ That gives the following screening values for one metre of displacement amplitud
 | 100 km | about \(6.3\times10^{-5}\,\mathrm{m^{-1}}\) | about 630 N/m per metre of displacement |
 | 10 km | about \(6.3\times10^{-4}\,\mathrm{m^{-1}}\) | about \(6.3\times10^4\) N/m per metre of displacement |
 
-Now compare that with the paper's illustrative 10 MN tug command spread over a 100 km control sector. Its average structural load is about
-
-\[
-q_\mathrm{act} \sim \frac{10^7~\mathrm{N}}{10^5~\mathrm{m}} \sim 100~\mathrm{N/m}.
-\]
+Now compare that with the paper's illustrative 10 MN tug command spread over a 100 km control sector. Its average structural load is about 100 N/m.
 
 So a controller with that order of authority is plainly not a short-wave stabilizer. It is, however, numerically relevant to wavelengths in the several-hundred-kilometre to thousand-kilometre regime, which is exactly the band in which the paper intends the balanced-cell tug field to operate.
 
@@ -1276,10 +1258,6 @@ So if tolerable fault release is only gigajoule-scale, the implied isolation len
 
 This is also where four-lane degraded mode becomes inseparable from containment. A lane dropout is not just a control nuisance. It is a fault-domain event that may force local cell isolation, rapid unloading of neighboring cells, and transfer of support demand to a wider region. The safe machine is therefore not merely a balanced nominal lattice. It is a balanced lattice plus an explicit fault-response architecture.
 
-A simple worked screen shows how quickly the numbers become uncomfortable. In the 10 kg bookkeeping row, one lane carries about 5.4 × 10³ slugs/s, so a 10 ms loss-of-guidance event sweeps about 54 slugs into the faulted region. That packet contains roughly 540 kg of moving mass and about 27 GJ of kinetic energy. If one simply loses one lane of a balanced cell for those same 10 ms without immediately unloading its mirrored partners, the missing ring-direction momentum-flux channel implies an uncompensated impulse of order
-
-\[
-I_s \sim (5.4\times10^8~\mathrm{N})(10^{-2}~\mathrm{s}) \sim 5.4\times10^6~\mathrm{N\,s}.
-\]
+A simple worked screen shows how quickly the numbers become uncomfortable. In the 10 kg bookkeeping row, one lane carries about 5.4 × 10³ slugs/s, so a 10 ms loss-of-guidance event sweeps about 54 slugs into the faulted region. That packet contains roughly 540 kg of moving mass and about 27 GJ of kinetic energy. If one simply loses one lane of a balanced cell for those same 10 ms without immediately unloading its mirrored partners, the missing ring-direction momentum-flux channel implies an uncompensated impulse of about 5.4 × 10^6 N s.
 
 That is not yet a complete fault simulation, but it is enough to show the architecture's character. Even sub-second degraded events are already too energetic to be treated as routine control glitches. They are containment-and-reconfiguration events.
