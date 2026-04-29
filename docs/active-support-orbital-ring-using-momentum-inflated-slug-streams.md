@@ -166,7 +166,7 @@ p_{\mathrm{req,total}} \sim \sqrt{p_\perp^2 + p_\parallel^2},
 
 before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-control channel.
 
-A representative numerical case is useful here. In the paper's notional 10 kN/m passive-load example, the moving-stream line density is about 1700 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.7 kg/m, so at 10 km/s the mass flux per lane is about 5.7 × 10^4 kg/s. With helix angle about 0.78 degrees and tube radius 50 m, the local helical curvature is about 3.9 × 10^-6 per metre. The resulting normal guide load is then only about 2.2 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector. That is a helpful reality check. The lane-level distributed force densities are not obviously the dominant horror. The harsher burdens are the associated power exchange, synchronization, thermal management, and fault energy.
+A representative numerical case is useful here. In the paper's notional 10 kN/m passive-load example, the moving-stream line density is about 1700 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.7 kg/m, so at 10 km/s the mass flux per lane is about 5.7 × 10⁴ kg/s. With helix angle about 0.78 degrees and tube radius 50 m, the local helical curvature is about 3.9 × 10⁻⁶ per metre. The resulting normal guide load is then only about 2.2 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector. That is a helpful reality check. The lane-level distributed force densities are not obviously the dominant horror. The harsher burdens are the associated power exchange, synchronization, thermal management, and fault energy.
 
 ### 3.3 Convective local control
 
@@ -781,19 +781,19 @@ So the coupling ratio becomes
 \frac{\Delta W_{\mathrm{lift,sector}}}{F_{\mathrm{sector}}} = -\beta \frac{\int \delta u(s) ds}{\Delta u}.
 \]
 
-If one defines an effective speed-offset length by \(L_\mathrm{eff} = (\int \delta u(s) ds)/\Delta u\), then the earlier \(\beta L\) estimate is just the special case in which \(L_\mathrm{eff}\) happens to equal the physical sector length. A triangular ramp gives about \(L_\mathrm{eff}=L/2\). A long low-speed pocket is dominated by its plateau length. An antisymmetric profile can partly cancel its own lift side-effect.
+If one defines an effective speed-offset length, called \(L_\mathrm{eff}\), as the speed-offset area divided by the speed step, then the earlier \(\beta L\) estimate is just the special case in which that effective length happens to equal the physical sector length. A triangular ramp gives about \(L_\mathrm{eff}=L/2\). A long low-speed pocket is dominated by its plateau length. An antisymmetric profile can partly cancel its own lift side-effect.
 
 So the honest statement is this: the control coupling is governed by the speed-offset area associated with the tug command, not by the gradient alone.
 
-At the illustrative 80 km, u = 10 km/s point, beta is about 2.5 × 10^-7 per metre, and the corresponding inverse length scale is about 4,000 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
+At the illustrative 80 km, u = 10 km/s point, beta is about 2.5 × 10⁻⁷ per metre, and the corresponding inverse length scale is about 4,000 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
 
 It is useful to separate three different smallness claims.
 
-First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about 5.7 × 10^4 kg/s per lane, that implies a speed step of only about 0.58 m/s, or about 6 × 10^-5 of the 10 km/s operating speed.
+First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about 5.7 × 10⁴ kg/s per lane, that implies a speed step of only about 0.58 m/s, or about 6 × 10⁻⁵ of the 10 km/s operating speed.
 
 Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,000 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.025, so a 10 MN tug carries about 250 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
 
-Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 250 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.25 N/m, which is 2.5 × 10^-5 of the screening 10 kN/m supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about 6 × 10^-6. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
+Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 250 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.25 N/m, which is 2.5 × 10⁻⁵ of the screening 10 kN/m supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about 6 × 10⁻⁶. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
 
 That is why the coupling can converge rather than blow up. The strong inner-loop channel is axial tug. Pressure and lift correction are weaker outer-loop trims only if the speed-offset area is short enough and spare trim authority exists.
 
@@ -928,7 +928,7 @@ The corresponding kinetic energy per metre is then
 E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 85~\mathrm{GJ/m}.
 \]
 
-For a full 40,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.4 × 10^18 J in this notional case. That is the energy scale associated with the notional \(10~\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
+For a full 40,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.4 × 10¹⁸ J in this notional case. That is the energy scale associated with the notional \(10~\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
 ### 8.3 The 80 km screening case has a serious environment caveat
 
