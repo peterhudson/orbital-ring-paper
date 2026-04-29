@@ -396,19 +396,11 @@ For small angles,
 \alpha_\mathrm{opt} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
 \]
 
-Using a screening case with \(a=50~\mathrm{m}\), altitude 80 km, \(u=10~\mathrm{km/s}\), and \(\Gamma=10\), one gets
-
-\[
-\alpha_\mathrm{opt} \approx 0.78^\circ.
-\]
+Using a screening case with a = 50 m, altitude 80 km, u = 10 km/s, and Gamma = 10, one gets an optimal helix angle of about 0.014 radians, or about 0.78 degrees.
 
 That is a striking result. Once macro lift matters, the optimal helical bias may be very small. This supports exactly the picture advocated here: a large torus with many shallow-angle helical lanes, not a steeply wrapped screw conveyor.
 
-At \(a=50~\mathrm{m}\) and \(\alpha \approx 0.78^\circ\), one full wrap pitch is about
-
-\[
-\frac{2\pi a}{\tan\alpha} \approx \frac{314~\mathrm{m}}{0.014} \approx 22~\mathrm{km}.
-\]
+At a = 50 m and alpha about 0.78 degrees, one full wrap pitch is about 22 km.
 
 That is visually important. The intended architecture is not a steep screw or barber pole. It is a field of many nearly axial lanes with only a very slight azimuthal drift.
 
@@ -705,27 +697,11 @@ For the notional ring used throughout the paper, the more relevant number is lar
 w_p = 10~\mathrm{kN/m}.
 \]
 
-Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of
+Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of about 10 MN.
 
-\[
-0.01 \times 10{,}000~\mathrm{N/m} \times 100{,}000~\mathrm{m} = 10~\mathrm{MN}.
-\]
+So the grounded long-wave control example for this hypothetical ring is 10 MN, not 1 MN. At 10 km/s, that implies about 100 GW of exchanged power.
 
-So the grounded long-wave control example for this hypothetical ring is 10 MN, not 1 MN. At 10 km/s that implies roughly
-
-\[
-10~\mathrm{MN} \times 10~\mathrm{km/s} = 100~\mathrm{GW}
-\]
-
-of exchanged power.
-
-If the notional 300-lane cross-section participates broadly in that correction, the mean integrated axial contribution is only about
-
-\[
-\frac{10~\mathrm{MN}}{300} \approx 33~\mathrm{kN}
-\]
-
-per lane. The surprising quantity is therefore not force per lane. It is the power associated with making even a small speed change at \(10~\mathrm{km/s}\).
+If the notional 300-lane cross-section participates broadly in that correction, the mean integrated axial contribution is only about 33 kN per lane. The surprising quantity is therefore not force per lane. It is the power associated with making even a small speed change at 10 km/s.
 
 That does not by itself kill the architecture, because a mirrored pair in a fixed gradient can ideally exchange energy locally: one lane is accelerated while the other is decelerated. But it does mean the tug-field actuator is not a gentle trim system. It is a very high-power bidirectional momentum-and-energy exchanger.
 
@@ -800,17 +776,7 @@ That means any control sector much shorter than a few thousand kilometres sits i
 - if \(L=100~\mathrm{km}\), then \(\beta L \approx 0.025\),
 - if \(L=250~\mathrm{km}\), then \(\beta L \approx 0.063\).
 
-So a 10 MN tug over a 100 km control sector carries only about
-
-\[
-\Delta W_{\mathrm{lift,sector}} \approx 0.025 \times 10~\mathrm{MN} = 250~\mathrm{kN}
-\]
-
-of integrated lift side-effect over that sector. Spread back over a 1000 km neighboring compensation arc, that is only
-
-\[
-\frac{250~\mathrm{kN}}{1000~\mathrm{km}} = 0.25~\mathrm{N/m},
-\]
+So a 10 MN tug over a 100 km control sector carries only about 250 kN of integrated lift side-effect. Spread back over a 1000 km neighboring compensation arc, that is only 0.25 N/m.
 
 which is still just \(2.5\times 10^{-5}\) of the screening \(10~\mathrm{kN/m}\) supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about
 
