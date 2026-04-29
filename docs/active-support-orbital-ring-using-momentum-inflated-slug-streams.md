@@ -33,6 +33,10 @@ The cleanest way to say the thesis is this:
 
 > Earth-scale curvature supplies macro lift, tube-scale helical curvature supplies local membrane prestress, and controlled spatial gradients in lane momentum flux supply macro-shape actuation. A four-lane balanced cell allows those three functions to coexist while cancelling first-order steady momentum and torque channels.
 
+The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, fault isolation, and passive-mass closure remain explicit closure requirements.
+
+The main fatal risks are also worth naming early: follower-force instability, unacceptable guide loss, impossible thermal rejection, unmanageable fault-domain energy, and a passive-mass closure loop that fails to converge.
+
 ### 1.1 Coordinate convention
 
 To avoid ambiguity, the paper uses three local coordinates:
@@ -50,6 +54,21 @@ r = \text{local radial direction normal to the torus cross-section}
 \]
 
 In the local tube approximation, what earlier orbital-ring discussions often call "axial" means the \(s\) direction, not the global Earth rotation axis. The helical lanes wind in \(\theta\) while moving mainly along \(s\).
+
+### 1.2 Reference bookkeeping case
+
+To keep later screens anchored, the paper uses one primary bookkeeping case unless otherwise stated.
+
+| Quantity | Baseline value | Role in the paper |
+| --- | --- | --- |
+| Altitude | 500 km | Primary reference case |
+| Ring-tangential speed \(u\) | 10 km/s | Macro-lift and control screens |
+| Torus radius \(a\) | 50 m | Helix-curvature and shell screens |
+| Passive supported weight \(w_p\) | 10 kN/m | Notional support burden |
+| Lane count | about 300 | Discrete-lane and balanced-cell screens |
+| Prestress ratio \(\Gamma\) | 10 baseline, 30 to 100 sensitivity | Lower-bound shell-prestress screen |
+
+This is a bookkeeping case, not an optimized design. It is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
 
 **Suggested Figure 1. Overall concept sketch.** Show a world-encircling torus with roughly 100 m diameter, rendered as a lightweight fabric membrane rather than a solid pipe. Include a local cutaway showing several shallow-angle helical lanes attached to the membrane and one enlarged inset showing a four-lane balanced cell. The image should make the paper's core claim visible in one glance: the same helical lane system gives both local prestress and macro-control authority.
 
@@ -408,7 +427,7 @@ At a = 50 m and alpha about 0.79 degrees, one full wrap pitch is about 23 km.
 
 That is visually important. The intended architecture is not a steep screw or barber pole. It is a field of many nearly axial lanes with only a very slight azimuthal drift.
 
-The more worrying point is not helix visibility. It is whether the associated prestress is actually enough. With \(w_p=10~\mathrm{kN/m}\) and \(\Gamma=10\), the implied hoop force target is only \(N_{\theta,\mathrm{req}}\approx 100~\mathrm{kN/m}\), which corresponds to only about 2 kPa of equivalent pressure at \(a=50~\mathrm{m}\). That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
+The more worrying point is not helix visibility. It is whether the associated prestress is actually enough. With passive supported weight of 10 kN per metre and prestress ratio Gamma equal to 10, the implied hoop-force target is only about 100 kN per metre. At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
 
 That observation suggests that \(\Gamma=10\) should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same 500 km, 10 km/s point, \(\Gamma=30\) gives about 1.38 degrees and a wrap pitch of about 13 km, while \(\Gamma=100\) gives about 2.51 degrees and a wrap pitch of about 7 km. The architecture therefore appears compatible with substantially higher prestress, but the real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
 
@@ -635,7 +654,13 @@ The couple estimate above is only useful if the torus can actually transmit sect
 
 The intended free-body path is: lane force into lane carrier, lane carrier into rib or local cross-brace, rib into membrane hoop tension and circumferential shear, and then that distributed cross-sectional load closing against the opposed sector to create a couple about the ring centerline. In other words, the lane does not push directly on a rigid beam. It pushes on a ribbed shell that must redistribute the load around the torus cross-section before that load can look like ring-scale bending.
 
-That means the simple couple law belongs to the long-wave regime. At wavelengths comparable with the torus diameter, rib spacing, or shell ovalization modes, one should expect local twisting, shear lag, and cross-sectional distortion before clean global bending emerges. The present paper therefore treats the tug-sector couple as a plausible long-wave actuation primitive, not as proof that every local shell mode cooperates automatically.
+That means the simple couple law belongs to the long-wave regime. A more honest bookkeeping form is
+
+\[
+M_\mathrm{eff} \approx \eta_\mathrm{load} 2a |F_\mathrm{sector}|,
+\]
+
+where \(\eta_\mathrm{load}\) is a cross-sectional transfer efficiency between zero and one that absorbs ovalization, shear lag, local twist, and other non-ideal shell behavior. At wavelengths comparable with the torus diameter, rib spacing, or shell ovalization modes, one should expect \(\eta_\mathrm{load}\) to fall below unity and local distortion to appear before clean global bending emerges. The present paper therefore treats the tug-sector couple as a plausible long-wave actuation primitive, not as proof that every local shell mode cooperates automatically.
 
 ### 7.5 Why fill and drain are not required for steady speed fields
 
@@ -978,6 +1003,8 @@ The 80 km altitude used in earlier drafts is better read as a stress-test case t
 
 For the present draft, the primary numerical example is therefore moved to 500 km altitude, which removes most of the atmospheric objection while leaving the basic macro-lift screening surprisingly similar. At 10 km/s, the net outward acceleration is about 5.9 m/s² at 80 km and about 6.1 m/s² at 500 km. The throughput problem therefore does not disappear at higher altitude, but the environment becomes less obviously self-defeating.
 
+That said, 500 km is not environment-free. A world-scale active structure there would still face orbital debris, atomic oxygen, radiation, thermal cycling, station-keeping demands, collision avoidance, and maintenance burden. So the altitude change removes one severe objection, but it does not solve the space-environment problem.
+
 The 80 km case remains useful only as a lower-altitude stress test. The 500 km case is the more reasonable notional reference for the rest of the paper.
 
 ### 8.4 Fault domains still need an explicit architecture
@@ -1020,15 +1047,27 @@ Macro lift still demands superorbital ring-tangential momentum flux, and the clo
 
 ## Appendix A. Minimal dynamic stability model
 
-The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell can be written schematically as
+The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell can be written more safely by keeping the stream reaction explicit on the right-hand side:
 
 \[
-m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) - T_\mathrm{eq} y_{ss} = 0.
+m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) = q_\mathrm{stream},
+\]
+
+with
+
+\[
+q_\mathrm{stream} = -T_\mathrm{eq} y_{ss}.
 \]
 
 Here \(m_\mathrm{eff}\) is effective moving-plus-supported mass per lane length, \(c_\mathrm{eff}\) is passive and active damping, \(B_\mathrm{eff}\) is short-wave bending or rib stiffness, \(K_\mathrm{shell}\) is the restoring contribution of the prestressed shell, \(K_\mathrm{guide}\) is local guide stiffness, \(K_\mathrm{ctrl}\) is delayed feedback stiffness, and \(T_\mathrm{eq}\) is the moving-stream follower-force scale.
 
-For a Fourier mode \(y \propto e^{i(ks-\omega t)}\), the characteristic balance becomes
+Moving the stream reaction to the left gives the equivalent homogeneous form
+
+\[
+m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) + T_\mathrm{eq} y_{ss} = 0,
+\]
+
+so for a Fourier mode \(y \propto e^{i(ks-\omega t)}\), the characteristic balance becomes
 
 \[
 -m_\mathrm{eff}\omega^2 + i c_\mathrm{eff}\omega + B_\mathrm{eff}k^4 + K_\mathrm{shell}(k) + K_\mathrm{guide}(k) + K_\mathrm{ctrl}(k)e^{-i\omega\tau_c} - T_\mathrm{eq}k^2 = 0.
@@ -1060,6 +1099,8 @@ This is a genuine design fork.
 - Small slugs reduce individual projectile energy, but demand extreme event rate, timing accuracy, sensing bandwidth, and electromagnetic switching frequency.
 - Large slugs relax rate and timing, but make each slug an individually catastrophic object.
 
+For the rest of the screening discussion, it is useful to keep one bookkeeping row in mind. A 10 kg slug is not claimed to be optimal, but it is a workable reference because it implies about 5.4 × 10³ slugs per second per lane, about 1.8 m spacing, about 0.18 ms headway, and about 500 MJ per slug. That is already severe while remaining easier to visualize than the lighter-slug rows.
+
 The no-fill/no-drain argument in Section 7.5 remains kinematically sound for steady speed fields, but it only works if headway compression and expansion stay inside collision margins. If a controller is allowed only 10% headway error, then the 1 kg row above implies a timing tolerance of only a few microseconds, while the 0.1 kg row pushes into the sub-microsecond regime. That does not kill the concept by itself, but it means slug discreteness has to become a first-class design variable rather than a hidden detail.
 
 ## Appendix C. Power-flow, guide, and thermal screen
@@ -1075,6 +1116,8 @@ For the 10 MN long-wave correction used in the main text, the sector power throu
 | 0.01% | 10 MW | 100 W/m |
 
 So the actuator can be quiet in force density and still be violent in power flow. The real guide-technology screen is therefore not just magnetic pressure. It is whether a planetary-scale electromagnetic guide can simultaneously deliver acceptable gap control, switching rate, bidirectional power exchange, loss per metre, quench safety, and fault isolation.
+
+The guide technology is deliberately left unspecified in this paper. Any future implementation, whether based on superconducting suspension, inductive reaction, permanent-magnet carriers, conductive slugs, or some hybrid architecture, would still have to satisfy the same envelope: high-bandwidth gap control, low-loss bidirectional tangential actuation, acceptable thermal burden, and survivable fault behavior at the relevant slug rate.
 
 A useful module-scale view makes the same point. Spread over 100 km, the average power transfer is about 1 MW per metre of sector across all participating lanes, or about 10 MW for each 10 m slice of the sector. A 10 m slice of one lane carries only about 33 kW of average control power, but at slug rates that may range from kilohertz to hundreds of kilohertz depending on slug mass. So the difficulty is not one giant generator. It is a huge distributed array of moderate-force, high-rate, high-efficiency bidirectional modules.
 
