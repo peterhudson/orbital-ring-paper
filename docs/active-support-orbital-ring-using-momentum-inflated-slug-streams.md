@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This paper proposes an orbital-ring architecture built from magnetically guided high-speed slug streams running in small-helix-angle lanes around a very large lightweight toroidal guide structure. The paper's main claim is narrower than feasibility: it identifies two linked ideas that are genuinely useful at the concept level and may serve as an internal prestress-and-actuation primitive for active-support ring concepts.
+This paper proposes an orbital-ring architecture built from magnetically guided high-speed slug streams running in lanes set at small helix angle around a very large lightweight toroidal guide structure. The paper's main claim is narrower than feasibility: it identifies two linked ideas that are genuinely useful at the concept level and may serve as an internal prestress-and-actuation primitive for active-support ring concepts.
 
 The first is that helical slug streams can do more than circulate momentum. By forcing the streams to follow curved helical paths on a large toroidal membrane, the design converts momentum redirection into distributed outward pressure, hoop prestress, and local structural rigidity. The result is best understood as a prestressed membrane guide shell, intuitively a giant fabric torus, whose local stiffness is created by internal moving mass.
 
@@ -24,7 +24,7 @@ Second, even if one has enough moving momentum to loft a ring, that does not by 
 
 This paper proposes a specific answer to both problems.
 
-1. **Helical small-\(\alpha\) slug streams in a prestressed membrane guide shell.** The lanes are wrapped helically around a very large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into local structural stiffness.
+1. **Helical slug streams at small \(\alpha\) in a prestressed membrane guide shell.** The lanes are wrapped helically around a very large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into local structural stiffness.
 2. **A four-lane balanced cell for macro-scale actuation.** The same helical geometry allows balanced groups of lanes whose momentum components cancel in steady operation but can be modulated through fixed spatial speed gradients to produce distributed tug fields and ring-scale bending moments.
 
 Those are the two main novelties of the paper.
@@ -103,11 +103,13 @@ To keep later screens anchored, the paper uses one primary bookkeeping case unle
 | Altitude | 500 km | Primary reference case |
 | Ring-tangential speed \(u\) | 10 km/s | Macro-lift and actuation screens |
 | Torus radius \(a\) | 50 m | Helix-curvature and shell screens |
-| Passive supported weight \(w_p\) | 10 kN/m | Notional support burden |
+| Net inward non-stream load \(w_p\) | 10 kN/m | Notional support burden |
 | Lane count | about 300 | Discrete-lane and balanced-cell screens |
 | Prestress ratio \(\Gamma\) | 10 baseline, 30 to 100 sensitivity | Lower-bound shell-prestress screen |
 
 This is a bookkeeping case, not an optimized design. The 500 km altitude is only a convenient reference point, and none of the other ring parameters in this test case are claimed to be optimal. The case is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
+
+Throughout the paper, \(w_p\) should be read as the **net inward non-stream load per metre**. It includes whatever passive structural burden, tether load, payload load, drag-like disturbance, or other non-stream loading the moving stream must support. For the guide shell's own mass, that bookkeeping can include gravity minus the guide's small centrifugal relief from Earth co-rotation. At 500 km altitude that relief is small, but defining \(w_p\) this way keeps the lift comparison unambiguous.
 
 Because the local numbers are easy to underestimate, the corresponding whole-ring inventory is worth stating early:
 
@@ -183,9 +185,9 @@ A rough upper bound on magnetic normal stress is
 p_\mathrm{mag,max} \sim \frac{B^2}{2\mu_0},
 \]
 
-where \(B\) is field strength and \(\mu_0\) is the permeability of free space. The ideal upper-bound values are:
+where \(B\) is field strength and \(\mu_0\) is the permeability of free space. The ideal upper-bound values from \(B^2/(2\mu_0)\) are:
 
-| Field strength \(B\) | Ideal upper-bound normal stress \(B^2/(2\mu_0)\) |
+| Field strength \(B\) | Ideal upper-bound normal stress |
 | ---: | ---: |
 | 0.5 T | about 0.10 MPa |
 | 1 T | about 0.40 MPa |
@@ -240,7 +242,15 @@ p_{\mathrm{req,total}} \sim \sqrt{p_\perp^2 + p_\parallel^2},
 
 before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-scale actuation channel.
 
-A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about 5.4 × 10⁴ kg/s. With helix angle about 0.79 degrees and tube radius 50 m, the local helical curvature is about 3.8 × 10⁻⁶ per metre. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector. That is a helpful reality check. The lane-level distributed force densities are not obviously the dominant horror. The harsher burdens are the associated power exchange, synchronization, thermal management, and fault energy.
+A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about 5.4 × 10⁴ kg/s. With helix angle about 0.79 degrees and tube radius 50 m, the local helical curvature is about 3.8 × 10⁻⁶ per metre. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector.
+
+A useful caveat is
+
+\[
+q_{\parallel,\mathrm{lane}} \sim \frac{F_{\mathrm{sector}}}{N_{\mathrm{lanes}}L_{\mathrm{sector}}}.
+\]
+
+So the mild force-density result depends on broad participation and long actuation length. If only 30 lanes participate, or if the actuation length is 10 km instead of 100 km, the average tangential force density rises by about two orders of magnitude. The lane-level distributed force densities are therefore not automatically benign. They are merely not the dominant horror under the broad-participation reference case used here. The harsher burdens remain the associated power exchange, synchronization, thermal management, and fault energy.
 
 ### 3.3 Convective local control
 
@@ -502,7 +512,7 @@ t_y = -\cos\alpha e_s + \sin\alpha e_\theta,
 
 then the axial components cancel, but the circumferential components add. That means a two-lane pair can still carry steady circumferential momentum and angular momentum around the torus.
 
-The minimal balanced cell therefore contains four lanes. To keep the sign bookkeeping explicit, define handedness geometrically by the sign of \(d\theta/ds\) for the lane centerline itself: right-handed means positive azimuthal slope with increasing \(s\), and left-handed means negative azimuthal slope.
+The minimal balanced cell therefore contains four lanes. To keep the sign bookkeeping explicit, define handedness geometrically by the sign of \(d\theta/ds\) for the lane centerline itself: right-handed means positive azimuthal slope with increasing \(s\), and left-handed means negative azimuthal slope. **This definition is geometric, not based on the slug's direction of travel.**
 
 | Lane | Travel sign | Handedness | \(s\)-momentum | \(\theta\)-momentum | Role |
 | --- | ---: | --- | ---: | ---: | --- |
@@ -957,7 +967,7 @@ Before going through them one by one, the main unresolved closure gates can be n
 
 The helical torus gives local prestress. It does not, by itself, loft the entire ring around Earth. Macro lift comes from turning the ring-tangential component of stream momentum around Earth.
 
-For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in Section 1.2.
+For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in Section 1.3.
 
 Let \(u=v\cos\alpha\) be ring-tangential speed and let the ring radius be \(R\). For one slug lane with mass flux \(\dot m\), the net outward lift per unit ring length is
 
@@ -985,7 +995,7 @@ This is why the helical angle has to stay small at full scale. The ring needs it
 
 ### 8.2 The full system faces a closure loop
 
-Let passive structural and hardware weight per unit ring length be \(w_p\). The lift requirement can be written as
+Let \(w_p\) denote the net inward non-stream load per unit ring length. The lift requirement can be written as
 
 \[
 A_\mathrm{pair} = N_p \dot m   u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
@@ -1061,7 +1071,7 @@ At the notional 82 GJ/m energy density, even a 1 km isolated fault domain still 
 
 The right conclusion is not merely that fault isolation is required. It is that fault isolation is likely one of the dominant feasibility gates for any real machine built around this primitive.
 
-The helical geometry may, however, offer one useful emergency option. A deliberately opened dump path can in principle eject a failed slug stream outward from the torus rather than through the ring body itself, so the default hazard need not be re-impact into neighboring structure. Depending on orbital position and dump geometry, such ejecta would either encounter Earth's atmosphere or depart onto a higher-energy trajectory. One could even imagine choosing operating speed so that fully unguided ejecta are biased toward atmospheric interception or Earth-escape rather than repeated ring-crossing orbits. That does not make emergency dumping benign. It only suggests that the geometry may admit a real dump-path architecture, and the present paper does not analyze that trade in detail.
+The helical geometry may, however, offer real dump-path degrees of freedom. A deliberately opened path can in principle eject a failed slug stream outward from the torus rather than through the ring body itself, which is locally valuable. But safe disposal is still an orbital-mechanics problem, not just a local containment problem. At the 500 km reference point with \(u=10~\mathrm{km/s}\) and \(U_g\approx 0.5~\mathrm{km/s}\), the inertial prograde and retrograde stream speeds are roughly 10.5 km/s and 9.5 km/s, while local escape speed is about 10.8 km/s. So a prograde dump can be near escape while a retrograde dump remains a very energetic bound-orbit release. Depending on inertial velocity, direction, and dump impulse, unguided slugs may enter atmosphere, escape, or occupy long elliptical trajectories that re-cross the ring altitude. Emergency dumping therefore requires dedicated debris-trajectory and range-safety analysis. The present paper does not analyze that trade in detail.
 
 ### 8.4 Startup, deployment, shutdown, and reconfiguration remain open
 
@@ -1097,37 +1107,46 @@ Macro lift still demands superorbital ring-tangential momentum flux, and the clo
 
 ## Appendix A. Minimal dynamic stability model
 
-The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell can be written more safely by keeping the stream reaction explicit on the right-hand side:
+The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell should retain not only the curvature-follower term but also the moving-stream inertial and convective terms. For one lane with moving-stream line density \(\lambda_\mathrm{lane}\) and guide-frame speed \(v\), the constrained-stream reaction may be written as
+
+\[
+q_\mathrm{stream} = -\lambda_\mathrm{lane}\left(y_{tt} + 2v y_{st} + v^2 y_{ss}\right)
+= -\lambda_\mathrm{lane} y_{tt} - 2\lambda_\mathrm{lane} v y_{st} - T_{\mathrm{eq,lane}} y_{ss},
+\]
+
+where
+
+\[
+T_{\mathrm{eq,lane}} = \lambda_\mathrm{lane} v^2.
+\]
+
+The first term can be absorbed into an effective mass only under stated assumptions, but the mixed convective term cannot simply be discarded. It is the non-self-adjoint transport term that can affect directional wave response, phase margin, and stability. Keeping the stream reaction explicit on the right-hand side gives
 
 \[
 m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) = q_\mathrm{stream},
 \]
 
-with
-
-\[
-q_\mathrm{stream} = -T_\mathrm{eq} y_{ss}.
-\]
-
-Here \(m_\mathrm{eff}\) is effective moving-plus-supported mass per lane length, \(c_\mathrm{eff}\) is passive and active damping, \(B_\mathrm{eff}\) is short-wave bending or rib stiffness, \(K_\mathrm{shell}\) is the restoring contribution of the prestressed shell, \(K_\mathrm{guide}\) is local guide stiffness, \(K_\mathrm{ctrl}\) is delayed feedback stiffness, and \(T_\mathrm{eq}\) is the moving-stream follower-force scale.
+Here \(m_\mathrm{eff}\) is effective supported mass per lane length exclusive of any moving-stream inertia that one chooses to leave explicit, \(c_\mathrm{eff}\) is passive and active damping, \(B_\mathrm{eff}\) is short-wave bending or rib stiffness, \(K_\mathrm{shell}\) is the restoring contribution of the prestressed shell, \(K_\mathrm{guide}\) is local guide stiffness, \(K_\mathrm{ctrl}\) is delayed feedback stiffness, and \(T_{\mathrm{eq,lane}}\) is the lane-level moving-stream follower-force scale.
 
 Moving the stream reaction to the left gives the equivalent homogeneous form
 
 \[
-m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) + T_\mathrm{eq} y_{ss} = 0,
+(m_\mathrm{eff}+\lambda_\mathrm{lane}) y_{tt} + 2\lambda_\mathrm{lane}v y_{st} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) + T_{\mathrm{eq,lane}} y_{ss} = 0,
 \]
 
 so for a Fourier mode \(y \propto e^{i(ks-\omega t)}\), the characteristic balance becomes
 
 \[
--m_\mathrm{eff}\omega^2 + i c_\mathrm{eff}\omega + B_\mathrm{eff}k^4 + K_\mathrm{shell}(k) + K_\mathrm{guide}(k) + K_\mathrm{ctrl}(k)e^{-i\omega\tau_c} - T_\mathrm{eq}k^2 = 0.
+-(m_\mathrm{eff}+\lambda_\mathrm{lane})\omega^2 + 2\lambda_\mathrm{lane}vk\omega + i c_\mathrm{eff}\omega + B_\mathrm{eff}k^4 + K_\mathrm{shell}(k) + K_\mathrm{guide}(k) + K_\mathrm{ctrl}(k)e^{-i\omega\tau_c} - T_{\mathrm{eq,lane}}k^2 = 0.
 \]
 
-This makes the control partition explicit.
+This makes the control partition explicit. If one deliberately drops the \(-\lambda_\mathrm{lane}y_{tt}\) and \(-2\lambda_\mathrm{lane}v y_{st}\) terms, the appendix reduces to the simpler quasi-static follower-stiffness toy model used only for intuition, not for a complete lane-dynamics claim.
 
-- At short wavelength, the delayed controller cannot be the main stabilizer. One needs enough passive shell and guide stiffness that \(B_\mathrm{eff}k^4 + K_\mathrm{guide}(k)\) beats the follower term even before large delayed feedback enters.
-- At longer wavelength, the shell, neighboring lanes, and sector-level control loops can contribute meaningful damping and restoring action.
-- The dangerous boundary is the regime in which \(T_\mathrm{eq}k^2\) is already large while \(\omega\tau_c\) is no longer small.
+This makes the three-band stability picture more explicit.
+
+- **Metre-to-100 m band:** local guide stiffness, passive carrier stiffness, and very fast damping dominate. Ring-scale control is too slow to matter directly.
+- **100 m-to-several-km band:** this is likely the hardest band. Convective transport, guide delays, shell modes, and local cell coordination all interact here, and the system may sit in an awkward gap between purely local guide control and truly distributed tug control.
+- **Hundreds-to-thousands of km band:** distributed tug fields and sector-level coordination plausibly matter, which is the band targeted by the actuation primitive in the main text.
 
 The convective times in Section 3.3 show how severe that is. At 10 km/s, a 100 m disturbance passes in 10 ms, a 10 m disturbance in 1 ms, and a 1 m disturbance in 0.1 ms. If one wants feedback phase lag well below about 30 degrees at the disturbance passage rate, the effective delay budget must be well below about 0.8 ms at 100 m wavelength and well below about 0.08 ms at 10 m wavelength. That is why meter-to-hundred-meter stabilization has to be a local guide problem, not a ring-scale supervisory control problem.
 
@@ -1137,7 +1156,13 @@ So this appendix still does not prove stability. But it does name the minimum te
 
 It is still useful to ask whether the actuation channel is at least numerically commensurate with some long-wave disturbances. A deliberately crude screen can do that without pretending to prove closed-loop stability.
 
-Take the 500 km reference case with a total moving-stream line density of about 1,600 kg/m and ring-tangential speed of 10 km/s. The corresponding follower-force scale for the whole moving stream is roughly 1.6 × 10^11 N.
+Take the 500 km reference case with a total moving-stream line density of about 1,600 kg/m and ring-tangential speed of 10 km/s. Define the whole-stream long-wave follower-force scale as
+
+\[
+T_{\mathrm{eq,tot}} = \lambda_{\mathrm{stream,total}}u^2.
+\]
+
+For the reference case that gives roughly 1.6 × 10^11 N.
 
 For a sinusoidal long-wave displacement \(y = Y\sin(ks)\), the destabilizing follower contribution per unit ring length is of order
 
@@ -1157,7 +1182,7 @@ Now compare that with the paper's illustrative 10 MN tug command spread over a 1
 
 So a controller with that order of authority is plainly not a short-wave stabilizer. It is, however, numerically relevant to wavelengths in the several-hundred-kilometre to thousand-kilometre regime, which is exactly the band in which the paper intends the balanced-cell tug field to operate.
 
-This is not a proof of control closure. Mass participation, damping, sensing, delay, actuator saturation, and shell transfer all still matter. But it does sharpen the claim. The architecture is at least consistent with a multiband picture in which short waves are a local guide-and-shell problem, while very long waves are the band where the distributed tug primitive may actually matter.
+This is not a proof of control closure. Mass participation, damping, sensing, delay, actuator saturation, and shell transfer all still matter. But it does sharpen the claim. The architecture is at least consistent with a multiband picture in which short waves are a local guide-and-shell problem, the middle band is likely the hardest closure problem, and very long waves are the band where the distributed tug primitive may actually matter.
 
 ## Appendix B. Slug discreteness screen
 
@@ -1193,7 +1218,7 @@ That last line is especially sobering. If balance is judged purely by counts, a 
 
 ## Appendix C. Power-flow, guide, and thermal screen
 
-The local guide-force density is not obviously the worst number. In the 500 km reference case, one lane sees only about 2.1 kN/m of helical normal load, and a 10 MN ring correction shared across 300 lanes corresponds to only about 0.33 N/m of average tangential force per lane over a 100 km sector. The guide burden becomes terrifying because velocity is so high.
+The local guide-force density is not obviously the worst number. In the 500 km reference case, one lane sees only about 2.1 kN/m of helical normal load, and a 10 MN ring correction shared across 300 lanes corresponds to only about 0.33 N/m of average tangential force per lane over a 100 km sector. That is a broad-participation example, not a universal lane burden. The guide burden becomes terrifying because velocity is so high.
 
 For the 10 MN long-wave correction used in the main text, the sector power throughput is about 100 GW. Even small inefficiency therefore becomes a large thermal burden:
 
@@ -1207,7 +1232,7 @@ So the actuator can be quiet in force density and still be violent in power flow
 
 The guide technology is deliberately left unspecified in this paper because the present goal is to define the architecture-level prestress and actuation primitive, not to argue for one lane implementation over another. Any future implementation, whether based on superconducting suspension, inductive reaction, permanent-magnet carriers, conductive slugs, or some hybrid architecture, would still have to satisfy the same envelope: high-bandwidth gap control, low-loss bidirectional tangential actuation, acceptable thermal burden, and survivable fault behavior at the relevant slug rate.
 
-A useful module-scale view makes the same point. Spread over 100 km, the average power transfer is about 1 MW per metre of sector across all participating lanes, or about 10 MW for each 10 m slice of the sector. A 10 m slice of one lane carries only about 33 kW of average control power, but at slug rates that may range from kilohertz to hundreds of kilohertz depending on slug mass. So the difficulty is not one giant generator. It is a huge distributed array of moderate-force, high-rate, high-efficiency bidirectional modules.
+A useful module-scale view makes the same point. Spread over 100 km, the average power transfer is about 1 MW per metre of sector across all participating lanes, or about 10 MW for each 10 m slice of the sector. Under this broad-participation example, a 10 m slice of one lane carries only about 33 kW of average control power, but at slug rates that may range from kilohertz to hundreds of kilohertz depending on slug mass. So the difficulty is not one giant generator. It is a huge distributed array of moderate-force, high-rate, high-efficiency bidirectional modules.
 
 ## Appendix D. Fault-domain and degraded-mode screen
 
