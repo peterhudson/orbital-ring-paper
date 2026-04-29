@@ -332,10 +332,16 @@ That is the architectural move. The imposed helical curvature converts the domin
 
 But that does not by itself prove local dynamic stability. Perturbations about the helical path still have follower-force character. The moving stream still carries an effective dynamic-tension scale \(T_\mathrm{eq} \sim \dot m v\), and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
 
-A more review-proof way to write the screening condition is in the frequency domain. For a sinusoidal perturbation of wavenumber \(k\), the real part of the total incremental stiffness must satisfy
+A more review-proof way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
 
 \[
-\mathrm{Re}\!\left[K_\mathrm{membrane}(k,\omega) + K_\mathrm{guide}(k,\omega) + K_\mathrm{control}(k,\omega)\right] > T_\mathrm{eq} k^2
+K_\mathrm{tot}(k,\omega) = K_\mathrm{membrane}(k,\omega) + K_\mathrm{guide}(k,\omega) + K_\mathrm{control}(k,\omega).
+\]
+
+Then, for a sinusoidal perturbation of wavenumber \(k\), the real part must satisfy
+
+\[
+\mathrm{Re}\,K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
 \]
 
 with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest.
@@ -461,27 +467,23 @@ These cancellations are not automatic. They require equal mass flux, equal scala
 
 ---
 
-## 7. Local rigidity is not global rigidity
-
-At this point the architecture has solved an important local problem. The helical lanes can inflate and prestress the fabric torus, and the four-lane cell can remove hidden steady momentum and torque channels.
-
-But a locally stiff torus is not yet a globally well-aligned orbital ring.
-
-A 100 m diameter prestressed membrane can still be flexible at long wavelength. The ring still has to respond to tether loads, payload-launch impulses, gravity-gradient effects, construction asymmetries, and wobble modes. So the next question is the decisive one: can the helical lane architecture produce a real macro-scale control channel?
-
-That is the paper's main result.
-
----
-
-## 8. Distributed tug fields and macro-scale ring control
+## 7. Distributed tug fields and macro-scale ring control
 
 This is the second major payoff of the architecture, and arguably the main result of the paper.
 
 The inflated torus makes a locally stiff substrate. The four-lane balanced cell makes that substrate actively controllable at long wavelength.
 
-### 8.1 Stationary spatial speed gradients act on momentum flux
+The right mental picture is not a rigid pipe with a single giant control thruster attached to it. It is a huge, lightly built but prestressed torus with many nearly axial lanes distributed around its wall, and selected neighborhoods of stator modules quietly speeding up or slowing down particular lanes over long distances. Those neighborhoods are what let the ring "lean" on itself internally.
+
+At this point the architecture has solved an important local problem. The helical lanes can inflate and prestress the fabric torus, and the four-lane cell can remove hidden steady momentum and torque channels. But a locally stiff torus is not yet a globally well-aligned orbital ring. A 100 m diameter prestressed membrane can still be flexible at long wavelength. The ring still has to respond to tether loads, payload-launch impulses, gravity-gradient effects, construction asymmetries, and wobble modes.
+
+So the decisive question is whether this lane architecture produces a real macro-scale control channel. The claim of this section is yes: if one places spatial speed gradients in the right lanes, in the right sectors, then the torus can develop distributed internal tugs and ring-scale bending moments.
+
+### 7.1 Stationary spatial speed gradients act on momentum flux
 
 The quantity being controlled is momentum flux along the ring centerline direction \(s\).
+
+Physically, one should imagine a control sector as a long run of stator hardware that does not grab the whole torus at once. Instead, it gently biases the speed of selected lanes over some distance, rather like a very long electromagnetic grade in a maglev line. The force on the structure comes from those distributed speed ramps.
 
 Let one lane in a balanced cell have signed centerline speed
 
@@ -513,7 +515,7 @@ q_{s,\mathrm{lane}} = -\dot m \cos\alpha \frac{dv}{ds}.
 
 That is the basic tug-field law.
 
-### 8.2 Why counter-propagating lanes add instead of canceling
+### 7.2 Why counter-propagating lanes add instead of canceling
 
 Now consider a mirrored pair in the same fixed spatial speed gradient. If \(du/ds>0\), the \(+s\)-traveling lane accelerates through the section while the counter-propagating lane decelerates through the same section. Yet their structural force densities are the same, because both are governed by the same stationary gradient law above.
 
@@ -524,6 +526,8 @@ q_{s,\mathrm{pair}} = -2\dot m \frac{du}{ds}.
 \]
 
 This is the real reason the pair adds instead of cancels. It is not that both lanes slow down in their own direction of travel. It is that a fixed spatial speed gradient produces the same structural reaction for both travel directions.
+
+In more visual terms, a mirrored lane pair passing through one control sector behaves less like two carts hitting two brakes and more like two opposite traffic lanes passing through the same hill in the road. One stream is climbing while the other is descending, but the roadbed still feels the same net push in the same place.
 
 Integrating across a control section from \(u_1\) to \(u_2\) gives
 
@@ -547,9 +551,11 @@ For constant \(\alpha\), \(|\Delta u| = \cos\alpha\,|\Delta v|\).
 
 **Suggested Figure 7. Why the pair adds instead of cancels.** Draw two mirrored counter-moving lanes passing through the same stationary speed-gradient section from opposite directions. Show one lane accelerating and the other decelerating, while the structural reaction arrows point the same way. The figure should make clear that the common sign comes from the fixed spatial gradient, not from two same-direction braking events.
 
-### 8.3 Distributed tug fields
+### 7.3 Distributed tug fields
 
 The control section need not be a hard boundary. In fact, a distributed transition is usually better because it lowers peak local force density.
+
+That means the actuator is best imagined not as a point force but as a long, quiet patch of guideway that slightly changes lane speed over hundreds of metres or kilometres. The tug is smeared out along the structure instead of being applied at one violent station.
 
 For one mirrored pair,
 
@@ -571,7 +577,7 @@ F_{\mathrm{sector}} = \int q_{s,\mathrm{sector}}(s)\,ds = -2N_s\dot m \Delta u.
 
 So a distributed tug field preserves the same integrated authority as a hard transition while spreading the load over a useful finite distance.
 
-### 8.4 Why fill and drain are not required for steady speed fields
+### 7.4 Why fill and drain are not required for steady speed fields
 
 The remaining concern is whether such speed modulation requires literal insertion and removal of slugs at every ordinary control section. For the architecture considered here, the answer is no.
 
@@ -604,6 +610,8 @@ It is also important to state where the force actually comes from. The force is 
 \]
 
 so its entry and exit ramps produce equal and opposite tugs at different positions. Useful macro-control therefore comes from placing those opposite gradient zones deliberately in space, so they generate internal load, bending moment, or stress redistribution where desired.
+
+So the useful mental picture is not "the ring has a slow patch." It is "the ring has a deliberately placed slow-down ramp here and a deliberately placed speed-up ramp somewhere else," with the separation between those ramps creating the useful internal couple.
 
 The main constraints are instead collision and delay limits. For a monotone low-speed region with minimum speed \(v_1\), the minimum spacing becomes
 
@@ -639,7 +647,7 @@ So the issue is not that mass must be added or removed in ordinary control secti
 
 **Suggested Figure 8. Distributed tug field without fill and drain.** Show a low-speed pocket in which slug spacing compresses smoothly as slugs enter, followed by a higher-speed return where spacing re-expands. Label \(n=J/v\) and \(s=vh\). Mark the entry and exit ramps as the actual tug-generating zones, with opposite force signs, and make clear that useful macro-control comes from placing those gradients at deliberately chosen positions. The figure should also show that local occupancy changes because transport speed changes, not because slugs are literally injected or removed inside the control section.
 
-### 8.5 The tug actuator is also a high-power energy exchanger
+### 7.5 The tug actuator is also a high-power energy exchanger
 
 The tug equations are momentum-flux equations, but a reviewer will immediately ask about power, and rightly so.
 
@@ -667,9 +675,13 @@ That does not by itself kill the architecture, because a mirrored pair in a fixe
 
 Any serious realization would therefore require bidirectional power electronics, local energy buffering, phase-managed transfer between accelerating and decelerating lanes, and heat rejection for conversion losses.
 
-### 8.6 Control-channel coupling and allocation
+Again, the helpful mental model is not a small trim tab. It is a distributed, reversible linear-motor system moving very large power between lanes and sectors while only modestly changing speed.
+
+### 7.6 Control-channel coupling and allocation
 
 The tug channel is not dynamically independent. Spatial speed gradients generate structural tug, but the associated local speed field also changes helical prestress and Earth-scale lift.
+
+This is the point where the machine stops looking like three separate knobs and starts looking like a coupled control surface. Turning the "tug" knob also nudges the local pressure and local lift channels because all three are functions of the same lane-speed field.
 
 For the prestress channel,
 
@@ -705,27 +717,29 @@ At the illustrative 80 km, \(u=10\,\mathrm{km/s}\) screening point, that multipl
 
 The same speed field therefore actuates three coupled outputs: axial tug, local pressure, and local lift. A real machine would need a control-allocation layer that distributes commands across the four lanes and across neighboring sectors so that desired tug, pressure trim, and lift trim are separated as well as possible.
 
-A useful way to name that problem is with a local linearized control map,
+A useful way to name that problem is with a local linearized control map. Write
 
 \[
-\begin{bmatrix}
-\delta F_s \\
-\delta p_\mathrm{eq} \\
-\delta q_\mathrm{lift}
-\end{bmatrix}
-=
-\mathbf{M}
-\begin{bmatrix}
-\delta u_1 \\
-\delta u_2 \\
-\delta u_3 \\
-\delta u_4
-\end{bmatrix},
+\delta y = \mathbf{M}\,\delta u
+\]
+
+with output vector
+
+\[
+\delta y = \left(\delta F_s,\; \delta p_\mathrm{eq},\; \delta q_\mathrm{lift}\right)^T
+\]
+
+and lane-command vector
+
+\[
+\delta u = \left(\delta u_1,\; \delta u_2,\; \delta u_3,\; \delta u_4\right)^T.
 \]
 
 where \(\mathbf{M}\) depends on lane placement, handedness, sector participation, and the current operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
 
-### 8.7 Opposed sectors create bending moments
+In plain language, the controller is trying to combine four lane-speed trims into three useful local effects, while suppressing the residual unwanted ones. That is a recognizable control-allocation problem, not handwaving.
+
+### 7.7 Opposed sectors create bending moments
 
 Now place such tug fields in opposed azimuthal sectors of a torus of radius \(a\). Then the sector tugs form a couple.
 
@@ -751,7 +765,9 @@ where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite 
 
 This is the macro-control mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus.
 
-### 8.8 Global bookkeeping and compensating zones
+The simplest mental picture is squeezing a hoop on two opposite sides, except here the squeeze is generated internally by momentum exchange inside the lane system rather than by external hands.
+
+### 7.8 Global bookkeeping and compensating zones
 
 The ring is not creating net momentum from nowhere. A tugging sector must be paired with other sectors or stations that close the momentum and energy bookkeeping.
 
@@ -759,7 +775,9 @@ What the architecture offers is not free net force. It offers a way to **redistr
 
 The important result is that this redistribution can be accomplished internally, in balanced four-lane cells, by smooth spatial speed fields. One does not need monolithic moving hoops or routine fill-and-drain hardware throughout the ring to generate useful macro moments.
 
-### 8.9 What this control channel is for
+In practice, one should picture families of cooperating sectors around the ring, not a single magic control patch acting in isolation. One sector borrows momentum and another pays it back.
+
+### 7.9 What this control channel is for
 
 The point is not only to suppress abstract wobble. The same mechanism is the natural candidate for handling:
 
@@ -776,11 +794,11 @@ A useful way to say it is this: the helical lanes pay twice. First they inflate 
 
 ---
 
-## 9. What this architecture still does not solve automatically
+## 8. What this architecture still does not solve automatically
 
 The paper's claim is architectural novelty, not practical closure. Several severe screens remain.
 
-### 9.1 Macro lift is still a separate burden
+### 8.1 Macro lift is still a separate burden
 
 The helical torus gives local prestress. It does not, by itself, loft the entire ring around Earth. Macro lift comes from turning the ring-tangential component of stream momentum around Earth.
 
@@ -808,7 +826,7 @@ If \(u<u_\mathrm{orb}\), the moving stream loads the ring downward overall. Only
 
 This is why the helical angle has to stay small at full scale. The ring needs its speed mostly in the ring-tangential direction.
 
-### 9.2 The full system faces a closure loop
+### 8.2 The full system faces a closure loop
 
 Let passive structural and hardware weight per unit ring length be \(w_p\). The lift requirement can be written as
 
@@ -860,13 +878,13 @@ E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 8.5\,\mathrm{GJ/m}
 
 per \(1\,\mathrm{kN/m}\) of supported passive load. That number does not refute the architecture, but it should stop the reader from underestimating the energy scale.
 
-### 9.3 The 80 km screening case has a serious environment caveat
+### 8.3 The 80 km screening case has a serious environment caveat
 
 The 80 km altitude used in the screening case is not ordinary dense atmosphere, but it is not clean vacuum either. A 40,000 km class stationary structure at roughly that altitude would face atmospheric interaction, drag variability, upper-atmosphere heating, atomic-oxygen or reactive-species exposure, materials degradation, and possibly large station-keeping loads.
 
 The present paper does not close that environment problem. The 80 km case should therefore be read only as a geometric and momentum-flux screening case, not as a settled operating altitude.
 
-### 9.4 Fault domains still need an explicit architecture
+### 8.4 Fault domains still need an explicit architecture
 
 The helical fabric torus should not be interpreted as a containment solution by itself. Any serious version of the architecture would still require physical segmentation into independently isolated sectors, energy-isolating gates, sacrificial catchers, controlled dump paths, distributed braking, and faulted-section bypass.
 
@@ -884,7 +902,7 @@ This paper does not develop that system in detail, but it must be named explicit
 
 ---
 
-## 10. Conclusion
+## 9. Conclusion
 
 This paper argues for a specific architectural idea, not for immediate engineering closure.
 
