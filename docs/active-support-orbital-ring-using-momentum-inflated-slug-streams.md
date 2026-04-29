@@ -53,7 +53,7 @@ In the local tube approximation, what earlier orbital-ring discussions often cal
 
 **Suggested Figure 1. Overall concept sketch.** Show a world-encircling torus with roughly 100 m diameter, rendered as a lightweight fabric membrane rather than a solid pipe. Include a local cutaway showing several shallow-angle helical lanes attached to the membrane and one enlarged inset showing a four-lane balanced cell. The image should make the paper's core claim visible in one glance: the same helical lane system gives both local prestress and macro-control authority.
 
-**Figure conventions used throughout.** Do not draw steep helices, a rigid pipe, or only a small number of lanes. Do not draw the screening case as a torus floating high in clean orbital space if the numerical example is at 80 km altitude. Do not depict local prestress as a literal gas pressure unless the homogenization step is indicated. Do not draw the tug actuator as a single thruster or brake; it should appear as a distributed speed-gradient zone.
+**Figure conventions used throughout.** Do not draw steep helices, a rigid pipe, or only a small number of lanes. Do not depict local prestress as a literal gas pressure unless the homogenization step is indicated. Do not draw the tug actuator as a single thruster or brake; it should appear as a distributed speed-gradient zone. If the reference case is drawn, show it as a low-orbit world ring, not as a tiny deep-space loop floating far from Earth.
 
 The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-control result. Only then does it turn to the harder practicality screens: macro lift throughput, atmospheric environment, fault-domain architecture, and closure.
 
@@ -166,7 +166,7 @@ p_{\mathrm{req,total}} \sim \sqrt{p_\perp^2 + p_\parallel^2},
 
 before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-control channel.
 
-A representative numerical case is useful here. In the paper's notional 10 kN/m passive-load example, the moving-stream line density is about 1700 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.7 kg/m, so at 10 km/s the mass flux per lane is about 5.7 × 10⁴ kg/s. With helix angle about 0.78 degrees and tube radius 50 m, the local helical curvature is about 3.9 × 10⁻⁶ per metre. The resulting normal guide load is then only about 2.2 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector. That is a helpful reality check. The lane-level distributed force densities are not obviously the dominant horror. The harsher burdens are the associated power exchange, synchronization, thermal management, and fault energy.
+A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about 5.4 × 10⁴ kg/s. With helix angle about 0.79 degrees and tube radius 50 m, the local helical curvature is about 3.8 × 10⁻⁶ per metre. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector. That is a helpful reality check. The lane-level distributed force densities are not obviously the dominant horror. The harsher burdens are the associated power exchange, synchronization, thermal management, and fault energy.
 
 ### 3.3 Convective local control
 
@@ -400,19 +400,27 @@ For small angles,
 \alpha_\mathrm{opt} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
 \]
 
-Using a screening case with a = 50 m, altitude 80 km, u = 10 km/s, and Gamma = 10, one gets an optimal helix angle of about 0.014 radians, or about 0.78 degrees.
+Using a reference case with a = 50 m, altitude 500 km, u = 10 km/s, and Gamma = 10, one gets an optimal helix angle of about 0.014 radians, or about 0.79 degrees.
 
 That is a striking result. Once macro lift matters, the optimal helical bias may be very small. This supports exactly the picture advocated here: a large torus with many shallow-angle helical lanes, not a steeply wrapped screw conveyor.
 
-At a = 50 m and alpha about 0.78 degrees, one full wrap pitch is about 22 km.
+At a = 50 m and alpha about 0.79 degrees, one full wrap pitch is about 23 km.
 
 That is visually important. The intended architecture is not a steep screw or barber pole. It is a field of many nearly axial lanes with only a very slight azimuthal drift.
+
+The more worrying point is not helix visibility. It is whether the associated prestress is actually enough. With \(w_p=10~\mathrm{kN/m}\) and \(\Gamma=10\), the implied hoop force target is only \(N_{\theta,\mathrm{req}}\approx 100~\mathrm{kN/m}\), which corresponds to only about 2 kPa of equivalent pressure at \(a=50~\mathrm{m}\). That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
+
+That observation suggests that \(\Gamma=10\) should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same 500 km, 10 km/s point, \(\Gamma=30\) gives about 1.38 degrees and a wrap pitch of about 13 km, while \(\Gamma=100\) gives about 2.51 degrees and a wrap pitch of about 7 km. The architecture therefore appears compatible with substantially higher prestress, but the real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
 
 ### 5.5 What the prestressed shell does and does not solve
 
 The prestressed membrane guide shell solves an important local problem. It gives the lanes a reaction structure, creates local prestress, and provides a platform for hardware.
 
 It does **not** automatically create a globally rigid torus, and it does **not** by itself close the local stability problem. A 100 m diameter prestressed membrane can be locally round and still be very flexible at long wavelength, while local perturbations can still go unstable if the incremental guide-and-membrane stiffness is inadequate.
+
+For the 500 km, \(u=10~\mathrm{km/s}\), \(\Gamma=10\) reference case, the equivalent pressure is only about 2 kPa and the corresponding hoop force is only about 100 kN/m. That may be enough to keep a ribbed membrane shell round and wrinkle-resistant. It is not enough to assume beam-like cross-sectional rigidity. If the useful shell needs something more like 0.3 to 1 MN/m of hoop force to control ovalization and rib-to-rib shear, then the prestress target must move into the \(\Gamma\sim 30\) to \(100\) range instead.
+
+The homogenized shell picture should also be bounded in wavelength. With about 300 lanes around a 314 m circumference, the pitch is about 1 m, so pressure-like averaging may be reasonable for long-wave deformation. It should not be trusted blindly for metre-scale guide deformation, local rib failure, lane dropout, or sharp control-sector gradients. A useful rule of thumb is that the smoothed shell model belongs to wavelengths well above the torus diameter and preferably well above the circumference, while shorter scales require an explicitly discrete lane-and-rib treatment.
 
 That is why the orbital ring still requires active macro-control, and why the four-lane balanced cell becomes essential.
 
@@ -463,6 +471,22 @@ This is not a decorative symmetry argument. It is the architecture that makes th
 
 These cancellations are not automatic. They require equal mass flux, equal scalar speed profiles, matched helix angles, and symmetric placement of the four lanes within the cell. Flux mismatch, lane dropout, speed-trim error, or geometric asymmetry create residual force and torque channels.
 
+### 6.1 Tolerance budget and degraded modes
+
+The balanced cell is elegant, but it is not forgiving. In the 500 km, \(u=10~\mathrm{km/s}\), 300-lane reference case, one lane carries about 5.4 × 10⁴ kg/s of mass flux. Its ring-direction momentum flux is therefore about 5.4 × 10⁸ N, and its circumferential momentum flux at 0.79 degrees helix angle is about 7.6 × 10⁶ N.
+
+That means even a small fractional mismatch creates a real residual channel:
+
+| Fractional mismatch in one lane | Residual \(s\)-momentum-flux channel | Residual \(\theta\)-momentum-flux channel |
+| --- | ---: | ---: |
+| 0.01% | about 54 kN | about 0.76 kN |
+| 0.1% | about 0.54 MN | about 7.6 kN |
+| 1% | about 5.4 MN | about 76 kN |
+
+So the cancellation tolerances are not cosmetic. A four-lane cell only behaves like the intended primitive if mass flux, speed profile, and phasing are held tightly enough that the residual channels remain small compared with the commanded ones.
+
+Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.
+
 **Suggested Figure 6. Four-lane balanced cell.** Show the four lane helices in cross-section and in a short perspective cutaway, with arrows labeling handedness and travel direction. Use color-coded momentum vectors to show cancellation of axial, circumferential, and angular components. Then indicate the common-mode pressure channel that remains. The helices should be drawn with very shallow apparent winding, consistent with the small-\(\alpha\) regime. The figure should make the cell feel like a genuine machine primitive.
 
 ---
@@ -477,7 +501,7 @@ The right mental picture is not a rigid pipe with a single giant control thruste
 
 At this point the architecture has solved an important local problem. The helical lanes can inflate and prestress the membrane guide shell, and the four-lane cell can remove hidden steady momentum and torque channels. But a locally stiff torus is not yet a globally well-aligned orbital ring. A 100 m diameter prestressed membrane can still be flexible at long wavelength. The ring still has to respond to tether loads, payload-launch impulses, gravity-gradient effects, construction asymmetries, and wobble modes.
 
-So the decisive question is whether this lane architecture produces a real macro-scale control channel. The claim of this section is yes: if one places spatial speed gradients in the right lanes, in the right sectors, then the torus can develop distributed internal tugs and ring-scale bending moments.
+So the decisive question is whether this lane architecture identifies a plausible macro-scale control channel. The claim of this section is narrower than full control closure: if one places spatial speed gradients in the right lanes, in the right sectors, then the torus can in principle develop distributed internal tugs and ring-scale bending moments. Whether the resulting shell, guide, controller, and power system can stabilize those modes in practice is a later question.
 
 ### 7.1 Stationary spatial speed gradients act on momentum flux
 
@@ -604,6 +628,14 @@ where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite 
 This is the macro-control mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus.
 
 The simplest mental picture is squeezing a hoop on two opposite sides, except here the squeeze is generated internally by momentum exchange inside the lane system rather than by external hands.
+
+### 7.4.1 Load path from lane tug to ring bending
+
+The couple estimate above is only useful if the torus can actually transmit sector forces as a ring-scale bending moment rather than merely ovalizing locally.
+
+The intended free-body path is: lane force into lane carrier, lane carrier into rib or local cross-brace, rib into membrane hoop tension and circumferential shear, and then that distributed cross-sectional load closing against the opposed sector to create a couple about the ring centerline. In other words, the lane does not push directly on a rigid beam. It pushes on a ribbed shell that must redistribute the load around the torus cross-section before that load can look like ring-scale bending.
+
+That means the simple couple law belongs to the long-wave regime. At wavelengths comparable with the torus diameter, rib spacing, or shell ovalization modes, one should expect local twisting, shear lag, and cross-sectional distortion before clean global bending emerges. The present paper therefore treats the tug-sector couple as a plausible long-wave actuation primitive, not as proof that every local shell mode cooperates automatically.
 
 ### 7.5 Why fill and drain are not required for steady speed fields
 
@@ -753,7 +785,7 @@ The fractional lift sensitivity is therefore
 \frac{\delta q_\mathrm{lift}}{q_\mathrm{lift}} = \frac{\left(\frac{1}{R} + \frac{g_h}{u^2}\right)}{\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}\frac{\delta u}{u}.
 \]
 
-At the illustrative 80 km, \(u=10~\mathrm{km/s}\) screening point, that multiplier is about 4.2. So a 1% local speed modulation produces roughly a 4% local lift modulation in the participating lift stream.
+At the illustrative 500 km, \(u=10~\mathrm{km/s}\) reference point, that multiplier is about 3.8. So a 1% local speed modulation produces roughly a 3.8% local lift modulation in the participating lift stream.
 
 The same speed field therefore actuates three coupled outputs: axial tug, local pressure, and local lift. A real machine would need a control-allocation layer that distributes commands across the four lanes and across neighboring sectors so that desired tug, pressure trim, and lift trim are separated as well as possible.
 
@@ -785,15 +817,15 @@ If one defines an effective speed-offset length, called \(L_\mathrm{eff}\), as t
 
 So the honest statement is this: the control coupling is governed by the speed-offset area associated with the tug command, not by the gradient alone.
 
-At the illustrative 80 km, u = 10 km/s point, beta is about 2.5 × 10⁻⁷ per metre, and the corresponding inverse length scale is about 4,000 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
+At the illustrative 500 km, u = 10 km/s point, beta is about 2.3 × 10⁻⁷ per metre, and the corresponding inverse length scale is about 4,350 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
 
 It is useful to separate three different smallness claims.
 
-First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about 5.7 × 10⁴ kg/s per lane, that implies a speed step of only about 0.58 m/s, or about 6 × 10⁻⁵ of the 10 km/s operating speed.
+First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about 5.4 × 10⁴ kg/s per lane, that implies a speed step of only about 0.61 m/s, or about 6 × 10⁻⁵ of the 10 km/s operating speed.
 
-Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,000 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.025, so a 10 MN tug carries about 250 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
+Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,350 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.023, so a 10 MN tug carries about 230 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
 
-Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 250 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.25 N/m, which is 2.5 × 10⁻⁵ of the screening 10 kN/m supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about 6 × 10⁻⁶. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
+Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is 2.3 × 10⁻⁵ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about 6 × 10⁻⁶. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
 
 That is why the coupling can converge rather than blow up. The strong inner-loop channel is axial tug. Pressure and lift correction are weaker outer-loop trims only if the speed-offset area is short enough and spare trim authority exists.
 
@@ -904,10 +936,10 @@ In words:
 
 The concept stands or falls on whether this loop converges.
 
-One brutal scale number is worth stating explicitly. In the illustrative 80 km, \(u=10~\mathrm{km/s}\) screening case,
+One brutal scale number is worth stating explicitly. In the illustrative 500 km, \(u=10~\mathrm{km/s}\) reference case,
 
 \[
-\frac{u^2}{R} - g_h \approx 5.9~\mathrm{m/s^2}.
+\frac{u^2}{R} - g_h \approx 6.1~\mathrm{m/s^2}.
 \]
 
 So supporting even
@@ -919,22 +951,34 @@ w_p = 10~\mathrm{kN/m}
 of passive weight requires moving-stream line density of about
 
 \[
-\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{5.9} \approx 1700~\mathrm{kg/m}.
+\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{6.1} \approx 1600~\mathrm{kg/m}.
 \]
 
 The corresponding kinetic energy per metre is then
 
 \[
-E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 85~\mathrm{GJ/m}.
+E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
 \]
 
-For a full 40,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.4 × 10¹⁸ J in this notional case. That is the energy scale associated with the notional \(10~\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
+For a full 40,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.3 × 10¹⁸ J in this notional case. That is the energy scale associated with the notional \(10~\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
-### 8.3 The 80 km screening case has a serious environment caveat
+The harder message is that the moving-energy burden scales linearly with passive weight. A crude closure worksheet therefore looks like this:
 
-The 80 km altitude used in the screening case is not ordinary dense atmosphere, but it is not clean vacuum either. A 40,000 km class stationary structure at roughly that altitude would face atmospheric interaction, drag variability, upper-atmosphere heating, atomic-oxygen or reactive-species exposure, materials degradation, and possibly large station-keeping loads.
+| Passive weight assumption | Moving-stream line density | Moving kinetic energy per metre |
+| --- | ---: | ---: |
+| 10 kN/m | about 1,600 kg/m | about 82 GJ/m |
+| 30 kN/m | about 4,900 kg/m | about 245 GJ/m |
+| 100 kN/m | about 16,000 kg/m | about 820 GJ/m |
 
-The present paper does not close that environment problem. The 80 km case should therefore be read only as a geometric and momentum-flux screening case, not as a settled operating altitude.
+So the closure loop is not a subtle second-order effect. If containment, thermal hardware, guide modules, ribs, and fault isolation drive passive weight up by a factor of only a few, the moving-energy burden rises by the same factor.
+
+### 8.3 Reference altitude choice: 500 km primary, 80 km stress-test
+
+The 80 km altitude used in earlier drafts is better read as a stress-test case than as a credible operating reference. A 40,000 km class stationary structure at roughly that altitude would face atmospheric interaction, drag variability, upper-atmosphere heating, reactive-species exposure, materials degradation, and likely large station-keeping loads.
+
+For the present draft, the primary numerical example is therefore moved to 500 km altitude, which removes most of the atmospheric objection while leaving the basic macro-lift screening surprisingly similar. At 10 km/s, the net outward acceleration is about 5.9 m/s² at 80 km and about 6.1 m/s² at 500 km. The throughput problem therefore does not disappear at higher altitude, but the environment becomes less obviously self-defeating.
+
+The 80 km case remains useful only as a lower-altitude stress test. The 500 km case is the more reasonable notional reference for the rest of the paper.
 
 ### 8.4 Fault domains still need an explicit architecture
 
@@ -948,7 +992,7 @@ E_{\mathrm{segment}} = E' L_{\mathrm{segment}},
 
 and the isolation architecture has to be sized from that energy, not merely named.
 
-At the notional 85 GJ/m energy density, even a 1 km isolated fault domain still contains about 85 TJ. So "small" domains are still enormous energetic objects. This paper does not develop that system in detail, but the energy scale has to be stated explicitly because containment cannot be left implicit.
+At the notional 82 GJ/m energy density, even a 1 km isolated fault domain still contains about 82 TJ. So "small" domains are still enormous energetic objects. This paper does not develop that system in detail, but the energy scale has to be stated explicitly because containment cannot be left implicit.
 
 **Suggested Figure 10. Macro-lift versus local-control separation.** Show a large Earth-centered orbital ring with one local inset. In the large view, highlight the ring-tangential momentum component responsible for macro lift. In the inset, highlight the shallow helical lanes and opposed-sector tug fields responsible for local prestress and macro-shape control. The figure should remind the reader that this paper mainly solves a control architecture, not the entire full-scale closure problem.
 
@@ -956,7 +1000,7 @@ At the notional 85 GJ/m energy density, even a 1 km isolated fault domain still 
 
 ## 9. Conclusion
 
-This paper argues for a specific architectural idea: shallow-angle helical slug streams running in a prestressed membrane guide shell can provide both a local structural substrate and a macro-scale actuation primitive for an active-support orbital ring.
+This paper argues for a specific architectural idea: shallow-angle helical slug streams running in a prestressed membrane guide shell can provide both a local structural substrate and a plausible macro-scale actuation primitive for an active-support orbital ring.
 
 The first key result is local. Helical curvature converts momentum redirection into distributed inflation pressure and hoop prestress, giving the membrane guide shell something closer to a real structural reaction surface than a bare straight lane or monolithic rotor picture provides.
 
@@ -966,8 +1010,93 @@ Those two results belong together. The prestressed shell without the balanced co
 
 A major motivation for the architecture is that straight high-speed lanes and simple monolithic rotors do not provide passive self-centering by momentum redirection alone. The stream pushes into existing curvature. The helical guide shell is therefore not merely a convenient geometry. It is a way to supply the reaction structure and control channels that a viable ring would need anyway.
 
-The main control result can be stated compactly. A stationary spatial speed gradient changes lane momentum flux. In a mirrored counter-moving pair, one lane accelerates while the other decelerates through the same fixed section, yet their structural reactions add rather than cancel. In a four-lane balanced cell, those pairwise tug fields can be placed in opposed sectors to generate controlled ring-scale moments while maintaining first-order steady momentum balance.
+The main control result can be stated compactly. A stationary spatial speed gradient changes lane momentum flux. In a mirrored counter-moving pair, one lane accelerates while the other decelerates through the same fixed section, yet their structural reactions add rather than cancel. In a four-lane balanced cell, those pairwise tug fields can be placed in opposed sectors to generate ring-scale moment commands while maintaining first-order steady momentum balance.
 
 The next crux is no longer whether that primitive exists. It is whether a distributed stator, power, and control system can command useful momentum-flux gradients while simultaneously maintaining lane phase, headway, lift, prestress, power balance, thermal rejection, and fault isolation. That is the natural next battlefield for the concept.
 
-Macro lift still demands superorbital ring-tangential momentum flux, and the closure screens remain harsh. But as a control-capable architecture, this concept is substantially stronger than a simple rotor-around-Earth picture. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated.
+Macro lift still demands superorbital ring-tangential momentum flux, and the closure screens remain harsh. The present draft therefore does not claim a physically closed, dynamically proven, thermally solved, fault-tolerant machine. It claims something narrower and, I think, more durable: this architecture identifies a plausible internal actuation primitive that simple rotor-around-Earth sketches do not have. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated.
+
+---
+
+## Appendix A. Minimal dynamic stability model
+
+The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell can be written schematically as
+
+\[
+m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) - T_\mathrm{eq} y_{ss} = 0.
+\]
+
+Here \(m_\mathrm{eff}\) is effective moving-plus-supported mass per lane length, \(c_\mathrm{eff}\) is passive and active damping, \(B_\mathrm{eff}\) is short-wave bending or rib stiffness, \(K_\mathrm{shell}\) is the restoring contribution of the prestressed shell, \(K_\mathrm{guide}\) is local guide stiffness, \(K_\mathrm{ctrl}\) is delayed feedback stiffness, and \(T_\mathrm{eq}\) is the moving-stream follower-force scale.
+
+For a Fourier mode \(y \propto e^{i(ks-\omega t)}\), the characteristic balance becomes
+
+\[
+-m_\mathrm{eff}\omega^2 + i c_\mathrm{eff}\omega + B_\mathrm{eff}k^4 + K_\mathrm{shell}(k) + K_\mathrm{guide}(k) + K_\mathrm{ctrl}(k)e^{-i\omega\tau_c} - T_\mathrm{eq}k^2 = 0.
+\]
+
+This makes the control partition explicit.
+
+- At short wavelength, the delayed controller cannot be the main stabilizer. One needs enough passive shell and guide stiffness that \(B_\mathrm{eff}k^4 + K_\mathrm{guide}(k)\) beats the follower term even before large delayed feedback enters.
+- At longer wavelength, the shell, neighboring lanes, and sector-level control loops can contribute meaningful damping and restoring action.
+- The dangerous boundary is the regime in which \(T_\mathrm{eq}k^2\) is already large while \(\omega\tau_c\) is no longer small.
+
+The convective times in Section 3.3 show how severe that is. At 10 km/s, a 100 m disturbance passes in 10 ms, a 10 m disturbance in 1 ms, and a 1 m disturbance in 0.1 ms. If one wants feedback phase lag well below about 30 degrees at the disturbance passage rate, the effective delay budget must be well below about 0.8 ms at 100 m wavelength and well below about 0.08 ms at 10 m wavelength. That is why meter-to-hundred-meter stabilization has to be a local guide problem, not a ring-scale supervisory control problem.
+
+So this appendix still does not prove stability. But it does name the minimum technical burden more concretely: any viable design needs a stability map over wavelength showing where passive shell stiffness dominates, where local guide control dominates, and where slower sector-level control can safely enter.
+
+## Appendix B. Slug discreteness screen
+
+The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about 5.4 × 10⁴ kg/s of mass flux. The table below shows what that means for several representative slug masses.
+
+| Slug mass | Slugs per second per lane | Spacing at 10 km/s | Time headway | Kinetic energy per slug |
+| ---: | ---: | ---: | ---: | ---: |
+| 0.1 kg | about 5.4 × 10⁵ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
+| 1 kg | about 5.4 × 10⁴ /s | about 18 cm | about 18 µs | about 50 MJ |
+| 10 kg | about 5.4 × 10³ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
+| 100 kg | about 5.4 × 10² /s | about 18 m | about 1.8 ms | about 5 GJ |
+
+This is a genuine design fork.
+
+- Small slugs reduce individual projectile energy, but demand extreme event rate, timing accuracy, sensing bandwidth, and electromagnetic switching frequency.
+- Large slugs relax rate and timing, but make each slug an individually catastrophic object.
+
+The no-fill/no-drain argument in Section 7.5 remains kinematically sound for steady speed fields, but it only works if headway compression and expansion stay inside collision margins. If a controller is allowed only 10% headway error, then the 1 kg row above implies a timing tolerance of only a few microseconds, while the 0.1 kg row pushes into the sub-microsecond regime. That does not kill the concept by itself, but it means slug discreteness has to become a first-class design variable rather than a hidden detail.
+
+## Appendix C. Power-flow, guide, and thermal screen
+
+The local guide-force density is not obviously the worst number. In the 500 km reference case, one lane sees only about 2.1 kN/m of helical normal load, and a 10 MN ring correction shared across 300 lanes corresponds to only about 0.33 N/m of average tangential force per lane over a 100 km sector. The guide burden becomes terrifying because velocity is so high.
+
+For the 10 MN long-wave correction used in the main text, the sector power throughput is about 100 GW. Even small inefficiency therefore becomes a large thermal burden:
+
+| Effective conversion loss | Waste heat at 100 GW | Heat per metre over a 100 km sector |
+| ---: | ---: | ---: |
+| 1% | 1 GW | 10 kW/m |
+| 0.1% | 100 MW | 1 kW/m |
+| 0.01% | 10 MW | 100 W/m |
+
+So the actuator can be quiet in force density and still be violent in power flow. The real guide-technology screen is therefore not just magnetic pressure. It is whether a planetary-scale electromagnetic guide can simultaneously deliver acceptable gap control, switching rate, bidirectional power exchange, loss per metre, quench safety, and fault isolation.
+
+A useful module-scale view makes the same point. Spread over 100 km, the average power transfer is about 1 MW per metre of sector across all participating lanes, or about 10 MW for each 10 m slice of the sector. A 10 m slice of one lane carries only about 33 kW of average control power, but at slug rates that may range from kilohertz to hundreds of kilohertz depending on slug mass. So the difficulty is not one giant generator. It is a huge distributed array of moderate-force, high-rate, high-efficiency bidirectional modules.
+
+## Appendix D. Fault-domain and degraded-mode screen
+
+At the 500 km reference point, the moving stream stores about 82 GJ/m. That makes allowable fault energy the key quantity for architecture. If one chooses an allowable released energy \(E_\mathrm{allow}\), the corresponding maximum isolated domain length is roughly
+
+\[
+L_\mathrm{iso} \approx \frac{E_\mathrm{allow}}{82~\mathrm{GJ/m}}.
+\]
+
+The result is brutal:
+
+| Allowable released energy | Maximum isolation length | Stream transit time across that length at 10 km/s |
+| ---: | ---: | ---: |
+| 1 GJ | about 1.2 cm | about 1.2 µs |
+| 10 GJ | about 12 cm | about 12 µs |
+| 100 GJ | about 1.2 m | about 0.12 ms |
+| 1 TJ | about 12 m | about 1.2 ms |
+| 10 TJ | about 120 m | about 12 ms |
+| 82 TJ | about 1 km | about 0.10 s |
+
+So if tolerable fault release is only gigajoule-scale, the implied isolation lengths are absurdly short. Even if one accepts terajoule-scale domains, the required gates, dump paths, catchers, and bypass logic still have to operate on millisecond-to-tens-of-milliseconds timescales.
+
+This is also where four-lane degraded mode becomes inseparable from containment. A lane dropout is not just a control nuisance. It is a fault-domain event that may force local cell isolation, rapid unloading of neighboring cells, and transfer of support demand to a wider region. The safe machine is therefore not merely a balanced nominal lattice. It is a balanced lattice plus an explicit fault-response architecture.
