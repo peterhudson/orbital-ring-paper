@@ -37,7 +37,11 @@ The claim envelope should be stated early. This paper does not claim closure of 
 
 The main fatal risks are also worth naming early: follower-force instability, unacceptable guide loss, impossible thermal rejection, unmanageable fault-domain energy, and a passive-mass closure loop that fails to converge.
 
-### 1.1 Coordinate convention
+### 1.1 Paper structure
+
+The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-scale actuation result. Only then does it turn to the harder practicality screens: macro lift throughput, fault-domain architecture, and closure.
+
+### 1.2 Coordinate convention
 
 To avoid ambiguity, the paper uses three local coordinates:
 
@@ -55,9 +59,11 @@ r = \text{local radial direction normal to the torus cross-section}
 
 In the local tube approximation, what earlier orbital-ring discussions often call "axial" means the \(s\) direction, not the global Earth rotation axis. The helical lanes wind in \(\theta\) while moving mainly along \(s\).
 
-### 1.2 Reference frame and orbital dynamics assumptions
+### 1.3 Reference frame and orbital dynamics assumptions
 
 The macro-lift discussion is easiest to misread if the reference frame is left implicit, so the bookkeeping assumption should be stated plainly.
+
+Even a ring that is intended to remain stationary relative to the ground is not inertially stationary. An equatorial ring that supports ground-referenced tethers must co-rotate with Earth so that those tethers do not sweep across the surface. The guide shell therefore carries a real inertial ring-tangential speed set mainly by Earth rotation, even though the slug streams move much faster relative to the guide.
 
 The paper's primary case is an equatorial ring whose guide shell moves slowly compared with the slug streams. Let the local guide shell have inertial ring-tangential speed \(U_g\), and let each lane have guide-relative speed \(\sigma u\) with \(\sigma = \pm 1\) for the two travel directions. The inertial lane speed is then
 
@@ -88,7 +94,7 @@ is the leading-order result when \(U_g \ll u\). The first-order \(\pm 2U_g u/R\)
 
 This does not solve the broader orbital-dynamics problem. Station-keeping, tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open. But it does put the macro-lift bookkeeping in one explicit inertial frame and explains why the simpler guide-relative expression is a reasonable leading-order screen for symmetric lane pairs.
 
-### 1.3 Reference bookkeeping case
+### 1.4 Reference bookkeeping case
 
 To keep later screens anchored, the paper uses one primary bookkeeping case unless otherwise stated.
 
@@ -115,8 +121,6 @@ Because the local numbers are easy to underestimate, the corresponding whole-rin
 | Total slug count for 10 kg slugs | about \(6.9\times10^9\) |
 
 That table does not refute the architecture, but it does place the reference case firmly in the megastructure regime. Even the paper's nominally light reference point already involves tens of billions of kilograms of passive and moving inventory.
-
-The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-scale actuation result. Only then does it turn to the harder practicality screens: macro lift throughput, atmospheric environment, fault-domain architecture, and closure.
 
 ---
 
@@ -179,7 +183,16 @@ A rough upper bound on magnetic normal stress is
 p_\mathrm{mag,max} \sim \frac{B^2}{2\mu_0},
 \]
 
-where \(B\) is field strength and \(\mu_0\) is the permeability of free space. Ideal field-pressure scales are therefore on the order of 0.10 MPa at 0.5 T, 0.40 MPa at 1 T, 1.59 MPa at 2 T, and 3.58 MPa at 3 T. Real delivered traction will be lower because of gap, fringing, force margin, thermal limits, imperfect field topology, and control requirements.
+where \(B\) is field strength and \(\mu_0\) is the permeability of free space. The ideal upper-bound values are:
+
+| Field strength \(B\) | Ideal upper-bound normal stress \(B^2/(2\mu_0)\) |
+| ---: | ---: |
+| 0.5 T | about 0.10 MPa |
+| 1 T | about 0.40 MPa |
+| 2 T | about 1.59 MPa |
+| 3 T | about 3.58 MPa |
+
+Real delivered traction will be lower because of gap, fringing, force margin, thermal limits, imperfect field topology, and control requirements.
 
 If \(A'\) is effective magnetic interaction area per unit lane length, then the required mean traction is
 
@@ -194,6 +207,8 @@ p_\mathrm{req} = \frac{\dot m v\kappa}{A'}.
 \]
 
 So tight curvature, high speed, and small interaction perimeter all make the lane harder to guide.
+
+It is tempting to look for a simple square-cube optimum in slug size here, but this particular screen does not produce one cleanly. The relevant quantity is \(A'\), effective interaction area per unit lane length, not the perimeter of one isolated slug. If a slug family is scaled uniformly at fixed aspect ratio and lane fill fraction, then per-slug mass scales like \(L^3\) while slug count per unit lane length scales like \(1/L\), so moving mass per unit lane length scales like \(L^2\), just as interaction area per unit lane length does. On that simplified scaling, \(p_\mathrm{req} = \dot m v\kappa/A'\) does not by itself force a single geometric optimum. The sharper slug-size trade appears later through switching rate, timing precision, gap control, eddy-current loss, and per-slug fault energy rather than through this one ratio alone.
 
 ### 3.2 Tugging also requires tangential traction
 
@@ -391,7 +406,7 @@ That is the architectural move. The imposed helical curvature converts the domin
 
 But that does not by itself prove local dynamic stability. Perturbations about the helical path still have follower-force character. The moving stream still carries an effective dynamic-tension scale \(T_\mathrm{eq} \sim \dot m v\), and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
 
-A more review-proof way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
+A more honest way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
 
 \[
 K_\mathrm{tot}(k,\omega) = K_\mathrm{membrane}(k,\omega) + K_\mathrm{guide}(k,\omega) + K_\mathrm{control}(k,\omega).
@@ -405,7 +420,7 @@ Then, for a sinusoidal perturbation of wavenumber \(k\), the real part must sati
 
 with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest.
 
-Put differently, the torus gives the lane something real to push against. It does not let the paper claim that the instability problem has disappeared.
+Put differently, the torus gives the lane something real to push against. It does not make the instability problem disappear.
 
 Lanes could in principle be mounted on the inner or outer surface of the membrane, or on shallow truss or rib hardware attached directly to it. The point is not the exact attachment detail at this stage. The point is that the prestressed membrane becomes the structural reaction surface for the helical lanes.
 
@@ -453,23 +468,15 @@ For small angles,
 \alpha_\mathrm{cross} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
 \]
 
-Using a reference case with a = 50 m, altitude 500 km, u = 10 km/s, and Gamma = 10, one gets a screening crossover angle of about 0.014 radians, or about 0.79 degrees.
+Using a reference case with a = 50 m, altitude 500 km, u = 10 km/s, and Gamma = 10, one gets a screening crossover angle of about 0.014 radians, or about 0.79 degrees. So once macro lift matters, the preferred helical bias is very shallow. At a = 50 m and alpha about 0.79 degrees, one full wrap pitch is about 23 km, which means the intended architecture is a field of many nearly axial lanes with only slight azimuthal drift, not a steep screw conveyor.
 
-That is a striking result. Once macro lift matters, the crossover helical bias may be very small. This supports exactly the picture advocated here: a large torus with many shallow-angle helical lanes, not a steeply wrapped screw conveyor.
+The more important question is whether that shallow helix produces enough prestress. With passive supported weight of 10 kN per metre and prestress ratio Gamma equal to 10, the implied hoop-force target is only about 100 kN per metre. At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
 
-At a = 50 m and alpha about 0.79 degrees, one full wrap pitch is about 23 km.
-
-That is visually important. The intended architecture is not a steep screw or barber pole. It is a field of many nearly axial lanes with only a very slight azimuthal drift.
-
-The more worrying point is not helix visibility. It is whether the associated prestress is actually enough. With passive supported weight of 10 kN per metre and prestress ratio Gamma equal to 10, the implied hoop-force target is only about 100 kN per metre. At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
-
-That observation suggests that \(\Gamma=10\) should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same 500 km, 10 km/s point, \(\Gamma=30\) gives about 1.38 degrees and a wrap pitch of about 13 km, while \(\Gamma=100\) gives about 2.51 degrees and a wrap pitch of about 7 km. The architecture therefore appears compatible with substantially higher prestress, but the real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
+So \(\Gamma=10\) should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same 500 km, 10 km/s point, \(\Gamma=30\) gives about 1.38 degrees and a wrap pitch of about 13 km, while \(\Gamma=100\) gives about 2.51 degrees and a wrap pitch of about 7 km. The geometry therefore remains in the shallow-helix regime even for substantially higher prestress targets. The real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
 
 ### 5.5 What the prestressed shell does and does not solve
 
-The prestressed membrane guide shell solves an important local problem. It gives the lanes a reaction structure, creates local prestress, and provides a platform for hardware.
-
-It does **not** automatically create a globally rigid torus, and it does **not** by itself close the local stability problem. A 100 m diameter prestressed membrane can be locally round and still be very flexible at long wavelength, while local perturbations can still go unstable if the incremental guide-and-membrane stiffness is inadequate.
+The prestressed membrane guide shell solves an important but limited problem. It gives the lanes a reaction structure, creates local prestress, and provides a platform for hardware. It does **not** automatically create a globally rigid torus, and it does **not** by itself close the local stability problem.
 
 For the 500 km, \(u=10~\mathrm{km/s}\), \(\Gamma=10\) reference case, the equivalent pressure is only about 2 kPa and the corresponding hoop force is only about 100 kN/m. That may be enough to keep a ribbed membrane shell round and wrinkle-resistant. It is not enough to assume beam-like cross-sectional rigidity. If the useful shell needs something more like 0.3 to 1 MN/m of hoop force to control ovalization and rib-to-rib shear, then the prestress target must move into the \(\Gamma\sim 30\) to \(100\) range instead.
 
@@ -777,7 +784,7 @@ So the issue is not that mass must be added or removed in ordinary control secti
 
 ### 7.6 The tug actuator is also a high-power energy exchanger
 
-The tug equations are momentum-flux equations, but a reviewer will immediately ask about power, and rightly so.
+The tug equations are momentum-flux equations, but the next question is about power, and rightly so.
 
 For one lane, the exact finite power transfer across a section that changes speed from \(u_1\) to \(u_2\) is
 
@@ -929,19 +936,6 @@ The important result is that this redistribution can be accomplished internally,
 
 In practice, one should picture families of cooperating sectors around the ring, not a single magic control patch acting in isolation. One sector borrows momentum and another pays it back.
 
-### 7.9 What this actuation channel is for
-
-The point is not only to suppress abstract wobble. The same mechanism is the natural candidate for handling:
-
-- long-wavelength orbital-ring alignment,
-- tether loads,
-- payload-launch impulses,
-- construction asymmetries,
-- thermal distortion,
-- and other slow or moderate disturbances that act on the ring at large scale.
-
-A useful way to say it is this: the helical lanes pay twice. First they inflate and prestress the torus. Then, because they are grouped into balanced cells, they provide a distributed internal actuation system for macro-scale shape control.
-
 ---
 
 ## 8. Remaining closure screens
@@ -957,7 +951,7 @@ Before going through them one by one, the main unresolved closure gates can be n
 | Four-lane balance | timing, mass, and speed mismatch budget | The balanced cell is only useful if residual momentum channels stay well below commanded tug channels. |
 | Shell load transfer | cross-sectional transfer efficiency \(\eta_\mathrm{load}\) and rib spacing | Opposed sector tugs matter only if lane loads can be redistributed into a real long-wave bending couple rather than local ovalization. |
 | Fault containment | isolated domain energy and response time | The stored energy density is high enough that fault handling is likely a dominant feasibility gate rather than a secondary detail. |
-| Startup and reconfiguration | partial-commissioning support path and lane-phase initialization | The paper should not describe only a completed machine; it must eventually admit how the machine is brought into and out of operation. |
+| Startup and reconfiguration | partial-commissioning support path and lane-phase initialization | The present paper treats startup, commissioning, and shutdown as open architectural problems rather than solved parts of the concept. |
 
 ### 8.1 Macro lift is still a separate burden
 
@@ -1067,9 +1061,11 @@ At the notional 82 GJ/m energy density, even a 1 km isolated fault domain still 
 
 The right conclusion is not merely that fault isolation is required. It is that fault isolation is likely one of the dominant feasibility gates for any real machine built around this primitive.
 
+The helical geometry may, however, offer one useful emergency option. A deliberately opened dump path can in principle eject a failed slug stream outward from the torus rather than through the ring body itself, so the default hazard need not be re-impact into neighboring structure. Depending on orbital position and dump geometry, such ejecta would either encounter Earth's atmosphere or depart onto a higher-energy trajectory. One could even imagine choosing operating speed so that fully unguided ejecta are biased toward atmospheric interception or Earth-escape rather than repeated ring-crossing orbits. That does not make emergency dumping benign. It only suggests that the geometry may admit a real dump-path architecture, and the present paper does not analyze that trade in detail.
+
 ### 8.4 Startup, deployment, shutdown, and reconfiguration remain open
 
-The present draft is still strongly steady-state. That is a real limitation and should be admitted directly.
+The present paper is still strongly steady-state. That is a real limitation and should be admitted directly.
 
 The paper does not yet answer how billions of slugs are inserted, how the stream is accelerated to operating speed, how partially commissioned sectors are supported before full lift is available, how lane phases are initialized, or how the ring is safely spun down. Those are not secondary implementation details. They are part of the architecture.
 
@@ -1095,7 +1091,7 @@ The main actuation result can be stated compactly. A stationary spatial speed gr
 
 The next crux is no longer whether that primitive exists. It is whether a distributed stator, power, and synchronization system can command useful momentum-flux gradients while simultaneously maintaining lane phase, headway, lift, prestress, power balance, thermal rejection, fault isolation, and acceptable degraded modes. That is the natural next battlefield for the concept.
 
-Macro lift still demands superorbital ring-tangential momentum flux, and the closure screens remain harsh. The present draft therefore does not claim a physically closed, dynamically proven, thermally solved, fault-tolerant machine. It claims something narrower and, I think, more durable: this architecture identifies a plausible internal prestress and actuation primitive that simple rotor-around-Earth sketches do not have. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated.
+Macro lift still demands superorbital ring-tangential momentum flux, and the closure screens remain harsh. The present paper therefore does not claim a physically closed, dynamically proven, thermally solved, fault-tolerant machine. It claims something narrower and, I think, more durable: this architecture identifies a plausible internal prestress and actuation primitive that simple rotor-around-Earth sketches do not have. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated.
 
 ---
 
