@@ -116,8 +116,6 @@ Because the local numbers are easy to underestimate, the corresponding whole-rin
 
 That table does not refute the architecture, but it does place the reference case firmly in the megastructure regime. Even the paper's nominally light reference point already involves tens of billions of kilograms of passive and moving inventory.
 
-**Figure conventions used throughout.** Do not draw steep helices, a rigid pipe, or only a small number of lanes. Do not depict local prestress as a literal gas pressure unless the homogenization step is indicated. Do not draw the tug actuator as a single thruster or brake; it should appear as a distributed speed-gradient zone. If the reference case is drawn, show it as a low-orbit world ring, not as a tiny deep-space loop floating far from Earth.
-
 The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-scale actuation result. Only then does it turn to the harder practicality screens: macro lift throughput, atmospheric environment, fault-domain architecture, and closure.
 
 ---
