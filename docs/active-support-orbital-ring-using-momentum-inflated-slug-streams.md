@@ -699,18 +699,30 @@ P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}| \, u.
 
 At \(u \sim 10\,\mathrm{km/s}\), even modest structural tug implies enormous power exchange. A 1 MN tug at 10 km/s corresponds to roughly 10 GW.
 
-That number is not arbitrary. In the same 100 m diameter notional ring used throughout the paper, take the screening passive load \(w_p=1\,\mathrm{kN/m}\). Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of
+For the notional ring used throughout the paper, the more relevant number is larger. Take the screening passive load to be
 
 \[
-0.01 \times 1000\,\mathrm{N/m} \times 100{,}000\,\mathrm{m} = 1\,\mathrm{MN}.
+w_p = 10\,\mathrm{kN/m}.
 \]
 
-So the 1 MN example corresponds to correcting a percent-level long-wave distortion over a 100 km section of the hypothetical ring, not to some exotic extreme maneuver.
+Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of
+
+\[
+0.01 \times 10{,}000\,\mathrm{N/m} \times 100{,}000\,\mathrm{m} = 10\,\mathrm{MN}.
+\]
+
+So the grounded long-wave control example for this hypothetical ring is 10 MN, not 1 MN. At 10 km/s that implies roughly
+
+\[
+10\,\mathrm{MN} \times 10\,\mathrm{km/s} = 100\,\mathrm{GW}
+\]
+
+of exchanged power.
 
 If the notional 300-lane cross-section participates broadly in that correction, the mean integrated axial contribution is only about
 
 \[
-\frac{1\,\mathrm{MN}}{300} \approx 3.3\,\mathrm{kN}
+\frac{10\,\mathrm{MN}}{300} \approx 33\,\mathrm{kN}
 \]
 
 per lane. The surprising quantity is therefore not force per lane. It is the power associated with making even a small speed change at \(10\,\mathrm{km/s}\).
@@ -788,19 +800,19 @@ That means any control sector much shorter than a few thousand kilometres sits i
 - if \(L=100\,\mathrm{km}\), then \(\beta L \approx 0.025\),
 - if \(L=250\,\mathrm{km}\), then \(\beta L \approx 0.063\).
 
-So a 1 MN tug over a 100 km control sector carries only about
+So a 10 MN tug over a 100 km control sector carries only about
 
 \[
-\Delta W_{\mathrm{lift,sector}} \approx 0.025 \times 1\,\mathrm{MN} = 25\,\mathrm{kN}
+\Delta W_{\mathrm{lift,sector}} \approx 0.025 \times 10\,\mathrm{MN} = 250\,\mathrm{kN}
 \]
 
 of integrated lift side-effect over that sector. Spread back over a 1000 km neighboring compensation arc, that is only
 
 \[
-\frac{25\,\mathrm{kN}}{1000\,\mathrm{km}} = 0.025\,\mathrm{N/m},
+\frac{250\,\mathrm{kN}}{1000\,\mathrm{km}} = 0.25\,\mathrm{N/m},
 \]
 
-which is just \(2.5\times 10^{-5}\) of the screening \(1\,\mathrm{kN/m}\) supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about
+which is still just \(2.5\times 10^{-5}\) of the screening \(10\,\mathrm{kN/m}\) supported load. With the 4.2 lift sensitivity, the required common-mode speed correction is then only about
 
 \[
 \frac{\delta u}{u} \sim \frac{2.5\times 10^{-5}}{4.2} \approx 6\times 10^{-6}.
@@ -926,22 +938,22 @@ One brutal scale number is worth stating explicitly. In the illustrative 80 km, 
 So supporting even
 
 \[
-w_p = 1\,\mathrm{kN/m}
+w_p = 10\,\mathrm{kN/m}
 \]
 
 of passive weight requires moving-stream line density of about
 
 \[
-\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{1000}{5.9} \approx 170\,\mathrm{kg/m}.
+\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{5.9} \approx 1700\,\mathrm{kg/m}.
 \]
 
 The corresponding kinetic energy per metre is then
 
 \[
-E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 8.5\,\mathrm{GJ/m}
+E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 85\,\mathrm{GJ/m}.
 \]
 
-per \(1\,\mathrm{kN/m}\) of supported passive load. That number does not refute the architecture, but it should stop the reader from underestimating the energy scale.
+That is the energy scale associated with the notional \(10\,\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the energy scale.
 
 ### 8.3 The 80 km screening case has a serious environment caveat
 
