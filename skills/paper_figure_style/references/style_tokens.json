@@ -1,0 +1,52 @@
+{
+  "canvas": {
+    "landscape": {
+      "width": 1600,
+      "height": 1000
+    },
+    "compact": {
+      "width": 1200,
+      "height": 900
+    }
+  },
+  "font": {
+    "family": "Helvetica, Arial, sans-serif",
+    "label_px": 28,
+    "small_label_px": 21,
+    "note_px": 18
+  },
+  "stroke": {
+    "primary_px": 3,
+    "secondary_px": 2,
+    "hidden_px": 2,
+    "dimension_px": 2,
+    "arrow_px": 2.5
+  },
+  "colors": {
+    "background": "#ffffff",
+    "structure": "#222222",
+    "secondary": "#666666",
+    "hidden": "#999999",
+    "label": "#222222",
+    "note": "#555555",
+    "earth": "#d8e7f3",
+    "lane_a": "#1f77b4",
+    "lane_b": "#d62728",
+    "warning": "#cc7a00"
+  },
+  "dash": {
+    "hidden": "8 8",
+    "reference": "4 6"
+  },
+  "layer_order": [
+    "background",
+    "reference_geometry",
+    "hidden_geometry",
+    "main_geometry",
+    "dimensions",
+    "arrows",
+    "callouts",
+    "labels",
+    "notes"
+  ]
+}
