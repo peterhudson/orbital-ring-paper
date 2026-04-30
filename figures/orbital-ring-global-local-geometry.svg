@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" role="img" aria-labelledby="title desc">
+  <title id="title">Global orbital-ring geometry and local tube coordinate convention</title>
+  <desc id="desc">A two-panel conceptual technical diagram. The left panel shows an Earth-scale orbital ring geometry around Earth with ring radius, altitude, gravity direction, and inertial guide-shell speed. The right panel shows a local toroidal guide-tube patch with local coordinates s, theta, and r, plus two guide-relative helical lane directions and helix angle alpha.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcfcfb"/>
+      <stop offset="100%" stop-color="#f6f3ee"/>
+    </linearGradient>
+    <radialGradient id="earthGrad" cx="38%" cy="32%" r="72%">
+      <stop offset="0%" stop-color="#74b2ff"/>
+      <stop offset="100%" stop-color="#1c4f92"/>
+    </radialGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe8da"/>
+      <stop offset="55%" stop-color="#ddd1bb"/>
+      <stop offset="100%" stop-color="#c9baa0"/>
+    </linearGradient>
+    <clipPath id="tubeClip" clipPathUnits="userSpaceOnUse">
+      <path d="M 840 505 C 990 390, 1185 360, 1455 420" fill="none" stroke="#fff" stroke-width="124" stroke-linecap="round"/>
+    </clipPath>
+    <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#39424d"/>
+    </marker>
+    <marker id="arrowSoft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6a7280"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f77b4"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#cc4c39"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <rect x="28" y="28" width="1544" height="864" rx="20" fill="#fffdf9" stroke="#d8d0c2"/>
+
+  <g id="labels">
+    <text x="58" y="76" class="title">Global ring geometry and local coordinate convention</text>
+    <text x="58" y="106" class="subtitle">Figure 1. Earth scale at left, local torus patch at right (conceptual, not to scale)</text>
+  </g>
+
+  <g id="panel_global">
+    <rect x="48" y="130" width="620" height="730" rx="16" class="panel"/>
+    <text x="74" y="176" class="panelTitle">A. Earth-scale ring geometry</text>
+    <text x="74" y="204" class="smallLabel">A ground-referenced guide shell still moves inertially around Earth, and the ring centerline curvature acts on that Earth scale.</text>
+    <ellipse cx="360" cy="520" rx="250" ry="345" class="ringOrbitBack"/>
+    <path d="M 437.3,191.9 A 250 345 0 0 1 533.7,768.2" class="ringOrbitFront"/>
+    <path d="M 480 228 A 310 410 0 0 1 612 546" class="guideMotionArrow" marker-end="url(#arrowDark)"/>
+    <circle cx="360" cy="520" r="165" fill="url(#earthGrad)" stroke="#183e72" stroke-width="3"/>
+    <ellipse cx="330" cy="500" rx="62" ry="23" fill="#90d9a8" opacity="0.82"/>
+    <ellipse cx="404" cy="568" rx="42" ry="18" fill="#7bc0d8" opacity="0.44"/>
+    <text x="360" y="526" class="earthLabel" text-anchor="middle">Earth</text>
+    <text x="360" y="550" class="earthSmall" text-anchor="middle">support reference</text>
+    <line x1="360" y1="520" x2="567.3" y2="327.1" class="radiusLine" marker-end="url(#arrowDark)"/>
+    <line x1="480.8" y1="407.6" x2="567.3" y2="327.1" class="altitudeLine" marker-start="url(#arrowSoft)" marker-end="url(#arrowSoft)"/>
+    <line x1="567.3" y1="327.1" x2="605.9" y2="406.1" class="guideSpeedArrow" marker-end="url(#arrowDark)"/>
+    <line x1="567.3" y1="327.1" x2="501.4" y2="388.4" class="gravityArrow" marker-end="url(#arrowSoft)"/>
+    <circle cx="567.3" cy="327.1" r="15" fill="#fffdf9" stroke="#8e7652" stroke-width="3"/>
+    <path d="M 521 269 C 645 245, 735 244, 790 282" class="leader"/>
+    <text x="82" y="758" class="smallLabel">The circled ring patch is expanded into the local tube view at right.</text>
+    <text x="560" y="246" class="calloutText" text-anchor="start">guide shell centerline</text>
+    <text x="560" y="270" class="tinyLabel" text-anchor="start">co-rotating with Earth, but inertially moving</text>
+    <rect x="455.6" y="389.5" width="34" height="32" rx="8" fill="#fffdf9" opacity="0.96" stroke="#dbd3c5"/>
+    <text x="472.6" y="413.5" class="equationLabel" text-anchor="middle">R</text>
+    <rect x="516.0" y="347.3" width="34" height="32" rx="8" fill="#fffdf9" opacity="0.96" stroke="#dbd3c5"/>
+    <text x="533.0" y="371.3" class="equationLabel" text-anchor="middle">h</text>
+    <text x="616.5" y="417.5" class="equationLabel">Ug</text>
+    <text x="460.1" y="403.2" class="equationLabel">gh</text>
+    <rect x="76" y="674" width="286" height="72" rx="10" fill="#fffdf9" stroke="#dbd3c5"/>
+    <text x="96" y="704" class="calloutText">Earth-scale curvature</text>
+    <text x="96" y="728" class="tinyLabel">ring centerline bends around Earth, so k_ring is about 1/R</text>
+  </g>
+
+  <g id="panel_local">
+    <rect x="708" y="130" width="844" height="730" rx="16" class="panel"/>
+    <text x="734" y="176" class="panelTitle">B. Local torus-patch coordinates</text>
+    <text x="734" y="204" class="smallLabel">The local bookkeeping uses ring-centerline direction s, azimuth theta around the tube, radial direction r, helix angle alpha, and guide-relative lane motion plus or minus u.</text>
+    <path d="M 840 505 C 990 390, 1185 360, 1455 420" fill="none" stroke="#9c8b70" stroke-width="136" stroke-linecap="round" opacity="0.20"/>
+    <path d="M 840 505 C 990 390, 1185 360, 1455 420" fill="none" stroke="url(#tubeGrad)" stroke-width="126" stroke-linecap="round" filter="url(#shadow)"/>
+    <path d="M 840 505 C 990 390, 1185 360, 1455 420" fill="none" stroke="#f9f3ea" stroke-width="104" stroke-linecap="round" opacity="0.68"/>
+    <path d="M 840 505 C 990 390, 1185 360, 1455 420" fill="none" stroke="#7d705d" stroke-width="2.2" stroke-linecap="round"/>
+    <g clip-path="url(#tubeClip)">
+      <rect x="760" y="230" width="760" height="360" fill="#f6efe4"/>
+      <line x1="610" y1="590" x2="860" y2="250" class="laneBlueFaint"/>
+      <line x1="668" y1="590" x2="918" y2="250" class="laneBlueFaint"/>
+      <line x1="726" y1="590" x2="976" y2="250" class="laneBlueFaint"/>
+      <line x1="784" y1="590" x2="1034" y2="250" class="laneBlueFaint"/>
+      <line x1="842" y1="590" x2="1092" y2="250" class="laneBlueFaint"/>
+      <line x1="900" y1="590" x2="1150" y2="250" class="laneBlueFaint"/>
+      <line x1="958" y1="590" x2="1208" y2="250" class="laneBlueFaint"/>
+      <line x1="1016" y1="590" x2="1266" y2="250" class="laneBlueFaint"/>
+      <line x1="1074" y1="590" x2="1324" y2="250" class="laneBlueFaint"/>
+      <line x1="1132" y1="590" x2="1382" y2="250" class="laneBlueFaint"/>
+      <line x1="1190" y1="590" x2="1440" y2="250" class="laneBlueFaint"/>
+      <line x1="1248" y1="590" x2="1498" y2="250" class="laneBlueFaint"/>
+      <line x1="1306" y1="590" x2="1556" y2="250" class="laneBlueFaint"/>
+      <line x1="1364" y1="590" x2="1614" y2="250" class="laneBlueFaint"/>
+      <line x1="1422" y1="590" x2="1672" y2="250" class="laneBlueFaint"/>
+      <line x1="1480" y1="590" x2="1730" y2="250" class="laneBlueFaint"/>
+      <line x1="1538" y1="590" x2="1788" y2="250" class="laneBlueFaint"/>
+      <line x1="1596" y1="590" x2="1846" y2="250" class="laneBlueFaint"/>
+      <line x1="690" y1="250" x2="940" y2="590" class="laneRedFaint"/>
+      <line x1="748" y1="250" x2="998" y2="590" class="laneRedFaint"/>
+      <line x1="806" y1="250" x2="1056" y2="590" class="laneRedFaint"/>
+      <line x1="864" y1="250" x2="1114" y2="590" class="laneRedFaint"/>
+      <line x1="922" y1="250" x2="1172" y2="590" class="laneRedFaint"/>
+      <line x1="980" y1="250" x2="1230" y2="590" class="laneRedFaint"/>
+      <line x1="1038" y1="250" x2="1288" y2="590" class="laneRedFaint"/>
+      <line x1="1096" y1="250" x2="1346" y2="590" class="laneRedFaint"/>
+      <line x1="1154" y1="250" x2="1404" y2="590" class="laneRedFaint"/>
+      <line x1="1212" y1="250" x2="1462" y2="590" class="laneRedFaint"/>
+      <line x1="1270" y1="250" x2="1520" y2="590" class="laneRedFaint"/>
+      <line x1="1328" y1="250" x2="1578" y2="590" class="laneRedFaint"/>
+      <line x1="1386" y1="250" x2="1636" y2="590" class="laneRedFaint"/>
+      <line x1="1444" y1="250" x2="1694" y2="590" class="laneRedFaint"/>
+      <line x1="1502" y1="250" x2="1752" y2="590" class="laneRedFaint"/>
+      <line x1="1560" y1="250" x2="1810" y2="590" class="laneRedFaint"/>
+      <line x1="1618" y1="250" x2="1868" y2="590" class="laneRedFaint"/>
+      <line x1="1676" y1="250" x2="1926" y2="590" class="laneRedFaint"/>
+    </g>
+    <path d="M 874 480 C 1020 382, 1186 364, 1400 414" class="axisDash"/>
+    <line x1="1038" y1="412" x2="1172" y2="369" class="axisArrow" marker-end="url(#arrowSoft)"/>
+    <text x="1186" y="366" class="smallLabel">s, ring-centerline direction</text>
+    <ellipse cx="840" cy="505" rx="46" ry="46" fill="#efe7d8" stroke="#7e705c" stroke-width="2.2"/>
+    <ellipse cx="840" cy="505" rx="25" ry="25" fill="#fffdfa" stroke="#c4b79f" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <line x1="840" y1="505" x2="903" y2="482" class="coord" marker-end="url(#arrowDark)"/>
+    <path d="M 868 500 A 30 30 0 0 1 852 474" class="coordArc" marker-end="url(#arrowDark)"/>
+    <text x="911" y="484" class="smallLabel">r</text>
+    <text x="850" y="469" class="smallLabel">theta</text>
+    <text x="780" y="574" class="tinyLabel">local tube cross-section</text>
+    <line x1="1082.4" y1="402.7" x2="1181.3" y2="333.3" class="laneSampleBlue" marker-end="url(#arrowBlue)"/>
+    <line x1="1108.4" y1="388.7" x2="1001.2" y2="463.0" class="laneSampleRed" marker-end="url(#arrowRed)"/>
+    <path d="M 1067 395 A 44 44 0 0 1 1085 361" class="angleArc"/>
+    <text x="1090" y="369" class="equationLabel">alpha</text>
+    <text x="1128" y="306" class="calloutText">guide-relative lane directions</text>
+    <text x="1134" y="332" class="tinyLabel" fill="#1f77b4">+u along one lane family</text>
+    <text x="1134" y="356" class="tinyLabel" fill="#b9493b">-u on the mirrored lane</text>
+    <text x="1196.2" y="325.8" class="smallLabel" fill="#1f77b4">+u</text>
+    <text x="965.5" y="484.1" class="smallLabel" fill="#b9493b">-u</text>
+    <rect x="734" y="700" width="418" height="94" rx="10" fill="#fffdf9" stroke="#dbd3c5"/>
+    <text x="754" y="730" class="calloutText">Local coordinate convention</text>
+    <text x="754" y="754" class="tinyLabel">s is distance along the ring centerline around Earth.</text>
+    <text x="754" y="776" class="tinyLabel">theta is azimuth around the torus cross-section, and r is local radial direction normal to that cross-section.</text>
+    <text x="1266" y="742" class="calloutText">helix angle</text>
+    <text x="1266" y="766" class="tinyLabel">alpha is measured relative to the local s direction, not the global Earth axis.</text>
+  </g>
+
+  <path d="M 602 304 C 690 282, 742 282, 782 316" class="interpanelLeader"/>
+
+  <style><![CDATA[
+    text { font-family: Arial, Helvetica, sans-serif; fill: #222222; }
+    .title { font-size: 32px; font-weight: 700; fill: #2c2a28; }
+    .subtitle { font-size: 17px; fill: #746a5c; }
+    .panel { fill: #fffdfa; stroke: #dbd3c5; }
+    .panelTitle { font-size: 25px; font-weight: 700; fill: #2f2b27; }
+    .smallLabel { font-size: 19px; fill: #4a433b; }
+    .tinyLabel { font-size: 16px; fill: #5b544b; }
+    .calloutText { font-size: 18px; font-weight: 700; fill: #3a342d; }
+    .equationLabel { font-size: 28px; font-style: italic; fill: #24201c; }
+    .earthLabel { font-size: 30px; font-weight: 700; fill: #f7fbff; }
+    .earthSmall { font-size: 17px; fill: #dcecff; }
+    .ringOrbitBack { fill: none; stroke: #c7c0b5; stroke-width: 12; stroke-dasharray: 10 10; opacity: 0.95; }
+    .ringOrbitFront { fill: none; stroke: #5f5548; stroke-width: 16; stroke-linecap: round; }
+    .guideMotionArrow { fill: none; stroke: #38424f; stroke-width: 3.2; }
+    .radiusLine { stroke: #3f4348; stroke-width: 2.9; fill: none; }
+    .altitudeLine { stroke: #6f7684; stroke-width: 2.2; fill: none; }
+    .guideSpeedArrow { stroke: #39424d; stroke-width: 3.0; fill: none; }
+    .gravityArrow { stroke: #6f7684; stroke-width: 2.4; fill: none; }
+    .leader { fill: none; stroke: #8c734f; stroke-width: 3; stroke-dasharray: 7 6; }
+    .interpanelLeader { fill: none; stroke: #b3ab9f; stroke-width: 2.5; stroke-dasharray: 8 7; }
+    .laneBlueFaint { stroke: #1f77b4; stroke-width: 6.8; opacity: 0.26; }
+    .laneRedFaint { stroke: #cc5a4c; stroke-width: 6.8; opacity: 0.24; }
+    .axisDash { fill: none; stroke: #6f675f; stroke-width: 2.4; stroke-dasharray: 8 8; opacity: 0.85; }
+    .axisArrow { stroke: #5a6672; stroke-width: 3; fill: none; }
+    .coord { stroke: #3f4348; stroke-width: 2.8; fill: none; }
+    .coordArc { fill: none; stroke: #3f4348; stroke-width: 2.2; }
+    .laneSampleBlue { stroke: #1f77b4; stroke-width: 5.2; stroke-linecap: round; fill: none; }
+    .laneSampleRed { stroke: #cc4c39; stroke-width: 5.2; stroke-linecap: round; fill: none; }
+    .angleArc { fill: none; stroke: #59626a; stroke-width: 2.2; }
+  ]]></style>
+</svg>
