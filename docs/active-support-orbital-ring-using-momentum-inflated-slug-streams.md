@@ -59,42 +59,7 @@ r = \text{local radial direction normal to the torus cross-section}
 
 In the local tube approximation, what earlier orbital-ring discussions often call "axial" means the \(s\) direction, not the global Earth rotation axis. The helical lanes wind in \(\theta\) while moving mainly along \(s\).
 
-### 1.3 Reference frame and orbital dynamics assumptions
-
-The macro-lift discussion is easiest to misread if the reference frame is left implicit, so the bookkeeping assumption should be stated plainly.
-
-Even a ring that is intended to remain stationary relative to the ground is not inertially stationary. An equatorial ring that supports ground-referenced tethers must co-rotate with Earth so that those tethers do not sweep across the surface. The guide shell therefore carries a real inertial ring-tangential speed set mainly by Earth rotation, even though the slug streams move much faster relative to the guide.
-
-The paper's primary case is an equatorial ring whose guide shell moves slowly compared with the slug streams. Let the local guide shell have inertial ring-tangential speed \(U_g\), and let each lane have guide-relative speed \(\sigma u\) with \(\sigma = \pm 1\) for the two travel directions. The inertial lane speed is then
-
-\[
-U_\sigma = U_g + \sigma u.
-\]
-
-If \(\dot m\) is the guide-frame mass flux in one lane, then the mass per unit guide length is \(\lambda = \dot m/u\). The outward reaction per unit guide length from that lane is therefore
-
-\[
-q_{\mathrm{lift},\sigma} = \frac{\dot m}{u}\left(\frac{(U_g+\sigma u)^2}{R} - g_h\right).
-\]
-
-For a symmetric counter-propagating pair, the sum becomes
-
-\[
-q_{\mathrm{lift,pair}} = \frac{2\dot m}{u}\left(\frac{u^2 + U_g^2}{R} - g_h\right)
-= 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right) + 2\dot m\frac{U_g^2}{uR}.
-\]
-
-So the pair-averaged lift law used later in the paper,
-
-\[
-q_{\mathrm{lift,pair}} \approx 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
-\]
-
-is the leading-order result when \(U_g \ll u\). The first-order \(\pm 2U_g u/R\) correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, Ug is about 0.50 km/s, so the retained correction is only about 0.25% of the main ring-curvature term in this reference case.
-
-This does not solve the broader orbital-dynamics problem. Station-keeping, tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open. But it does put the macro-lift bookkeeping in one explicit inertial frame and explains why the simpler guide-relative expression is a reasonable leading-order screen for symmetric lane pairs.
-
-### 1.4 Reference bookkeeping case
+### 1.3 Reference bookkeeping case
 
 To keep later screens anchored, the paper uses one primary bookkeeping case unless otherwise stated.
 
@@ -967,7 +932,7 @@ Before going through them one by one, the main unresolved closure gates can be n
 
 The helical torus gives local prestress. It does not, by itself, loft the entire ring around Earth. Macro lift comes from turning the ring-tangential component of stream momentum around Earth.
 
-For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in Section 1.3.
+For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in Appendix E.
 
 Let \(u=v\cos\alpha\) be ring-tangential speed and let the ring radius be \(R\). For one slug lane with mass flux \(\dot m\), the net outward lift per unit ring length is
 
@@ -1260,3 +1225,38 @@ This is also where four-lane degraded mode becomes inseparable from containment.
 A simple worked screen shows how quickly the numbers become uncomfortable. In the 10 kg bookkeeping row, one lane carries about 5.4 × 10³ slugs/s, so a 10 ms loss-of-guidance event sweeps about 54 slugs into the faulted region. That packet contains roughly 540 kg of moving mass and about 27 GJ of kinetic energy. If one simply loses one lane of a balanced cell for those same 10 ms without immediately unloading its mirrored partners, the missing ring-direction momentum-flux channel implies an uncompensated impulse of about 5.4 × 10⁶ N s.
 
 That is not yet a complete fault simulation, but it is enough to show the architecture's character. Even sub-second degraded events are already too energetic to be treated as routine control glitches. They are containment-and-reconfiguration events.
+
+## Appendix E. Reference-frame lift bookkeeping for a co-rotating guide
+
+The main text uses a guide-relative lift screen because the guide shell's inertial speed is small compared with the slug speed in the reference case. Since that bookkeeping can be easy to misread, this appendix states the inertial-frame result explicitly and shows why the simpler expression is a good leading-order approximation for the symmetric lane pairs used in the paper.
+
+Even a ring intended to remain stationary relative to the ground is not inertially stationary. An equatorial ring that supports ground-referenced tethers must co-rotate with Earth so that those tethers do not sweep across the surface. The guide shell therefore carries a real inertial ring-tangential speed set mainly by Earth rotation, even though the slug streams move much faster relative to the guide.
+
+Let the local guide shell have inertial ring-tangential speed \(U_g\), and let each lane have guide-relative speed \(\sigma u\) with \(\sigma = \pm 1\) for the two travel directions. The inertial lane speed is then
+
+\[
+U_\sigma = U_g + \sigma u.
+\]
+
+If \(\dot m\) is the guide-frame mass flux in one lane, then the mass per unit guide length is \(\lambda = \dot m/u\). The outward reaction per unit guide length from that lane is therefore
+
+\[
+q_{\mathrm{lift},\sigma} = \frac{\dot m}{u}\left(\frac{(U_g+\sigma u)^2}{R} - g_h\right).
+\]
+
+For a symmetric counter-propagating pair, the sum becomes
+
+\[
+q_{\mathrm{lift,pair}} = \frac{2\dot m}{u}\left(\frac{u^2 + U_g^2}{R} - g_h\right)
+= 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right) + 2\dot m\frac{U_g^2}{uR}.
+\]
+
+So the pair-averaged lift law used in the main text,
+
+\[
+q_{\mathrm{lift,pair}} \approx 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
+\]
+
+is the leading-order result when \(U_g \ll u\). The first-order \(\pm 2U_g u/R\) correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, \(U_g\) is about 0.50 km/s, so the retained correction is only about 0.25% of the main ring-curvature term in the reference case.
+
+This does not solve the broader orbital-dynamics problem. Station-keeping, tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open. It only shows why the guide-relative lift expression used in the main text is a reasonable leading-order screen for symmetric lane pairs.
