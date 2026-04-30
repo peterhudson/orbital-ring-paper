@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcfcfb"/>
+      <stop offset="100%" stop-color="#f6f3ee"/>
+    </linearGradient>
+    <radialGradient id="earthGrad" cx="38%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#6aa7ff"/>
+      <stop offset="100%" stop-color="#1d4f91"/>
+    </radialGradient>
+    <linearGradient id="tubeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe8da"/>
+      <stop offset="55%" stop-color="#ddd1bb"/>
+      <stop offset="100%" stop-color="#c9baa0"/>
+    </linearGradient>
+    <clipPath id="tubeClip" clipPathUnits="userSpaceOnUse">
+      <path d="M 770 405 C 920 300, 1140 280, 1435 348" fill="none" stroke="#fff" stroke-width="136" stroke-linecap="round"/>
+    </clipPath>
+    <marker id="arrowDark" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38424f"/>
+    </marker>
+    <marker id="arrowSoft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#67727f"/>
+    </marker>
+    <marker id="arrowPrestress" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b62d2d"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  <rect x="28" y="28" width="1544" height="924" rx="20" fill="#fffdf9" stroke="#d8d0c2"/>
+
+  <text x="58" y="78" class="title">Helical orbital ring architecture</text>
+  <text x="58" y="108" class="subtitle">Earth-scale curvature supplies lift, tube-scale helical curvature supplies prestress (conceptual, not to scale)</text>
+
+  <g>
+    <rect x="48" y="128" width="560" height="794" rx="16" class="panel"/>
+    <text x="74" y="174" class="panelTitle" text-anchor="start">A. Earth-scale ring geometry</text>
+    <text x="74" y="202" class="smallLabel">Ring centerline wraps around Earth, major curvature turns momentum around the planet</text>
+
+    <ellipse cx="320" cy="530" rx="240" ry="330" class="ringOrbit"/>
+    <path d="M 394.2 216.2 A 240 330 0 0 1 551.8 615.4" class="ringHighlight"/>
+    <path d="M 489.2 202.3 A 295 400 0 0 1 614.8 544.0" class="curvatureArrow" marker-end="url(#arrowDark)"/>
+    <text x="460" y="248" class="equationLabel">κ<tspan baseline-shift="sub" font-size="75%">ring</tspan> ≈ 1/R</text>
+    <text x="436" y="274" class="smallLabel">Earth-scale curvature, macro lift channel</text>
+
+    <circle cx="320" cy="560" r="140" fill="url(#earthGrad)" stroke="#173b6c" stroke-width="3"/>
+    <ellipse cx="295" cy="550" rx="52" ry="22" fill="#8fd8a6" opacity="0.78"/>
+    <ellipse cx="362" cy="590" rx="36" ry="16" fill="#7bc0d8" opacity="0.45"/>
+    <text x="320" y="566" class="earthLabel" text-anchor="middle">Earth</text>
+    <text x="320" y="588" class="earthSmall" text-anchor="middle">support reference</text>
+
+    <circle cx="541.9074222861425" cy="367.07438428065603" r="42" fill="none" stroke="#8c734f" stroke-width="3.2" stroke-dasharray="7 7"/>
+    <path d="M 565.9074222861425 397.07438428065603 C 650 345, 710 320, 780 306" class="leader"/>
+    <text x="110" y="826" class="smallLabel">Highlighted segment is expanded at right</text>
+  </g>
+
+  <g>
+    <rect x="638" y="128" width="914" height="454" rx="16" class="panel"/>
+    <text x="664" y="174" class="panelTitle" text-anchor="start">B. Cutaway toroidal guide segment</text>
+    <text x="664" y="202" class="smallLabel">A prestressed membrane tube carries many shallow left-handed and right-handed helical slug lanes</text>
+
+    <path d="M 770 405 C 920 300, 1140 280, 1435 348" fill="none" stroke="#9c8b70" stroke-width="150" stroke-linecap="round" opacity="0.2"/>
+    <path d="M 770 405 C 920 300, 1140 280, 1435 348" fill="none" stroke="url(#tubeGrad)" stroke-width="142" stroke-linecap="round" filter="url(#shadow)"/>
+    <path d="M 770 405 C 920 300, 1140 280, 1435 348" fill="none" stroke="#f9f3ea" stroke-width="118" stroke-linecap="round" opacity="0.65"/>
+    <path d="M 770 405 C 920 300, 1140 280, 1435 348" fill="none" stroke="#7f715e" stroke-width="2.2" stroke-linecap="round"/>
+
+    <g clip-path="url(#tubeClip)">
+      <rect x="690" y="180" width="820" height="360" fill="#f6efe4"/>
+      <line x1="110" y1="520" x2="360" y2="200" class="lane-rh"/><line x1="168" y1="520" x2="418" y2="200" class="lane-rh"/><line x1="226" y1="520" x2="476" y2="200" class="lane-rh"/><line x1="284" y1="520" x2="534" y2="200" class="lane-rh"/><line x1="342" y1="520" x2="592" y2="200" class="lane-rh"/><line x1="400" y1="520" x2="650" y2="200" class="lane-rh"/><line x1="458" y1="520" x2="708" y2="200" class="lane-rh"/><line x1="516" y1="520" x2="766" y2="200" class="lane-rh"/><line x1="574" y1="520" x2="824" y2="200" class="lane-rh"/><line x1="632" y1="520" x2="882" y2="200" class="lane-rh"/><line x1="690" y1="520" x2="940" y2="200" class="lane-rh"/><line x1="748" y1="520" x2="998" y2="200" class="lane-rh"/><line x1="806" y1="520" x2="1056" y2="200" class="lane-rh"/><line x1="864" y1="520" x2="1114" y2="200" class="lane-rh"/><line x1="922" y1="520" x2="1172" y2="200" class="lane-rh"/><line x1="980" y1="520" x2="1230" y2="200" class="lane-rh"/><line x1="1038" y1="520" x2="1288" y2="200" class="lane-rh"/><line x1="1096" y1="520" x2="1346" y2="200" class="lane-rh"/><line x1="1154" y1="520" x2="1404" y2="200" class="lane-rh"/><line x1="1212" y1="520" x2="1462" y2="200" class="lane-rh"/><line x1="1270" y1="520" x2="1520" y2="200" class="lane-rh"/><line x1="1328" y1="520" x2="1578" y2="200" class="lane-rh"/><line x1="1386" y1="520" x2="1636" y2="200" class="lane-rh"/><line x1="1444" y1="520" x2="1694" y2="200" class="lane-rh"/><line x1="1502" y1="520" x2="1752" y2="200" class="lane-rh"/><line x1="1560" y1="520" x2="1810" y2="200" class="lane-rh"/><line x1="1618" y1="520" x2="1868" y2="200" class="lane-rh"/><line x1="216" y1="200" x2="466" y2="520" class="lane-lh"/><line x1="274" y1="200" x2="524" y2="520" class="lane-lh"/><line x1="332" y1="200" x2="582" y2="520" class="lane-lh"/><line x1="390" y1="200" x2="640" y2="520" class="lane-lh"/><line x1="448" y1="200" x2="698" y2="520" class="lane-lh"/><line x1="506" y1="200" x2="756" y2="520" class="lane-lh"/><line x1="564" y1="200" x2="814" y2="520" class="lane-lh"/><line x1="622" y1="200" x2="872" y2="520" class="lane-lh"/><line x1="680" y1="200" x2="930" y2="520" class="lane-lh"/><line x1="738" y1="200" x2="988" y2="520" class="lane-lh"/><line x1="796" y1="200" x2="1046" y2="520" class="lane-lh"/><line x1="854" y1="200" x2="1104" y2="520" class="lane-lh"/><line x1="912" y1="200" x2="1162" y2="520" class="lane-lh"/><line x1="970" y1="200" x2="1220" y2="520" class="lane-lh"/><line x1="1028" y1="200" x2="1278" y2="520" class="lane-lh"/><line x1="1086" y1="200" x2="1336" y2="520" class="lane-lh"/><line x1="1144" y1="200" x2="1394" y2="520" class="lane-lh"/><line x1="1202" y1="200" x2="1452" y2="520" class="lane-lh"/><line x1="1260" y1="200" x2="1510" y2="520" class="lane-lh"/><line x1="1318" y1="200" x2="1568" y2="520" class="lane-lh"/><line x1="1376" y1="200" x2="1626" y2="520" class="lane-lh"/><line x1="1434" y1="200" x2="1684" y2="520" class="lane-lh"/><line x1="1492" y1="200" x2="1742" y2="520" class="lane-lh"/><line x1="1550" y1="200" x2="1800" y2="520" class="lane-lh"/><line x1="1608" y1="200" x2="1858" y2="520" class="lane-lh"/><line x1="1666" y1="200" x2="1916" y2="520" class="lane-lh"/><line x1="1724" y1="200" x2="1974" y2="520" class="lane-lh"/>
+    </g>
+    <path d="M 770 405 C 920 300, 1140 280, 1435 348" fill="none" stroke="#5f5549" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+    <path d="M 805 430 C 950 330, 1140 305, 1375 360" class="axisDash"/>
+    <line x1="875" y1="438" x2="1035" y2="356" class="axisArrow" marker-end="url(#arrowSoft)"/>
+    <text x="1048" y="352" class="smallLabel">s, ring-centerline direction</text>
+
+    <line x1="930" y1="430" x2="1048" y2="340" class="laneSampleBlue" marker-end="url(#arrowSoft)"/>
+    <line x1="930" y1="385" x2="1056" y2="378" class="laneSampleOrange" />
+    <path d="M 965 407 A 48 48 0 0 1 997 378" class="angleArc"/>
+    <text x="1003" y="388" class="equationLabel">α</text>
+
+    <rect x="680" y="228" width="270" height="82" rx="10" fill="#fffdf9" stroke="#d7cfbf"/>
+    <line x1="704" y1="256" x2="758" y2="256" class="legendBlue"/>
+    <text x="770" y="261" class="calloutText">RH family, +dθ/ds</text>
+    <line x1="704" y1="282" x2="758" y2="282" class="legendOrange"/>
+    <text x="770" y="287" class="calloutText">LH family, -dθ/ds</text>
+    <text x="680" y="328" class="tinyLabel" text-anchor="start">two mirrored shallow helix families share the same membrane tube</text>
+
+    <line x1="1180" y1="458" x2="1236" y2="500" class="callout" marker-end="url(#arrowSoft)"/>
+    <text x="1248" y="506" class="calloutText" text-anchor="start">membrane guide shell</text>
+    <text x="1248" y="530" class="tinyLabel" text-anchor="start">prestressed reaction substrate</text>
+  </g>
+
+  <g>
+    <rect x="638" y="604" width="914" height="318" rx="16" class="panel"/>
+    <text x="664" y="650" class="panelTitle" text-anchor="start">C. Tube-scale cross-section and prestress picture</text>
+    <text x="664" y="678" class="smallLabel">Local helical curvature pushes outward on the membrane, while the ring centerline still follows the Earth-scale path</text>
+
+    <circle cx="920" cy="775" r="126" fill="#f3ecdf" stroke="#7f715e" stroke-width="3"/>
+    <circle cx="920" cy="775" r="98" fill="#fffdf8" stroke="#c6b89f" stroke-width="2" stroke-dasharray="6 5"/>
+    <circle cx="920.0" cy="663.0" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="944.9" cy="665.8" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="968.6" cy="674.1" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="989.8" cy="687.4" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="1007.6" cy="705.2" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="1020.9" cy="726.4" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="1029.2" cy="750.1" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="1032.0" cy="775.0" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="1029.2" cy="799.9" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="1020.9" cy="823.6" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="1007.6" cy="844.8" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="989.8" cy="862.6" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="968.6" cy="875.9" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="944.9" cy="884.2" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="920.0" cy="887.0" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="895.1" cy="884.2" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="871.4" cy="875.9" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="850.2" cy="862.6" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="832.4" cy="844.8" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="819.1" cy="823.6" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="810.8" cy="799.9" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="808.0" cy="775.0" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="810.8" cy="750.1" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="819.1" cy="726.4" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="832.4" cy="705.2" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="850.2" cy="687.4" r="6.2" fill="#d95f02" stroke="#ffffff"/><circle cx="871.4" cy="674.1" r="6.2" fill="#1f77b4" stroke="#ffffff"/><circle cx="895.1" cy="665.8" r="6.2" fill="#d95f02" stroke="#ffffff"/>
+    <line x1="920" y1="645" x2="920" y2="607" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="1011.9238815542512" y1="683.0761184457489" x2="1038.79393923934" y2="656.20606076066" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="1050" y1="775" x2="1088" y2="775" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="1011.9238815542512" y1="866.9238815542511" x2="1038.79393923934" y2="893.79393923934" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="920" y1="905" x2="920" y2="943" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="828.0761184457489" y1="866.9238815542512" x2="801.20606076066" y2="893.79393923934" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="790" y1="775" x2="752" y2="775" class="prestress-arrow" marker-end="url(#arrowPrestress)"/><line x1="828.0761184457488" y1="683.0761184457489" x2="801.20606076066" y2="656.20606076066" class="prestress-arrow" marker-end="url(#arrowPrestress)"/>
+    <text x="920" y="782" class="crossText" text-anchor="middle">membrane tube</text>
+    <text x="920" y="805" class="crossSmall" text-anchor="middle">many shallow helical lanes around circumference</text>
+
+    <line x1="920" y1="775" x2="1070" y2="775" class="coord" marker-end="url(#arrowDark)"/>
+    <line x1="920" y1="775" x2="920" y2="621" class="coord" marker-end="url(#arrowDark)"/>
+    <path d="M 942 769 A 38 38 0 0 1 923 734" class="coordArc" marker-end="url(#arrowDark)"/>
+    <text x="1080" y="781" class="smallLabel">r</text>
+    <text x="910" y="607" class="smallLabel">s</text>
+    <text x="940" y="727" class="smallLabel">θ</text>
+
+    <text x="1105" y="732" class="equationLabel" text-anchor="start">Earth-scale curvature</text>
+    <text x="1105" y="766" class="bigEq" text-anchor="start">κ</text>
+    <text x="1126" y="766" class="subscript">ring</text>
+    <text x="1170" y="766" class="bigEqText" text-anchor="start">≈ 1/R</text>
+    <text x="1105" y="794" class="smallLabel" text-anchor="start">macro lift from ring centerline curvature around Earth</text>
+
+    <text x="1105" y="842" class="equationLabel" text-anchor="start">Tube-scale helical curvature</text>
+    <text x="1105" y="876" class="bigEq" text-anchor="start">κ</text>
+    <text x="1126" y="876" class="subscript">helix</text>
+    <text x="1186" y="876" class="bigEqText" text-anchor="start">≈ sin²α / a</text>
+    <text x="1105" y="904" class="smallLabel" text-anchor="start">local prestress from shallow helical wrapping on the membrane tube</text>
+
+    <text x="1105" y="944" class="calloutText" text-anchor="start">Same moving momentum, two very different curvature scales.</text>
+  </g>
+
+  <style>
+    .title { font: 700 32px Georgia, 'Times New Roman', serif; fill: #2c2a28; }
+    .subtitle { font: 17px Georgia, 'Times New Roman', serif; fill: #746a5c; }
+    .panel { fill: #fffdfa; stroke: #dbd3c5; }
+    .panelTitle { font: 700 24px Georgia, 'Times New Roman', serif; fill: #2f2b27; }
+    .label { font: 18px Georgia, 'Times New Roman', serif; fill: #302c28; }
+    .smallLabel { font: 17px Georgia, 'Times New Roman', serif; fill: #4a433b; }
+    .tinyLabel { font: 15px Georgia, 'Times New Roman', serif; fill: #5b544b; }
+    .calloutText { font: 700 17px Georgia, 'Times New Roman', serif; fill: #3a342d; }
+    .equationLabel { font: italic 24px Georgia, 'Times New Roman', serif; fill: #24201c; }
+    .bigEq { font: italic 34px Georgia, 'Times New Roman', serif; fill: #24201c; }
+    .bigEqText { font: 28px Georgia, 'Times New Roman', serif; fill: #24201c; }
+    .subscript { font: 17px Georgia, 'Times New Roman', serif; fill: #24201c; }
+    .earthLabel { font: 700 26px Georgia, 'Times New Roman', serif; fill: #f7fbff; }
+    .earthSmall { font: 15px Georgia, 'Times New Roman', serif; fill: #dcecff; }
+    .crossText { font: 700 18px Georgia, 'Times New Roman', serif; fill: #433b33; }
+    .crossSmall { font: 15px Georgia, 'Times New Roman', serif; fill: #6a6259; }
+    .ringOrbit { fill: none; stroke: #b8b0a2; stroke-width: 15; }
+    .ringHighlight { fill: none; stroke: #5f5548; stroke-width: 18; stroke-linecap: round; }
+    .curvatureArrow { fill: none; stroke: #38424f; stroke-width: 3.3; }
+    .leader { fill: none; stroke: #8c734f; stroke-width: 3; stroke-dasharray: 7 6; }
+    .lane-rh { stroke: #1f77b4; stroke-width: 8; opacity: 0.82; }
+    .lane-lh { stroke: #d95f02; stroke-width: 8; opacity: 0.75; }
+    .legendBlue, .laneSampleBlue { stroke: #1f77b4; stroke-width: 8; stroke-linecap: round; }
+    .legendOrange, .laneSampleOrange { stroke: #d95f02; stroke-width: 8; stroke-linecap: round; }
+    .callout { fill: none; stroke: #66717d; stroke-width: 2.5; }
+    .axisDash { fill: none; stroke: #6f675f; stroke-width: 2.4; stroke-dasharray: 8 8; opacity: 0.85; }
+    .axisArrow { stroke: #5a6672; stroke-width: 3; fill: none; }
+    .angleArc { fill: none; stroke: #59626a; stroke-width: 2.2; }
+    .prestress-arrow { stroke: #b62d2d; stroke-width: 3; }
+    .coord { stroke: #3f4348; stroke-width: 2.8; }
+    .coordArc { fill: none; stroke: #3f4348; stroke-width: 2.2; }
+  </style>
+</svg>
