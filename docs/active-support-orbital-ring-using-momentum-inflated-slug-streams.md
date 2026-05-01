@@ -47,7 +47,7 @@ Figure 1a gives the global geometry of the orbital ring concept and the local se
 </figure>
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-1b-orbital-ring-local-helical-lanes.svg" alt="Figure 1b, local guide-shell segment with representative helical lanes and local coordinates." style="width: 92%; height: auto;" />
+  <img src="../figures/figure-1b-orbital-ring-local-helical-lanes-single-lane.svg" alt="Figure 1b, local guide-shell segment with representative helical lanes and local coordinates." style="width: 92%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.92em; line-height: 1.35; color: #4b5563;">
     <strong>Figure 1b.</strong> Local guide-shell segment with representative helical lanes and local coordinates.
   </figcaption>
