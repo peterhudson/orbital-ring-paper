@@ -29,7 +29,6 @@ LANES = [
         'theta0': 0.30,
         'color': '#c0392b',
         'hidden': '#e5a39b',
-        'label_bias': (1.0, -0.9),
         'arrow_phi': -0.18,
     },
     {
@@ -40,7 +39,6 @@ LANES = [
         'theta0': math.pi + 0.10,
         'color': '#2e86ab',
         'hidden': '#9bc8da',
-        'label_bias': (1.0, 1.1),
         'arrow_phi': 0.26,
     },
     {
@@ -51,7 +49,6 @@ LANES = [
         'theta0': 1.55,
         'color': '#2f9e44',
         'hidden': '#a8d9b3',
-        'label_bias': (-1.0, -1.0),
         'arrow_phi': 0.08,
     },
     {
@@ -62,7 +59,6 @@ LANES = [
         'theta0': 4.55,
         'color': '#b26b00',
         'hidden': '#e2c28c',
-        'label_bias': (-1.0, 0.9),
         'arrow_phi': 0.45,
     },
 ]
@@ -236,8 +232,31 @@ def project_vector(v):
 
 
 
-def fmt_points(points):
-    return ' '.join(f'{x:.2f},{y:.2f}' for x, y in points)
+def vector2(a, b):
+    return (b[0] - a[0], b[1] - a[1])
+
+
+
+def length2(v):
+    return math.hypot(v[0], v[1])
+
+
+
+def normalize2(v):
+    n = length2(v)
+    if n < 1e-6:
+        return (1.0, 0.0)
+    return (v[0] / n, v[1] / n)
+
+
+
+def add2(a, b):
+    return (a[0] + b[0], a[1] + b[1])
+
+
+
+def mul2(v, s):
+    return (v[0] * s, v[1] * s)
 
 
 
@@ -314,6 +333,16 @@ def iso_theta_samples(theta, count=260):
     return samples
 
 
+
+def arc_points(center, radius, start_deg, end_deg, count=24):
+    cx, cy = center
+    pts = []
+    for i in range(count):
+        a = math.radians(start_deg + (end_deg - start_deg) * i / (count - 1))
+        pts.append((cx + radius * math.cos(a), cy - radius * math.sin(a)))
+    return pts
+
+
 # Tube surface polygons with light shading.
 light_dir = normalize(transform_vector((-0.35, -0.15, 1.0)))
 faces = []
@@ -335,7 +364,7 @@ for i in range(N_PHI):
         n = normalize(cross(sub(tp10, tp00), sub(tp01, tp00)))
         shade = max(0.0, dot(n, light_dir))
         gray = int(round(233 - 42 * shade))
-        color = f'#{gray:02x}{gray+7:02x}{gray+14:02x}'
+        color = f'#{gray:02x}{gray + 7:02x}{gray + 14:02x}'
         quad = [project_model(p00)[:2], project_model(p10)[:2], project_model(p11)[:2], project_model(p01)[:2]]
         faces.append((avg_z, color, quad))
 faces.sort(key=lambda item: item[0])
@@ -344,73 +373,38 @@ faces.sort(key=lambda item: item[0])
 circ_curves = [PHI_MIN, 0.02, PHI_MAX]
 long_curves = [0.15, 2.75]
 
-# Centerline.
+# Center line.
 centerline_pts = [project_model(centerline(PHI_MIN + (PHI_MAX - PHI_MIN) * i / 260.0))[:2] for i in range(261)]
 
-# Arrow and callout anchor helpers.
-figure_center = (0.5 * W, 0.5 * H)
-
-
-def vector2(a, b):
-    return (b[0] - a[0], b[1] - a[1])
-
-
-
-def length2(v):
-    return math.hypot(v[0], v[1])
-
-
-
-def normalize2(v):
-    n = length2(v)
-    if n < 1e-6:
-        return (1.0, 0.0)
-    return (v[0] / n, v[1] / n)
-
-
-
-def add2(a, b):
-    return (a[0] + b[0], a[1] + b[1])
-
-
-
-def mul2(v, s):
-    return (v[0] * s, v[1] * s)
-
-
-
-def screen_anchor(point, bias=(1.0, 0.0), distance=145.0):
-    d = normalize2((point[0] - figure_center[0] + 0.55 * bias[0], point[1] - figure_center[1] + 0.55 * bias[1]))
-    return add2(point, mul2(d, distance))
-
-
-# Lane segments and annotations.
+# Helical lane paths.
 lane_geometry = {}
 for lane in LANES:
     samples = helix_samples(lane)
     visible, hidden = split_segments(samples)
     lane_geometry[lane['id']] = {'visible': visible, 'hidden': hidden}
 
-# Representative decomposition point on RH +v lane.
+# Extend the center line into the clear front area and move basis vectors there.
+front_dir = normalize2(vector2(centerline_pts[0], centerline_pts[24]))
+centerline_ext_start = add2(centerline_pts[0], mul2(front_dir, -215.0))
+extended_centerline_pts = [centerline_ext_start] + centerline_pts
+centerline_label = add2(centerline_ext_start, (74.0, 20.0))
+
+basis_origin = add2(centerline_ext_start, (60.0, -118.0))
+front_s_dir = normalize2(project_vector(s_hat(PHI_MIN))[:2])
+front_r_dir = normalize2(project_vector(tube_normal(PHI_MIN, 4.85))[:2])
+front_s_tip = add2(basis_origin, mul2(front_s_dir, 128.0))
+front_r_tip = add2(basis_origin, mul2(front_r_dir, 94.0))
+theta_arc_pts = arc_points(add2(basis_origin, (20.0, -2.0)), 48.0, 210.0, 106.0, count=26)
+
+# Helix-angle annotation for one lane only.
 rep_lane = LANES[0]
-rep_phi = -0.12
+rep_phi = -0.10
 rep_theta = helix_theta(rep_phi, rep_lane)
 rep_p = project_model(tube_point(rep_phi, rep_theta))[:2]
-rep_s_vec = project_vector(s_hat(rep_phi))
-rep_theta_vec = project_vector(theta_hat(rep_phi, rep_theta))
-rep_helix_vec = project_vector(normalize(helix_tangent(rep_phi, rep_lane)))
-rep_s_dir = normalize2(rep_s_vec[:2])
-rep_theta_dir = normalize2(rep_theta_vec[:2])
-rep_helix_dir = normalize2(rep_helix_vec[:2])
-
-# Local vectors and angle arc for one helix.
-comp_len_s = 128.0
-comp_len_th = 86.0
-comp_len_h = 122.0
-u_s_end = add2(rep_p, mul2(rep_s_dir, comp_len_s))
-u_th_end = add2(rep_p, mul2(rep_theta_dir, comp_len_th))
-rep_h_end = add2(rep_p, mul2(rep_helix_dir, comp_len_h))
-
+rep_s_dir = normalize2(project_vector(s_hat(rep_phi))[:2])
+rep_helix_dir = normalize2(project_vector(normalize(helix_tangent(rep_phi, rep_lane)))[:2])
+alpha_s_end = add2(rep_p, mul2(rep_s_dir, 70.0))
+alpha_h_end = add2(rep_p, mul2(rep_helix_dir, 72.0))
 ang_s = math.atan2(rep_s_dir[1], rep_s_dir[0])
 ang_h = math.atan2(rep_helix_dir[1], rep_helix_dir[0])
 while ang_h < ang_s:
@@ -418,69 +412,42 @@ while ang_h < ang_s:
 if ang_h - ang_s > math.pi:
     ang_s, ang_h = ang_h, ang_s + 2 * math.pi
 alpha_arc_pts = []
-for i in range(26):
-    t = i / 25.0
+for i in range(24):
+    t = i / 23.0
     a = ang_s + t * (ang_h - ang_s)
-    alpha_arc_pts.append((rep_p[0] + 44.0 * math.cos(a), rep_p[1] + 44.0 * math.sin(a)))
+    alpha_arc_pts.append((rep_p[0] + 36.0 * math.cos(a), rep_p[1] + 36.0 * math.sin(a)))
+alpha_label_pos = add2(rep_p, (26.0, -30.0))
+alpha_note_pos = add2(rep_p, (118.0, -82.0))
 
-# Unit-vector and guide-shell anchors.
-phi_basis = -0.02
-basis_center = project_model(centerline(phi_basis))[:2]
-r_theta = 0.62
-r_tip = project_model(tube_point(phi_basis, r_theta))[:2]
-
-th_arc_pts = []
-for i in range(22):
-    theta = 0.70 + 0.75 * i / 21.0
-    th_arc_pts.append(project_model(tube_point(phi_basis, theta))[:2])
-
+# Shell label and legend.
 shell_anchor = project_model(tube_point(0.18, 5.55))[:2]
-shell_label = screen_anchor(shell_anchor, bias=(1.1, -0.2), distance=160.0)
-centerline_anchor = project_model(centerline(-0.34))[:2]
-centerline_label = screen_anchor(centerline_anchor, bias=(-1.0, -0.8), distance=128.0)
+shell_label = (1008.0, 818.0)
+legend_x = 84.0
+legend_y = 78.0
+legend_w = 246.0
+legend_h = 52.0
+legend_gap = 12.0
 
-# Lane callout placements.
-for lane in LANES:
-    phi = lane['arrow_phi']
-    point = project_model(helix_point(phi, lane))[:2]
-    lane['callout_anchor'] = point
-    lx, ly = screen_anchor(point, lane['label_bias'], distance=148.0)
-    if lane['id'] == 'lh_plus':
-        lx -= 132.0
-        ly -= 22.0
-    if lane['id'] == 'lh_minus':
-        lx += 18.0
-        ly += 32.0
-    lx = max(96.0, min(W - 230.0, lx))
-    ly = max(88.0, min(H - 42.0, ly))
-    lane['callout_label'] = (lx, ly)
-
-# Velocity arrows.
+# Velocity arrows, one on each lane.
 arrow_segments = []
 for lane in LANES:
     phi = lane['arrow_phi']
     p0 = helix_point(phi, lane)
     tangent = normalize(helix_tangent(phi, lane))
-    span = 0.22
     if lane['direction'] > 0:
         a0 = project_model(add(p0, mul(tangent, -0.38)))[:2]
         a1 = project_model(add(p0, mul(tangent, 0.38)))[:2]
-        label_pos = add2(a1, mul2(normalize2(vector2(figure_center, a1)), 28.0))
-        v_label = '+v'
     else:
         a0 = project_model(add(p0, mul(tangent, 0.38)))[:2]
         a1 = project_model(add(p0, mul(tangent, -0.38)))[:2]
-        label_pos = add2(a1, mul2(normalize2(vector2(figure_center, a1)), 28.0))
-        v_label = '-v'
-    arrow_segments.append((lane, a0, a1, label_pos, v_label))
-
+    arrow_segments.append((lane, a0, a1))
 
 parts = []
 A = parts.append
 A('<?xml version="1.0" encoding="UTF-8"?>')
 A(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">')
-A('  <title id="title">Figure 1b local helical lanes on an inflated membrane guide shell</title>')
-A('  <desc id="desc">Close view of a gently curved guide-shell tube segment with four helical lanes, local basis vectors, helix angle alpha, and representative tangential and azimuthal components.</desc>')
+A('  <title id="title">Figure 1b local helical lanes on a prestressed membrane guide shell</title>')
+A('  <desc id="desc">Close view of a gently curved guide-shell tube segment with four helical lanes, an extended local center line and basis vectors, and one annotated helix angle alpha.</desc>')
 A('  <defs>')
 A('    <marker id="arrowhead-dark" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
 A('      <path d="M 0 0 L 12 6 L 0 12 z" fill="#334155"/>')
@@ -488,18 +455,10 @@ A('    </marker>')
 A('    <marker id="arrowhead-soft" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
 A('      <path d="M 0 0 L 12 6 L 0 12 z" fill="#64748b"/>')
 A('    </marker>')
-A('    <marker id="arrowhead-rh_plus" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
-A('      <path d="M 0 0 L 12 6 L 0 12 z" fill="#c0392b"/>')
-A('    </marker>')
-A('    <marker id="arrowhead-rh_minus" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
-A('      <path d="M 0 0 L 12 6 L 0 12 z" fill="#2e86ab"/>')
-A('    </marker>')
-A('    <marker id="arrowhead-lh_plus" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
-A('      <path d="M 0 0 L 12 6 L 0 12 z" fill="#2f9e44"/>')
-A('    </marker>')
-A('    <marker id="arrowhead-lh_minus" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
-A('      <path d="M 0 0 L 12 6 L 0 12 z" fill="#b26b00"/>')
-A('    </marker>')
+for lane in LANES:
+    A(f'    <marker id="arrowhead-{lane["id"]}" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">')
+    A(f'      <path d="M 0 0 L 12 6 L 0 12 z" fill="{lane["color"]}"/>')
+    A('    </marker>')
 A('    <style><![CDATA[')
 A('      text { font-family: Arial, Helvetica, sans-serif; fill: #18212d; }')
 A('      .shell-face { stroke: none; opacity: 0.96; }')
@@ -512,20 +471,17 @@ A('      .lane-halo-visible { fill: none; stroke: #ffffff; stroke-width: 8.8; st
 A('      .lane-halo-hidden { fill: none; stroke: #ffffff; stroke-width: 6.8; stroke-dasharray: 8 7; stroke-linecap: round; stroke-linejoin: round; opacity: 0.76; }')
 A('      .lane-visible { fill: none; stroke-width: 4.8; stroke-linecap: round; stroke-linejoin: round; }')
 A('      .lane-hidden { fill: none; stroke-width: 3.5; stroke-dasharray: 8 7; stroke-linecap: round; stroke-linejoin: round; opacity: 0.92; }')
-A('      .leader { fill: none; stroke: #94a3b8; stroke-width: 1.7; stroke-linecap: round; }')
-A('      .lane-leader { fill: none; stroke-width: 1.9; stroke-linecap: round; }')
+A('      .leader { fill: none; stroke: #94a3b8; stroke-width: 2.0; stroke-linecap: round; }')
 A('      .math { font-size: 30px; font-style: italic; }')
-A('      .math-sub { font-size: 17px; font-style: italic; }')
 A('      .math-caret { font-size: 18px; font-style: normal; }')
-A('      .label { font-size: 28px; font-weight: 500; }')
 A('      .label-small { font-size: 24px; font-weight: 500; }')
-A('      .note { font-size: 21px; fill: #556270; }')
-A('      .lane-text { font-size: 24px; font-weight: 600; }')
-A('      .box { fill: #ffffff; opacity: 0.90; }')
-A('      .decomp { fill: none; stroke: #1f2937; stroke-width: 2.2; stroke-linecap: round; marker-end: url(#arrowhead-dark); }')
+A('      .note { font-size: 18px; fill: #556270; }')
+A('      .legend-box { fill: #ffffff; stroke: #d7dee7; stroke-width: 1.4; opacity: 0.97; }')
+A('      .legend-swatch { fill: none; stroke-width: 5.8; stroke-linecap: round; }')
+A('      .legend-label { font-size: 23px; font-weight: 600; }')
+A('      .alpha-ref { fill: none; stroke: #1f2937; stroke-width: 2.0; stroke-linecap: round; }')
 A('      .alpha-arc { fill: none; stroke: #1f2937; stroke-width: 1.9; }')
 A('      .velocity { fill: none; stroke-width: 2.6; stroke-linecap: round; }')
-A('      .velocity-text { font-size: 22px; font-weight: 600; }')
 A('    ]]></style>')
 A('  </defs>')
 A(f'  <rect width="{W}" height="{H}" fill="#ffffff"/>')
@@ -554,11 +510,7 @@ A('    </g>')
 A('  </g>')
 A('')
 A('  <g id="centerline_group">')
-A(f'    <path class="centerline" d="{path_from_points(centerline_pts)}"/>')
-A(f'    <path class="basis" d="M {centerline_pts[120][0]:.2f},{centerline_pts[120][1]:.2f} L {centerline_pts[151][0]:.2f},{centerline_pts[151][1]:.2f}"/>')
-A(f'    <text x="{centerline_pts[152][0] + 12:.2f}" y="{centerline_pts[152][1] - 10:.2f}" class="math">s</text>')
-A(f'    <text x="{centerline_pts[152][0] + 28:.2f}" y="{centerline_pts[152][1] - 27:.2f}" class="math-caret">^</text>')
-A(f'    <path class="leader" d="M {centerline_label[0]:.2f},{centerline_label[1] - 16:.2f} L {centerline_anchor[0]:.2f},{centerline_anchor[1]:.2f}"/>')
+A(f'    <path class="centerline" d="{path_from_points(extended_centerline_pts)}"/>')
 A(f'    <text x="{centerline_label[0]:.2f}" y="{centerline_label[1]:.2f}" class="label-small">center line</text>')
 A('  </g>')
 A('')
@@ -580,43 +532,44 @@ for lane in LANES:
 A('  </g>')
 A('')
 A('  <g id="basis_vectors">')
-A(f'    <path class="basis" d="M {basis_center[0]:.2f},{basis_center[1]:.2f} L {r_tip[0]:.2f},{r_tip[1]:.2f}"/>')
-A(f'    <text x="{r_tip[0] + 12:.2f}" y="{r_tip[1] - 8:.2f}" class="math">r</text>')
-A(f'    <text x="{r_tip[0] + 28:.2f}" y="{r_tip[1] - 24:.2f}" class="math-caret">^</text>')
-A(f'    <path class="basis-soft" d="{path_from_points(th_arc_pts)}"/>')
-A(f'    <text x="{th_arc_pts[-1][0] + 16:.2f}" y="{th_arc_pts[-1][1] + 4:.2f}" class="math">θ</text>')
-A(f'    <text x="{th_arc_pts[-1][0] + 33:.2f}" y="{th_arc_pts[-1][1] - 12:.2f}" class="math-caret">^</text>')
+A(f'    <path class="basis" d="M {basis_origin[0]:.2f},{basis_origin[1]:.2f} L {front_s_tip[0]:.2f},{front_s_tip[1]:.2f}"/>')
+A(f'    <text x="{front_s_tip[0] + 12:.2f}" y="{front_s_tip[1] - 8:.2f}" class="math">s</text>')
+A(f'    <text x="{front_s_tip[0] + 28:.2f}" y="{front_s_tip[1] - 24:.2f}" class="math-caret">^</text>')
+A(f'    <path class="basis" d="M {basis_origin[0]:.2f},{basis_origin[1]:.2f} L {front_r_tip[0]:.2f},{front_r_tip[1]:.2f}"/>')
+A(f'    <text x="{front_r_tip[0] - 8:.2f}" y="{front_r_tip[1] - 10:.2f}" class="math">r</text>')
+A(f'    <text x="{front_r_tip[0] + 8:.2f}" y="{front_r_tip[1] - 26:.2f}" class="math-caret">^</text>')
+A(f'    <path class="basis-soft" d="{path_from_points(theta_arc_pts)}"/>')
+A(f'    <text x="{theta_arc_pts[-1][0] + 14:.2f}" y="{theta_arc_pts[-1][1] - 4:.2f}" class="math">θ</text>')
+A(f'    <text x="{theta_arc_pts[-1][0] + 31:.2f}" y="{theta_arc_pts[-1][1] - 20:.2f}" class="math-caret">^</text>')
 A('  </g>')
 A('')
-A('  <g id="decomposition">')
-A(f'    <path class="decomp" d="M {rep_p[0]:.2f},{rep_p[1]:.2f} L {u_s_end[0]:.2f},{u_s_end[1]:.2f}"/>')
-A(f'    <path class="decomp" d="M {rep_p[0]:.2f},{rep_p[1]:.2f} L {u_th_end[0]:.2f},{u_th_end[1]:.2f}"/>')
+A('  <g id="helix_angle">')
+A(f'    <path class="alpha-ref" d="M {rep_p[0]:.2f},{rep_p[1]:.2f} L {alpha_s_end[0]:.2f},{alpha_s_end[1]:.2f}"/>')
+A(f'    <path class="alpha-ref" d="M {rep_p[0]:.2f},{rep_p[1]:.2f} L {alpha_h_end[0]:.2f},{alpha_h_end[1]:.2f}"/>')
 A(f'    <path class="alpha-arc" d="{path_from_points(alpha_arc_pts)}"/>')
-A(f'    <text x="{u_s_end[0] + 12:.2f}" y="{u_s_end[1] - 12:.2f}" class="label-small">u</text>')
-A(f'    <text x="{u_s_end[0] + 27:.2f}" y="{u_s_end[1] - 1:.2f}" class="math-sub">tangential</text>')
-A(f'    <text x="{u_th_end[0] + 16:.2f}" y="{u_th_end[1] + 6:.2f}" class="label-small">u</text>')
-A(f'    <text x="{u_th_end[0] + 31:.2f}" y="{u_th_end[1] + 17:.2f}" class="math-sub">azimuthal</text>')
-A(f'    <text x="{rep_p[0] + 34:.2f}" y="{rep_p[1] - 46:.2f}" class="math">α</text>')
-A(f'    <text x="{rep_p[0] + 132:.2f}" y="{rep_p[1] - 86:.2f}" class="note">α exaggerated for clarity</text>')
+A(f'    <text x="{alpha_label_pos[0]:.2f}" y="{alpha_label_pos[1]:.2f}" class="math">α</text>')
+A(f'    <text x="{alpha_note_pos[0]:.2f}" y="{alpha_note_pos[1]:.2f}" class="note">α exaggerated for clarity</text>')
 A('  </g>')
 A('')
 A('  <g id="velocity_arrows">')
-for lane, a0, a1, label_pos, v_label in arrow_segments:
+for lane, a0, a1 in arrow_segments:
     A(f'    <path class="velocity" stroke="{lane["color"]}" marker-end="url(#arrowhead-{lane["id"]})" d="M {a0[0]:.2f},{a0[1]:.2f} L {a1[0]:.2f},{a1[1]:.2f}"/>')
-    A(f'    <text x="{label_pos[0]:.2f}" y="{label_pos[1]:.2f}" class="velocity-text" fill="{lane["color"]}">{v_label}</text>')
 A('  </g>')
 A('')
-A('  <g id="callouts">')
-A(f'    <path class="leader" d="M {shell_label[0]:.2f},{shell_label[1] - 24:.2f} L {shell_anchor[0]:.2f},{shell_anchor[1]:.2f}"/>')
+A('  <g id="legend">')
+for idx, lane in enumerate(LANES):
+    by = legend_y + idx * (legend_h + legend_gap)
+    A(f'    <rect x="{legend_x:.2f}" y="{by:.2f}" width="{legend_w:.2f}" height="{legend_h:.2f}" rx="12" class="legend-box"/>')
+    A(f'    <path class="legend-swatch" stroke="{lane["color"]}" d="M {legend_x + 18:.2f},{by + 27:.2f} L {legend_x + 74:.2f},{by + 27:.2f}"/>')
+    A(f'    <text x="{legend_x + 92:.2f}" y="{by + 34:.2f}" class="legend-label">{lane["label"]}</text>')
+A('  </g>')
+A('')
+A('  <g id="shell_callout">')
+A(f'    <path class="leader" d="M {shell_label[0] - 18:.2f},{shell_label[1] - 38:.2f} L {shell_anchor[0]:.2f},{shell_anchor[1]:.2f}"/>')
 A(f'    <text x="{shell_label[0]:.2f}" y="{shell_label[1]:.2f}" class="label-small">')
-A('      <tspan x="{0}" dy="0">inflated membrane</tspan>'.format(f'{shell_label[0]:.2f}'))
+A('      <tspan x="{0}" dy="0">prestressed membrane</tspan>'.format(f'{shell_label[0]:.2f}'))
 A('      <tspan x="{0}" dy="26">guide shell</tspan>'.format(f'{shell_label[0]:.2f}'))
 A('    </text>')
-for lane in LANES:
-    ax, ay = lane['callout_anchor']
-    lx, ly = lane['callout_label']
-    A(f'    <path class="lane-leader" stroke="{lane["color"]}" d="M {lx:.2f},{ly - 14:.2f} L {ax:.2f},{ay:.2f}"/>')
-    A(f'    <text x="{lx:.2f}" y="{ly:.2f}" class="lane-text" fill="{lane["color"]}">{lane["label"]}</text>')
 A('  </g>')
 A('</svg>')
 
