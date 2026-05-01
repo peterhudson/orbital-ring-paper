@@ -24,7 +24,7 @@ LANES = [
         'label': 'RH lane, +v',
         'handed': 1.0,
         'direction': 1.0,
-        'theta0': math.radians(226.0),
+        'theta0': math.radians(246.0),
         'color': '#c0392b',
         'hidden': '#ebb0a7',
         'arrow_s': 5.1,
@@ -34,7 +34,7 @@ LANES = [
         'label': 'RH lane, -v',
         'handed': 1.0,
         'direction': -1.0,
-        'theta0': math.radians(232.0),
+        'theta0': math.radians(252.0),
         'color': '#2e86ab',
         'hidden': '#a7cedf',
         'arrow_s': 7.3,
@@ -44,7 +44,7 @@ LANES = [
         'label': 'LH lane, +v',
         'handed': -1.0,
         'direction': 1.0,
-        'theta0': math.radians(240.0),
+        'theta0': math.radians(258.0),
         'color': '#2f9e44',
         'hidden': '#afdcb8',
         'arrow_s': 4.0,
@@ -54,7 +54,7 @@ LANES = [
         'label': 'LH lane, -v',
         'handed': -1.0,
         'direction': -1.0,
-        'theta0': math.radians(246.0),
+        'theta0': math.radians(264.0),
         'color': '#b26b00',
         'hidden': '#e1c288',
         'arrow_s': 6.4,
@@ -84,9 +84,9 @@ def rot_z(p, a):
 
 
 def transform_point(p):
-    p = rot_z(p, math.radians(-10.0))
-    p = rot_y(p, math.radians(55.0))
-    p = rot_x(p, math.radians(55.0))
+    p = rot_z(p, math.radians(0.0))
+    p = rot_y(p, math.radians(40.0))
+    p = rot_x(p, math.radians(35.0))
     return p
 
 
@@ -357,20 +357,20 @@ for lane in LANES:
 # Extended center line and external basis.
 centerline_pts = [project_model((LENGTH * i / 240.0, 0.0, 0.0))[:2] for i in range(241)]
 axis_dir = normalize2((centerline_pts[-1][0] - centerline_pts[0][0], centerline_pts[-1][1] - centerline_pts[0][1]))
-centerline_ext_start = add2(centerline_pts[0], mul2(axis_dir, -170.0))
+centerline_ext_start = add2(centerline_pts[0], mul2(axis_dir, -250.0))
 extended_centerline_pts = [centerline_ext_start] + centerline_pts
-basis_origin = add2(centerline_ext_start, mul2(axis_dir, 46.0))
+basis_origin = add2(centerline_ext_start, mul2(axis_dir, 34.0))
 
-basis_theta = math.radians(236.0)
+basis_theta = math.radians(258.0)
 r_dir = normalize2(project_vector(r_hat(basis_theta))[:2])
 s_dir = axis_dir
-theta_arc_center = add2(basis_origin, (-1.0, -2.0))
+theta_arc_center = add2(basis_origin, (-8.0, 0.0))
 
-theta_tip = add2(theta_arc_center, (-42.0, -46.0))
-r_tip = add2(basis_origin, mul2(r_dir, 80.0))
-s_tip = add2(basis_origin, mul2(s_dir, 104.0))
-theta_arc_pts = arc_points(theta_arc_center, 36.0, 180.0, 110.0, count=22)
-centerline_label = add2(centerline_ext_start, (18.0, 118.0))
+theta_tip = add2(theta_arc_center, (-58.0, -36.0))
+r_tip = add2(basis_origin, mul2(r_dir, 92.0))
+s_tip = add2(basis_origin, mul2(s_dir, 122.0))
+theta_arc_pts = arc_points(theta_arc_center, 42.0, 168.0, 92.0, count=22)
+centerline_label = add2(centerline_ext_start, (-2.0, 160.0))
 
 # Alpha annotation at the front-face start of one helix.
 alpha_lane = LANES[0]
@@ -401,21 +401,21 @@ def visible_arrow_points(lane, s_guess):
             p = helix_point(s, lane)
             t = normalize(helix_tangent(s, lane))
             if lane['direction'] > 0:
-                a0 = project_model(add(p, mul(t, -0.32)))[:2]
-                a1 = project_model(add(p, mul(t, 0.32)))[:2]
+                a0 = project_model(add(p, mul(t, -0.24)))[:2]
+                a1 = project_model(add(p, mul(t, 0.24)))[:2]
             else:
-                a0 = project_model(add(p, mul(t, 0.32)))[:2]
-                a1 = project_model(add(p, mul(t, -0.32)))[:2]
+                a0 = project_model(add(p, mul(t, 0.24)))[:2]
+                a1 = project_model(add(p, mul(t, -0.24)))[:2]
             return a0, a1
     p = helix_point(s_guess, lane)
     t = normalize(helix_tangent(s_guess, lane))
-    return project_model(add(p, mul(t, -0.32)))[:2], project_model(add(p, mul(t, 0.32)))[:2]
+    return project_model(add(p, mul(t, -0.24)))[:2], project_model(add(p, mul(t, 0.24)))[:2]
 
 arrow_segments = [(lane, *visible_arrow_points(lane, lane['arrow_s'])) for lane in LANES]
 
 # Shell label and legend.
-shell_anchor = project_model(cylinder_point(LENGTH * 0.78, math.radians(310.0)))[:2]
-shell_label = (980.0, 808.0)
+shell_anchor = project_model(cylinder_point(LENGTH * 0.56, math.radians(160.0)))[:2]
+shell_label = (770.0, 96.0)
 legend_x = 84.0
 legend_y = 82.0
 legend_w = 246.0
