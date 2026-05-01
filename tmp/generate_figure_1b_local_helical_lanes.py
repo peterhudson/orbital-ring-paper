@@ -84,9 +84,9 @@ def rot_z(p, a):
 
 
 def transform_point(p):
-    p = rot_z(p, math.radians(-8.0))
-    p = rot_y(p, math.radians(-18.0))
-    p = rot_x(p, math.radians(67.0))
+    p = rot_z(p, math.radians(-10.0))
+    p = rot_y(p, math.radians(55.0))
+    p = rot_x(p, math.radians(55.0))
     return p
 
 
