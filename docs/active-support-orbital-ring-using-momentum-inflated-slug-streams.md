@@ -37,6 +37,22 @@ The claim envelope should be stated early. This paper does not claim closure of 
 
 The main fatal risks are also worth naming early: follower-force instability, unacceptable guide loss, impossible thermal rejection, unmanageable fault-domain energy, and a passive-mass closure loop that fails to converge.
 
+Figure 1a gives the global geometry of the orbital ring concept and the local section chosen for closer inspection. Figure 1b then shows the corresponding local guide-shell geometry and representative helical lanes used throughout the paper.
+
+<figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
+  <img src="../figures/figure-1a-orbital-ring-global-geometry.svg" alt="Figure 1a, global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 1b." style="width: 76%; height: auto;" />
+  <figcaption style="margin-top: 0.55em; font-size: 0.92em; line-height: 1.35; color: #4b5563;">
+    <strong>Figure 1a.</strong> Global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 1b.
+  </figcaption>
+</figure>
+
+<figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
+  <img src="../figures/figure-1b-orbital-ring-local-helical-lanes.svg" alt="Figure 1b, local guide-shell segment with representative helical lanes and local coordinates." style="width: 92%; height: auto;" />
+  <figcaption style="margin-top: 0.55em; font-size: 0.92em; line-height: 1.35; color: #4b5563;">
+    <strong>Figure 1b.</strong> Local guide-shell segment with representative helical lanes and local coordinates.
+  </figcaption>
+</figure>
+
 ### 1.1 Paper structure
 
 The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-scale actuation result. Only then does it turn to the harder practicality screens: macro lift throughput, fault-domain architecture, and closure.
