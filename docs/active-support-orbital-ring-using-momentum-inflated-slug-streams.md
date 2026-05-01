@@ -504,6 +504,13 @@ The minimal balanced cell therefore contains four lanes. To keep the sign bookke
 
 Pair A therefore cancels \(s\)-momentum but retains positive \(\theta\)-momentum, pair B cancels \(s\)-momentum but retains negative \(\theta\)-momentum, and the four-lane cell cancels both together.
 
+<figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
+  <img src="../figures/figure-2-balanced-four-lane-cell.svg" alt="Figure 2, balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions." style="width: 88%; height: auto;" />
+  <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
+    <strong>Figure 2.</strong> Balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions. Arrows indicate slug travel direction, and the helix angle is exaggerated for clarity.
+  </figcaption>
+</figure>
+
 Operated together, this cell can cancel to first order:
 
 - net axial momentum,
