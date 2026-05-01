@@ -25,7 +25,7 @@
 
   <g id="earth_rotation_axis">
     <path d="M 677.97,816.81 L 522.03,83.19" class="axis"/>
-    <text x="420.00" y="800.00" class="label">rotation axis</text>
+    <text x="420.00" y="800.00" class="label">Earth rotation axis</text>
   </g>
 
   <g id="earth">
