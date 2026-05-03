@@ -522,7 +522,7 @@ The \(s\)-components behave differently. In a stationary speed-gradient section,
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-2b-balanced-cell-force-cancellation.svg" alt="Figure 3, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 3.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential \((\theta)\) components cancel in the four-lane sum, while the ring-direction \((s)\) components add to produce a net axial structural tug during acceleration or deceleration.
+    <strong>Figure 3.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential <em>θ</em> components cancel in the four-lane sum, while the ring-direction <em>s</em> components add to produce a net axial structural tug during acceleration or deceleration.
   </figcaption>
 </figure>
 
@@ -719,7 +719,7 @@ This is the macro-scale actuation mechanism. It turns distributed speed modulati
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-4-unwrapped-opposed-balanced-cells.svg" alt="Figure 5, unwrapped view of the paired balanced four-cells in the s-theta plane, showing the A to B and A′ to B′ sectors." style="width: 68%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 5.</strong> Unwrapped \((s,\theta)\)-plane view of the same paired balanced four-cells shown in Figure 4. The A to B and A′ to B′ sectors are shown as flattened lane patterns, making it clearer how opposed balanced cells are used in matched pairs to generate a bending moment.
+    <strong>Figure 5.</strong> Unwrapped (<em>s</em>, <em>θ</em>)-plane view of the same paired balanced four-cells shown in Figure 4. The A to B and A′ to B′ sectors are shown as flattened lane patterns, making it clearer how opposed balanced cells are used in matched pairs to generate a bending moment.
   </figcaption>
 </figure>
 
