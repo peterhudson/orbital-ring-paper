@@ -707,7 +707,7 @@ C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}
 
 where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite angular extent.
 
-This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 4 sketches the local bookkeeping: one balanced four-cell runs from A to B, while an opposed balanced four-cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 5 then unwraps the same paired layout into the \(s,\theta\) plane, which makes the moment-generating opposition easier to read.
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 4 sketches the opposed balanced four-cells geometrically: one cell runs from A to B, while a mirrored cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 5 then makes the same logic more physical by resolving the lane reactions at representative control locations into local <em>s</em>- and <em>θ</em>-components.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-3-opposed-balanced-cells-bending.svg" alt="Figure 4, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
@@ -717,13 +717,13 @@ This is the macro-scale actuation mechanism. It turns distributed speed modulati
 </figure>
 
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-4-unwrapped-opposed-balanced-cells.svg" alt="Figure 5, unwrapped view of the paired balanced four-cells in the s-theta plane, showing the A to B and A′ to B′ sectors." style="width: 68%; height: auto;" />
+  <img src="../figures/figure-4-opposed-balanced-cells-moment.svg" alt="Figure 5, local force-component view showing how opposed balanced cells generate a bending moment." style="width: 82%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 5.</strong> Unwrapped (<em>s</em>, <em>θ</em>)-plane view of the same paired balanced four-cells shown in Figure 4. The A to B and A′ to B′ sectors are shown as flattened lane patterns, making it clearer how opposed balanced cells are used in matched pairs to generate a bending moment.
+    <strong>Figure 5.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential <em>F</em><sub>θ</sub> components cancel, while the ring-direction <em>F</em><sub>s</sub> components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A′ and B′ together, producing the bending couple sketched in Figure 4.
   </figcaption>
 </figure>
 
-With the A to B and A′ to B′ cells speed-trimmed in opposite azimuthal sectors, the internal tug fields form a couple rather than a net force.
+So the physical picture is two-stage. Within each balanced cell, the unwanted circumferential reaction is removed by symmetry. Across the torus, the surviving <em>s</em>-directed reactions push A and B apart while pulling A′ and B′ together, so the opposed sectors generate a couple rather than a mere net force.
 
 The simplest mental picture is squeezing a hoop on two opposite sides, except here the squeeze is generated internally by momentum exchange inside the lane system rather than by external hands.
 
