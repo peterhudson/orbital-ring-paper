@@ -515,6 +515,17 @@ Pair A therefore cancels \(s\)-momentum but retains positive \(\theta\)-momentum
   </figcaption>
 </figure>
 
+Figure 3 makes the cancellation bookkeeping explicit in force-component form at two representative stations, A and B, of a control sector. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the cell contains equal positive and negative azimuthal slopes, the \(\theta\)-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction.
+
+The \(s\)-components behave differently. In a stationary speed-gradient section, a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along \(s\) on the stationary guide hardware. So the balanced four-cell can cancel the unwanted \(\theta\)-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
+
+<figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
+  <img src="../figures/figure-2b-balanced-cell-force-cancellation.svg" alt="Figure 3, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
+  <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
+    <strong>Figure 3.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential \((\theta)\) components cancel in the four-lane sum, while the ring-direction \((s)\) components add to produce a net axial structural tug during acceleration or deceleration.
+  </figcaption>
+</figure>
+
 Operated together, this cell can cancel to first order:
 
 - net axial momentum,
@@ -696,19 +707,19 @@ C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}
 
 where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite angular extent.
 
-This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 3 sketches the local bookkeeping: one balanced four-cell runs from A to B, while an opposed balanced four-cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 4 then unwraps the same paired layout into the \(s,\theta\) plane, which makes the moment-generating opposition easier to read.
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 4 sketches the local bookkeeping: one balanced four-cell runs from A to B, while an opposed balanced four-cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 5 then unwraps the same paired layout into the \(s,\theta\) plane, which makes the moment-generating opposition easier to read.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-3-opposed-balanced-cells-bending.svg" alt="Figure 3, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
+  <img src="../figures/figure-3-opposed-balanced-cells-bending.svg" alt="Figure 4, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 3.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A′ to B′. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
+    <strong>Figure 4.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A′ to B′. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
   </figcaption>
 </figure>
 
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-4-unwrapped-opposed-balanced-cells.svg" alt="Figure 4, unwrapped view of the paired balanced four-cells in the s-theta plane, showing the A to B and A′ to B′ sectors." style="width: 68%; height: auto;" />
+  <img src="../figures/figure-4-unwrapped-opposed-balanced-cells.svg" alt="Figure 5, unwrapped view of the paired balanced four-cells in the s-theta plane, showing the A to B and A′ to B′ sectors." style="width: 68%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 4.</strong> Unwrapped \((s,\theta)\)-plane view of the same paired balanced four-cells shown in Figure 3. The A to B and A′ to B′ sectors are shown as flattened lane patterns, making it clearer how opposed balanced cells are used in matched pairs to generate a bending moment.
+    <strong>Figure 5.</strong> Unwrapped \((s,\theta)\)-plane view of the same paired balanced four-cells shown in Figure 4. The A to B and A′ to B′ sectors are shown as flattened lane patterns, making it clearer how opposed balanced cells are used in matched pairs to generate a bending moment.
   </figcaption>
 </figure>
 
