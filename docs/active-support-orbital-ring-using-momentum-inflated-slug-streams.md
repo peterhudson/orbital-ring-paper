@@ -1,7 +1,7 @@
-# Helical Slug Streams as a Prestress and Actuation Primitive for Active-Support Orbital Ring Concepts
-
-<div style="margin: 0.55em auto 1.15em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/orbital-ring-title-render.jpeg" alt="Artistic render of the orbital ring concept." style="width: 58%; max-width: 4.5in; height: auto;" />
+<div style="min-height: 9.15in; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; page-break-after: always; break-after: page; padding-top: 0.15in; box-sizing: border-box;">
+  <h1 style="font-size: 2.05rem; line-height: 1.14; margin: 0 0 0.42em 0; max-width: 7.0in;">Helical Slug Streams as a Prestress and Actuation Primitive for Active-Support Orbital Ring Concepts</h1>
+  <div style="font-size: 1.08rem; color: #374151; margin: 0 0 0.7em 0;">Peter Hudson</div>
+  <img src="../figures/orbital-ring-title-render-v2.jpeg" alt="Artistic render of the orbital ring concept." style="width: 92%; max-width: 7.1in; height: auto; border-radius: 0;" />
 </div>
 
 ## Abstract
