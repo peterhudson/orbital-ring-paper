@@ -1,5 +1,9 @@
 # Helical Slug Streams as a Prestress and Actuation Primitive for Active-Support Orbital Ring Concepts
 
+<div style="margin: 0.55em auto 1.15em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
+  <img src="../figures/orbital-ring-title-render.jpeg" alt="Artistic render of the orbital ring concept." style="width: 58%; max-width: 4.5in; height: auto;" />
+</div>
+
 ## Abstract
 
 This paper proposes an orbital-ring architecture built from magnetically guided high-speed slug streams running in lanes set at small helix angle around a very large lightweight toroidal guide structure. The paper's main claim is narrower than feasibility: it identifies two linked ideas that are genuinely useful at the concept level and may serve as an internal prestress-and-actuation primitive for active-support ring concepts.
@@ -692,12 +696,19 @@ C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}
 
 where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite angular extent.
 
-This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 3 sketches the local bookkeeping: one balanced four-cell runs from A to B, while an opposed balanced four-cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell.
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 3 sketches the local bookkeeping: one balanced four-cell runs from A to B, while an opposed balanced four-cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 4 then unwraps the same paired layout into the \(s,\theta\) plane, which makes the moment-generating opposition easier to read.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-3-opposed-balanced-cells-bending.svg" alt="Figure 3, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
     <strong>Figure 3.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A′ to B′. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
+  </figcaption>
+</figure>
+
+<figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
+  <img src="../figures/figure-4-unwrapped-opposed-balanced-cells.svg" alt="Figure 4, unwrapped view of the paired balanced four-cells in the s-theta plane, showing the A to B and A′ to B′ sectors." style="width: 68%; height: auto;" />
+  <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
+    <strong>Figure 4.</strong> Unwrapped \((s,\theta)\)-plane view of the same paired balanced four-cells shown in Figure 3. The A to B and A′ to B′ sectors are shown as flattened lane patterns, making it clearer how opposed balanced cells are used in matched pairs to generate a bending moment.
   </figcaption>
 </figure>
 
