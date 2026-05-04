@@ -516,7 +516,7 @@ The $s$-components behave differently. In a stationary speed-gradient section, a
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-4-balanced-cell-force-cancellation.svg" alt="Figure 4, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential θ components cancel in the four-lane sum, while the ring-direction s components add to produce a net axial structural tug during acceleration or deceleration.
+    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.
   </figcaption>
 </figure>
 
@@ -713,7 +713,7 @@ This is the macro-scale actuation mechanism. It turns distributed speed modulati
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-6-opposed-balanced-cells-moment.svg" alt="Figure 6, local force-component view showing how opposed balanced cells generate a bending moment." style="width: 82%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 6.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential F</em><sub>θ</sub> components cancel, while the ring-direction F</em><sub>s</sub> components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A′ and B′ together, producing the bending couple sketched in Figure 5.
+    <strong>Figure 6.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential $F_\theta$ components cancel, while the ring-direction $F_s$ components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A′ and B′ together, producing the bending couple sketched in Figure 5.
   </figcaption>
 </figure>
 
