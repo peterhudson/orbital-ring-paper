@@ -3,7 +3,7 @@ title: "Helical Slug Streams as a Prestress and Actuation Primitive for Active-S
 author: "Peter Hudson"
 ---
 
-![](../figures/orbital-ring-title-render-v2.jpeg){width=92%}
+\noindent\hspace*{-0.05\textwidth}![](../figures/orbital-ring-title-render-v2.jpeg){width=110%}
 
 \newpage
 
@@ -34,17 +34,19 @@ This paper proposes a specific answer to both problems.
 1. **Helical slug streams at small $\alpha$ in a prestressed membrane guide shell.** The lanes are wrapped helically around a large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into local structural stiffness.
 2. **A four-lane balanced cell for macro-scale actuation.** The same helical geometry allows balanced groups of lanes whose momentum components cancel in steady operation but can be modulated through fixed spatial speed gradients to produce distributed tug fields and ring-scale bending moments.
 
-The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system, nor does it claim demonstrated closed-loop controllability. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, , fault isolation, startup, deployment, and passive-mass closure remain explicit closure requirements.
+The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system, nor does it claim demonstrated closed-loop controllability. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, fault isolation, startup, deployment, and passive-mass closure remain explicit closure requirements.
 
 The main fatal risks are also worth naming early: follower-force instability, unacceptable guide loss, impossible thermal rejection, unmanageable fault-domain energy, and a passive-mass closure loop that fails to converge.
 
-Figure 1 gives the global geometry of the orbital ring concept and the local section chosen for closer inspection. Figure 2 then shows the corresponding local guide-shell geometry and a representative helical lane used throughout the paper.
+To ground ourselves in the geometry of the problem, Figure 1 gives the global geometry of the orbital ring concept and the local section chosen for closer inspection. 
 
-![](../figures/figure-1-orbital-ring-global-geometry.svg){width=76%}
+![](../figures/figure-1-orbital-ring-global-geometry.svg){width=100%}
 
-**Figure 1.** Global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 2.
+**Figure 1.** Global geometry of the orbital ring around Earth.
 
-![](../figures/figure-2-orbital-ring-local-helical-lane-geometry.svg){width=92%}
+The highlighted section of the orbital ring is displayed below in Figure 2 and shows the corresponding local guide-shell geometry and a representative helical lane used throughout the paper.
+
+![](../figures/figure-2-orbital-ring-local-helical-lane-geometry.svg){width=100%}
 
 **Figure 2.** Local guide-shell segment with a representative helical lane and local coordinates.
 
@@ -83,7 +85,7 @@ To keep later screens anchored, the paper uses one primary bookkeeping case unle
 | Lane count | about 300 | Discrete-lane and balanced-cell screens |
 | Prestress ratio $\Gamma$ | 10 baseline, 30 to 100 sensitivity | Lower-bound shell-prestress screen |
 
-This is a bookkeeping case, not an optimized design. The 500 km altitude is only a convenient reference point (indeed an better altitude might be considerable lower even below 100km to avoid orbital debris), and none of the other ring parameters in this test case are claimed to be optimal. The case is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
+This is a bookkeeping case, not an optimized design. The 500 km altitude is only a convenient reference point (indeed, a better altitude might be considerably lower, perhaps even below 100 km to avoid orbital debris), and none of the other ring parameters in this test case are claimed to be optimal. The case is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
 
 Throughout the paper, $w_p$ should be read as the **net inward non-stream load per metre**. It includes whatever passive structural burden, tether load, payload load, drag-like disturbance, or other non-stream loading the moving stream must support. For the guide shell's own mass, that bookkeeping can include gravity minus the guide's small centrifugal relief from Earth co-rotation. At 500 km altitude that relief is small, but defining $w_p$ this way keeps the lift comparison unambiguous.
 
@@ -96,7 +98,7 @@ Because the local numbers are easy to underestimate, the corresponding whole-rin
 | Passive mass for $w_p=10~\mathrm{kN/m}$ | about $5\times10^{10}$ kg |
 | Moving-stream mass for $\lambda_\mathrm{stream}\approx 1600~\mathrm{kg/m}$ | about $6.9\times10^{10}$ kg |
 | Total moving kinetic energy | about $3.5\times10^{18}$ J |
-| Total slug count for 10 kg slugs | about $6.9\times10^9$ |
+| Total slug count for 10 kg slugs | about $6.9\times10^{9}$ |
 
 That table does not refute the architecture, but it does place the reference case firmly in the megastructure regime. Even the paper's nominally light reference point already involves tens of billions of kilograms of passive and moving inventory.
 
@@ -306,6 +308,7 @@ That observation cuts directly against naive pictures of a single giant monolith
 
 ---
 
+
 ## 5. Helical lanes in a prestressed membrane guide shell
 
 The helical toroidal guide architecture is the first major payoff of the paper.
@@ -472,6 +475,7 @@ That is why the orbital ring still requires active macro-scale actuation, and wh
 
 ---
 
+
 ## 6. The four-lane balanced cell
 
 A simple mirrored pair is useful, but it is not enough for a helical architecture.
@@ -499,7 +503,7 @@ The minimal balanced cell therefore contains four lanes. To keep the sign bookke
 
 Pair A therefore cancels $s$-momentum but retains positive $\theta$-momentum, pair B cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together.
 
-![](../figures/figure-3-balanced-four-lane-cell.svg){width=88%}
+![](../figures/figure-3-balanced-four-lane-cell.svg){width=100%}
 
 **Figure 3.** Balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions. Arrows indicate slug travel direction, and the helix angle is exaggerated for clarity.
 
@@ -507,7 +511,7 @@ Figure 4 makes the cancellation bookkeeping explicit in force-component form at 
 
 The $s$-components behave differently. In a stationary speed-gradient section, a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along $s$ on the stationary guide hardware. So the balanced four-cell can cancel the unwanted $\theta$-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
 
-![](../figures/figure-4-balanced-cell-force-cancellation.svg){width=96%}
+\noindent\hspace*{-0.25\textwidth}![](../figures/figure-4-balanced-cell-force-cancellation.svg){width=150%}
 
 **Figure 4.** Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.
 
@@ -531,7 +535,7 @@ These cancellations are not automatic. They require equal mass flux, equal scala
 
 ### 6.1 Tolerance budget and degraded modes
 
-The balanced cell is elegant, but it is not forgiving. In the $500~\mathrm{km}$, $u=10~\mathrm{km/s}$, 300-lane reference case, one lane carries about $5.4\times10^4~\mathrm{kg/s}$ of mass flux. Its ring-direction momentum flux is therefore about $5.4\times10^8~\mathrm{N}$, and its circumferential momentum flux at $0.79^\circ$ helix angle is about $7.6\times10^6~\mathrm{N}$.
+The balanced cell is elegant, but it is not forgiving. In the $500~\mathrm{km}$, $u=10~\mathrm{km/s}$, 300-lane reference case, one lane carries about $5.4\times10^{4}~\mathrm{kg/s}$ of mass flux. Its ring-direction momentum flux is therefore about $5.4\times10^{8}~\mathrm{N}$, and its circumferential momentum flux at $0.79^\circ$ helix angle is about $7.6\times10^{6}~\mathrm{N}$.
 
 That means even a small fractional mismatch creates a real residual channel:
 
@@ -543,7 +547,7 @@ That means even a small fractional mismatch creates a real residual channel:
 
 So the cancellation tolerances are not cosmetic. A four-lane cell only behaves like the intended primitive if mass flux, speed profile, and phasing are held tightly enough that the residual channels remain small compared with the commanded ones.
 
-Slug discreteness makes the same point in time-domain form. In the $10~\mathrm{kg}$ bookkeeping row developed later, one lane carries about $5.4\times10^3$ slugs/s, so the nominal headway is about $0.185~\mathrm{ms}$. That means any short-time cancellation budget is quantized by individual slug arrivals.
+Slug discreteness makes the same point in time-domain form. In the $10~\mathrm{kg}$ bookkeeping row developed later, one lane carries about $5.4\times10^{3}$ slugs/s, so the nominal headway is about $0.185~\mathrm{ms}$. That means any short-time cancellation budget is quantized by individual slug arrivals.
 
 | Averaging window in one lane | Expected slug count | One extra or missing slug implies average flux error of |
 | ---: | ---: | ---: |
@@ -554,11 +558,12 @@ Slug discreteness makes the same point in time-domain form. In the $10~\mathrm{k
 
 So a millisecond-scale controller cannot rely on statistical averaging to preserve 0.01% to 0.1% balance. It needs explicit synchronization, timing discipline, and local bookkeeping of actual slugs, not just average mass flux.
 
-The same severity appears as phase tolerance. In the $10~\mathrm{kg}$ row, 1% headway accuracy means about $$1.8~\mu\mathrm{s}$$ , while 0.1% headway accuracy means about $0.18~\mu\mathrm{s}$. That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
+The same severity appears as phase tolerance. In the $10~\mathrm{kg}$ row, 1% headway accuracy means about $1.8~\mu\mathrm{s}$, while 0.1% headway accuracy means about $0.18~\mu\mathrm{s}$. That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
 
 Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.
 
 ---
+
 
 ## 7. Distributed tug fields and macro-scale ring actuation
 
@@ -694,11 +699,11 @@ where $\Delta\phi$ is sector width and $C_\mathrm{sec}$ accounts for finite angu
 
 This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 5 sketches the opposed balanced four-cells geometrically: one cell runs from A to B, while a mirrored cell runs from A' to B' on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 6 then makes the same logic more physical by resolving the lane reactions at representative control locations into local $s$- and $\theta$-components.
 
-![](../figures/figure-5-opposed-balanced-cells-bending.svg){width=90%}
+![](../figures/figure-5-opposed-balanced-cells-bending.svg){width=100%}
 
 **Figure 5.** Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A' to B'. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
 
-![](../figures/figure-6-opposed-balanced-cells-moment.svg){width=82%}
+\noindent\hspace*{-0.25\textwidth}![](../figures/figure-6-opposed-balanced-cells-moment.svg){width=150%}
 
 **Figure 6.** Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential $F_\theta$ components cancel, while the ring-direction $F_s$ components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A' and B' together, producing the bending couple sketched in Figure 5.
 
@@ -809,7 +814,7 @@ $$
 Using the force magnitude $|F_{\mathrm{lane}}| = \dot m |\Delta u|$, this is
 
 $$
-P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}|   u.
+P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}|\,u.
 $$
 
 At $u \sim 10~\mathrm{km/s}$, even modest structural tug implies enormous power exchange. A 1 MN tug at 10 km/s corresponds to roughly 10 GW.
@@ -908,7 +913,7 @@ First, the required speed trim for a long-wave tug can be small because the movi
 
 Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,350 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.023, so a 10 MN tug carries about 230 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
 
-Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is $2.3\times10^{-5}$ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about $6\time10^{-6}$. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
+Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is $2.3\times10^{-5}$ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about $6\times10^{-6}$. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
 
 That is why the coupling can converge rather than blow up. The strong inner-loop channel is axial tug. Pressure and lift correction are weaker outer-loop trims only if the speed-offset area is short enough and spare trim authority exists.
 
@@ -945,6 +950,7 @@ The important result is that this redistribution can be accomplished internally,
 In practice, one should picture families of cooperating sectors around the ring, not a single magic control patch acting in isolation. One sector borrows momentum and another pays it back.
 
 ---
+
 
 ## 8. Remaining closure screens
 
@@ -996,7 +1002,7 @@ This is why the helical angle has to stay small at full scale. The ring needs it
 Let $w_p$ denote the net inward non-stream load per unit ring length. The lift requirement can be written as
 
 $$
-A_\mathrm{pair} = N_p \dot m   u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
+A_\mathrm{pair} = N_p \dot m\,u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
 $$
 
 where $A_\mathrm{pair}$ is the paired-module momentum-flux scale and the total paired-lane contribution is $2A_\mathrm{pair}$.
@@ -1041,7 +1047,7 @@ $$
 E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
 $$
 
-For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of $3.5\time10^{18}$ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
+For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of $3.5\times10^{18}$ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
 The harder message is that the moving-energy burden scales linearly with passive weight. A crude closure worksheet therefore looks like this:
 
@@ -1083,6 +1089,7 @@ That idea is speculative, and this paper does not claim it as solved. But it is 
 
 ---
 
+
 ## 9. Conclusion
 
 This paper argues for a specific architectural idea: shallow-angle helical slug streams running in a prestressed membrane guide shell can provide both a local structural substrate and a plausible macro-scale actuation primitive for an active-support orbital ring concept.
@@ -1102,6 +1109,7 @@ The next crux is no longer whether that primitive exists. It is whether a distri
 Macro lift still demands superorbital ring-tangential momentum flux, and the closure screens remain harsh. The present paper therefore does not claim a physically closed, dynamically proven, thermally solved, fault-tolerant machine. It claims something narrower and, I think, more durable: this architecture identifies a plausible internal prestress and actuation primitive that simple rotor-around-Earth sketches do not have. Even if the full orbital ring proves too hard, the paper identifies a new family of active-support structures in which moving momentum, tensile membranes, and distributed control are tightly integrated.
 
 ---
+
 
 ## Appendix A. Minimal dynamic stability model
 
@@ -1160,7 +1168,7 @@ $$
 T_{\mathrm{eq,tot}} = \lambda_{\mathrm{stream,total}}u^2.
 $$
 
-For the reference case that gives roughly 1.6 × 10¹¹ N.
+For the reference case that gives roughly $1.6\times10^{11}~\mathrm{N}$.
 
 For a sinusoidal long-wave displacement $y = Y\sin(ks)$, the destabilizing follower contribution per unit ring length is of order
 
@@ -1174,13 +1182,14 @@ That gives the following screening values for one metre of displacement amplitud
 | ---: | ---: | ---: |
 | 1000 km | about $6.3\times10^{-6}\,\mathrm{m^{-1}}$ | about 6.3 N/m per metre of displacement |
 | 100 km | about $6.3\times10^{-5}\,\mathrm{m^{-1}}$ | about 630 N/m per metre of displacement |
-| 10 km | about $6.3\times10^{-4}\,\mathrm{m^{-1}}$ | about $6.3\times10^4$ N/m per metre of displacement |
+| 10 km | about $6.3\times10^{-4}\,\mathrm{m^{-1}}$ | about $6.3\times10^{4}$ N/m per metre of displacement |
 
 Now compare that with the paper's illustrative 10 MN tug command spread over a 100 km control sector. Its average structural load is about 100 N/m.
 
 So a controller with that order of authority is plainly not a short-wave stabilizer. It is, however, numerically relevant to wavelengths in the several-hundred-kilometre to thousand-kilometre regime, which is exactly the band in which the paper intends the balanced-cell tug field to operate.
 
 This is not a proof of control closure. Mass participation, damping, sensing, delay, actuator saturation, and shell transfer all still matter. But it does sharpen the claim. The architecture is at least consistent with a multiband picture in which short waves are a local guide-and-shell problem, the middle band is likely the hardest closure problem, and very long waves are the band where the distributed tug primitive may actually matter.
+
 
 ## Appendix B. Slug discreteness screen
 
@@ -1214,6 +1223,7 @@ The 10 kg bookkeeping row also gives a simple cancellation-budget screen:
 
 That last line is especially sobering. If balance is judged purely by counts, a one-slug mismatch does not average below 0.1% until the window is of order 0.2 s. But the lane and shell dynamics of concern are much faster than that. So precise four-lane balance is not just a matter of good average throughput accounting. It requires real-time synchronization, phase control, and fast local state estimation.
 
+
 ## Appendix C. Power-flow, guide, and thermal screen
 
 The local guide-force density is not obviously the worst number. In the 500 km reference case, one lane sees only about 2.1 kN/m of helical normal load, and a 10 MN ring correction shared across 300 lanes corresponds to only about 0.33 N/m of average tangential force per lane over a 100 km sector. That is a broad-participation example, not a universal lane burden. The guide burden becomes terrifying because velocity is so high.
@@ -1231,6 +1241,7 @@ So the actuator can be quiet in force density and still be violent in power flow
 The guide technology is deliberately left unspecified in this paper because the present goal is to define the architecture-level prestress and actuation primitive, not to argue for one lane implementation over another. Any future implementation, whether based on superconducting suspension, inductive reaction, permanent-magnet carriers, conductive slugs, or some hybrid architecture, would still have to satisfy the same envelope: high-bandwidth gap control, low-loss bidirectional tangential actuation, acceptable thermal burden, and survivable fault behavior at the relevant slug rate.
 
 A useful module-scale view makes the same point. Spread over 100 km, the average power transfer is about 1 MW per metre of sector across all participating lanes, or about 10 MW for each 10 m slice of the sector. Under this broad-participation example, a 10 m slice of one lane carries only about 33 kW of average control power, but at slug rates that may range from kilohertz to hundreds of kilohertz depending on slug mass. So the difficulty is not one giant generator. It is a huge distributed array of moderate-force, high-rate, high-efficiency bidirectional modules.
+
 
 ## Appendix D. Fault-domain and degraded-mode screen
 
@@ -1258,6 +1269,7 @@ This is also where four-lane degraded mode becomes inseparable from containment.
 A simple worked screen shows how quickly the numbers become uncomfortable. In the 10 kg bookkeeping row, one lane carries about $5.4\times10^{3}$ slugs/s, so a 10 ms loss-of-guidance event sweeps about 54 slugs into the faulted region. That packet contains roughly 540 kg of moving mass and about 27 GJ of kinetic energy. If one simply loses one lane of a balanced cell for those same 10 ms without immediately unloading its mirrored partners, the missing ring-direction momentum-flux channel implies an uncompensated impulse of about $5.4\times10^{6}$ N s.
 
 That is not yet a complete fault simulation, but it is enough to show the architecture's character. Even sub-second degraded events are already too energetic to be treated as routine control glitches. They are containment-and-reconfiguration events.
+
 
 ## Appendix E. Reference-frame lift bookkeeping for a co-rotating guide
 
