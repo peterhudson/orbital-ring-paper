@@ -1199,21 +1199,21 @@ This is not a proof of control closure. Mass participation, damping, sensing, de
 
 ## Appendix B. Slug discreteness screen
 
-The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about 5.4 × 10⁴ kg/s of mass flux. The table below shows what that means for several representative slug masses.
+The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about $5.4\times10^{4}$ kg/s of mass flux. The table below shows what that means for several representative slug masses.
 
 | Slug mass | Slugs per second per lane | Spacing at 10 km/s | Time headway | Kinetic energy per slug |
 | ---: | ---: | ---: | ---: | ---: |
-| 0.1 kg | about 5.4 × 10⁵ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
-| 1 kg | about 5.4 × 10⁴ /s | about 18 cm | about 18 µs | about 50 MJ |
-| 10 kg | about 5.4 × 10³ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
-| 100 kg | about 5.4 × 10² /s | about 18 m | about 1.8 ms | about 5 GJ |
+| 0.1 kg | about $5.4\times10^{5}$ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
+| 1 kg | about $5.4\times10^{4}$ /s | about 18 cm | about 18 µs | about 50 MJ |
+| 10 kg | about $5.4\times10^{3}$ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
+| 100 kg | about $5.4\times10^{2}$ /s | about 18 m | about 1.8 ms | about 5 GJ |
 
 This is a genuine design fork.
 
 - Small slugs reduce individual projectile energy, but demand extreme event rate, timing accuracy, sensing bandwidth, and electromagnetic switching frequency.
 - Large slugs relax rate and timing, but make each slug an individually catastrophic object.
 
-For the rest of the screening discussion, it is useful to keep one bookkeeping row in mind. A 10 kg slug is not claimed to be optimal, but it is a workable reference because it implies about 5.4 × 10³ slugs per second per lane, about 1.8 m spacing, about 0.18 ms headway, and about 500 MJ per slug. That is already severe while remaining easier to visualize than the lighter-slug rows.
+For the rest of the screening discussion, it is useful to keep one bookkeeping row in mind. A 10 kg slug is not claimed to be optimal, but it is a workable reference because it implies about $5.4\times10^{3}$ slugs per second per lane, about 1.8 m spacing, about 0.18 ms headway, and about 500 MJ per slug. That is already severe while remaining easier to visualize than the lighter-slug rows.
 
 The no-fill/no-drain argument in Section 7.5 remains kinematically sound for steady speed fields, but it only works if headway compression and expansion stay inside collision margins. If a controller is allowed only 10% headway error, then the 1 kg row above implies a timing tolerance of only a few microseconds, while the 0.1 kg row pushes into the sub-microsecond regime. That does not kill the concept by itself, but it means slug discreteness has to become a first-class design variable rather than a hidden detail.
 
@@ -1221,7 +1221,7 @@ The 10 kg bookkeeping row also gives a simple cancellation-budget screen:
 
 | Quantity for the 10 kg row | Approximate value |
 | --- | ---: |
-| Slug rate per lane | about 5.4 × 10³ /s |
+| Slug rate per lane | about $5.4\times10^{3}$ /s |
 | Headway | about 0.185 ms |
 | Timing error for 1% headway error | about 1.8 µs |
 | Timing error for 0.1% headway error | about 0.18 µs |
