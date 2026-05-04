@@ -221,7 +221,7 @@ $$
 
 before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-scale actuation channel.
 
-A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about 5.4 × 10⁴ kg/s. With helix angle about $0.79^\circ$ and tube radius $a=50~\mathrm{m}$, the local helical curvature is about $3.8\times10^{-6}\,\mathrm{m^{-1}}$. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector.
+A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about $5.4\times10^{4}$ kg/s. With helix angle about $0.79^\circ$ and tube radius $a=50~\mathrm{m}$, the local helical curvature is about $3.8\times10^{-6}\,\mathrm{m^{-1}}$. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector.
 
 A useful caveat is
 
@@ -516,7 +516,7 @@ The $s$-components behave differently. In a stationary speed-gradient section, a
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-4-balanced-cell-force-cancellation.svg" alt="Figure 4, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential θ components cancel in the four-lane sum, while the ring-direction s components add to produce a net axial structural tug during acceleration or deceleration.
+    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.
   </figcaption>
 </figure>
 
@@ -701,23 +701,23 @@ $$
 
 where $\Delta\phi$ is sector width and $C_\mathrm{sec}$ accounts for finite angular extent.
 
-This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 5 sketches the opposed balanced four-cells geometrically: one cell runs from A to B, while a mirrored cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 6 then makes the same logic more physical by resolving the lane reactions at representative control locations into local s</em>- and θ</em>-components.
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 5 sketches the opposed balanced four-cells geometrically: one cell runs from A to B, while a mirrored cell runs from A' to B' on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 6 then makes the same logic more physical by resolving the lane reactions at representative control locations into local $s$- and $\theta$-components.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-5-opposed-balanced-cells-bending.svg" alt="Figure 5, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
+  <img src="../figures/figure-5-opposed-balanced-cells-bending.svg" alt="Figure 5, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A' to B'." style="width: 90%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 5.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A′ to B′. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
+    <strong>Figure 5.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A' to B'. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
   </figcaption>
 </figure>
 
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-6-opposed-balanced-cells-moment.svg" alt="Figure 6, local force-component view showing how opposed balanced cells generate a bending moment." style="width: 82%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 6.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential F</em><sub>θ</sub> components cancel, while the ring-direction F</em><sub>s</sub> components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A′ and B′ together, producing the bending couple sketched in Figure 5.
+    <strong>Figure 6.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential $F_\theta$ components cancel, while the ring-direction $F_s$ components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A' and B' together, producing the bending couple sketched in Figure 5.
   </figcaption>
 </figure>
 
-So the physical picture is two-stage. Within each balanced cell, the unwanted circumferential reaction is removed by symmetry. Across the torus, the surviving $s$-directed reactions push A and B apart while pulling A′ and B′ together, so the opposed sectors generate a couple rather than a mere net force.
+So the physical picture is two-stage. Within each balanced cell, the unwanted circumferential reaction is removed by symmetry. Across the torus, the surviving $s$-directed reactions push A and B apart while pulling A' and B' together, so the opposed sectors generate a couple rather than a mere net force.
 
 The simplest mental picture is squeezing a hoop on two opposite sides, except here the squeeze is generated internally by momentum exchange inside the lane system rather than by external hands.
 
@@ -915,15 +915,15 @@ If one defines an effective speed-offset length, called $L_\mathrm{eff}$, as the
 
 So the honest statement is this: the control coupling is governed by the speed-offset area associated with the tug command, not by the gradient alone.
 
-At the illustrative 500 km, u = 10 km/s point, beta is about 2.3 × 10⁻⁷ per metre, and the corresponding inverse length scale is about 4,350 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
+At the illustrative 500 km, u = 10 km/s point, beta is about $2.3\times10^{-7}$ per metre, and the corresponding inverse length scale is about 4,350 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
 
 It is useful to separate three different smallness claims.
 
-First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about 5.4 × 10⁴ kg/s per lane, that implies a speed step of only about 0.61 m/s, or about 6 × 10⁻⁵ of the 10 km/s operating speed.
+First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about $5.4\times10^{4}$ kg/s per lane, that implies a speed step of only about 0.61 m/s, or about $6\times10^{-5}$ of the 10 km/s operating speed.
 
 Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,350 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.023, so a 10 MN tug carries about 230 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
 
-Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is 2.3 × 10⁻⁵ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about 6 × 10⁻⁶. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
+Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is $2.3\times10^{-5}$ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about $6\time10^{-6}$. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
 
 That is why the coupling can converge rather than blow up. The strong inner-loop channel is axial tug. Pressure and lift correction are weaker outer-loop trims only if the speed-offset area is short enough and spare trim authority exists.
 
@@ -1056,7 +1056,7 @@ $$
 E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
 $$
 
-For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.5 × 10¹⁸ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
+For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of $3.5\time10^{18}$ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
 The harder message is that the moving-energy burden scales linearly with passive weight. A crude closure worksheet therefore looks like this:
 
@@ -1199,21 +1199,21 @@ This is not a proof of control closure. Mass participation, damping, sensing, de
 
 ## Appendix B. Slug discreteness screen
 
-The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about 5.4 × 10⁴ kg/s of mass flux. The table below shows what that means for several representative slug masses.
+The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about $5.4\times10^{4}$ kg/s of mass flux. The table below shows what that means for several representative slug masses.
 
 | Slug mass | Slugs per second per lane | Spacing at 10 km/s | Time headway | Kinetic energy per slug |
 | ---: | ---: | ---: | ---: | ---: |
-| 0.1 kg | about 5.4 × 10⁵ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
-| 1 kg | about 5.4 × 10⁴ /s | about 18 cm | about 18 µs | about 50 MJ |
-| 10 kg | about 5.4 × 10³ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
-| 100 kg | about 5.4 × 10² /s | about 18 m | about 1.8 ms | about 5 GJ |
+| 0.1 kg | about $5.4\times10^{5}$ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
+| 1 kg | about $5.4\times10^{4}$ /s | about 18 cm | about 18 µs | about 50 MJ |
+| 10 kg | about $5.4\times10^{3}$ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
+| 100 kg | about $5.4\times10^{2}$ /s | about 18 m | about 1.8 ms | about 5 GJ |
 
 This is a genuine design fork.
 
 - Small slugs reduce individual projectile energy, but demand extreme event rate, timing accuracy, sensing bandwidth, and electromagnetic switching frequency.
 - Large slugs relax rate and timing, but make each slug an individually catastrophic object.
 
-For the rest of the screening discussion, it is useful to keep one bookkeeping row in mind. A 10 kg slug is not claimed to be optimal, but it is a workable reference because it implies about 5.4 × 10³ slugs per second per lane, about 1.8 m spacing, about 0.18 ms headway, and about 500 MJ per slug. That is already severe while remaining easier to visualize than the lighter-slug rows.
+For the rest of the screening discussion, it is useful to keep one bookkeeping row in mind. A 10 kg slug is not claimed to be optimal, but it is a workable reference because it implies about $5.4\times10^{3}$ slugs per second per lane, about 1.8 m spacing, about 0.18 ms headway, and about 500 MJ per slug. That is already severe while remaining easier to visualize than the lighter-slug rows.
 
 The no-fill/no-drain argument in Section 7.5 remains kinematically sound for steady speed fields, but it only works if headway compression and expansion stay inside collision margins. If a controller is allowed only 10% headway error, then the 1 kg row above implies a timing tolerance of only a few microseconds, while the 0.1 kg row pushes into the sub-microsecond regime. That does not kill the concept by itself, but it means slug discreteness has to become a first-class design variable rather than a hidden detail.
 
@@ -1221,7 +1221,7 @@ The 10 kg bookkeeping row also gives a simple cancellation-budget screen:
 
 | Quantity for the 10 kg row | Approximate value |
 | --- | ---: |
-| Slug rate per lane | about 5.4 × 10³ /s |
+| Slug rate per lane | about $5.4\times10^{3}$ /s |
 | Headway | about 0.185 ms |
 | Timing error for 1% headway error | about 1.8 µs |
 | Timing error for 0.1% headway error | about 0.18 µs |
@@ -1270,7 +1270,7 @@ So if tolerable fault release is only gigajoule-scale, the implied isolation len
 
 This is also where four-lane degraded mode becomes inseparable from containment. A lane dropout is not just a control nuisance. It is a fault-domain event that may force local cell isolation, rapid unloading of neighboring cells, and transfer of support demand to a wider region. The safe machine is therefore not merely a balanced nominal lattice. It is a balanced lattice plus an explicit fault-response architecture.
 
-A simple worked screen shows how quickly the numbers become uncomfortable. In the 10 kg bookkeeping row, one lane carries about 5.4 × 10³ slugs/s, so a 10 ms loss-of-guidance event sweeps about 54 slugs into the faulted region. That packet contains roughly 540 kg of moving mass and about 27 GJ of kinetic energy. If one simply loses one lane of a balanced cell for those same 10 ms without immediately unloading its mirrored partners, the missing ring-direction momentum-flux channel implies an uncompensated impulse of about 5.4 × 10⁶ N s.
+A simple worked screen shows how quickly the numbers become uncomfortable. In the 10 kg bookkeeping row, one lane carries about $5.4\times10^{3}$ slugs/s, so a 10 ms loss-of-guidance event sweeps about 54 slugs into the faulted region. That packet contains roughly 540 kg of moving mass and about 27 GJ of kinetic energy. If one simply loses one lane of a balanced cell for those same 10 ms without immediately unloading its mirrored partners, the missing ring-direction momentum-flux channel implies an uncompensated impulse of about $5.4\times10^{6}$ N s.
 
 That is not yet a complete fault simulation, but it is enough to show the architecture's character. Even sub-second degraded events are already too energetic to be treated as routine control glitches. They are containment-and-reconfiguration events.
 
