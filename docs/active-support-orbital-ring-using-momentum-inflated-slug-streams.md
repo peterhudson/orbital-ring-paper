@@ -1056,7 +1056,7 @@ $$
 E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
 $$
 
-For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.5 × 10¹⁸ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
+For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of $3.5\time10^{18}$ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
 The harder message is that the moving-energy burden scales linearly with passive weight. A crude closure worksheet therefore looks like this:
 
