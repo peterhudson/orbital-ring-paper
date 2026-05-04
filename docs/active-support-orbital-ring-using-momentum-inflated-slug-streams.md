@@ -221,7 +221,7 @@ p_{\mathrm{req,total}} \sim \sqrt{p_\perp^2 + p_\parallel^2},
 
 before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-scale actuation channel.
 
-A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about 5.4 × 10⁴ kg/s. With helix angle about 0.79 degrees and tube radius 50 m, the local helical curvature is about 3.8 × 10⁻⁶ per metre. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector.
+A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about 5.4 × 10⁴ kg/s. With helix angle about \(0.79^\circ\) and tube radius \(a=50~\mathrm{m}\), the local helical curvature is about \(3.8\times10^{-6}\,\mathrm{m^{-1}}\). The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector.
 
 A useful caveat is
 
@@ -239,7 +239,7 @@ A lane is not merely static curvature plus average force. The stream is convecte
 t_\mathrm{conv} \sim \frac{\lambda}{v},
 \]
 
-where \(\lambda\) is disturbance wavelength. At \(v=10~\mathrm{km/s}\), a 100 m disturbance convects past in 10 ms, a 10 m disturbance in 1 ms, and a 1 m disturbance in 0.1 ms. High speed helps force generation and hurts control.
+where \(\lambda\) is disturbance wavelength. At \(v=10~\mathrm{km/s}\), a \(100~\mathrm{m}\) disturbance convects past in \(10~\mathrm{ms}\), a \(10~\mathrm{m}\) disturbance in \(1~\mathrm{ms}\), and a \(1~\mathrm{m}\) disturbance in \(0.1~\mathrm{ms}\). High speed helps force generation and hurts control.
 
 Using lateral displacement \(y(x,t)\) along a lane coordinate \(x\), the convective derivative is
 
@@ -457,17 +457,17 @@ For small angles,
 \alpha_\mathrm{cross} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
 \]
 
-Using a reference case with a = 50 m, altitude 500 km, u = 10 km/s, and Gamma = 10, one gets a screening crossover angle of about 0.014 radians, or about 0.79 degrees. So once macro lift matters, the preferred helical bias is very shallow. At a = 50 m and alpha about 0.79 degrees, one full wrap pitch is about 23 km, which means the intended architecture is a field of many nearly axial lanes with only slight azimuthal drift, not a steep screw conveyor.
+Using a reference case with \(a=50~\mathrm{m}\), altitude \(500~\mathrm{km}\), \(u=10~\mathrm{km/s}\), and \(\Gamma=10\), one gets a screening crossover angle of about \(0.014~\mathrm{rad}\), or about \(0.79^\circ\). So once macro lift matters, the preferred helical bias is very shallow. At \(a=50~\mathrm{m}\) and \(\alpha\approx0.79^\circ\), one full wrap pitch is about \(23~\mathrm{km}\), which means the intended architecture is a field of many nearly axial lanes with only slight azimuthal drift, not a steep screw conveyor.
 
-The more important question is whether that shallow helix produces enough prestress. With passive supported weight of 10 kN per metre and prestress ratio Gamma equal to 10, the implied hoop-force target is only about 100 kN per metre. At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
+The more important question is whether that shallow helix produces enough prestress. With passive supported weight of \(10~\mathrm{kN/m}\) and prestress ratio \(\Gamma=10\), the implied hoop-force target is only about \(100~\mathrm{kN/m}\). At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
 
-So \(\Gamma=10\) should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same 500 km, 10 km/s point, \(\Gamma=30\) gives about 1.38 degrees and a wrap pitch of about 13 km, while \(\Gamma=100\) gives about 2.51 degrees and a wrap pitch of about 7 km. The geometry therefore remains in the shallow-helix regime even for substantially higher prestress targets. The real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
+So \(\Gamma=10\) should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same \(500~\mathrm{km}\), \(10~\mathrm{km/s}\) point, \(\Gamma=30\) gives about \(1.38^\circ\) and a wrap pitch of about \(13~\mathrm{km}\), while \(\Gamma=100\) gives about \(2.51^\circ\) and a wrap pitch of about \(7~\mathrm{km}\). The geometry therefore remains in the shallow-helix regime even for substantially higher prestress targets. The real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
 
 ### 5.5 What the prestressed shell does and does not solve
 
 The prestressed membrane guide shell solves an important but limited problem. It gives the lanes a reaction structure, creates local prestress, and provides a platform for hardware. It does **not** automatically create a globally rigid torus, and it does **not** by itself close the local stability problem.
 
-For the 500 km, \(u=10~\mathrm{km/s}\), \(\Gamma=10\) reference case, the equivalent pressure is only about 2 kPa and the corresponding hoop force is only about 100 kN/m. That may be enough to keep a ribbed membrane shell round and wrinkle-resistant. It is not enough to assume beam-like cross-sectional rigidity. If the useful shell needs something more like 0.3 to 1 MN/m of hoop force to control ovalization and rib-to-rib shear, then the prestress target must move into the \(\Gamma\sim 30\) to \(100\) range instead.
+For the \(500~\mathrm{km}\), \(u=10~\mathrm{km/s}\), \(\Gamma=10\) reference case, the equivalent pressure is only about \(2~\mathrm{kPa}\) and the corresponding hoop force is only about \(100~\mathrm{kN/m}\). That may be enough to keep a ribbed membrane shell round and wrinkle-resistant. It is not enough to assume beam-like cross-sectional rigidity. If the useful shell needs something more like 0.3 to 1 MN/m of hoop force to control ovalization and rib-to-rib shear, then the prestress target must move into the \(\Gamma\sim 30\) to \(100\) range instead.
 
 The homogenized shell picture should also be bounded in wavelength. With about 300 lanes around a 314 m circumference, the pitch is about 1 m, so pressure-like averaging may be reasonable for long-wave deformation. It should not be trusted blindly for metre-scale guide deformation, local rib failure, lane dropout, or sharp control-sector gradients. A useful rule of thumb is that the smoothed shell model belongs to wavelengths well above the torus diameter and preferably well above the circumference, while shorter scales require an explicitly discrete lane-and-rib treatment.
 
@@ -516,7 +516,7 @@ The \(s\)-components behave differently. In a stationary speed-gradient section,
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
   <img src="../figures/figure-4-balanced-cell-force-cancellation.svg" alt="Figure 4, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential <em>θ</em> components cancel in the four-lane sum, while the ring-direction <em>s</em> components add to produce a net axial structural tug during acceleration or deceleration.
+    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential \(\theta\) components cancel in the four-lane sum, while the ring-direction \(s\) components add to produce a net axial structural tug during acceleration or deceleration.
   </figcaption>
 </figure>
 
@@ -540,7 +540,7 @@ These cancellations are not automatic. They require equal mass flux, equal scala
 
 ### 6.1 Tolerance budget and degraded modes
 
-The balanced cell is elegant, but it is not forgiving. In the 500 km, \(u=10~\mathrm{km/s}\), 300-lane reference case, one lane carries about 5.4 × 10⁴ kg/s of mass flux. Its ring-direction momentum flux is therefore about 5.4 × 10⁸ N, and its circumferential momentum flux at 0.79 degrees helix angle is about 7.6 × 10⁶ N.
+The balanced cell is elegant, but it is not forgiving. In the \(500~\mathrm{km}\), \(u=10~\mathrm{km/s}\), 300-lane reference case, one lane carries about \(5.4\times10^4~\mathrm{kg/s}\) of mass flux. Its ring-direction momentum flux is therefore about \(5.4\times10^8~\mathrm{N}\), and its circumferential momentum flux at \(0.79^\circ\) helix angle is about \(7.6\times10^6~\mathrm{N}\).
 
 That means even a small fractional mismatch creates a real residual channel:
 
@@ -552,7 +552,7 @@ That means even a small fractional mismatch creates a real residual channel:
 
 So the cancellation tolerances are not cosmetic. A four-lane cell only behaves like the intended primitive if mass flux, speed profile, and phasing are held tightly enough that the residual channels remain small compared with the commanded ones.
 
-Slug discreteness makes the same point in time-domain form. In the 10 kg bookkeeping row developed later, one lane carries about 5.4 × 10³ slugs/s, so the nominal headway is about 0.185 ms. That means any short-time cancellation budget is quantized by individual slug arrivals.
+Slug discreteness makes the same point in time-domain form. In the \(10~\mathrm{kg}\) bookkeeping row developed later, one lane carries about \(5.4\times10^3\) slugs/s, so the nominal headway is about \(0.185~\mathrm{ms}\). That means any short-time cancellation budget is quantized by individual slug arrivals.
 
 | Averaging window in one lane | Expected slug count | One extra or missing slug implies average flux error of |
 | ---: | ---: | ---: |
@@ -563,7 +563,7 @@ Slug discreteness makes the same point in time-domain form. In the 10 kg bookkee
 
 So a millisecond-scale controller cannot rely on statistical averaging to preserve 0.01% to 0.1% balance. It needs explicit synchronization, timing discipline, and local bookkeeping of actual slugs, not just average mass flux.
 
-The same severity appears as phase tolerance. In the 10 kg row, 1% headway accuracy means about 1.8 µs timing precision, while 0.1% headway accuracy means about 0.18 µs. That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
+The same severity appears as phase tolerance. In the \(10~\mathrm{kg}\) row, \(1\%\) headway accuracy means about \(1.8~\mu\mathrm{s}\) timing precision, while \(0.1\%\) headway accuracy means about \(0.18~\mu\mathrm{s}\). That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
 
 Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.
 
