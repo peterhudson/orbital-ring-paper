@@ -1137,13 +1137,33 @@ Here $m_\mathrm{eff}$ is effective supported mass per lane length exclusive of a
 Moving the stream reaction to the left gives the equivalent homogeneous form
 
 $$
-(m_\mathrm{eff}+\lambda_\mathrm{lane}) y_{tt} + 2\lambda_\mathrm{lane}v y_{st} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) + T_{\mathrm{eq,lane}} y_{ss} = 0,
+\begin{aligned}
+0 ={}&
+(m_\mathrm{eff}+\lambda_\mathrm{lane})y_{tt}
++2\lambda_\mathrm{lane}v y_{st}
++c_\mathrm{eff}y_t
++B_\mathrm{eff}y_{ssss} \\
+&+K_\mathrm{shell}y
++K_\mathrm{guide}y
++K_\mathrm{ctrl}y(t-\tau_c)
++T_{\mathrm{eq,lane}}y_{ss}.
+\end{aligned}
 $$
 
 so for a Fourier mode $y \propto e^{i(ks-\omega t)}$, the characteristic balance becomes
 
 $$
--(m_\mathrm{eff}+\lambda_\mathrm{lane})\omega^2 + 2\lambda_\mathrm{lane}vk\omega + i c_\mathrm{eff}\omega + B_\mathrm{eff}k^4 + K_\mathrm{shell}(k) + K_\mathrm{guide}(k) + K_\mathrm{ctrl}(k)e^{-i\omega\tau_c} - T_{\mathrm{eq,lane}}k^2 = 0.
+\begin{aligned}
+0 ={}&
+-(m_\mathrm{eff}+\lambda_\mathrm{lane})\omega^2
++2\lambda_\mathrm{lane}v k\omega
++i c_\mathrm{eff}\omega
++B_\mathrm{eff}k^4 \\
+&+K_\mathrm{shell}(k)
++K_\mathrm{guide}(k)
++K_\mathrm{ctrl}(k)e^{-i\omega\tau_c}
+-T_{\mathrm{eq,lane}}k^2 .
+\end{aligned}
 $$
 
 This makes the control partition explicit. If one deliberately drops the $-\lambda_\mathrm{lane}y_{tt}$ and $-2\lambda_\mathrm{lane}v y_{st}$ terms, the appendix reduces to the simpler quasi-static follower-stiffness toy model used only for intuition, not for a complete lane-dynamics claim.
