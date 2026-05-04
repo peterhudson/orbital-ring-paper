@@ -915,15 +915,15 @@ If one defines an effective speed-offset length, called $L_\mathrm{eff}$, as the
 
 So the honest statement is this: the control coupling is governed by the speed-offset area associated with the tug command, not by the gradient alone.
 
-At the illustrative 500 km, u = 10 km/s point, beta is about 2.3 × 10⁻⁷ per metre, and the corresponding inverse length scale is about 4,350 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
+At the illustrative 500 km, u = 10 km/s point, beta is about $2.3\times10^{-7}$ per metre, and the corresponding inverse length scale is about 4,350 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
 
 It is useful to separate three different smallness claims.
 
-First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about 5.4 × 10⁴ kg/s per lane, that implies a speed step of only about 0.61 m/s, or about 6 × 10⁻⁵ of the 10 km/s operating speed.
+First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about $5.4\times10^{4}$ kg/s per lane, that implies a speed step of only about 0.61 m/s, or about $6\times10^{-5}$ of the 10 km/s operating speed.
 
 Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,350 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.023, so a 10 MN tug carries about 230 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
 
-Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is 2.3 × 10⁻⁵ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about 6 × 10⁻⁶. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
+Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is $2.3\times10^{-5}$ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about $6\time10^{-6}$. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
 
 That is why the coupling can converge rather than blow up. The strong inner-loop channel is axial tug. Pressure and lift correction are weaker outer-loop trims only if the speed-offset area is short enough and spare trim authority exists.
 
