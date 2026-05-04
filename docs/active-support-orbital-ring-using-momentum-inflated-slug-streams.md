@@ -59,9 +59,9 @@ The argument proceeds in six steps. First, momentum redirection is established a
 
 To avoid ambiguity, the paper uses three local coordinates:
 
-\[
+$$
 s = \text{distance along the ring centerline around Earth}
-\]
+$$
 
 \[
 \theta = \text{azimuth around the torus cross-section}
