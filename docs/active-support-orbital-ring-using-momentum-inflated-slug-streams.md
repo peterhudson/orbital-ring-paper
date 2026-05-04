@@ -31,7 +31,7 @@ This paper proposes a specific answer to both problems.
 1. **Helical slug streams at small \(\alpha\) in a prestressed membrane guide shell.** The lanes are wrapped helically around a large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into local structural stiffness.
 2. **A four-lane balanced cell for macro-scale actuation.** The same helical geometry allows balanced groups of lanes whose momentum components cancel in steady operation but can be modulated through fixed spatial speed gradients to produce distributed tug fields and ring-scale bending moments.
 
-The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system, nor does it claim demonstrated closed-loop controllability. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, timing precision, fault isolation, startup, deployment, and passive-mass closure remain explicit closure requirements.
+The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system, nor does it claim demonstrated closed-loop controllability. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, , fault isolation, startup, deployment, and passive-mass closure remain explicit closure requirements.
 
 The main fatal risks are also worth naming early: follower-force instability, unacceptable guide loss, impossible thermal rejection, unmanageable fault-domain energy, and a passive-mass closure loop that fails to converge.
 
@@ -63,13 +63,13 @@ $$
 s = \text{distance along the ring centerline around Earth}
 $$
 
-\[
+$$
 \theta = \text{azimuth around the torus cross-section}
-\]
+$$
 
-\[
+$$
 r = \text{local radial direction normal to the torus cross-section}
-\]
+$$
 
 In the local tube approximation, what other orbital-ring discussions often call "axial" means the \(s\) direction, not the global Earth rotation axis. The helical lanes wind in \(\theta\) while moving mainly along \(s\).
 
@@ -109,21 +109,21 @@ That table does not refute the architecture, but it does place the reference cas
 
 Consider a mass stream moving at speed \(v\) along a guide path of curvature \(\kappa\). The stream requires normal acceleration
 
-\[
+$$
 a_n = v^2\kappa.
-\]
+$$
 
 For a continuous stream of line density \(\mu\), the required guide force per unit path length is
 
-\[
+$$
 f = \mu v^2\kappa.
-\]
+$$
 
 For a discrete slug train with fixed mass flux \(\dot m\), the effective line density is \(\mu_\mathrm{eff}=\dot m/v\), so the corresponding force law becomes
 
-\[
+$$
 f = \dot m v\kappa.
-\]
+$$
 
 That distinction matters. A continuously filled cable-like stream at fixed line density scales as \(v^2\). A throughput-limited slug train whose spacing changes with speed scales as \(v\).
 
@@ -131,9 +131,9 @@ The physical interpretation is straightforward. The guide pushes the stream onto
 
 It is often convenient to introduce an equivalent dynamic-tension scale
 
-\[
+$$
 T_\mathrm{eq} = \mu v^2
-\]
+$$
 
 for the continuous case, or equivalently \(T_\mathrm{eq}=\dot m v\) for the fixed-flux slug-train case. That notation is useful, but it must not be over-read. In this architecture the support force does not require a passive material hoop carrying literal mechanical tension equal to \(T_\mathrm{eq}\). The force can instead arise from guided momentum redirection in discrete moving masses.
 
@@ -144,9 +144,9 @@ At this early stage it is worth previewing an organizing distinction that become
 
 For one lane with ring-centerline speed component \(u=v\cos\alpha\), the Earth-scale lift channel is
 
-\[
+$$
 q_{\mathrm{lift,lane}} = \dot m\left(\frac{u}{R} - \frac{g_h}{u}\right)
-\]
+$$
 
 where \(R\) is ring radius and \(g_h\) is gravity at altitude. At this point it is enough to note that local helix curvature and Earth-scale curvature are separate channels and must not be conflated.
 
@@ -160,9 +160,9 @@ Before discussing orbital-ring architecture, it is worth asking what one lane de
 
 A rough upper bound on magnetic normal stress is
 
-\[
+$$
 p_\mathrm{mag,max} \sim \frac{B^2}{2\mu_0},
-\]
+$$
 
 where \(B\) is field strength and \(\mu_0\) is the permeability of free space. The ideal upper-bound values from \(B^2/(2\mu_0)\) are:
 
@@ -177,15 +177,15 @@ Real delivered traction will be lower because of gap, fringing, force margin, th
 
 If \(A'\) is effective magnetic interaction area per unit lane length, then the required mean traction is
 
-\[
+$$
 p_\mathrm{req} = \frac{f}{A'}.
-\]
+$$
 
 For a fixed-flux slug lane this becomes
 
-\[
+$$
 p_\mathrm{req} = \frac{\dot m v\kappa}{A'}.
-\]
+$$
 
 So tight curvature, high speed, and small interaction perimeter all make the lane harder to guide.
 
@@ -197,27 +197,27 @@ The guide-force screen is not only a normal-force screen. Any speed-gradient con
 
 For one lane, a stationary speed gradient requires tangential force density
 
-\[
+$$
 q_\parallel = \dot m \frac{du}{ds}
-\]
+$$
 
 along the lane. The corresponding mean tangential traction scale is therefore roughly
 
-\[
+$$
 p_\parallel \sim \frac{\dot m |du/ds|}{A'}.
-\]
+$$
 
 The normal guide requirement from curvature following is still
 
-\[
+$$
 p_\perp \sim \frac{\dot m v\kappa}{A'},
-\]
+$$
 
 so a more honest first screen on the stator is a vector resultant,
 
-\[
+$$
 p_{\mathrm{req,total}} \sim \sqrt{p_\perp^2 + p_\parallel^2},
-\]
+$$
 
 before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-scale actuation channel.
 
@@ -225,9 +225,9 @@ A representative numerical case is useful here. In the paper's notional 500 km, 
 
 A useful caveat is
 
-\[
+$$
 q_{\parallel,\mathrm{lane}} \sim \frac{F_{\mathrm{sector}}}{N_{\mathrm{lanes}}L_{\mathrm{sector}}}.
-\]
+$$
 
 So the mild force-density result depends on broad participation and long actuation length. If only 30 lanes participate, or if the actuation length is 10 km instead of 100 km, the average tangential force density rises by about two orders of magnitude. The lane-level distributed force densities are therefore not automatically benign. They are merely not the dominant horror under the broad-participation reference case used here. The harsher burdens remain the associated power exchange, synchronization, thermal management, and fault energy.
 
@@ -235,23 +235,23 @@ So the mild force-density result depends on broad participation and long actuati
 
 A lane is not merely static curvature plus average force. The stream is convected through the guide at high speed, so disturbances arrive on a timescale
 
-\[
+$$
 t_\mathrm{conv} \sim \frac{\lambda}{v},
-\]
+$$
 
 where \(\lambda\) is disturbance wavelength. At \(v=10~\mathrm{km/s}\), a \(100~\mathrm{m}\) disturbance convects past in \(10~\mathrm{ms}\), a \(10~\mathrm{m}\) disturbance in \(1~\mathrm{ms}\), and a \(1~\mathrm{m}\) disturbance in \(0.1~\mathrm{ms}\). High speed helps force generation and hurts control.
 
 Using lateral displacement \(y(x,t)\) along a lane coordinate \(x\), the convective derivative is
 
-\[
+$$
 \frac{D}{Dt} = \frac{\partial}{\partial t} + v\frac{\partial}{\partial x},
-\]
+$$
 
 so the lateral acceleration contains
 
-\[
+$$
 \frac{D^2y}{Dt^2} = y_{tt} + 2v y_{xt} + v^2 y_{xx}.
-\]
+$$
 
 The last term is the same curvature-following term that generates support force. The middle term is transport coupling. Both must be handled by the guide.
 
@@ -271,35 +271,35 @@ This is the missing structural argument in many simple orbital-ring pictures.
 
 Consider a nominally straight lane or monolithic rotor segment with a small transverse deflection \(y(x,t)\). For small slope, the centerline curvature is approximately
 
-\[
+$$
 \kappa \approx y_{xx}.
-\]
+$$
 
 The moving stream must then be forced to follow that curved path. The stream exerts on the guide a reaction load per unit length of the form
 
-\[
+$$
 q_\mathrm{stream} \approx -T_\mathrm{eq} y_{xx},
-\]
+$$
 
 where \(T_\mathrm{eq}=\mu v^2\) or \(T_\mathrm{eq}=\dot m v\), depending on whether one uses the continuous or fixed-flux picture.
 
 Now consider a sinusoidal perturbation,
 
-\[
+$$
 y(x,t) = Y\sin(kx).
-\]
+$$
 
 Then
 
-\[
+$$
 y_{xx} = -k^2 y,
-\]
+$$
 
 so the stream reaction becomes
 
-\[
+$$
 q_\mathrm{stream} = +T_\mathrm{eq} k^2 y.
-\]
+$$
 
 That has the **same sign as the displacement**. If the lane is displaced upward at some point, the stream pushes upward there as well. The moving mass therefore pushes further into an existing curvature perturbation rather than restoring the lane to straightness.
 
@@ -319,9 +319,9 @@ Instead of asking a fast lane to remain straight in free space, the architecture
 
 For a helix on a cylinder of radius \(a\), with helix angle \(\alpha\) measured relative to the local \(s\) direction,
 
-\[
+$$
 \kappa_\mathrm{helix} = \frac{\sin^2\alpha}{a}
-\]
+$$
 
 in the local-cylinder approximation.
 
@@ -329,35 +329,35 @@ That curvature is not an accident. It is the local mechanism that converts movin
 
 For a fixed-flux slug lane, the local outward load per unit ring length is
 
-\[
+$$
 q_\mathrm{loc,lane} = \dot m u \frac{\tan^2\alpha}{a}
-\]
+$$
 
 where
 
-\[
+$$
 u = v\cos\alpha
-\]
+$$
 
 is the ring-centerline speed component.
 
 For one symmetric pair of lanes,
 
-\[
+$$
 q_\mathrm{loc,pair} = 2\dot m u \frac{\tan^2\alpha}{a}
-\]
+$$
 
 and, if those loads are azimuthally smoothed, the corresponding equivalent pressure from one pair is
 
-\[
+$$
 p_\mathrm{pair} = \frac{\dot m u \tan^2\alpha}{\pi a^2}.
-\]
+$$
 
 For \(N_p\) paired modules distributed around the torus,
 
-\[
+$$
 p_\mathrm{eq} = \frac{N_p \dot m u \tan^2\alpha}{\pi a^2}.
-\]
+$$
 
 So the helical lanes create a steady outward load channel that can inflate the torus and prestress its membrane.
 
@@ -367,9 +367,9 @@ The pressure language is useful, but it is an azimuthally averaged approximation
 
 The averaging is only justified when lane pitch, rib stiffness, and membrane shear transfer are fine enough that the discrete loads appear smooth at the wavelengths of interest. At \(a=50~\mathrm{m}\), the circumference is about
 
-\[
+$$
 2\pi a \approx 314~\mathrm{m}.
-\]
+$$
 
 If the torus carries on the order of 300 lanes, the pitch is about 1 m and a pressure-like description may be reasonable for long-wave structural modes. If it carries only a few tens of lanes, the loading is much less pressure-like and the discrete rib-and-membrane mechanics become first-order.
 
@@ -379,9 +379,9 @@ Equivalent pressure should therefore be read as a useful homogenized model, not 
 
 Equivalent pressure \(p_\mathrm{eq}\) creates hoop membrane force per unit ring length
 
-\[
+$$
 N_\theta = p_\mathrm{eq} a.
-\]
+$$
 
 This prestress plausibly helps with:
 
@@ -397,15 +397,15 @@ But that does not by itself prove local dynamic stability. Perturbations about t
 
 A more honest way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
 
-\[
+$$
 K_\mathrm{tot}(k,\omega) = K_\mathrm{membrane}(k,\omega) + K_\mathrm{guide}(k,\omega) + K_\mathrm{control}(k,\omega).
-\]
+$$
 
 Then, for a sinusoidal perturbation of wavenumber \(k\), the real part must satisfy
 
-\[
+$$
 \mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
-\]
+$$
 
 with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest.
 
@@ -419,43 +419,43 @@ The architecture wants helical curvature for local prestress, but it also wants 
 
 Define the paired-module momentum-flux scale
 
-\[
+$$
 A_\mathrm{pair} = N_p \dot m u.
-\]
+$$
 
 The total paired-lane contribution is then \(2A_\mathrm{pair}\).
 
 The inflation requirement can be written as
 
-\[
+$$
 A_\mathrm{pair} \ge \frac{\pi a N_{\theta,\mathrm{req}}}{\tan^2\alpha}
-\]
+$$
 
 where \(N_{\theta,\mathrm{req}}\) is required hoop membrane force per unit length.
 
 The macro-lift requirement, derived later, is
 
-\[
+$$
 A_\mathrm{pair} \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
-\]
+$$
 
 Balancing the two gives a useful screening estimate
 
-\[
+$$
 \tan^2\alpha_\mathrm{cross} = 2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)
-\]
+$$
 
 with
 
-\[
+$$
 \Gamma = \frac{N_{\theta,\mathrm{req}}}{w_p}.
-\]
+$$
 
 For small angles,
 
-\[
+$$
 \alpha_\mathrm{cross} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
-\]
+$$
 
 Using a reference case with \(a=50~\mathrm{m}\), altitude \(500~\mathrm{km}\), \(u=10~\mathrm{km/s}\), and \(\Gamma=10\), one gets a screening crossover angle of about \(0.014~\mathrm{rad}\), or about \(0.79^\circ\). So once macro lift matters, the preferred helical bias is very shallow. At \(a=50~\mathrm{m}\) and \(\alpha\approx0.79^\circ\), one full wrap pitch is about \(23~\mathrm{km}\), which means the intended architecture is a field of many nearly axial lanes with only slight azimuthal drift, not a steep screw conveyor.
 
@@ -481,13 +481,13 @@ A simple mirrored pair is useful, but it is not enough for a helical architectur
 
 If one chooses a mirrored helical pair with tangent vectors
 
-\[
+$$
 t_x = \cos\alpha e_s + \sin\alpha e_\theta,
-\]
+$$
 
-\[
+$$
 t_y = -\cos\alpha e_s + \sin\alpha e_\theta,
-\]
+$$
 
 then the axial components cancel, but the circumferential components add. That means a two-lane pair can still carry steady circumferential momentum and angular momentum around the torus.
 
@@ -563,7 +563,7 @@ Slug discreteness makes the same point in time-domain form. In the \(10~\mathrm{
 
 So a millisecond-scale controller cannot rely on statistical averaging to preserve 0.01% to 0.1% balance. It needs explicit synchronization, timing discipline, and local bookkeeping of actual slugs, not just average mass flux.
 
-The same severity appears as phase tolerance. In the \(10~\mathrm{kg}\) row, \(1\%\) headway accuracy means about $\(1.8~\mu\mathrm{s}\)$ timing precision, while $\(0.1\%\)$ headway accuracy means about \(0.18~\mu\mathrm{s}\). That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
+The same severity appears as phase tolerance. In the \(10~\mathrm{kg}\) row, \(1\%\) headway accuracy means about $\(1.8~\mu\mathrm{s}\)$ , while $\(0.1\%\)$ headway accuracy means about \(0.18~\mu\mathrm{s}\). That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
 
 Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.
 
@@ -589,31 +589,31 @@ Physically, one should imagine a control sector as a long run of stator hardware
 
 Let one lane in a balanced cell have signed centerline speed
 
-\[
+$$
 V_s(s) = \sigma u(s)
-\]
+$$
 
 with \(\sigma = \pm 1\) for the two travel directions. Here \(u=v\cos\alpha\) is the scalar ring-centerline speed component.
 
 For a stationary speed field, the convective acceleration along \(s\) is
 
-\[
+$$
 a_s = V_s \frac{dV_s}{ds} = u \frac{du}{ds}.
-\]
+$$
 
 The key point is that \(a_s\) is independent of \(\sigma\). A fixed spatial speed gradient acts the same way on counter-propagating lanes when projected onto the stationary structure.
 
 For one lane with scalar mass flux \(\dot m\), the structural force per unit ring length is therefore
 
-\[
+$$
 q_{s,\mathrm{lane}} = -\dot m \frac{du}{ds}.
-\]
+$$
 
 If \(\alpha\) is locally constant so that \(u=v\cos\alpha\), this may also be written as
 
-\[
+$$
 q_{s,\mathrm{lane}} = -\dot m \cos\alpha \frac{dv}{ds}.
-\]
+$$
 
 That is the basic tug-field law.
 
@@ -623,9 +623,9 @@ Now consider a mirrored pair in the same fixed spatial speed gradient. If \(du/d
 
 So for one mirrored pair,
 
-\[
+$$
 q_{s,\mathrm{pair}} = -2\dot m \frac{du}{ds}.
-\]
+$$
 
 This is the real reason the pair adds instead of cancels. It is not that both lanes slow down in their own direction of travel. It is that a fixed spatial speed gradient produces the same structural reaction for both travel directions.
 
@@ -633,21 +633,21 @@ In more visual terms, a mirrored lane pair passing through one control sector be
 
 Integrating across a control section from \(u_1\) to \(u_2\) gives
 
-\[
+$$
 F_{\mathrm{pair}} = -2\dot m (u_2-u_1).
-\]
+$$
 
 For \(N_s\) participating paired modules in one azimuthal sector,
 
-\[
+$$
 F_{\mathrm{sector}} = -2N_s\dot m (u_2-u_1).
-\]
+$$
 
 If one only needs the magnitude, this becomes
 
-\[
+$$
 |F_{\mathrm{sector}}| = 2N_s\dot m |\Delta u|.
-\]
+$$
 
 For constant \(\alpha\), \(|\Delta u| = \cos\alpha |\Delta v|\).
 
@@ -659,21 +659,21 @@ That means the actuator is best imagined not as a point force but as a long, qui
 
 For one mirrored pair,
 
-\[
+$$
 q_{s,\mathrm{pair}}(s) = -2\dot m \frac{du}{ds}.
-\]
+$$
 
 For \(N_s\) participating paired modules,
 
-\[
+$$
 q_{s,\mathrm{sector}}(s) = -2N_s\dot m \frac{du}{ds}.
-\]
+$$
 
 Integrating over the transition width gives
 
-\[
+$$
 F_{\mathrm{sector}} = \int q_{s,\mathrm{sector}}(s) ds = -2N_s\dot m \Delta u.
-\]
+$$
 
 So a distributed tug field preserves the same integrated authority as a hard transition while spreading the load over a useful finite distance.
 
@@ -683,21 +683,21 @@ Now place such tug fields in opposed azimuthal sectors of a torus of radius \(a\
 
 At the level of order of magnitude,
 
-\[
+$$
 M \sim 2a |F_{\mathrm{sector}}|.
-\]
+$$
 
 A more explicit finite-sector estimate is
 
-\[
+$$
 M_{\mathrm{pair}} = 4aN_s\dot m |\Delta u| C_\mathrm{sec}(\Delta\phi)
-\]
+$$
 
 with
 
-\[
+$$
 C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}
-\]
+$$
 
 where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite angular extent.
 
@@ -729,9 +729,9 @@ The intended free-body path is: lane force into lane carrier, lane carrier into 
 
 That means the simple couple law belongs to the long-wave regime. A more honest bookkeeping form is
 
-\[
+$$
 M_\mathrm{eff} \approx \eta_\mathrm{load} 2a |F_\mathrm{sector}|,
-\]
+$$
 
 where \(\eta_\mathrm{load}\) is a cross-sectional transfer efficiency between zero and one that absorbs ovalization, shear lag, local twist, and other non-ideal shell behavior. At wavelengths comparable with the torus diameter, rib spacing, or shell ovalization modes, one should expect \(\eta_\mathrm{load}\) to fall below unity and local distortion to appear before clean global bending emerges. The present paper therefore treats the tug-sector couple as a plausible long-wave actuation primitive, not as proof that every local shell mode cooperates automatically.
 
@@ -743,21 +743,21 @@ The remaining concern is whether such speed modulation requires literal insertio
 
 Let slug number flux be \(J\), so that
 
-\[
+$$
 \dot m = J m_s
-\]
+$$
 
 where \(m_s\) is mass per slug. In steady flow through a lane with local speed \(v(s)\), number continuity gives
 
-\[
+$$
 n(s) = \frac{J}{v(s)}
-\]
+$$
 
 where \(n(s)\) is slug number density along the lane. Equivalently, if \(h=1/J\) is time headway, then the center-to-center spacing in a locally uniform region is
 
-\[
+$$
 s(s) = \frac{1}{n(s)} = v(s)h.
-\]
+$$
 
 So a region with lower speed automatically compresses spacing and raises local occupancy, while a region with higher speed automatically expands spacing and lowers it. No source term is required. The lane stores more or less slug inventory simply because the same flux is moving more slowly or more quickly through that region.
 
@@ -765,9 +765,9 @@ That is the clean kinematic reason why ordinary tug fields do not require fill-a
 
 It is also important to state where the force actually comes from. The force is generated at the speed-gradient zones, not in a uniform low-speed pocket by itself. A closed low-speed pocket that returns to its starting speed has zero net integrated tug,
 
-\[
+$$
 \int -2\dot m \frac{du}{ds} ds = -2\dot m\Delta u = 0,
-\]
+$$
 
 so its entry and exit ramps produce equal and opposite tugs at different positions. Useful macro-scale actuation therefore comes from placing those opposite gradient zones deliberately in space, so they generate internal load, bending moment, or stress redistribution where desired.
 
@@ -775,31 +775,31 @@ So the useful mental picture is not "the ring has a slow patch." It is "the ring
 
 The main constraints are instead collision and delay limits. For a monotone low-speed region with minimum speed \(v_1\), the minimum spacing becomes
 
-\[
+$$
 s_\mathrm{min} = h v_1
-\]
+$$
 
 so collision avoidance requires
 
-\[
+$$
 h v_1 \ge \ell_s + g_\mathrm{min}
-\]
+$$
 
 where \(\ell_s\) is slug length and \(g_\mathrm{min}\) is the minimum allowable gap.
 
 For an upward ramp, incomplete actuation can let a trailing slug catch a slower incumbent. A useful first delay bound is
 
-\[
+$$
 \tau_d < \frac{h v_0 - (\ell_s + g_\mathrm{min})}{v_1-v_0}
-\]
+$$
 
 where \(\tau_d\) is total sensing, computation, actuation, and field-establishment delay.
 
 For time-varying control profiles, the continuity constraint is stronger still. The slug density must satisfy
 
-\[
+$$
 \frac{\partial n}{\partial t} + \frac{\partial (nV)}{\partial s} = 0.
-\]
+$$
 
 So the no-fill/no-drain claim applies only to steady or slowly varying speed fields. A controller cannot arbitrarily command \(u(s,t)\) without launching density and headway waves through the lane. Dynamic control therefore requires phase and inventory management so that those waves do not create collision, starvation, or excessive headway error.
 
@@ -811,29 +811,29 @@ The tug equations are momentum-flux equations, but the next question is about po
 
 For one lane, the exact finite power transfer across a section that changes speed from \(u_1\) to \(u_2\) is
 
-\[
+$$
 P_{\mathrm{lane}} = \frac{1}{2}\dot m\left(u_2^2-u_1^2\right) = \dot m \bar u \Delta u
-\]
+$$
 
 where \(\bar u=(u_1+u_2)/2\). For small \(\Delta u\), this reduces to
 
-\[
+$$
 P_{\mathrm{lane}} \approx \dot m u   \Delta u.
-\]
+$$
 
 Using the force magnitude \(|F_{\mathrm{lane}}| = \dot m |\Delta u|\), this is
 
-\[
+$$
 P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}|   u.
-\]
+$$
 
 At \(u \sim 10~\mathrm{km/s}\), even modest structural tug implies enormous power exchange. A 1 MN tug at 10 km/s corresponds to roughly 10 GW.
 
 For the notional ring used throughout the paper, the more relevant number is larger. Take the screening passive load to be
 
-\[
+$$
 w_p = 10~\mathrm{kN/m}.
-\]
+$$
 
 Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of about 10 MN.
 
@@ -855,33 +855,33 @@ This is the point where the machine stops looking like three separate knobs and 
 
 For the prestress channel,
 
-\[
+$$
 p_\mathrm{eq} \propto \dot m u \tan^2\alpha,
-\]
+$$
 
 so, at fixed \(\dot m\) and \(\alpha\), the first-order pressure sensitivity is simply
 
-\[
+$$
 \frac{\delta p_\mathrm{eq}}{p_\mathrm{eq}} = \frac{\delta u}{u}.
-\]
+$$
 
 For the lift channel,
 
-\[
+$$
 q_\mathrm{lift} = 2N_p\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
-\]
+$$
 
 so the corresponding first-order sensitivity is
 
-\[
+$$
 \delta q_\mathrm{lift} = 2N_p\dot m\left(\frac{1}{R} + \frac{g_h}{u^2}\right)\delta u.
-\]
+$$
 
 The fractional lift sensitivity is therefore
 
-\[
+$$
 \frac{\delta q_\mathrm{lift}}{q_\mathrm{lift}} = \frac{\left(\frac{1}{R} + \frac{g_h}{u^2}\right)}{\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}\frac{\delta u}{u}.
-\]
+$$
 
 At the illustrative 500 km, \(u=10~\mathrm{km/s}\) reference point, that multiplier is about 3.8. So a 1% local speed modulation produces roughly a 3.8% local lift modulation in the participating lift stream.
 
@@ -889,27 +889,27 @@ The same speed field therefore actuates three coupled outputs: axial tug, local 
 
 The right coupling metric is not just the local gradient. It is the speed-offset area associated with the tug command. Define
 
-\[
+$$
 \beta = \frac{1}{R} + \frac{g_h}{u^2}.
-\]
+$$
 
 For the participating lane pairs in one control sector, the integrated lift side-effect is
 
-\[
+$$
 \Delta W_{\mathrm{lift,sector}} = 2N_s\dot m\beta \int \delta u(s) ds.
-\]
+$$
 
 The associated tug from one gradient zone is still
 
-\[
+$$
 F_{\mathrm{sector}} = -2N_s\dot m \Delta u.
-\]
+$$
 
 So the coupling ratio becomes
 
-\[
+$$
 \frac{\Delta W_{\mathrm{lift,sector}}}{F_{\mathrm{sector}}} = -\beta \frac{\int \delta u(s) ds}{\Delta u}.
-\]
+$$
 
 If one defines an effective speed-offset length, called \(L_\mathrm{eff}\), as the speed-offset area divided by the speed step, then the earlier \(\beta L\) estimate is just the special case in which that effective length happens to equal the physical sector length. A triangular ramp gives about \(L_\mathrm{eff}=L/2\). A long low-speed pocket is dominated by its plateau length. An antisymmetric profile can partly cancel its own lift side-effect.
 
@@ -929,21 +929,21 @@ That is why the coupling can converge rather than blow up. The strong inner-loop
 
 A useful way to name that problem is with a local linearized control map. Write
 
-\[
+$$
 \delta y = \mathbf{M} \delta u
-\]
+$$
 
 with output vector
 
-\[
+$$
 \delta y = \left(\delta F_s,  \delta p_\mathrm{eq},  \delta q_\mathrm{lift}\right)^T
-\]
+$$
 
 and lane-command vector
 
-\[
+$$
 \delta u = \left(\delta u_1,  \delta u_2,  \delta u_3,  \delta u_4\right)^T.
-\]
+$$
 
 Here \(\mathbf{M}\) depends on lane placement, handedness, sector participation, and operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
 
@@ -984,23 +984,23 @@ For the symmetric counter-propagating pairs used throughout the paper, the guide
 
 Let \(u=v\cos\alpha\) be ring-tangential speed and let the ring radius be \(R\). For one slug lane with mass flux \(\dot m\), the net outward lift per unit ring length is
 
-\[
+$$
 q_\mathrm{lift,lane} = \dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
-\]
+$$
 
 where \(g_h\) is gravity at altitude.
 
 For \(N_p\) paired modules,
 
-\[
+$$
 q_\mathrm{lift} = 2N_p\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right).
-\]
+$$
 
 The lift changes sign at
 
-\[
+$$
 u_\mathrm{orb} = \sqrt{g_hR}.
-\]
+$$
 
 If \(u<u_\mathrm{orb}\), the moving stream loads the ring downward overall. Only for \(u>u_\mathrm{orb}\) does it contribute net outward lift.
 
@@ -1010,17 +1010,17 @@ This is why the helical angle has to stay small at full scale. The ring needs it
 
 Let \(w_p\) denote the net inward non-stream load per unit ring length. The lift requirement can be written as
 
-\[
+$$
 A_\mathrm{pair} = N_p \dot m   u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
-\]
+$$
 
 where \(A_\mathrm{pair}\) is the paired-module momentum-flux scale and the total paired-lane contribution is \(2A_\mathrm{pair}\).
 
 That sounds like a simple scaling law, but it closes several hard subsystems into one loop:
 
-\[
+$$
 w_p \to A_\mathrm{pair} \to \left(E_{\mathrm{kin}},  P_{\mathrm{loss}}\right) \to \left(w_{\mathrm{contain}},  w_{\mathrm{thermal}},  w_{\mathrm{power}}\right) \to w_p
-\]
+$$
 
 In words:
 
@@ -1034,27 +1034,27 @@ The concept stands or falls on whether this loop converges.
 
 One brutal scale number is worth stating explicitly. In the illustrative 500 km, \(u=10~\mathrm{km/s}\) reference case,
 
-\[
+$$
 \frac{u^2}{R} - g_h \approx 6.1~\mathrm{m/s^2}.
-\]
+$$
 
 So supporting even
 
-\[
+$$
 w_p = 10~\mathrm{kN/m}
-\]
+$$
 
 of passive weight requires moving-stream line density of about
 
-\[
+$$
 \lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{6.1} \approx 1600~\mathrm{kg/m}.
-\]
+$$
 
 The corresponding kinetic energy per metre is then
 
-\[
+$$
 E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
-\]
+$$
 
 For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of 3.5 × 10¹⁸ J in this notional case. That is the energy scale associated with the notional \(10~\mathrm{kN/m}\) passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
@@ -1074,9 +1074,9 @@ The helical membrane guide shell should not be interpreted as a containment solu
 
 Fault-domain length must be set by allowable segment energy, not by construction convenience. If the moving stream stores energy per unit length \(E'\), then each isolated domain inherits
 
-\[
+$$
 E_{\mathrm{segment}} = E' L_{\mathrm{segment}},
-\]
+$$
 
 and the isolation architecture has to be sized from that energy, not merely named.
 
@@ -1122,36 +1122,36 @@ Macro lift still demands superorbital ring-tangential momentum flux, and the clo
 
 The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell should retain not only the curvature-follower term but also the moving-stream inertial and convective terms. For one lane with moving-stream line density \(\lambda_\mathrm{lane}\) and guide-frame speed \(v\), the constrained-stream reaction may be written as
 
-\[
+$$
 q_\mathrm{stream} = -\lambda_\mathrm{lane}\left(y_{tt} + 2v y_{st} + v^2 y_{ss}\right)
 = -\lambda_\mathrm{lane} y_{tt} - 2\lambda_\mathrm{lane} v y_{st} - T_{\mathrm{eq,lane}} y_{ss},
-\]
+$$
 
 where
 
-\[
+$$
 T_{\mathrm{eq,lane}} = \lambda_\mathrm{lane} v^2.
-\]
+$$
 
 The first term can be absorbed into an effective mass only under stated assumptions, but the mixed convective term cannot simply be discarded. It is the non-self-adjoint transport term that can affect directional wave response, phase margin, and stability. Keeping the stream reaction explicit on the right-hand side gives
 
-\[
+$$
 m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) = q_\mathrm{stream},
-\]
+$$
 
 Here \(m_\mathrm{eff}\) is effective supported mass per lane length exclusive of any moving-stream inertia that one chooses to leave explicit, \(c_\mathrm{eff}\) is passive and active damping, \(B_\mathrm{eff}\) is short-wave bending or rib stiffness, \(K_\mathrm{shell}\) is the restoring contribution of the prestressed shell, \(K_\mathrm{guide}\) is local guide stiffness, \(K_\mathrm{ctrl}\) is delayed feedback stiffness, and \(T_{\mathrm{eq,lane}}\) is the lane-level moving-stream follower-force scale.
 
 Moving the stream reaction to the left gives the equivalent homogeneous form
 
-\[
+$$
 (m_\mathrm{eff}+\lambda_\mathrm{lane}) y_{tt} + 2\lambda_\mathrm{lane}v y_{st} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) + T_{\mathrm{eq,lane}} y_{ss} = 0,
-\]
+$$
 
 so for a Fourier mode \(y \propto e^{i(ks-\omega t)}\), the characteristic balance becomes
 
-\[
+$$
 -(m_\mathrm{eff}+\lambda_\mathrm{lane})\omega^2 + 2\lambda_\mathrm{lane}vk\omega + i c_\mathrm{eff}\omega + B_\mathrm{eff}k^4 + K_\mathrm{shell}(k) + K_\mathrm{guide}(k) + K_\mathrm{ctrl}(k)e^{-i\omega\tau_c} - T_{\mathrm{eq,lane}}k^2 = 0.
-\]
+$$
 
 This makes the control partition explicit. If one deliberately drops the \(-\lambda_\mathrm{lane}y_{tt}\) and \(-2\lambda_\mathrm{lane}v y_{st}\) terms, the appendix reduces to the simpler quasi-static follower-stiffness toy model used only for intuition, not for a complete lane-dynamics claim.
 
@@ -1171,17 +1171,17 @@ It is still useful to ask whether the actuation channel is at least numerically 
 
 Take the 500 km reference case with a total moving-stream line density of about 1,600 kg/m and ring-tangential speed of 10 km/s. Define the whole-stream long-wave follower-force scale as
 
-\[
+$$
 T_{\mathrm{eq,tot}} = \lambda_{\mathrm{stream,total}}u^2.
-\]
+$$
 
 For the reference case that gives roughly 1.6 × 10¹¹ N.
 
 For a sinusoidal long-wave displacement \(y = Y\sin(ks)\), the destabilizing follower contribution per unit ring length is of order
 
-\[
+$$
 q_\mathrm{follow} \sim T_{\mathrm{eq,tot}}k^2Y.
-\]
+$$
 
 That gives the following screening values for one metre of displacement amplitude:
 
@@ -1251,9 +1251,9 @@ A useful module-scale view makes the same point. Spread over 100 km, the average
 
 At the 500 km reference point, the moving stream stores about 82 GJ/m. That makes allowable fault energy the key quantity for architecture. If one chooses an allowable released energy \(E_\mathrm{allow}\), the corresponding maximum isolated domain length is roughly
 
-\[
+$$
 L_\mathrm{iso} \approx \frac{E_\mathrm{allow}}{82~\mathrm{GJ/m}}.
-\]
+$$
 
 The result is brutal:
 
@@ -1282,28 +1282,28 @@ Even a ring intended to remain stationary relative to the ground is not inertial
 
 Let the local guide shell have inertial ring-tangential speed \(U_g\), and let each lane have guide-relative speed \(\sigma u\) with \(\sigma = \pm 1\) for the two travel directions. The inertial lane speed is then
 
-\[
+$$
 U_\sigma = U_g + \sigma u.
-\]
+$$
 
 If \(\dot m\) is the guide-frame mass flux in one lane, then the mass per unit guide length is \(\lambda = \dot m/u\). The outward reaction per unit guide length from that lane is therefore
 
-\[
+$$
 q_{\mathrm{lift},\sigma} = \frac{\dot m}{u}\left(\frac{(U_g+\sigma u)^2}{R} - g_h\right).
-\]
+$$
 
 For a symmetric counter-propagating pair, the sum becomes
 
-\[
+$$
 q_{\mathrm{lift,pair}} = \frac{2\dot m}{u}\left(\frac{u^2 + U_g^2}{R} - g_h\right)
 = 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right) + 2\dot m\frac{U_g^2}{uR}.
-\]
+$$
 
 So the pair-averaged lift law used in the main text,
 
-\[
+$$
 q_{\mathrm{lift,pair}} \approx 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
-\]
+$$
 
 is the leading-order result when \(U_g \ll u\). The first-order \(\pm 2U_g u/R\) correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, \(U_g\) is about 0.50 km/s, so the retained correction is only about 0.25% of the main ring-curvature term in the reference case.
 
