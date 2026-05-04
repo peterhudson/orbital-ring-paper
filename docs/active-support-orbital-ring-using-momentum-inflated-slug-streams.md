@@ -35,19 +35,19 @@ The claim envelope should be stated early. This paper does not claim closure of 
 
 The main fatal risks are also worth naming early: follower-force instability, unacceptable guide loss, impossible thermal rejection, unmanageable fault-domain energy, and a passive-mass closure loop that fails to converge.
 
-Figure 1a gives the global geometry of the orbital ring concept and the local section chosen for closer inspection. Figure 1b then shows the corresponding local guide-shell geometry and a representative helical lane used throughout the paper.
+Figure 1 gives the global geometry of the orbital ring concept and the local section chosen for closer inspection. Figure 2 then shows the corresponding local guide-shell geometry and a representative helical lane used throughout the paper.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-1a-orbital-ring-global-geometry.svg" alt="Figure 1a, global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 1b." style="width: 76%; height: auto;" />
+  <img src="../figures/figure-1-orbital-ring-global-geometry.svg" alt="Figure 1, global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 2." style="width: 76%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.92em; line-height: 1.35; color: #4b5563;">
-    <strong>Figure 1a.</strong> Global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 1b.
+    <strong>Figure 1.</strong> Global geometry of the orbital ring around Earth, with the local section shown in detail in Figure 2.
   </figcaption>
 </figure>
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-1b-orbital-ring-local-helical-lanes-single-lane.svg" alt="Figure 1b, local guide-shell segment with a representative helical lane and local coordinates." style="width: 92%; height: auto;" />
+  <img src="../figures/figure-2-orbital-ring-local-helical-lane-geometry.svg" alt="Figure 2, local guide-shell segment with a representative helical lane and local coordinates." style="width: 92%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.92em; line-height: 1.35; color: #4b5563;">
-    <strong>Figure 1b.</strong> Local guide-shell segment with a representative helical lane and local coordinates.
+    <strong>Figure 2.</strong> Local guide-shell segment with a representative helical lane and local coordinates.
   </figcaption>
 </figure>
 
@@ -503,20 +503,20 @@ The minimal balanced cell therefore contains four lanes. To keep the sign bookke
 Pair A therefore cancels \(s\)-momentum but retains positive \(\theta\)-momentum, pair B cancels \(s\)-momentum but retains negative \(\theta\)-momentum, and the four-lane cell cancels both together.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-2-balanced-four-lane-cell.svg" alt="Figure 2, balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions." style="width: 88%; height: auto;" />
+  <img src="../figures/figure-3-balanced-four-lane-cell.svg" alt="Figure 3, balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions." style="width: 88%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 2.</strong> Balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions. Arrows indicate slug travel direction, and the helix angle is exaggerated for clarity.
+    <strong>Figure 3.</strong> Balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions. Arrows indicate slug travel direction, and the helix angle is exaggerated for clarity.
   </figcaption>
 </figure>
 
-Figure 3 makes the cancellation bookkeeping explicit in force-component form at two representative stations, A and B, of a control sector. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the cell contains equal positive and negative azimuthal slopes, the \(\theta\)-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction.
+Figure 4 makes the cancellation bookkeeping explicit in force-component form at two representative stations, A and B, of a control sector. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the cell contains equal positive and negative azimuthal slopes, the \(\theta\)-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction.
 
 The \(s\)-components behave differently. In a stationary speed-gradient section, a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along \(s\) on the stationary guide hardware. So the balanced four-cell can cancel the unwanted \(\theta\)-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
 
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-2b-balanced-cell-force-cancellation.svg" alt="Figure 3, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
+  <img src="../figures/figure-4-balanced-cell-force-cancellation.svg" alt="Figure 4, force-component bookkeeping for a balanced four-lane cell at two control locations, showing cancellation in theta and addition in s." style="width: 96%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 3.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential <em>θ</em> components cancel in the four-lane sum, while the ring-direction <em>s</em> components add to produce a net axial structural tug during acceleration or deceleration.
+    <strong>Figure 4.</strong> Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential <em>θ</em> components cancel in the four-lane sum, while the ring-direction <em>s</em> components add to produce a net axial structural tug during acceleration or deceleration.
   </figcaption>
 </figure>
 
@@ -701,19 +701,19 @@ C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}
 
 where \(\Delta\phi\) is sector width and \(C_\mathrm{sec}\) accounts for finite angular extent.
 
-This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 4 sketches the opposed balanced four-cells geometrically: one cell runs from A to B, while a mirrored cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 5 then makes the same logic more physical by resolving the lane reactions at representative control locations into local <em>s</em>- and <em>θ</em>-components.
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 5 sketches the opposed balanced four-cells geometrically: one cell runs from A to B, while a mirrored cell runs from A′ to B′ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 6 then makes the same logic more physical by resolving the lane reactions at representative control locations into local <em>s</em>- and <em>θ</em>-components.
 
 <figure style="margin: 1.15em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-3-opposed-balanced-cells-bending.svg" alt="Figure 4, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
+  <img src="../figures/figure-5-opposed-balanced-cells-bending.svg" alt="Figure 5, two opposed balanced four-cells on a guide-shell segment, labeled A to B and A′ to B′." style="width: 90%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 4.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A′ to B′. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
+    <strong>Figure 5.</strong> Two opposed balanced four-cells on a local guide-shell segment. One cell spans A to B and the other spans A′ to B′. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
   </figcaption>
 </figure>
 
 <figure style="margin: 1.0em auto 1.35em auto; text-align: center; page-break-inside: avoid; break-inside: avoid-page;">
-  <img src="../figures/figure-4-opposed-balanced-cells-moment.svg" alt="Figure 5, local force-component view showing how opposed balanced cells generate a bending moment." style="width: 82%; height: auto;" />
+  <img src="../figures/figure-6-opposed-balanced-cells-moment.svg" alt="Figure 6, local force-component view showing how opposed balanced cells generate a bending moment." style="width: 82%; height: auto;" />
   <figcaption style="margin-top: 0.55em; font-size: 0.95em; color: #444;">
-    <strong>Figure 5.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential <em>F</em><sub>θ</sub> components cancel, while the ring-direction <em>F</em><sub>s</sub> components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A′ and B′ together, producing the bending couple sketched in Figure 4.
+    <strong>Figure 6.</strong> Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential <em>F</em><sub>θ</sub> components cancel, while the ring-direction <em>F</em><sub>s</sub> components add. In the opposed sectors, those surviving axial reactions push A and B apart while pulling A′ and B′ together, producing the bending couple sketched in Figure 5.
   </figcaption>
 </figure>
 
