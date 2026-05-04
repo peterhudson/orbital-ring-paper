@@ -563,7 +563,7 @@ Slug discreteness makes the same point in time-domain form. In the \(10~\mathrm{
 
 So a millisecond-scale controller cannot rely on statistical averaging to preserve 0.01% to 0.1% balance. It needs explicit synchronization, timing discipline, and local bookkeeping of actual slugs, not just average mass flux.
 
-The same severity appears as phase tolerance. In the \(10~\mathrm{kg}\) row, \(1\%\) headway accuracy means about \(1.8~\mu\mathrm{s}\) timing precision, while \(0.1\%\) headway accuracy means about \(0.18~\mu\mathrm{s}\). That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
+The same severity appears as phase tolerance. In the \(10~\mathrm{kg}\) row, \(1\%\) headway accuracy means about $\(1.8~\mu\mathrm{s}\)$ timing precision, while $\(0.1\%\)$ headway accuracy means about \(0.18~\mu\mathrm{s}\). That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
 
 Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.
 
