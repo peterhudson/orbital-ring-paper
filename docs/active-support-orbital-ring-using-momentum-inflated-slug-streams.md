@@ -1173,9 +1173,7 @@ $$
 so that the lane-level moving-stream dynamic-tension scale is
 
 $$
-T_{\mathrm{eq,lane}}
-====================
-
+T_{\mathrm{eq,lane}}=
 \lambda_{\mathrm{lane}}v^2
 \approx
 5.4\times 10^8~\mathrm{N}.
@@ -1190,9 +1188,7 @@ $$
 the quasi-static follower-force contribution has stiffness magnitude per unit lane length
 
 $$
-K_{\mathrm{follow}}(k)
-======================
-
+K_{\mathrm{follow}}(k)=
 T_{\mathrm{eq,lane}}k^2.
 $$
 
@@ -1214,24 +1210,7 @@ The $100~\mathrm{m}$ case is important. The destabilizing incremental force for 
 Let $y(s,t)$ be one transverse generalized coordinate of a lane carrier relative to the local guide shell. The simplest linearized local model retaining the moving-stream terms is
 
 $$
-M y_{tt}
-+
-2 i_\mathrm{op}\lambda v y_{st}
-+
-C y_t
-+
-B y_{ssss}
-+
-K_0 y
------
-
-T_{\mathrm{eq,lane}} y_{ss}^{(-)}
-+
-q_{\mathrm{ctrl}}
-=================
-
-0.
-
+M y_{tt}+2 i_\mathrm{op}\lambda v y_{st}+C y_t+B y_{ssss}+K_0 y-T_{\mathrm{eq,lane}} y_{ss}^{(-)}+q_{\mathrm{ctrl}}=0.
 $$
 
 It is clearer to write the Fourier-mode form directly. For
@@ -1243,22 +1222,7 @@ $$
 the open-loop characteristic equation is
 
 $$
-M\sigma^2
-+
-\left(C+2i\lambda v k\right)\sigma
-+
-\left[
-B k^4
-+
-K_0
----
-
-T_{\mathrm{eq,lane}}k^2
-\right]
-=======
-
-0.
-
+M\sigma^2+\left(C+2i\lambda v k\right)\sigma+\left[B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right]=0.
 $$
 
 Here:
@@ -1279,15 +1243,7 @@ $$
 Equivalently,
 
 $$
-K_{\mathrm{margin}}(k)
-======================
-
-B k^4 + K_0 - T_{\mathrm{eq,lane}}k^2
-
->
-
-0.
-
+K_{\mathrm{margin}}(k)=B k^4 + K_0 - T_{\mathrm{eq,lane}}k^2>0.
 $$
 
 If this margin is negative, the mode is locally divergent unless active control supplies additional stabilizing stiffness and damping.
@@ -1305,10 +1261,7 @@ $$
 or
 
 $$
-B > \frac{T_{\mathrm{eq,lane}}}{k^2}
-====================================
-
-T_{\mathrm{eq,lane}}\left(\frac{L}{2\pi}\right)^2.
+B > \frac{T_{\mathrm{eq,lane}}}{k^2}=T_{\mathrm{eq,lane}}\left(\frac{L}{2\pi}\right)^2.
 $$
 
 Numerically,
@@ -1331,10 +1284,7 @@ q_{\mathrm{ctrl}} = z,
 $$
 
 $$
-\tau_a \dot z + z
-=================
-
-K_c y + C_c \dot y,
+\tau_a \dot z + z=K_c y + C_c \dot y,
 $$
 
 where:
@@ -1346,50 +1296,13 @@ where:
 For one Fourier mode, the closed-loop characteristic equation becomes
 
 $$
-M\sigma^2
-+
-\left(C+2i\lambda v k\right)\sigma
-+
-\left[
-B k^4
-+
-K_0
----
-
-T_{\mathrm{eq,lane}}k^2
-\right]
-+
-\frac{K_c+C_c\sigma}{1+\tau_a\sigma}
-====================================
-
-0.
-
+M\sigma^2+\left(C+2i\lambda v k\right)\sigma+\left[B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right]+\frac{K_c+C_c\sigma}{1+\tau_a\sigma}=0.
 $$
 
 Multiplying through by $1+\tau_a\sigma$ gives a cubic eigenvalue problem:
 
 $$
-\left(1+\tau_a\sigma\right)
-\left{
-M\sigma^2
-+
-\left(C+2i\lambda v k\right)\sigma
-+
-B k^4
-+
-K_0
----
-
-T_{\mathrm{eq,lane}}k^2
-\right}
-+
-K_c
-+
-C_c\sigma
-=========
-
-0.
-
+\left(1+\tau_a\sigma\right)\left{M\sigma^2+\left(C+2i\lambda v k\right)\sigma+B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right}+K_c+C_c\sigma=0.
 $$
 
 The mode is locally stable if every root satisfies
