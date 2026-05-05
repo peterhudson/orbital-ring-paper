@@ -576,7 +576,7 @@ $$
 { \delta u \over u },
 $$
 
-so ordinary pressure trim is weak at $u\sim10~\mathrm{km/s}$. A few metres per second of speed trim changes the steady pressure by only a few parts in ten thousand. The useful response is therefore not uniform pressure trim alone. It is a shaped force command: local guide forces, neighboring lane tugs, and membrane/rib load paths arranged so that the perturbed patch is actively pulled back toward its reference geometry.
+so ordinary pressure trim is weak at $u\sim10~\mathrm{km/s}$. A few metres per second of speed trim changes the steady pressure by only a few parts in ten thousand. The useful response is therefore not uniform pressure trim. It is a shaped force command: local guide forces, neighboring lane tugs, and membrane/rib load paths arranged so that the perturbed patch is actively pulled back toward its reference geometry.
 
 This is the sense in which adjacent lanes may "pull a perturbation straight." They do not make the follower-force term disappear. They supply an actively commanded restoring load through the guide shell. In a linearized control picture, the goal is to add a feedback term of the form
 
@@ -588,7 +588,7 @@ $$
 
 with enough gain, damping, and phase margin that the total response remains restoring over the wavelength band assigned to local control.
 
-This section therefore bridges the local prestress argument to the balanced-cell architecture. The prestressed shell gives the lane system a medium through which corrective loads can be distributed. The nearby lanes provide actuator authority. The four-lane cell is then needed so that this local actuation can be commanded without creating large residual momentum and torque channels. The same logic reappears at longer wavelength in the distributed tug fields of Section 7.
+This section therefore bridges the local prestress argument to the macro balanced-cell architecture developed in the next section. The prestressed shell gives the lane system a medium through which corrective loads can be distributed. The nearby lanes provide actuator authority. The four-lane cell is then needed so that this local actuation can be commanded without creating large residual momentum and torque channels (see next section). The same logic reappears at longer wavelength in the distributed tug fields of Section 7.
 
 ---
 
