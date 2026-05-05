@@ -34,19 +34,19 @@ function Div(el)
   end
 
   local left = el.attributes["left"] or "-0.08\\textwidth"
-  local right = el.attributes["right"] or "-0.08\\textwidth"
-  local begin_wide_table = "\\begin{list}{}{\\setlength{\\leftmargin}{"
+  local right = el.attributes["right"] or left
+  local begin_wide_table = "\\begingroup\\begin{adjustwidth}{"
     .. left
-    .. "}\\setlength{\\rightmargin}{"
+    .. "}{"
     .. right
-    .. "}}\\item[]"
+    .. "}\\setlength{\\columnwidth}{\\linewidth}"
   local blocks = {pandoc.RawBlock("latex", begin_wide_table)}
 
   for _, block in ipairs(el.content) do
     table.insert(blocks, block)
   end
 
-  table.insert(blocks, pandoc.RawBlock("latex", "\\end{list}"))
+  table.insert(blocks, pandoc.RawBlock("latex", "\\end{adjustwidth}\\endgroup"))
   return blocks
 end
 """.lstrip()
@@ -100,6 +100,9 @@ def main() -> int:
         wide_table_filter = temp_dir / "wide-tables.lua"
         wide_table_filter.write_text(WIDE_TABLE_LUA_FILTER, encoding="utf-8")
 
+        header_file = temp_dir / "wide-table-header.tex"
+        header_file.write_text("\\usepackage{changepage}\n", encoding="utf-8")
+
         cmd = [
             "pandoc",
             str(input_path),
@@ -107,6 +110,8 @@ def main() -> int:
             str(input_path.parent),
             "--lua-filter",
             str(wide_table_filter),
+            "--include-in-header",
+            str(header_file),
             "-o",
             str(output_pdf),
         ]
