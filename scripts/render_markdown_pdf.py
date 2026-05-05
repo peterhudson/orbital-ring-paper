@@ -13,8 +13,43 @@ import argparse
 import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
+
+
+WIDE_TABLE_LUA_FILTER = r"""
+local function has_class(classes, target)
+  for _, class in ipairs(classes) do
+    if class == target then
+      return true
+    end
+  end
+  return false
+end
+
+function Div(el)
+  if not has_class(el.classes, "wide-table") then
+    return nil
+  end
+
+  local left = el.attributes["left"] or "-0.08\\textwidth"
+  local right = el.attributes["right"] or left
+  local begin_wide_table = "\\begingroup\\begin{adjustwidth}{"
+    .. left
+    .. "}{"
+    .. right
+    .. "}\\setlength{\\columnwidth}{\\linewidth}"
+  local blocks = {pandoc.RawBlock("latex", begin_wide_table)}
+
+  for _, block in ipairs(el.content) do
+    table.insert(blocks, block)
+  end
+
+  table.insert(blocks, pandoc.RawBlock("latex", "\\end{adjustwidth}\\endgroup"))
+  return blocks
+end
+""".lstrip()
 
 
 def build_output_name(input_path: Path, output_dir: Path) -> Path:
@@ -60,12 +95,31 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     output_pdf = build_output_name(input_path, output_dir)
 
-    cmd = ["pandoc", str(input_path), "-o", str(output_pdf)]
-    try:
-        subprocess.run(cmd, check=True)
-    except subprocess.CalledProcessError as exc:
-        print(f"Error: pandoc failed with exit code {exc.returncode}", file=sys.stderr)
-        return exc.returncode
+    with tempfile.TemporaryDirectory() as temp_dir_name:
+        temp_dir = Path(temp_dir_name)
+        wide_table_filter = temp_dir / "wide-tables.lua"
+        wide_table_filter.write_text(WIDE_TABLE_LUA_FILTER, encoding="utf-8")
+
+        header_file = temp_dir / "wide-table-header.tex"
+        header_file.write_text("\\usepackage{changepage}\n", encoding="utf-8")
+
+        cmd = [
+            "pandoc",
+            str(input_path),
+            "--resource-path",
+            str(input_path.parent),
+            "--lua-filter",
+            str(wide_table_filter),
+            "--include-in-header",
+            str(header_file),
+            "-o",
+            str(output_pdf),
+        ]
+        try:
+            subprocess.run(cmd, check=True)
+        except subprocess.CalledProcessError as exc:
+            print(f"Error: pandoc failed with exit code {exc.returncode}", file=sys.stderr)
+            return exc.returncode
 
     print(f"Generated PDF: {output_pdf}")
     return 0
