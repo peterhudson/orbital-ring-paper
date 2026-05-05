@@ -11,7 +11,7 @@ author: "Peter Hudson"
 
 This paper proposes an orbital-ring architecture built from magnetically guided high-speed slug streams running in lanes set at small helix angle around a very large lightweight toroidal guide structure. The paper's main claim is narrower than feasibility: it identifies two linked ideas that are genuinely useful at the concept level and may serve as an internal prestress-and-actuation primitive for active-support ring concepts.
 
-The first is that slug streams can do more than circulate momentum to loft a structure. By forcing the streams to follow curved helical paths on a large toroidal membrane, the design converts momentum redirection into distributed outward pressure, hoop prestress, and local structural rigidity. The result is best understood as a prestressed membrane guide shell, intuitively a giant fabric torus, whose local stiffness is created by internal moving mass.
+The first is that slug streams can do more than circulate momentum to loft a structure. By forcing the streams to follow curved helical paths on a large toroidal membrane, the design converts momentum redirection into distributed outward pressure, hoop prestress, and local structural rigidity. The result is best understood as a prestressed membrane-and-guide shell (intuitively a giant fabric torus) whose steady preload is created by guided moving mass. That preload may improve roundness, wrinkle suppression, and load transfer in an independent membrane/rib/guide structure, but it is not itself a proof of stabilizing tangent stiffness. Perturbations of the guided stream retain nonconservative follower-force terms that must be overcome by the shell, guide, and control system.
 
 The second is that the same helical geometry enables a four-lane balanced cell that can generate distributed tug fields for macro-scale ring-shape actuation. In a fixed spatial speed gradient, one counter-propagating lane accelerates while its mirrored partner decelerates. Their structural reactions add, and a co-located bidirectional power path can exchange power between the two streams. That makes the cell a momentum-flux actuator and a high-power energy exchanger at the same time.
 
@@ -31,7 +31,7 @@ Second, even if one has enough moving momentum to loft a ring, that does not by 
 
 This paper proposes a specific answer to both problems.
 
-1. **Helical slug streams at small $\alpha$ in a prestressed membrane guide shell.** The lanes are wrapped helically around a large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into local structural stiffness.
+1. **Helical slug streams at small $\alpha$ in a prestressed membrane guide shell.** The lanes are wrapped helically around a large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into a steady prestress channel and reaction substrate for an independently stabilized guide structure.
 2. **A four-lane balanced cell for macro-scale actuation.** The same helical geometry allows balanced groups of lanes whose momentum components cancel in steady operation but can be modulated through fixed spatial speed gradients to produce distributed tug fields and ring-scale bending moments.
 
 The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system, nor does it claim demonstrated closed-loop controllability. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, fault isolation, startup, deployment, and passive-mass closure remain explicit closure requirements.
@@ -472,6 +472,42 @@ For the $500~\mathrm{km}$, $u=10~\mathrm{km/s}$, $\Gamma=10$ reference case, the
 The homogenized shell picture should also be bounded in wavelength. With about 300 lanes around a 314 m circumference, the pitch is about 1 m, so pressure-like averaging may be reasonable for long-wave deformation. It should not be trusted blindly for metre-scale guide deformation, local rib failure, lane dropout, or sharp control-sector gradients. A useful rule of thumb is that the smoothed shell model belongs to wavelengths well above the torus diameter and preferably well above the circumference, while shorter scales require an explicitly discrete lane-and-rib treatment.
 
 That is why the orbital ring still requires active macro-scale actuation, and why the four-lane balanced cell becomes essential.
+
+### 5.6 Prestress is not tangent stiffness
+
+The helical stream-generated load must not be double-counted. The same moving masses that generate the steady outward preload also generate nonconservative incremental follower-force terms when the guide path is perturbed.
+
+For one lane, the moving-stream dynamic-tension scale is
+
+$$
+T_{\mathrm{eq,lane}} = \lambda_{\mathrm{lane}} v^2 .
+$$
+
+In the reference case, $\lambda_{\mathrm{lane}}\approx 5.4~\mathrm{kg/m}$ and $v\approx10~\mathrm{km/s}$, giving
+
+$$
+T_{\mathrm{eq,lane}}\approx5.4\times10^8~\mathrm{N}.
+$$
+
+For a perturbation of wavelength $L$, the quasi-static follower contribution scales as
+
+$$
+q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left({2\pi\over L}\right)^2Y .
+$$
+
+For $Y=1~\mathrm{mm}$ this gives approximately:
+
+| Wavelength $L$ | Anti-restoring load per lane |
+| ---: | ---: |
+| 100 m | about 2.1 kN/m |
+| 10 m | about 210 kN/m |
+| 1 m | about 21 MN/m |
+
+The steady helical normal load in the same reference case is only about 2.1 kN/m per lane. Thus, at 100 m wavelength, a 1 mm perturbation already creates an anti-restoring incremental load comparable to the entire steady helical preload; at 10 m wavelength it is roughly two orders of magnitude larger.
+
+This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local follower-force instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
+
+Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream follower-force scale remains of order $\dot m u$. Meaningful direct competition with the follower-force scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
 
 ---
 
