@@ -1350,23 +1350,17 @@ $$
 so the controller supplies three times the destabilizing follower stiffness. The resulting net positive stiffness margin, ignoring passive $B$ and $K_0$, is then approximately
 
 $$
+\begin{aligned}
 K_{\mathrm{net}}
-================
-
-## K_c
-
-# T_{\mathrm{eq,lane}}k^2
-
-2T_{\mathrm{eq,lane}}k^2.
+&= K_c - T_{\mathrm{eq,lane}}k^2 \\
+&= 2T_{\mathrm{eq,lane}}k^2.
+\end{aligned}
 $$
 
 Choose active damping corresponding to a target damping ratio $\zeta=0.35$:
 
 $$
-C_c
-===
-
-2\zeta\sqrt{M K_{\mathrm{net}}}.
+C_c = 2\zeta\sqrt{M K_{\mathrm{net}}}.
 $$
 
 For illustration, set
@@ -1392,12 +1386,11 @@ This toy calculation gives a useful answer. The local follower-force problem is 
 The force scale is also revealing. At $L=100~\mathrm{m}$, the active stiffness choice above corresponds to approximately
 
 $$
+\begin{aligned}
 K_cY
-====
-
-3T_{\mathrm{eq,lane}}k^2Y
-\approx
-6.4~\mathrm{kN/m}
+&= 3T_{\mathrm{eq,lane}}k^2Y \\
+&\approx 6.4~\mathrm{kN/m}.
+\end{aligned}
 $$
 
 for a $1~\mathrm{mm}$ displacement. That is severe but not obviously beyond local magnetic-bearing authority.
@@ -1409,11 +1402,6 @@ $$
 $$
 
 for a $1~\mathrm{mm}$ displacement, with an effective delay well below $0.1~\mathrm{ms}$. That is a very different regime. It is probably not credible as ordinary distributed shell control. It would need to be handled by extremely local guide stiffness, short magnetic-bearing loops, stiff lane carriers, or by designing the lane geometry so that such modes are not permitted to grow.
-
-
-XXXXXX
-
-
 
 
 
@@ -1450,11 +1438,7 @@ $$
 A local perturbation is expanded as
 
 $$
-\mathbf{x}(s,\theta,t)
-======================
-
-\hat{\mathbf{x}}
-e^{\sigma t+i k_s s+i n\theta},
+\mathbf{x}(s,\theta,t) = \hat{\mathbf{x}}e^{\sigma t+i k_s s+i n\theta},
 $$
 
 where $k_s$ is the axial wavenumber and $n$ is the cross-section mode number.
@@ -1468,12 +1452,7 @@ $$
 For a lane of handedness $h_j=\pm 1$, the wavenumber seen along the helical lane is approximately
 
 $$
-k_{\parallel,j}
-===============
-
-k_s\cos\alpha
-+
-h_j\frac{n}{a}\sin\alpha .
+k_{\parallel,j} = k_s\cos\alpha + h_j\frac{n}{a}\sin\alpha .
 $$
 
 For shallow helix angle $\alpha$, the first term usually dominates for short axial wavelengths, but the cross-section term becomes important for high-$n$ ovalization or shear modes at long axial wavelength.
@@ -1489,12 +1468,11 @@ $$
 so the moving-stream dynamic-tension scale is
 
 $$
+\begin{aligned}
 T_{\mathrm{eq,lane}}
-====================
-
-# \lambda_{\mathrm{lane}}v^2
-
-\dot m v.
+&= \lambda_{\mathrm{lane}}v^2 \\
+&= \dot m v.
+\end{aligned}
 $$
 
 This is not a passive material tension. It is the coefficient multiplying the curvature-follower term in the linearized moving-stream reaction.
@@ -1520,10 +1498,7 @@ $$
 For each lane, the destabilizing follower stiffness per unit lane length is
 
 $$
-K_{\mathrm{follow},j}
-=====================
-
-T_{\mathrm{eq,lane}}k_{\parallel,j}^2 .
+K_{\mathrm{follow},j} = T_{\mathrm{eq,lane}}k_{\parallel,j}^2 .
 $$
 
 This is the term that must be overcome by shell stiffness, guide stiffness, passive damping, active damping, and local control.
@@ -1558,14 +1533,12 @@ The key result is that the $100~\mathrm{m}$ to kilometre band is not obviously i
 Let the local tube section contain $N_\ell$ lanes indexed by $j$. Define a generalized state vector
 
 $$
-\mathbf{x}
-==========
-
+\mathbf{x} =
 \begin{bmatrix}
-\mathbf{x}*{\mathrm{shell}} \
-\mathbf{x}*{\mathrm{rib}} \
-\mathbf{x}*{\mathrm{lane}} \
-\mathbf{x}*{\mathrm{guide}}
+\mathbf{x}_{\mathrm{shell}} \\
+\mathbf{x}_{\mathrm{rib}} \\
+\mathbf{x}_{\mathrm{lane}} \\
+\mathbf{x}_{\mathrm{guide}}
 \end{bmatrix}.
 $$
 
@@ -1574,27 +1547,11 @@ This vector contains shell radial and tangential displacements, rib or internal 
 For each Fourier pair $(k_s,n)$, the open-loop linearized dynamics can be written as
 
 $$
+\begin{aligned}
 \mathbf{M}\ddot{\mathbf{x}}
-+
-\left(
-\mathbf{C}*{\mathrm{struct}}
-+
-\mathbf{C}*{\mathrm{conv}}
-\right)\dot{\mathbf{x}}
-+
-\left(
-\mathbf{K}*{\mathrm{shell}}
-+
-\mathbf{K}*{\mathrm{rib}}
-+
-\mathbf{K}_{\mathrm{guide}}
----------------------------
-
-\mathbf{K}_{\mathrm{follow}}
-\right)\mathbf{x}
-=================
-
-\mathbf{B}\mathbf{u}.
+&+ \left(\mathbf{C}_{\mathrm{struct}} + \mathbf{C}_{\mathrm{conv}}\right)\dot{\mathbf{x}} \\
+&+ \left(\mathbf{K}_{\mathrm{shell}} + \mathbf{K}_{\mathrm{rib}} + \mathbf{K}_{\mathrm{guide}} - \mathbf{K}_{\mathrm{follow}}\right)\mathbf{x} = \mathbf{B}\mathbf{u}.
+\end{aligned}
 $$
 
 Here:
@@ -1612,10 +1569,7 @@ Here:
 The follower matrix has lane-level diagonal blocks of the form
 
 $$
-\left[\mathbf{K}*{\mathrm{follow}}\right]*{jj}
-==============================================
-
-T_{\mathrm{eq},j}k_{\parallel,j}^2
+\left[\mathbf{K}_{\mathrm{follow}}\right]_{jj} = T_{\mathrm{eq},j}k_{\parallel,j}^2
 $$
 
 projected into the corresponding lane-carrier and shell coordinates.
@@ -1623,10 +1577,7 @@ projected into the corresponding lane-carrier and shell coordinates.
 The convective term for lane $j$ has the corresponding non-self-adjoint contribution
 
 $$
-\left[\mathbf{C}*{\mathrm{conv}}\right]*{jj}
-============================================
-
-2i\sigma_j\lambda_j v_j k_{\parallel,j},
+\left[\mathbf{C}_{\mathrm{conv}}\right]_{jj} = 2i\sigma_j\lambda_j v_j k_{\parallel,j},
 $$
 
 where $\sigma_j=\pm1$ is the slug travel direction along the lane.
@@ -1638,12 +1589,10 @@ This term is not necessarily destabilizing by itself, but it shifts modal phase 
 The actuator vector is divided into three classes:
 
 $$
-\mathbf{u}
-==========
-
+\mathbf{u} =
 \begin{bmatrix}
-\mathbf{u}*{\perp} \
-\mathbf{u}*{\parallel} \
+\mathbf{u}_{\perp} \\
+\mathbf{u}_{\parallel} \\
 \mathbf{u}_{p}
 \end{bmatrix}.
 $$
@@ -1657,12 +1606,10 @@ Here:
 The corresponding influence matrix is
 
 $$
-\mathbf{B}
-==========
-
+\mathbf{B} =
 \begin{bmatrix}
-\mathbf{B}*{\perp} &
-\mathbf{B}*{\parallel} &
+\mathbf{B}_{\perp} &
+\mathbf{B}_{\parallel} &
 \mathbf{B}_{p}
 \end{bmatrix}.
 $$
@@ -1678,16 +1625,16 @@ $$
 More specifically, if the unstable mode is mainly transverse, then the direct or indirect transverse projection must satisfy
 
 $$
-\boldsymbol{\phi}*r^\dagger
-\mathbf{B}*{\perp}
+\boldsymbol{\phi}_r^\dagger
+\mathbf{B}_{\perp}
 \ne 0
 $$
 
 or, if relying on axial tug coupling,
 
 $$
-\boldsymbol{\phi}*r^\dagger
-\mathbf{B}*{\parallel}
+\boldsymbol{\phi}_r^\dagger
+\mathbf{B}_{\parallel}
 \ne 0
 $$
 
@@ -1700,21 +1647,11 @@ If a mode lies in or near the nullspace of $\mathbf{B}_{\parallel}$, then balanc
 Use a local dynamic controller
 
 $$
-\dot{\mathbf{x}}_c
-==================
-
-\mathbf{A}_c\mathbf{x}_c
-+
-\mathbf{L}_c\mathbf{y},
+\dot{\mathbf{x}}_c = \mathbf{A}_c\mathbf{x}_c + \mathbf{L}_c\mathbf{y},
 $$
 
 $$
-\mathbf{u}_{\mathrm{cmd}}
-=========================
-
-\mathbf{F}_c\mathbf{x}_c
-+
-\mathbf{D}_c\mathbf{y},
+\mathbf{u}_{\mathrm{cmd}} = \mathbf{F}_c\mathbf{x}_c + \mathbf{D}_c\mathbf{y},
 $$
 
 where $\mathbf{y}$ is the measured local guide/shell state.
@@ -1722,12 +1659,7 @@ where $\mathbf{y}$ is the measured local guide/shell state.
 Actuator lag is represented by
 
 $$
-\boldsymbol{\tau}_a \dot{\mathbf{u}}
-+
-\mathbf{u}
-==========
-
-\mathbf{u}_{\mathrm{cmd}},
+\boldsymbol{\tau}_a \dot{\mathbf{u}} + \mathbf{u} = \mathbf{u}_{\mathrm{cmd}},
 $$
 
 where $\boldsymbol{\tau}_a$ may be diagonal or block diagonal for different actuator classes. This is only a first-order delay approximation. A more detailed implementation should use the actual sensing, computation, current-rise, magnetic-field, and power-electronics dynamics.
@@ -1735,13 +1667,11 @@ where $\boldsymbol{\tau}_a$ may be diagonal or block diagonal for different actu
 The augmented closed-loop state is
 
 $$
-\mathbf{z}
-==========
-
+\mathbf{z} =
 \begin{bmatrix}
-\mathbf{x} \
-\dot{\mathbf{x}} \
-\mathbf{x}_c \
+\mathbf{x} \\
+\dot{\mathbf{x}} \\
+\mathbf{x}_c \\
 \mathbf{u}
 \end{bmatrix}.
 $$
@@ -1749,21 +1679,13 @@ $$
 For each $(k_s,n)$,
 
 $$
-\dot{\mathbf{z}}
-================
-
-\mathbf{A}_{\mathrm{cl}}(k_s,n)\mathbf{z}.
+\dot{\mathbf{z}} = \mathbf{A}_{\mathrm{cl}}(k_s,n)\mathbf{z}.
 $$
 
 The local small-signal stability criterion is
 
 $$
-\max_r
-\mathrm{Re}
-\left[
-\sigma_r(k_s,n)
-\right]
-<0
+\max_r\mathrm{Re}\left[\sigma_r(k_s,n)\right] < 0
 $$
 
 over the wavelength band assigned to local control.
@@ -1775,9 +1697,7 @@ $$
 \mathrm{Re}
 \left[
 \sigma_r(k_s,n)
-\right]
-<
--\gamma_{\mathrm{stab}},
+\right] < -\gamma_{\mathrm{stab}},
 $$
 
 where $\gamma_{\mathrm{stab}}$ is a required decay-rate margin.
@@ -1787,29 +1707,17 @@ where $\gamma_{\mathrm{stab}}$ is a required decay-rate margin.
 A linear eigenvalue result is not sufficient if the stabilizing force exceeds actuator authority. For every mode, the demanded force must satisfy
 
 $$
-\left|
-\mathbf{u}*{\perp}
-\right|
-<
-\mathbf{u}*{\perp,\max},
+\left|\mathbf{u}_{\perp}\right| < \mathbf{u}_{\perp,\max},
 $$
 
 $$
-\left|
-\mathbf{u}*{\parallel}
-\right|
-<
-\mathbf{u}*{\parallel,\max},
+\left|\mathbf{u}_{\parallel}\right| < \mathbf{u}_{\parallel,\max},
 $$
 
 and
 
 $$
-\left|
-\mathbf{u}*{p}
-\right|
-<
-\mathbf{u}*{p,\max}.
+\left|\mathbf{u}_{p}\right| < \mathbf{u}_{p,\max}.
 $$
 
 For the transverse guide channel, a useful first screen is
@@ -1841,17 +1749,11 @@ This is an important result. The $100~\mathrm{m}$ and longer modes are not obvio
 For speed-gradient actuators, the saturation condition must also include speed trim and power:
 
 $$
-|\Delta u|
-<
-\Delta u_{\max},
+|\Delta u| < \Delta u_{\max},
 $$
 
 $$
-P
-\sim
-\dot m u \Delta u
-<
-P_{\max}.
+P \sim \dot m u \Delta u < P_{\max}.
 $$
 
 Thus, axial tug authority cannot be assessed by force alone. Its power and thermal burden must also be inside the local sector envelope.
@@ -1861,10 +1763,7 @@ Thus, axial tug authority cannot be assessed by force alone. Its power and therm
 A disturbance of axial wavelength $L_s$ convects through the local guide at approximately
 
 $$
-t_{\mathrm{conv}}
-=================
-
-\frac{L_s}{v}.
+t_{\mathrm{conv}} = \frac{L_s}{v}.
 $$
 
 A crude $30^\circ$ phase-lag bound gives
@@ -1902,9 +1801,7 @@ $$
 \mathrm{Re}
 \left[
 \sigma_r^{(N)}(k_s,n)
-\right]
-<
--\gamma_{\mathrm{stab}}
+\right] < -\gamma_{\mathrm{stab}}
 $$
 
 for all modes in the assigned local-control band.
@@ -1914,14 +1811,7 @@ for all modes in the assigned local-control band.
 Set
 
 $$
-\mathbf{B}_{\perp}
-==================
-
-# \mathbf{B}_{\parallel}
-
-# \mathbf{B}_p
-
-0
+\mathbf{B}_{\perp} = \mathbf{B}_{\parallel} = \mathbf{B}_p = 0
 $$
 
 and retain only shell, rib, passive guide, and prestress terms.
@@ -1941,8 +1831,8 @@ and allow only $\mathbf{B}_{\parallel}$.
 If unstable transverse modes remain uncontrollable or weakly controllable,
 
 $$
-\boldsymbol{\phi}*r^\dagger
-\mathbf{B}*{\parallel}
+\boldsymbol{\phi}_r^\dagger
+\mathbf{B}_{\parallel}
 \approx 0,
 $$
 
@@ -1987,12 +1877,7 @@ $$
 Evaluate the eigenvalue shift
 
 $$
-\Delta\sigma_r
-==============
-
-## \sigma_r^{(D2)}
-
-\sigma_r^{(N)}.
+\Delta\sigma_r = \sigma_r^{(D2)} - \sigma_r^{(N)}.
 $$
 
 The balanced cell is acceptable only if expected mass-flux and speed-trim errors do not push any mode across the imaginary axis.
@@ -2016,11 +1901,7 @@ This is not expected to be a normal operating mode. A lane dropout breaks the sy
 A useful degraded-mode criterion is
 
 $$
-\frac{1}{\max \mathrm{Re}(\sigma_r^{(D3)})}
-
->
-
-t_{\mathrm{iso}}
+\frac{1}{\max \mathrm{Re}(\sigma_r^{(D3)})} > t_{\mathrm{iso}}
 $$
 
 for all newly unstable modes, where $t_{\mathrm{iso}}$ is the physical isolation and unloading time. If this inequality fails, a lane dropout becomes a prompt structural instability rather than a containable fault.
