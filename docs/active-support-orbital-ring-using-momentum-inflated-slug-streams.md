@@ -1194,6 +1194,7 @@ $$
 
 This is a negative tangent stiffness in the transverse perturbation equation. Numerically,
 
+::: {.wide-table}
 |   Wavelength $L$ |                $k=2\pi/L$ | $K_{\mathrm{follow}}=T_{\mathrm{eq,lane}}k^2$ | Load for $Y=1~\mathrm{mm}$ |
 | ---------------: | ------------------------: | --------------------------------------------: | -------------------------: |
 |  $10~\mathrm{m}$ |   $0.628~\mathrm{m^{-1}}$ |                $2.1\times10^8~\mathrm{N/m^2}$ |        $210~\mathrm{kN/m}$ |
@@ -1202,6 +1203,7 @@ This is a negative tangent stiffness in the transverse perturbation equation. Nu
 | $300~\mathrm{m}$ |  $0.0209~\mathrm{m^{-1}}$ |                $2.4\times10^5~\mathrm{N/m^2}$ |       $0.24~\mathrm{kN/m}$ |
 |  $1~\mathrm{km}$ | $0.00628~\mathrm{m^{-1}}$ |                $2.1\times10^4~\mathrm{N/m^2}$ |          $21~\mathrm{N/m}$ |
 |  $3~\mathrm{km}$ | $0.00209~\mathrm{m^{-1}}$ |                $2.4\times10^3~\mathrm{N/m^2}$ |         $2.4~\mathrm{N/m}$ |
+:::
 
 The $100~\mathrm{m}$ case is important. The destabilizing incremental force for a $1~\mathrm{mm}$ perturbation is only a few kilonewtons per metre per lane, which is not obviously beyond magnetic-guide authority. The problem is not force magnitude alone. The problem is that the force is destabilizing, convected at $10~\mathrm{km/s}$, and must be opposed with the correct sign and phase.
 
@@ -1373,6 +1375,7 @@ with $B=0$, $K_0=0$, and negligible passive damping. This is not a design claim.
 
 The table below gives the largest real part of the closed-loop eigenvalues for several actuator lags. Negative values are stable in this scalar model.
 
+::: {.wide-table}
 |   Wavelength $L$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=0.1~\mathrm{ms}$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=0.5~\mathrm{ms}$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=1.0~\mathrm{ms}$ |
 | ---------------: | ------------------------------------------------------: | ------------------------------------------------------: | ------------------------------------------------------: |
 |  $10~\mathrm{m}$ |                        $-3.0\times10^2~\mathrm{s^{-1}}$ |                        $+7.7\times10^2~\mathrm{s^{-1}}$ |                        $+9.9\times10^2~\mathrm{s^{-1}}$ |
@@ -1380,6 +1383,7 @@ The table below gives the largest real part of the closed-loop eigenvalues for s
 | $100~\mathrm{m}$ |                        $-7.4\times10^1~\mathrm{s^{-1}}$ |                        $-5.7\times10^1~\mathrm{s^{-1}}$ |                        $-3.0\times10^1~\mathrm{s^{-1}}$ |
 | $300~\mathrm{m}$ |                        $-2.6\times10^1~\mathrm{s^{-1}}$ |                        $-2.4\times10^1~\mathrm{s^{-1}}$ |                        $-2.2\times10^1~\mathrm{s^{-1}}$ |
 |  $1~\mathrm{km}$ |                                  $-7.7~\mathrm{s^{-1}}$ |                                  $-7.6~\mathrm{s^{-1}}$ |                                  $-7.4~\mathrm{s^{-1}}$ |
+:::
 
 This toy calculation gives a useful answer. The local follower-force problem is not mathematically hopeless. There are stable closed-loop eigenvalues for the $100~\mathrm{m}$ to kilometre band with sub-millisecond to millisecond-class local actuation. But the same controller becomes unstable at $10$ to $30~\mathrm{m}$ once delay rises into the $0.5$ to $1.0~\mathrm{ms}$ range.
 
@@ -1511,6 +1515,7 @@ $$
 
 the following table gives the worst-case follower stiffness for several representative axial wavelengths and cross-section mode numbers, taking the handedness sign that maximizes $|k_{\parallel,j}|$.
 
+::: {.wide-table}
 | Axial wavelength $L_s$ | Mode $n$ | $|k_{\parallel}|$ | $K_{\mathrm{follow}}$ | Load for $Y=1~\mathrm{mm}$ |
 | ---: | ---: | ---: | ---: | ---: |
 | $30~\mathrm{m}$ | 0 | $0.209~\mathrm{m^{-1}}$ | $2.4\times10^7~\mathrm{N/m^2}$ | $24~\mathrm{kN/m}$ |
@@ -1523,6 +1528,7 @@ the following table gives the worst-case follower stiffness for several represen
 | $1~\mathrm{km}$ | 64 | $0.0242~\mathrm{m^{-1}}$ | $3.2\times10^5~\mathrm{N/m^2}$ | $0.32~\mathrm{kN/m}$ |
 | $3~\mathrm{km}$ | 0 | $0.00209~\mathrm{m^{-1}}$ | $2.4\times10^3~\mathrm{N/m^2}$ | $2.4~\mathrm{N/m}$ |
 | $3~\mathrm{km}$ | 64 | $0.0200~\mathrm{m^{-1}}$ | $2.2\times10^5~\mathrm{N/m^2}$ | $0.22~\mathrm{kN/m}$ |
+:::
 
 The key result is that the $100~\mathrm{m}$ to kilometre band is not obviously impossible on force magnitude alone. The destabilizing load for a $1~\mathrm{mm}$ displacement is in the kilonewton-per-metre to sub-kilonewton-per-metre range per lane for many modes. The difficult parts are sign, phase, bandwidth, saturation, and actuator coupling.
 
@@ -1731,6 +1737,7 @@ where $\gamma_K$ is the stiffness margin factor and $Y$ is the displacement ampl
 
 For $\gamma_K=3$ and $Y=1~\mathrm{mm}$, the required transverse force densities are approximately:
 
+::: {.wide-table}
 | Axial wavelength $L_s$ | Mode $n$ | Required transverse force density |
 | ---------------------: | -------: | --------------------------------: |
 |        $30~\mathrm{m}$ |        0 |                $71~\mathrm{kN/m}$ |
@@ -1741,6 +1748,7 @@ For $\gamma_K=3$ and $Y=1~\mathrm{mm}$, the required transverse force densities 
 |       $300~\mathrm{m}$ |       64 |               $2.4~\mathrm{kN/m}$ |
 |        $1~\mathrm{km}$ |        0 |                 $64~\mathrm{N/m}$ |
 |        $1~\mathrm{km}$ |       64 |              $0.95~\mathrm{kN/m}$ |
+:::
 
 This is an important result. The $100~\mathrm{m}$ and longer modes are not obviously force-impossible. A few to tens of kilonewtons per metre per lane is severe, but within the broad magnetic-pressure envelope discussed in the main text. The $30~\mathrm{m}$ band is much harsher. The $10~\mathrm{m}$ band would push toward hundreds of kilonewtons per metre for millimetre-scale displacement and should probably be assigned to passive local guide stiffness, very short bearing loops, or lane-carrier geometry rather than shell-level active control.
 
@@ -1908,6 +1916,7 @@ for all newly unstable modes, where $t_{\mathrm{iso}}$ is the physical isolation
 
 The reduced-order tube-section screen gives the following qualitative map.
 
+::: {.wide-table}
 | Band                                         | Dominant problem                                                                 | Likely stabilizing mechanism                                                    | Result                                                 |
 | -------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
 | $L_s \lesssim 10~\mathrm{m}$                 | Very large follower stiffness and sub-$0.1~\mathrm{ms}$ delay budget             | Passive guide stiffness, very local magnetic-bearing loops, stiff lane carriers | Not credible as ordinary shell-level active control    |
@@ -1915,6 +1924,7 @@ The reduced-order tube-section screen gives the following qualitative map.
 | $L_s \sim 100~\mathrm{m}$                    | Few kN/m per lane for millimetre motion; delay budget $\sim0.8~\mathrm{ms}$      | High-bandwidth transverse guide control                                         | Plausible future-technology window                     |
 | $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lower follower stiffness but larger structural participation                     | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
 | $L_s \gtrsim 10^2$ to $10^3~\mathrm{km}$     | Long-wave ring shape and alignment                                               | Distributed balanced-cell tug fields                                            | Natural domain of macro actuator                       |
+:::
 
 The most important negative result is Case T: axial tug authority by itself does not close the local stability problem. It is not enough to show that neighboring lanes can generate large internal axial forces. The transverse influence matrix must have the right rank, sign, phase, and saturation margin.
 
@@ -1925,12 +1935,14 @@ The most important positive result is Case G: the local follower-force problem i
 
 The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about $5.4\times10^{4}$ kg/s of mass flux. The table below shows what that means for several representative slug masses.
 
+::: {.wide-table}
 | Slug mass | Slugs per second per lane | Spacing at 10 km/s | Time headway | Kinetic energy per slug |
 | ---: | ---: | ---: | ---: | ---: |
 | 0.1 kg | about $5.4\times10^{5}$ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
 | 1 kg | about $5.4\times10^{4}$ /s | about 18 cm | about 18 µs | about 50 MJ |
 | 10 kg | about $5.4\times10^{3}$ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
 | 100 kg | about $5.4\times10^{2}$ /s | about 18 m | about 1.8 ms | about 5 GJ |
+:::
 
 This is a genuine design fork.
 
