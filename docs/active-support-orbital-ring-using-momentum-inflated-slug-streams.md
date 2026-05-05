@@ -11,7 +11,7 @@ author: "Peter Hudson"
 
 This paper proposes an orbital-ring architecture built from magnetically guided high-speed slug streams running in lanes set at small helix angle around a very large lightweight toroidal guide structure. The paper's main claim is narrower than feasibility: it identifies two linked ideas that are genuinely useful at the concept level and may serve as an internal prestress-and-actuation primitive for active-support ring concepts.
 
-The first is that slug streams can do more than circulate momentum to loft a structure. By forcing the streams to follow curved helical paths on a large toroidal membrane, the design converts momentum redirection into distributed outward pressure, hoop prestress, and local structural rigidity. The result is best understood as a prestressed membrane-and-guide shell (intuitively a giant fabric torus) whose steady preload is created by guided moving mass. That preload may improve roundness, wrinkle suppression, and load transfer in an independent membrane/rib/guide structure, but it is not itself a proof of stabilizing tangent stiffness. Perturbations of the guided stream retain nonconservative follower-force terms that must be overcome by the shell, guide, and control system.
+The first is that slug streams can do more than circulate momentum to loft a structure. By forcing the streams to follow curved helical paths on a large toroidal membrane, the design converts momentum redirection into distributed outward pressure, hoop prestress, and local structural stiffness. The result is best understood as a prestressed membrane-and-guide shell (intuitively a giant fabric torus) whose steady preload is created by guided moving mass. That preload may improve roundness, wrinkle suppression, and load transfer in an independent membrane/rib/guide structure, but it is not itself a proof of stabilizing tangent stiffness. Perturbations of the guided stream retain nonconservative follower-force terms that must be overcome by the shell, guide, and control system.
 
 The second is that the same helical geometry enables a four-lane balanced cell that can generate distributed tug fields for macro-scale ring-shape actuation. In a fixed spatial speed gradient, one counter-propagating lane accelerates while its mirrored partner decelerates. Their structural reactions add, and a co-located bidirectional power path can exchange power between the two streams. That makes the cell a momentum-flux actuator and a high-power energy exchanger at the same time.
 
@@ -27,7 +27,7 @@ The usual picture of an orbital ring is seductively simple: put a very fast movi
 
 First, a fast moving mass stream does not provide passive self-centering by momentum redirection alone. If its path develops a curvature perturbation, the stream pushes further into that curvature. A simple straight lane or monolithic rotor therefore does not merely need support force. It needs a surrounding architecture that can resist and control a fundamentally anti-restoring tendency.
 
-Second, even if one has enough moving momentum to loft a ring, that does not by itself provide a good mechanism for local structural rigidity or macro-scale alignment actuation. A ring around Earth has to survive construction tolerances, tether loads, payload impulses, gravity-gradient effects, and long-wavelength wobble. A concept that only says "there is a rotor going around the planet" has not yet explained how the machine is to be actuated, much less closed in feedback. An ideal system would be one where the same system that provides momentum for lift can be used for active control. 
+Second, even if one has enough moving momentum to loft a ring, that does not by itself provide a good mechanism for local structural stiffness or macro-scale alignment actuation. A ring around Earth has to survive construction tolerances, tether loads, payload impulses, gravity-gradient effects, and long-wavelength wobble. A concept that only says "there is a rotor going around the planet" has not yet explained how the machine is to be actuated, much less closed in feedback. An ideal system would be one where the same system that provides momentum for lift can be used for active control. 
 
 This paper proposes a specific answer to both problems.
 
@@ -508,6 +508,87 @@ The steady helical normal load in the same reference case is only about 2.1 kN/m
 This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local follower-force instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
 
 Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream follower-force scale remains of order $\dot m u$. Meaningful direct competition with the follower-force scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
+
+### 5.7 Active straightening by adjacent lanes
+
+The preceding section should not be read as saying that a local perturbation is unaddressable. It says something narrower: the steady helical preload cannot be counted as the stabilizing tangent stiffness that removes the follower-force problem. A viable machine would still need active local response.
+
+The useful question is therefore not whether the helical stream pressure passively fixes a dent. It is whether nearby guided streams can be used to impose a controlled restoring load on the lane carrier and shell fast enough to keep the perturbation bounded.
+
+Take the numerical perturbation used above: one lane displaced by about $Y = 1~\mathrm{mm}$ over a wavelength of about $L = 100~\mathrm{m}$. For the reference lane, $T_{\mathrm{eq,lane}}\approx 5.4\times10^8~\mathrm{N}$, so the anti-restoring follower contribution has amplitude 
+
+$$
+q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left({2\pi\over L}\right)^2Y
+\approx 2.1~\mathrm{kN/m}.
+$$
+
+Integrated over a 100 m patch, this is only of order
+
+$$
+F_{\mathrm{patch}}\sim q_{\mathrm{follow}}L\approx 0.2~\mathrm{MN}.
+$$
+
+That number is important. The disturbing load is severe because it is destabilizing and fast, not because the integrated force is large by megastructure standards. The difficulty is phase, bandwidth, load-path efficiency, and local stability margin.
+
+A plausible active response has three layers.
+
+First, the local guide must prevent the slugs in the perturbed lane from simply following the wrong path. This is the fast gap-control problem. At 10 km/s, a 100 m disturbance convects through the guide in about 10 ms, so this layer cannot wait for ring-scale supervisory control.
+
+Second, adjacent lane carriers, ribs, membrane shear paths, or internal guy webs must spread the corrective load over a finite patch of shell. The load should not be reacted by one lane attachment point alone. A useful mental picture is an actively tensioned fabric-and-rib patch: the local guide holds the disturbed lane near its reference path while neighboring lanes and ribs redistribute the equal-and-opposite structural load into a wider area of the torus.
+
+Third, neighboring lanes can be commanded to generate a compensating load field. The command should be balanced across mirrored lanes so that the response does not introduce a large unwanted circumferential momentum, torque, or net angular-momentum channel. This is the local version of the four-lane balanced-cell idea introduced in the next section.
+
+A simple bookkeeping estimate shows the scale. Suppose a patch uses $N_c$ neighboring mirrored lane pairs to generate a restoring structural load over length $L_c$. Let $\eta_{\mathrm{loc}}$ be the local transfer efficiency from commanded lane tug into the desired restoring load on the perturbed shell mode. Then a speed step $\Delta u$ across the participating lanes gives an order-of-magnitude corrective load density
+
+$$
+q_{\mathrm{act}}\sim
+\eta_{\mathrm{loc}}
+{2N_c\dot m\Delta u\over L_c}.
+$$
+
+Equating this to the 100 m perturbation load gives
+
+$$
+\Delta u \sim
+{q_{\mathrm{follow}}L_c\over 2\eta_{\mathrm{loc}}N_c\dot m}.
+$$
+
+Using
+
+$$
+q_{\mathrm{follow}}\approx2.1~\mathrm{kN/m},\quad
+L_c=100~\mathrm{m},\quad
+\dot m\approx5.4\times10^4~\mathrm{kg/s},
+$$
+
+one obtains
+
+$$
+\Delta u \sim {1.9\over \eta_{\mathrm{loc}}N_c}~\mathrm{m/s}.
+$$
+
+So if ten nearby lane pairs participate and the local transfer efficiency is only ten percent, the required speed step is still only of order a few metres per second. If several dozen lane pairs participate, the required speed step is smaller still. This does not prove stability, because $\eta_{\mathrm{loc}}$, delay, phase margin, actuator saturation, and shell-mode coupling are the real design questions. But it does show why active load redistribution is at least numerically plausible for this scale of perturbation.
+
+This should not be confused with simply increasing the local helical inflation pressure. At fixed mass flux and helix angle,
+
+$$
+{ \delta p_{\mathrm{eq}} \over p_{\mathrm{eq}} } =
+{ \delta u \over u },
+$$
+
+so ordinary pressure trim is weak at $u\sim10~\mathrm{km/s}$. A few metres per second of speed trim changes the steady pressure by only a few parts in ten thousand. The useful response is therefore not uniform pressure trim alone. It is a shaped force command: local guide forces, neighboring lane tugs, and membrane/rib load paths arranged so that the perturbed patch is actively pulled back toward its reference geometry.
+
+This is the sense in which adjacent lanes may "pull a perturbation straight." They do not make the follower-force term disappear. They supply an actively commanded restoring load through the guide shell. In a linearized control picture, the goal is to add a feedback term of the form
+
+$$
+q_{\mathrm{cmd}}(s,t)
+\approx
+-G_y y(s,t) - C_y {Dy\over Dt},
+$$
+
+with enough gain, damping, and phase margin that the total response remains restoring over the wavelength band assigned to local control.
+
+This section therefore bridges the local prestress argument to the balanced-cell architecture. The prestressed shell gives the lane system a medium through which corrective loads can be distributed. The nearby lanes provide actuator authority. The four-lane cell is then needed so that this local actuation can be commanded without creating large residual momentum and torque channels. The same logic reappears at longer wavelength in the distributed tug fields of Section 7.
 
 ---
 
@@ -1128,7 +1209,7 @@ That idea is speculative, and this paper does not claim it as solved. But it is 
 
 ## 9. Conclusion
 
-This paper argues for a specific architectural idea: shallow-angle helical slug streams running in a prestressed membrane guide shell can provide both a local structural substrate and a plausible macro-scale actuation primitive for an active-support orbital ring concept.
+This paper argues for a specific architectural idea: shallow-angle helical slug streams running in a prestressed membrane guide shell can provide both a local structurally stiff substrate and a plausible macro-scale actuation primitive for an active-support orbital ring concept.
 
 The first key result is local. Helical curvature converts momentum redirection into distributed inflation pressure and hoop prestress, giving the membrane guide shell something closer to a real structural reaction surface than a bare straight lane or monolithic rotor picture provides.
 
