@@ -509,86 +509,7 @@ This does not mean the architecture is impossible, but it sharply limits what th
 
 Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream follower-force scale remains of order $\dot m u$. Meaningful direct competition with the follower-force scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
 
-### 5.7 Active straightening by adjacent lanes
-
-The preceding section should not be read as saying that a local perturbation is unaddressable. It says something narrower: the steady helical preload cannot be counted as the stabilizing tangent stiffness that removes the follower-force problem. A viable machine would still need active local response.
-
-The useful question is therefore not whether the helical stream pressure passively fixes a dent. It is whether nearby guided streams can be used to impose a controlled restoring load on the lane carrier and shell fast enough to keep the perturbation bounded.
-
-Take the numerical perturbation used above: one lane displaced by about $Y = 1~\mathrm{mm}$ over a wavelength of about $L = 100~\mathrm{m}$. For the reference lane, $T_{\mathrm{eq,lane}}\approx 5.4\times10^8~\mathrm{N}$, so the anti-restoring follower contribution has amplitude 
-
-$$
-q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left({2\pi\over L}\right)^2Y
-\approx 2.1~\mathrm{kN/m}.
-$$
-
-Integrated over a 100 m patch, this is only of order
-
-$$
-F_{\mathrm{patch}}\sim q_{\mathrm{follow}}L\approx 0.2~\mathrm{MN}.
-$$
-
-That number is important. The disturbing load is severe because it is destabilizing and fast, not because the integrated force is large by megastructure standards. The difficulty is phase, bandwidth, load-path efficiency, and local stability margin.
-
-A plausible active response has three layers.
-
-First, the local guide must prevent the slugs in the perturbed lane from simply following the wrong path. This is the fast gap-control problem. At 10 km/s, a 100 m disturbance convects through the guide in about 10 ms, so this layer cannot wait for ring-scale supervisory control.
-
-Second, adjacent lane carriers, ribs, membrane shear paths, or internal guy webs must spread the corrective load over a finite patch of shell. The load should not be reacted by one lane attachment point alone. A useful mental picture is an actively tensioned fabric-and-rib patch: the local guide holds the disturbed lane near its reference path while neighboring lanes and ribs redistribute the equal-and-opposite structural load into a wider area of the torus.
-
-Third, neighboring lanes can be commanded to generate a compensating load field. The command should be balanced across mirrored lanes so that the response does not introduce a large unwanted circumferential momentum, torque, or net angular-momentum channel. This is the local version of the four-lane balanced-cell idea introduced in the next section.
-
-A simple bookkeeping estimate shows the scale. Suppose a patch uses $N_c$ neighboring mirrored lane pairs to generate a restoring structural load over length $L_c$. Let $\eta_{\mathrm{loc}}$ be the local transfer efficiency from commanded lane tug into the desired restoring load on the perturbed shell mode. Then a speed step $\Delta u$ across the participating lanes gives an order-of-magnitude corrective load density
-
-$$
-q_{\mathrm{act}}\sim
-\eta_{\mathrm{loc}}
-{2N_c\dot m\Delta u\over L_c}.
-$$
-
-Equating this to the 100 m perturbation load gives
-
-$$
-\Delta u \sim
-{q_{\mathrm{follow}}L_c\over 2\eta_{\mathrm{loc}}N_c\dot m}.
-$$
-
-Using
-
-$$
-q_{\mathrm{follow}}\approx2.1~\mathrm{kN/m},\quad
-L_c=100~\mathrm{m},\quad
-\dot m\approx5.4\times10^4~\mathrm{kg/s},
-$$
-
-one obtains
-
-$$
-\Delta u \sim {1.9\over \eta_{\mathrm{loc}}N_c}~\mathrm{m/s}.
-$$
-
-So if ten nearby lane pairs participate and the local transfer efficiency is only ten percent, the required speed step is still only of order a few metres per second. If several dozen lane pairs participate, the required speed step is smaller still. This does not prove stability, because $\eta_{\mathrm{loc}}$, delay, phase margin, actuator saturation, and shell-mode coupling are the real design questions. But it does show why active load redistribution is at least numerically plausible for this scale of perturbation.
-
-This should not be confused with simply increasing the local helical inflation pressure. At fixed mass flux and helix angle,
-
-$$
-{ \delta p_{\mathrm{eq}} \over p_{\mathrm{eq}} } =
-{ \delta u \over u },
-$$
-
-so ordinary pressure trim is weak at $u\sim10~\mathrm{km/s}$. A few metres per second of speed trim changes the steady pressure by only a few parts in ten thousand. The useful response is therefore not uniform pressure trim. It is a shaped force command: local guide forces, neighboring lane tugs, and membrane/rib load paths arranged so that the perturbed patch is actively pulled back toward its reference geometry.
-
-This is the sense in which adjacent lanes may "pull a perturbation straight." They do not make the follower-force term disappear. They supply an actively commanded restoring load through the guide shell. In a linearized control picture, the goal is to add a feedback term of the form
-
-$$
-q_{\mathrm{cmd}}(s,t)
-\approx
--G_y y(s,t) - C_y {Dy\over Dt},
-$$
-
-with enough gain, damping, and phase margin that the total response remains restoring over the wavelength band assigned to local control.
-
-This section therefore bridges the local prestress argument to the macro balanced-cell architecture developed in the next section. The prestressed shell gives the lane system a medium through which corrective loads can be distributed. The nearby lanes provide actuator authority. The four-lane cell is then needed so that this local actuation can be commanded without creating large residual momentum and torque channels (see next section). The same logic reappears at longer wavelength in the distributed tug fields of Section 7.
+A full eigenvalue analysis of both the local lane and local tube levels is presented in Appendix A and B. 
 
 ---
 
@@ -1228,107 +1149,987 @@ Macro lift still demands superorbital ring-tangential momentum flux, and the clo
 ---
 
 
-## Appendix A. Minimal dynamic stability model
 
-The anti-restoring follower-force argument in Section 4 is a structural warning, not yet a stability proof. A minimal linearized model for one lane carrier relative to the prestressed shell should retain not only the curvature-follower term but also the moving-stream inertial and convective terms. For one lane with moving-stream line density $\lambda_\mathrm{lane}$ and guide-frame speed $v$, the constrained-stream reaction may be written as
+## Appendix A. Local closed-loop stability screen
 
-$$
-q_\mathrm{stream} = -\lambda_\mathrm{lane}\left(y_{tt} + 2v y_{st} + v^2 y_{ss}\right)
-= -\lambda_\mathrm{lane} y_{tt} - 2\lambda_\mathrm{lane} v y_{st} - T_{\mathrm{eq,lane}} y_{ss},
-$$
+The perturbation argument in the main text shows that the moving streams generate nonconservative follower-force terms. A steady force balance is therefore not sufficient. A viable architecture must possess a stable linearized equilibrium.
 
-where
+This appendix gives a deliberately minimal local eigenvalue screen, it asks whether there exists any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands.
 
-$$
-T_{\mathrm{eq,lane}} = \lambda_\mathrm{lane} v^2.
-$$
+The answer from this screen is conditional. The follower-force instability is not automatically fatal at wavelengths of order $100~\mathrm{m}$ and longer, provided the local guide supplies high-bandwidth transverse stiffness and damping with sub-millisecond effective delay. At wavelengths of order $10~\mathrm{m}$ and below, active control becomes severe enough that the burden probably has to move to passive guide stiffness, local carrier bending stiffness, very short magnetic-bearing loops, or a different lane architecture. The balanced-cell tug actuator by itself should not be credited with stabilizing those short and middle wavelengths unless its transverse control-influence matrix is explicitly demonstrated.
 
-The first term can be absorbed into an effective mass only under stated assumptions, but the mixed convective term cannot simply be discarded. It is the non-self-adjoint transport term that can affect directional wave response, phase margin, and stability. Keeping the stream reaction explicit on the right-hand side gives
+### A.1 Reference lane parameters
+
+Use the reference case from the main text:
 
 $$
-m_\mathrm{eff} y_{tt} + c_\mathrm{eff} y_t + B_\mathrm{eff} y_{ssss} + K_\mathrm{shell} y + K_\mathrm{guide} y + K_\mathrm{ctrl} y(t-\tau_c) = q_\mathrm{stream},
+\lambda_{\mathrm{lane}}\approx 5.4~\mathrm{kg/m},
 $$
 
-Here $m_\mathrm{eff}$ is effective supported mass per lane length exclusive of any moving-stream inertia that one chooses to leave explicit, $c_\mathrm{eff}$ is passive and active damping, $B_\mathrm{eff}$ is short-wave bending or rib stiffness, $K_\mathrm{shell}$ is the restoring contribution of the prestressed shell, $K_\mathrm{guide}$ is local guide stiffness, $K_\mathrm{ctrl}$ is delayed feedback stiffness, and $T_{\mathrm{eq,lane}}$ is the lane-level moving-stream follower-force scale.
-
-Moving the stream reaction to the left gives the equivalent homogeneous form
-
 $$
-\begin{aligned}
-0 ={}&
-(m_\mathrm{eff}+\lambda_\mathrm{lane})y_{tt}
-+2\lambda_\mathrm{lane}v y_{st}
-+c_\mathrm{eff}y_t
-+B_\mathrm{eff}y_{ssss} \\
-&+K_\mathrm{shell}y
-+K_\mathrm{guide}y
-+K_\mathrm{ctrl}y(t-\tau_c)
-+T_{\mathrm{eq,lane}}y_{ss}.
-\end{aligned}
+v\approx 10^4~\mathrm{m/s},
 $$
 
-so for a Fourier mode $y \propto e^{i(ks-\omega t)}$, the characteristic balance becomes
+so that the lane-level moving-stream dynamic-tension scale is
 
 $$
-\begin{aligned}
-0 ={}&
--(m_\mathrm{eff}+\lambda_\mathrm{lane})\omega^2
-+2\lambda_\mathrm{lane}v k\omega
-+i c_\mathrm{eff}\omega
-+B_\mathrm{eff}k^4 \\
-&+K_\mathrm{shell}(k)
-+K_\mathrm{guide}(k)
-+K_\mathrm{ctrl}(k)e^{-i\omega\tau_c}
--T_{\mathrm{eq,lane}}k^2 .
-\end{aligned}
+T_{\mathrm{eq,lane}}
+====================
+
+\lambda_{\mathrm{lane}}v^2
+\approx
+5.4\times 10^8~\mathrm{N}.
 $$
 
-This makes the control partition explicit. If one deliberately drops the $-\lambda_\mathrm{lane}y_{tt}$ and $-2\lambda_\mathrm{lane}v y_{st}$ terms, the appendix reduces to the simpler quasi-static follower-stiffness toy model used only for intuition, not for a complete lane-dynamics claim.
-
-This makes the three-band stability picture more explicit.
-
-- **Metre-to-100 m band:** local guide stiffness, passive carrier stiffness, and very fast damping dominate. Ring-scale control is too slow to matter directly.
-- **100 m-to-several-km band:** this is likely the hardest band. Convective transport, guide delays, shell modes, and local cell coordination all interact here, and the system may sit in an awkward gap between purely local guide control and truly distributed tug control.
-- **Hundreds-to-thousands of km band:** distributed tug fields and sector-level coordination plausibly matter, which is the band targeted by the actuation primitive in the main text.
-
-The convective times in Section 3.3 show how severe that is. At 10 km/s, a 100 m disturbance passes in 10 ms, a 10 m disturbance in 1 ms, and a 1 m disturbance in 0.1 ms. If one wants feedback phase lag well below about 30 degrees at the disturbance passage rate, the effective delay budget must be well below about 0.8 ms at 100 m wavelength and well below about 0.08 ms at 10 m wavelength. That is why meter-to-hundred-meter stabilization has to be a local guide problem, not a ring-scale supervisory control problem.
-
-So this appendix still does not prove stability. But it does name the minimum technical burden more concretely: any viable design needs a stability map over wavelength showing where passive shell stiffness dominates, where local guide control dominates, and where slower sector-level control can safely enter.
-
-### Appendix A.1. Toy long-wave closure example
-
-It is still useful to ask whether the actuation channel is at least numerically commensurate with some long-wave disturbances. A deliberately crude screen can do that without pretending to prove closed-loop stability.
-
-Take the 500 km reference case with a total moving-stream line density of about 1,600 kg/m and ring-tangential speed of 10 km/s. Define the whole-stream long-wave follower-force scale as
+For a transverse perturbation of the lane carrier,
 
 $$
-T_{\mathrm{eq,tot}} = \lambda_{\mathrm{stream,total}}u^2.
+y(s,t)=Y e^{i k s},
 $$
 
-For the reference case that gives roughly $1.6\times10^{11}~\mathrm{N}$.
-
-For a sinusoidal long-wave displacement $y = Y\sin(ks)$, the destabilizing follower contribution per unit ring length is of order
+the quasi-static follower-force contribution has stiffness magnitude per unit lane length
 
 $$
-q_\mathrm{follow} \sim T_{\mathrm{eq,tot}}k^2Y.
+K_{\mathrm{follow}}(k)
+======================
+
+T_{\mathrm{eq,lane}}k^2.
 $$
 
-That gives the following screening values for one metre of displacement amplitude:
+This is a negative tangent stiffness in the transverse perturbation equation. Numerically,
 
-| Wavelength $\lambda$ | $k=2\pi/\lambda$ | $q_\mathrm{follow}/Y = T_{\mathrm{eq,tot}}k^2$ |
-| ---: | ---: | ---: |
-| 1000 km | about $6.3\times10^{-6}\,\mathrm{m^{-1}}$ | about 6.3 N/m per metre of displacement |
-| 100 km | about $6.3\times10^{-5}\,\mathrm{m^{-1}}$ | about 630 N/m per metre of displacement |
-| 10 km | about $6.3\times10^{-4}\,\mathrm{m^{-1}}$ | about $6.3\times10^{4}$ N/m per metre of displacement |
+|   Wavelength $L$ |                $k=2\pi/L$ | $K_{\mathrm{follow}}=T_{\mathrm{eq,lane}}k^2$ | Load for $Y=1~\mathrm{mm}$ |
+| ---------------: | ------------------------: | --------------------------------------------: | -------------------------: |
+|  $10~\mathrm{m}$ |   $0.628~\mathrm{m^{-1}}$ |                $2.1\times10^8~\mathrm{N/m^2}$ |        $210~\mathrm{kN/m}$ |
+|  $30~\mathrm{m}$ |   $0.209~\mathrm{m^{-1}}$ |                $2.4\times10^7~\mathrm{N/m^2}$ |         $24~\mathrm{kN/m}$ |
+| $100~\mathrm{m}$ |  $0.0628~\mathrm{m^{-1}}$ |                $2.1\times10^6~\mathrm{N/m^2}$ |        $2.1~\mathrm{kN/m}$ |
+| $300~\mathrm{m}$ |  $0.0209~\mathrm{m^{-1}}$ |                $2.4\times10^5~\mathrm{N/m^2}$ |       $0.24~\mathrm{kN/m}$ |
+|  $1~\mathrm{km}$ | $0.00628~\mathrm{m^{-1}}$ |                $2.1\times10^4~\mathrm{N/m^2}$ |          $21~\mathrm{N/m}$ |
+|  $3~\mathrm{km}$ | $0.00209~\mathrm{m^{-1}}$ |                $2.4\times10^3~\mathrm{N/m^2}$ |         $2.4~\mathrm{N/m}$ |
 
-Now compare that with the paper's illustrative 10 MN tug command spread over a 100 km control sector. Its average structural load is about 100 N/m.
+The $100~\mathrm{m}$ case is important. The destabilizing incremental force for a $1~\mathrm{mm}$ perturbation is only a few kilonewtons per metre per lane, which is not obviously beyond magnetic-guide authority. The problem is not force magnitude alone. The problem is that the force is destabilizing, convected at $10~\mathrm{km/s}$, and must be opposed with the correct sign and phase.
 
-So a controller with that order of authority is plainly not a short-wave stabilizer. It is, however, numerically relevant to wavelengths in the several-hundred-kilometre to thousand-kilometre regime, which is exactly the band in which the paper intends the balanced-cell tug field to operate.
+### A.2 Minimal scalar lane model
 
-This is not a proof of control closure. Mass participation, damping, sensing, delay, actuator saturation, and shell transfer all still matter. But it does sharpen the claim. The architecture is at least consistent with a multiband picture in which short waves are a local guide-and-shell problem, the middle band is likely the hardest closure problem, and very long waves are the band where the distributed tug primitive may actually matter.
+Let $y(s,t)$ be one transverse generalized coordinate of a lane carrier relative to the local guide shell. The simplest linearized local model retaining the moving-stream terms is
+
+$$
+M y_{tt}
++
+2 i_\mathrm{op}\lambda v y_{st}
++
+C y_t
++
+B y_{ssss}
++
+K_0 y
+-----
+
+T_{\mathrm{eq,lane}} y_{ss}^{(-)}
++
+q_{\mathrm{ctrl}}
+=================
+
+0.
+
+$$
+
+It is clearer to write the Fourier-mode form directly. For
+
+$$
+y(s,t)=\hat y e^{\sigma t+i k s},
+$$
+
+the open-loop characteristic equation is
+
+$$
+M\sigma^2
++
+\left(C+2i\lambda v k\right)\sigma
++
+\left[
+B k^4
++
+K_0
+---
+
+T_{\mathrm{eq,lane}}k^2
+\right]
+=======
+
+0.
+
+$$
+
+Here:
+
+* $M$ is the effective supported modal mass per lane length.
+* $C$ is passive damping per lane length.
+* $B k^4$ represents short-wave lane-carrier, rib, or local guide bending stiffness.
+* $K_0$ represents transverse shell/guide restoring stiffness.
+* $T_{\mathrm{eq,lane}}k^2$ is the destabilizing follower-force stiffness.
+* $2i\lambda v k\sigma$ is the non-self-adjoint convective term.
+
+The sign convention above has the stabilizing stiffness terms positive and the moving-stream follower stiffness negative. The necessary open-loop static-stiffness condition is therefore
+
+$$
+B k^4 + K_0 > T_{\mathrm{eq,lane}}k^2.
+$$
+
+Equivalently,
+
+$$
+K_{\mathrm{margin}}(k)
+======================
+
+B k^4 + K_0 - T_{\mathrm{eq,lane}}k^2
+
+>
+
+0.
+
+$$
+
+If this margin is negative, the mode is locally divergent unless active control supplies additional stabilizing stiffness and damping.
+
+### A.3 Passive stiffness alone is unlikely to cover all wavelengths
+
+Bending stiffness helps at short wavelength because it scales as $k^4$. It is ineffective at long wavelength compared with the follower term, which scales as $k^2$.
+
+If one tried to stabilize a mode using bending stiffness alone, the requirement would be
+
+$$
+B k^4 > T_{\mathrm{eq,lane}}k^2,
+$$
+
+or
+
+$$
+B > \frac{T_{\mathrm{eq,lane}}}{k^2}
+====================================
+
+T_{\mathrm{eq,lane}}\left(\frac{L}{2\pi}\right)^2.
+$$
+
+Numerically,
+
+|   Wavelength $L$ | Required $B$ for bending-only stabilization |
+| ---------------: | ------------------------------------------: |
+|  $10~\mathrm{m}$ |              $1.4\times10^9~\mathrm{N,m^2}$ |
+|  $30~\mathrm{m}$ |           $1.2\times10^{10}~\mathrm{N,m^2}$ |
+| $100~\mathrm{m}$ |           $1.4\times10^{11}~\mathrm{N,m^2}$ |
+|  $1~\mathrm{km}$ |           $1.4\times10^{13}~\mathrm{N,m^2}$ |
+
+Thus, local bending stiffness may plausibly help at metre-to-tens-of-metres wavelengths, but it is not a credible complete answer at $100~\mathrm{m}$ and above. Those wavelengths require guide stiffness, shell/guy-web stiffness, or active control.
+
+### A.4 Active transverse guide model
+
+The local guide must therefore be treated as an active transverse bearing. A minimal proportional-derivative controller with actuator lag is
+
+$$
+q_{\mathrm{ctrl}} = z,
+$$
+
+$$
+\tau_a \dot z + z
+=================
+
+K_c y + C_c \dot y,
+$$
+
+where:
+
+* $K_c$ is active transverse stiffness per unit lane length,
+* $C_c$ is active damping per unit lane length,
+* $\tau_a$ is the effective actuator, sensing, computation, and field-establishment lag.
+
+For one Fourier mode, the closed-loop characteristic equation becomes
+
+$$
+M\sigma^2
++
+\left(C+2i\lambda v k\right)\sigma
++
+\left[
+B k^4
++
+K_0
+---
+
+T_{\mathrm{eq,lane}}k^2
+\right]
++
+\frac{K_c+C_c\sigma}{1+\tau_a\sigma}
+====================================
+
+0.
+
+$$
+
+Multiplying through by $1+\tau_a\sigma$ gives a cubic eigenvalue problem:
+
+$$
+\left(1+\tau_a\sigma\right)
+\left{
+M\sigma^2
++
+\left(C+2i\lambda v k\right)\sigma
++
+B k^4
++
+K_0
+---
+
+T_{\mathrm{eq,lane}}k^2
+\right}
++
+K_c
++
+C_c\sigma
+=========
+
+0.
+
+$$
+
+The mode is locally stable if every root satisfies
+
+$$
+\mathrm{Re}(\sigma)<0.
+$$
+
+This is the minimum local eigenvalue test. Any full shell model should reduce to this form in the single-lane/single-mode limit.
+
+### A.5 Delay scale
+
+A disturbance with wavelength $L$ convects past local hardware on the timescale
+
+$$
+t_{\mathrm{conv}}=\frac{L}{v}.
+$$
+
+A crude $30^\circ$ phase-lag bound gives
+
+$$
+\tau_{\mathrm{max}}\sim \frac{L}{12v}.
+$$
+
+At $v=10~\mathrm{km/s}$,
+
+|   Wavelength $L$ | Convective time $L/v$ | Approximate $30^\circ$ delay budget |
+| ---------------: | --------------------: | ----------------------------------: |
+|  $10~\mathrm{m}$ |       $1~\mathrm{ms}$ |                 $0.083~\mathrm{ms}$ |
+|  $30~\mathrm{m}$ |       $3~\mathrm{ms}$ |                  $0.25~\mathrm{ms}$ |
+| $100~\mathrm{m}$ |      $10~\mathrm{ms}$ |                  $0.83~\mathrm{ms}$ |
+| $300~\mathrm{m}$ |      $30~\mathrm{ms}$ |                   $2.5~\mathrm{ms}$ |
+|  $1~\mathrm{km}$ |     $100~\mathrm{ms}$ |                   $8.3~\mathrm{ms}$ |
+
+This immediately separates the problem into bands. Metre-scale disturbances cannot be stabilized by ordinary sector-level control. The $100~\mathrm{m}$ band is severe but not obviously impossible for local electromagnetic guide hardware. Kilometre-scale modes are much less demanding in delay, but may involve more shell mass and more cross-section coupling.
+
+### A.6 Worked scalar eigenvalue screen
+
+To test whether the equations above have any plausible stable region, take a deliberately simple active-guide law:
+
+$$
+K_c = 3T_{\mathrm{eq,lane}}k^2,
+$$
+
+so the controller supplies three times the destabilizing follower stiffness. The resulting net positive stiffness margin, ignoring passive $B$ and $K_0$, is then approximately
+
+$$
+K_{\mathrm{net}}
+================
+
+## K_c
+
+# T_{\mathrm{eq,lane}}k^2
+
+2T_{\mathrm{eq,lane}}k^2.
+$$
+
+Choose active damping corresponding to a target damping ratio $\zeta=0.35$:
+
+$$
+C_c
+===
+
+2\zeta\sqrt{M K_{\mathrm{net}}}.
+$$
+
+For illustration, set
+
+$$
+M=50~\mathrm{kg/m},
+$$
+
+with $B=0$, $K_0=0$, and negligible passive damping. This is not a design claim. It is a screening mass chosen to ask whether the eigenvalue problem is categorically impossible.
+
+The table below gives the largest real part of the closed-loop eigenvalues for several actuator lags. Negative values are stable in this scalar model.
+
+|   Wavelength $L$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=0.1~\mathrm{ms}$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=0.5~\mathrm{ms}$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=1.0~\mathrm{ms}$ |
+| ---------------: | ------------------------------------------------------: | ------------------------------------------------------: | ------------------------------------------------------: |
+|  $10~\mathrm{m}$ |                        $-3.0\times10^2~\mathrm{s^{-1}}$ |                        $+7.7\times10^2~\mathrm{s^{-1}}$ |                        $+9.9\times10^2~\mathrm{s^{-1}}$ |
+|  $30~\mathrm{m}$ |                        $-2.2\times10^2~\mathrm{s^{-1}}$ |                        $+1.3\times10^1~\mathrm{s^{-1}}$ |                        $+1.9\times10^2~\mathrm{s^{-1}}$ |
+| $100~\mathrm{m}$ |                        $-7.4\times10^1~\mathrm{s^{-1}}$ |                        $-5.7\times10^1~\mathrm{s^{-1}}$ |                        $-3.0\times10^1~\mathrm{s^{-1}}$ |
+| $300~\mathrm{m}$ |                        $-2.6\times10^1~\mathrm{s^{-1}}$ |                        $-2.4\times10^1~\mathrm{s^{-1}}$ |                        $-2.2\times10^1~\mathrm{s^{-1}}$ |
+|  $1~\mathrm{km}$ |                                  $-7.7~\mathrm{s^{-1}}$ |                                  $-7.6~\mathrm{s^{-1}}$ |                                  $-7.4~\mathrm{s^{-1}}$ |
+
+This toy calculation gives a useful answer. The local follower-force problem is not mathematically hopeless. There are stable closed-loop eigenvalues for the $100~\mathrm{m}$ to kilometre band with sub-millisecond to millisecond-class local actuation. But the same controller becomes unstable at $10$ to $30~\mathrm{m}$ once delay rises into the $0.5$ to $1.0~\mathrm{ms}$ range.
+
+The force scale is also revealing. At $L=100~\mathrm{m}$, the active stiffness choice above corresponds to approximately
+
+$$
+K_cY
+====
+
+3T_{\mathrm{eq,lane}}k^2Y
+\approx
+6.4~\mathrm{kN/m}
+$$
+
+for a $1~\mathrm{mm}$ displacement. That is severe but not obviously beyond local magnetic-bearing authority.
+
+At $L=10~\mathrm{m}$, the same rule requires about
+
+$$
+640~\mathrm{kN/m}
+$$
+
+for a $1~\mathrm{mm}$ displacement, with an effective delay well below $0.1~\mathrm{ms}$. That is a very different regime. It is probably not credible as ordinary distributed shell control. It would need to be handled by extremely local guide stiffness, short magnetic-bearing loops, stiff lane carriers, or by designing the lane geometry so that such modes are not permitted to grow.
 
 
-## Appendix B. Slug discreteness screen
+XXXXXX
+
+
+
+
+
+## Appendix B. Local multi-lane tube-section eigenvalue screen
+
+The main text shows that helical momentum redirection can generate steady inflation pressure and hoop prestress. That is not enough to prove a stable operating point. The same moving streams that create the steady preload also create nonconservative follower-force terms when the guide path is perturbed. The relevant question is therefore not merely whether the steady forces exist, but whether the shell/guide/stream/controller system has a stable linearized equilibrium.
+
+This appendix gives a local multi-lane eigenvalue screen for that question.
+
+The purpose is deliberately narrower than a full orbital-ring dynamics model. The goal is to test the local and middle wavelength bands of the guide shell: the regime where lane carriers, ribs, shell ovalization, local guide control, and neighboring-lane coupling dominate. Global ring modes, station-keeping, tether interaction, and long-wave orbital dynamics are outside the scope of this appendix.
+
+The screen asks the following falsification question:
+
+> Is there any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands?
+
+The answer from the reduced-order map is conditional. The architecture is not immediately ruled out by local follower-force instability, but it survives only if the guide system acts as a high-bandwidth transverse magnetic bearing or equivalent local active suspension. The helical prestress alone is not stabilizing tangent stiffness. The balanced-cell axial tug field alone is also not a local transverse stabilizer unless its control-influence matrix is explicitly shown to couple into the unstable shell/lane modes.
+
+### B.1 Local coordinates and Fourier modes
+
+Use the local tube coordinates from the main text:
+
+$$
+s = \text{distance along the ring centerline},
+$$
+
+$$
+\theta = \text{azimuth around the torus cross-section},
+$$
+
+$$
+a = \text{local tube radius}.
+$$
+
+A local perturbation is expanded as
+
+$$
+\mathbf{x}(s,\theta,t)
+======================
+
+\hat{\mathbf{x}}
+e^{\sigma t+i k_s s+i n\theta},
+$$
+
+where $k_s$ is the axial wavenumber and $n$ is the cross-section mode number.
+
+The corresponding axial wavelength is
+
+$$
+L_s = \frac{2\pi}{k_s}.
+$$
+
+For a lane of handedness $h_j=\pm 1$, the wavenumber seen along the helical lane is approximately
+
+$$
+k_{\parallel,j}
+===============
+
+k_s\cos\alpha
++
+h_j\frac{n}{a}\sin\alpha .
+$$
+
+For shallow helix angle $\alpha$, the first term usually dominates for short axial wavelengths, but the cross-section term becomes important for high-$n$ ovalization or shear modes at long axial wavelength.
+
+### B.2 Fixed-flux follower-force scale
+
+For one fixed-flux slug lane, the effective line density is
+
+$$
+\lambda_{\mathrm{lane}}=\frac{\dot m}{v},
+$$
+
+so the moving-stream dynamic-tension scale is
+
+$$
+T_{\mathrm{eq,lane}}
+====================
+
+# \lambda_{\mathrm{lane}}v^2
+
+\dot m v.
+$$
+
+This is not a passive material tension. It is the coefficient multiplying the curvature-follower term in the linearized moving-stream reaction.
+
+Using the reference case,
+
+$$
+\lambda_{\mathrm{lane}}\approx 5.4~\mathrm{kg/m},
+$$
+
+$$
+v\approx 10^4~\mathrm{m/s},
+$$
+
+so
+
+$$
+T_{\mathrm{eq,lane}}
+\approx
+5.4\times10^8~\mathrm{N}.
+$$
+
+For each lane, the destabilizing follower stiffness per unit lane length is
+
+$$
+K_{\mathrm{follow},j}
+=====================
+
+T_{\mathrm{eq,lane}}k_{\parallel,j}^2 .
+$$
+
+This is the term that must be overcome by shell stiffness, guide stiffness, passive damping, active damping, and local control.
+
+For the reference shallow-helix case with
+
+$$
+a=50~\mathrm{m},
+\qquad
+\alpha\approx0.014~\mathrm{rad},
+$$
+
+the following table gives the worst-case follower stiffness for several representative axial wavelengths and cross-section mode numbers, taking the handedness sign that maximizes $|k_{\parallel,j}|$.
+
+| Axial wavelength $L_s$ | Mode $n$ | $|k_{\parallel}|$ | $K_{\mathrm{follow}}$ | Load for $Y=1~\mathrm{mm}$ |
+| ---: | ---: | ---: | ---: | ---: |
+| $30~\mathrm{m}$ | 0 | $0.209~\mathrm{m^{-1}}$ | $2.4\times10^7~\mathrm{N/m^2}$ | $24~\mathrm{kN/m}$ |
+| $30~\mathrm{m}$ | 64 | $0.227~\mathrm{m^{-1}}$ | $2.8\times10^7~\mathrm{N/m^2}$ | $28~\mathrm{kN/m}$ |
+| $100~\mathrm{m}$ | 0 | $0.0628~\mathrm{m^{-1}}$ | $2.1\times10^6~\mathrm{N/m^2}$ | $2.1~\mathrm{kN/m}$ |
+| $100~\mathrm{m}$ | 64 | $0.0807~\mathrm{m^{-1}}$ | $3.5\times10^6~\mathrm{N/m^2}$ | $3.5~\mathrm{kN/m}$ |
+| $300~\mathrm{m}$ | 0 | $0.0209~\mathrm{m^{-1}}$ | $2.4\times10^5~\mathrm{N/m^2}$ | $0.24~\mathrm{kN/m}$ |
+| $300~\mathrm{m}$ | 64 | $0.0389~\mathrm{m^{-1}}$ | $8.2\times10^5~\mathrm{N/m^2}$ | $0.82~\mathrm{kN/m}$ |
+| $1~\mathrm{km}$ | 0 | $0.00628~\mathrm{m^{-1}}$ | $2.1\times10^4~\mathrm{N/m^2}$ | $21~\mathrm{N/m}$ |
+| $1~\mathrm{km}$ | 64 | $0.0242~\mathrm{m^{-1}}$ | $3.2\times10^5~\mathrm{N/m^2}$ | $0.32~\mathrm{kN/m}$ |
+| $3~\mathrm{km}$ | 0 | $0.00209~\mathrm{m^{-1}}$ | $2.4\times10^3~\mathrm{N/m^2}$ | $2.4~\mathrm{N/m}$ |
+| $3~\mathrm{km}$ | 64 | $0.0200~\mathrm{m^{-1}}$ | $2.2\times10^5~\mathrm{N/m^2}$ | $0.22~\mathrm{kN/m}$ |
+
+The key result is that the $100~\mathrm{m}$ to kilometre band is not obviously impossible on force magnitude alone. The destabilizing load for a $1~\mathrm{mm}$ displacement is in the kilonewton-per-metre to sub-kilonewton-per-metre range per lane for many modes. The difficult parts are sign, phase, bandwidth, saturation, and actuator coupling.
+
+### B.3 Multi-lane tube-section state model
+
+Let the local tube section contain $N_\ell$ lanes indexed by $j$. Define a generalized state vector
+
+$$
+\mathbf{x}
+==========
+
+\begin{bmatrix}
+\mathbf{x}*{\mathrm{shell}} \
+\mathbf{x}*{\mathrm{rib}} \
+\mathbf{x}*{\mathrm{lane}} \
+\mathbf{x}*{\mathrm{guide}}
+\end{bmatrix}.
+$$
+
+This vector contains shell radial and tangential displacements, rib or internal guy-web modes, lane-carrier offsets, and guide-gap states.
+
+For each Fourier pair $(k_s,n)$, the open-loop linearized dynamics can be written as
+
+$$
+\mathbf{M}\ddot{\mathbf{x}}
++
+\left(
+\mathbf{C}*{\mathrm{struct}}
++
+\mathbf{C}*{\mathrm{conv}}
+\right)\dot{\mathbf{x}}
++
+\left(
+\mathbf{K}*{\mathrm{shell}}
++
+\mathbf{K}*{\mathrm{rib}}
++
+\mathbf{K}_{\mathrm{guide}}
+---------------------------
+
+\mathbf{K}_{\mathrm{follow}}
+\right)\mathbf{x}
+=================
+
+\mathbf{B}\mathbf{u}.
+$$
+
+Here:
+
+* $\mathbf{M}$ is the local generalized mass matrix.
+* $\mathbf{C}_{\mathrm{struct}}$ is passive structural damping.
+* $\mathbf{C}_{\mathrm{conv}}$ contains moving-stream convective terms.
+* $\mathbf{K}_{\mathrm{shell}}$ is the prestressed membrane/shell stiffness.
+* $\mathbf{K}_{\mathrm{rib}}$ is the rib, cross-brace, or internal guy-web stiffness.
+* $\mathbf{K}_{\mathrm{guide}}$ is passive guide stiffness.
+* $\mathbf{K}_{\mathrm{follow}}$ is the destabilizing follower-force stiffness.
+* $\mathbf{B}$ is the actuator influence matrix.
+* $\mathbf{u}$ is the actuator command vector.
+
+The follower matrix has lane-level diagonal blocks of the form
+
+$$
+\left[\mathbf{K}*{\mathrm{follow}}\right]*{jj}
+==============================================
+
+T_{\mathrm{eq},j}k_{\parallel,j}^2
+$$
+
+projected into the corresponding lane-carrier and shell coordinates.
+
+The convective term for lane $j$ has the corresponding non-self-adjoint contribution
+
+$$
+\left[\mathbf{C}*{\mathrm{conv}}\right]*{jj}
+============================================
+
+2i\sigma_j\lambda_j v_j k_{\parallel,j},
+$$
+
+where $\sigma_j=\pm1$ is the slug travel direction along the lane.
+
+This term is not necessarily destabilizing by itself, but it shifts modal phase and directional wave response. It must be retained in any serious stability map.
+
+### B.4 Actuator channels
+
+The actuator vector is divided into three classes:
+
+$$
+\mathbf{u}
+==========
+
+\begin{bmatrix}
+\mathbf{u}*{\perp} \
+\mathbf{u}*{\parallel} \
+\mathbf{u}_{p}
+\end{bmatrix}.
+$$
+
+Here:
+
+* $\mathbf{u}_{\perp}$ are direct transverse guide forces or magnetic-bearing forces.
+* $\mathbf{u}_{\parallel}$ are axial speed-gradient or tug commands.
+* $\mathbf{u}_{p}$ are common-mode pressure or prestress trim commands.
+
+The corresponding influence matrix is
+
+$$
+\mathbf{B}
+==========
+
+\begin{bmatrix}
+\mathbf{B}*{\perp} &
+\mathbf{B}*{\parallel} &
+\mathbf{B}_{p}
+\end{bmatrix}.
+$$
+
+This split is essential.
+
+A local transverse follower-force instability cannot be assumed controllable merely because the system has large axial tug authority. For each unstable open-loop mode $\boldsymbol{\phi}_r$, the relevant modal controllability condition is
+
+$$
+\boldsymbol{\phi}_r^\dagger \mathbf{B} \ne 0.
+$$
+
+More specifically, if the unstable mode is mainly transverse, then the direct or indirect transverse projection must satisfy
+
+$$
+\boldsymbol{\phi}*r^\dagger
+\mathbf{B}*{\perp}
+\ne 0
+$$
+
+or, if relying on axial tug coupling,
+
+$$
+\boldsymbol{\phi}*r^\dagger
+\mathbf{B}*{\parallel}
+\ne 0
+$$
+
+with usable sign, phase, and authority.
+
+If a mode lies in or near the nullspace of $\mathbf{B}_{\parallel}$, then balanced-cell speed-gradient control cannot stabilize that mode no matter how much scalar axial tug authority exists.
+
+### B.5 Closed-loop controller and delay model
+
+Use a local dynamic controller
+
+$$
+\dot{\mathbf{x}}_c
+==================
+
+\mathbf{A}_c\mathbf{x}_c
++
+\mathbf{L}_c\mathbf{y},
+$$
+
+$$
+\mathbf{u}_{\mathrm{cmd}}
+=========================
+
+\mathbf{F}_c\mathbf{x}_c
++
+\mathbf{D}_c\mathbf{y},
+$$
+
+where $\mathbf{y}$ is the measured local guide/shell state.
+
+Actuator lag is represented by
+
+$$
+\boldsymbol{\tau}_a \dot{\mathbf{u}}
++
+\mathbf{u}
+==========
+
+\mathbf{u}_{\mathrm{cmd}},
+$$
+
+where $\boldsymbol{\tau}_a$ may be diagonal or block diagonal for different actuator classes. This is only a first-order delay approximation. A more detailed implementation should use the actual sensing, computation, current-rise, magnetic-field, and power-electronics dynamics.
+
+The augmented closed-loop state is
+
+$$
+\mathbf{z}
+==========
+
+\begin{bmatrix}
+\mathbf{x} \
+\dot{\mathbf{x}} \
+\mathbf{x}_c \
+\mathbf{u}
+\end{bmatrix}.
+$$
+
+For each $(k_s,n)$,
+
+$$
+\dot{\mathbf{z}}
+================
+
+\mathbf{A}_{\mathrm{cl}}(k_s,n)\mathbf{z}.
+$$
+
+The local small-signal stability criterion is
+
+$$
+\max_r
+\mathrm{Re}
+\left[
+\sigma_r(k_s,n)
+\right]
+<0
+$$
+
+over the wavelength band assigned to local control.
+
+A practical design should demand not merely negative real parts, but margin:
+
+$$
+\max_r
+\mathrm{Re}
+\left[
+\sigma_r(k_s,n)
+\right]
+<
+-\gamma_{\mathrm{stab}},
+$$
+
+where $\gamma_{\mathrm{stab}}$ is a required decay-rate margin.
+
+### B.6 Saturation screen
+
+A linear eigenvalue result is not sufficient if the stabilizing force exceeds actuator authority. For every mode, the demanded force must satisfy
+
+$$
+\left|
+\mathbf{u}*{\perp}
+\right|
+<
+\mathbf{u}*{\perp,\max},
+$$
+
+$$
+\left|
+\mathbf{u}*{\parallel}
+\right|
+<
+\mathbf{u}*{\parallel,\max},
+$$
+
+and
+
+$$
+\left|
+\mathbf{u}*{p}
+\right|
+<
+\mathbf{u}*{p,\max}.
+$$
+
+For the transverse guide channel, a useful first screen is
+
+$$
+q_{\perp,\mathrm{req}}
+\sim
+\gamma_K
+T_{\mathrm{eq,lane}}k_{\parallel}^2Y,
+$$
+
+where $\gamma_K$ is the stiffness margin factor and $Y$ is the displacement amplitude being stabilized.
+
+For $\gamma_K=3$ and $Y=1~\mathrm{mm}$, the required transverse force densities are approximately:
+
+| Axial wavelength $L_s$ | Mode $n$ | Required transverse force density |
+| ---------------------: | -------: | --------------------------------: |
+|        $30~\mathrm{m}$ |        0 |                $71~\mathrm{kN/m}$ |
+|        $30~\mathrm{m}$ |       64 |                $84~\mathrm{kN/m}$ |
+|       $100~\mathrm{m}$ |        0 |               $6.4~\mathrm{kN/m}$ |
+|       $100~\mathrm{m}$ |       64 |              $10.6~\mathrm{kN/m}$ |
+|       $300~\mathrm{m}$ |        0 |              $0.71~\mathrm{kN/m}$ |
+|       $300~\mathrm{m}$ |       64 |               $2.4~\mathrm{kN/m}$ |
+|        $1~\mathrm{km}$ |        0 |                 $64~\mathrm{N/m}$ |
+|        $1~\mathrm{km}$ |       64 |              $0.95~\mathrm{kN/m}$ |
+
+This is an important result. The $100~\mathrm{m}$ and longer modes are not obviously force-impossible. A few to tens of kilonewtons per metre per lane is severe, but within the broad magnetic-pressure envelope discussed in the main text. The $30~\mathrm{m}$ band is much harsher. The $10~\mathrm{m}$ band would push toward hundreds of kilonewtons per metre for millimetre-scale displacement and should probably be assigned to passive local guide stiffness, very short bearing loops, or lane-carrier geometry rather than shell-level active control.
+
+For speed-gradient actuators, the saturation condition must also include speed trim and power:
+
+$$
+|\Delta u|
+<
+\Delta u_{\max},
+$$
+
+$$
+P
+\sim
+\dot m u \Delta u
+<
+P_{\max}.
+$$
+
+Thus, axial tug authority cannot be assessed by force alone. Its power and thermal burden must also be inside the local sector envelope.
+
+### B.7 Delay and bandwidth screen
+
+A disturbance of axial wavelength $L_s$ convects through the local guide at approximately
+
+$$
+t_{\mathrm{conv}}
+=================
+
+\frac{L_s}{v}.
+$$
+
+A crude $30^\circ$ phase-lag bound gives
+
+$$
+\tau_{\max}
+\sim
+\frac{L_s}{12v}.
+$$
+
+For $v=10~\mathrm{km/s}$:
+
+| Axial wavelength $L_s$ |   Convective time | Approximate $30^\circ$ delay budget |
+| ---------------------: | ----------------: | ----------------------------------: |
+|        $10~\mathrm{m}$ |   $1~\mathrm{ms}$ |                 $0.083~\mathrm{ms}$ |
+|        $30~\mathrm{m}$ |   $3~\mathrm{ms}$ |                  $0.25~\mathrm{ms}$ |
+|       $100~\mathrm{m}$ |  $10~\mathrm{ms}$ |                  $0.83~\mathrm{ms}$ |
+|       $300~\mathrm{m}$ |  $30~\mathrm{ms}$ |                   $2.5~\mathrm{ms}$ |
+|        $1~\mathrm{km}$ | $100~\mathrm{ms}$ |                   $8.3~\mathrm{ms}$ |
+
+This table is probably the most important practical local-stability result. The metre-to-tens-of-metres band is too fast for ordinary distributed control. The $100~\mathrm{m}$ band is severe but not obviously impossible for local electromagnetic guide hardware. Kilometre-scale modes have much more forgiving delay budgets, although they may involve larger participating shell mass and weaker local actuator projection.
+
+### B.8 Nominal eigenvalue-map cases
+
+The local eigenvalue map should be evaluated under at least the following cases.
+
+#### Case N: nominal four-lane-balanced operation
+
+All lanes are present, mass fluxes are matched, transverse guide channels are active, and balanced-cell axial tug channels are available.
+
+The pass condition is
+
+$$
+\max_r
+\mathrm{Re}
+\left[
+\sigma_r^{(N)}(k_s,n)
+\right]
+<
+-\gamma_{\mathrm{stab}}
+$$
+
+for all modes in the assigned local-control band.
+
+#### Case P: prestress-only operation
+
+Set
+
+$$
+\mathbf{B}_{\perp}
+==================
+
+# \mathbf{B}_{\parallel}
+
+# \mathbf{B}_p
+
+0
+$$
+
+and retain only shell, rib, passive guide, and prestress terms.
+
+This case is expected to fail for some wavelengths unless passive guide stiffness is very high. Failure of Case P is not fatal, because the architecture is explicitly active. But it confirms that helical pressure should not be described as passive dynamic stability.
+
+#### Case T: axial tug only
+
+Set
+
+$$
+\mathbf{B}_{\perp}=0
+$$
+
+and allow only $\mathbf{B}_{\parallel}$.
+
+If unstable transverse modes remain uncontrollable or weakly controllable,
+
+$$
+\boldsymbol{\phi}*r^\dagger
+\mathbf{B}*{\parallel}
+\approx 0,
+$$
+
+then balanced-cell speed-gradient control cannot be claimed to stabilize local shell/lane perturbations.
+
+This is the expected result for short and middle wavelengths. The balanced-cell tug field is primarily a long-wave shape-control actuator, not a substitute for local transverse guide stiffness.
+
+#### Case G: transverse guide control
+
+Allow direct transverse guide actuation,
+
+$$
+\mathbf{B}_{\perp}\ne0.
+$$
+
+This is the case that determines whether the architecture has a plausible local-stability window.
+
+The reduced-order map indicates that the answer can be yes for wavelengths of order $100~\mathrm{m}$ and above if the transverse guide supplies several times the follower stiffness with sub-millisecond effective lag. It becomes severe around $30~\mathrm{m}$ and probably implausible as shell-level active control around $10~\mathrm{m}$ unless passive lane-carrier stiffness or very local magnetic-bearing loops dominate.
+
+#### Case D1: one actuator degraded
+
+Remove one actuator column from $\mathbf{B}$ or reduce its authority:
+
+$$
+\mathbf{B}
+\rightarrow
+\mathbf{B}^{(D1)}.
+$$
+
+The pass condition is that all local modes remain stable, or that the unstable modes have growth times long enough for isolation and unloading.
+
+#### Case D2: one lane mass-flux mismatch
+
+Perturb one lane’s dynamic-tension scale:
+
+$$
+T_{\mathrm{eq},j}
+\rightarrow
+T_{\mathrm{eq},j}(1+\epsilon).
+$$
+
+Evaluate the eigenvalue shift
+
+$$
+\Delta\sigma_r
+==============
+
+## \sigma_r^{(D2)}
+
+\sigma_r^{(N)}.
+$$
+
+The balanced cell is acceptable only if expected mass-flux and speed-trim errors do not push any mode across the imaginary axis.
+
+#### Case D3: one lane dropout
+
+Set one lane’s mass flux and actuator authority to zero:
+
+$$
+T_{\mathrm{eq},j}
+\rightarrow 0,
+$$
+
+$$
+\mathbf{B}_j
+\rightarrow 0.
+$$
+
+This is not expected to be a normal operating mode. A lane dropout breaks the symmetry class of the four-lane cell. The relevant pass/fail question is therefore not indefinite stable operation, but whether the transient growth rate is slow enough for isolation, bypass, and neighboring-cell unloading.
+
+A useful degraded-mode criterion is
+
+$$
+\frac{1}{\max \mathrm{Re}(\sigma_r^{(D3)})}
+
+>
+
+t_{\mathrm{iso}}
+$$
+
+for all newly unstable modes, where $t_{\mathrm{iso}}$ is the physical isolation and unloading time. If this inequality fails, a lane dropout becomes a prompt structural instability rather than a containable fault.
+
+### B.9 Reduced-order map result
+
+The reduced-order tube-section screen gives the following qualitative map.
+
+| Band                                         | Dominant problem                                                                 | Likely stabilizing mechanism                                                    | Result                                                 |
+| -------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| $L_s \lesssim 10~\mathrm{m}$                 | Very large follower stiffness and sub-$0.1~\mathrm{ms}$ delay budget             | Passive guide stiffness, very local magnetic-bearing loops, stiff lane carriers | Not credible as ordinary shell-level active control    |
+| $L_s \sim 30~\mathrm{m}$                     | Tens of kN/m per lane for millimetre motion; delay budget $\sim0.25~\mathrm{ms}$ | Passive guide stiffness plus extremely fast local transverse bearing            | Severe / marginal                                      |
+| $L_s \sim 100~\mathrm{m}$                    | Few kN/m per lane for millimetre motion; delay budget $\sim0.8~\mathrm{ms}$      | High-bandwidth transverse guide control                                         | Plausible future-technology window                     |
+| $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lower follower stiffness but larger structural participation                     | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
+| $L_s \gtrsim 10^2$ to $10^3~\mathrm{km}$     | Long-wave ring shape and alignment                                               | Distributed balanced-cell tug fields                                            | Natural domain of macro actuator                       |
+
+The most important negative result is Case T: axial tug authority by itself does not close the local stability problem. It is not enough to show that neighboring lanes can generate large internal axial forces. The transverse influence matrix must have the right rank, sign, phase, and saturation margin.
+
+The most important positive result is Case G: the local follower-force problem is not an immediate theoretical impossibility if the lane guide is treated as a high-bandwidth active transverse bearing. At $100~\mathrm{m}$ wavelength, the reference-case destabilizing load for a $1~\mathrm{mm}$ perturbation is only a few kilonewtons per metre per lane. With a stiffness margin of order three, the required corrective force is of order $6$ to $10~\mathrm{kN/m}$ for low-to-moderate cross-section mode number. That is severe, but not obviously beyond future magnetic-guide authority.
+
+
+## Appendix C. Slug discreteness screen
 
 The fixed-flux treatment is useful, but the slugs themselves cannot stay abstract. In the 500 km, 10 km/s, 300-lane, 10 kN/m reference case, each lane carries about $5.4\times10^{4}$ kg/s of mass flux. The table below shows what that means for several representative slug masses.
 
@@ -1361,7 +2162,7 @@ The 10 kg bookkeeping row also gives a simple cancellation-budget screen:
 That last line is especially sobering. If balance is judged purely by counts, a one-slug mismatch does not average below 0.1% until the window is of order 0.2 s. But the lane and shell dynamics of concern are much faster than that. So precise four-lane balance is not just a matter of good average throughput accounting. It requires real-time synchronization, phase control, and fast local state estimation.
 
 
-## Appendix C. Power-flow, guide, and thermal screen
+## Appendix D. Power-flow, guide, and thermal screen
 
 The local guide-force density is not obviously the worst number. In the 500 km reference case, one lane sees only about 2.1 kN/m of helical normal load, and a 10 MN ring correction shared across 300 lanes corresponds to only about 0.33 N/m of average tangential force per lane over a 100 km sector. That is a broad-participation example, not a universal lane burden. The guide burden becomes terrifying because velocity is so high.
 
@@ -1380,7 +2181,7 @@ The guide technology is deliberately left unspecified in this paper because the 
 A useful module-scale view makes the same point. Spread over 100 km, the average power transfer is about 1 MW per metre of sector across all participating lanes, or about 10 MW for each 10 m slice of the sector. Under this broad-participation example, a 10 m slice of one lane carries only about 33 kW of average control power, but at slug rates that may range from kilohertz to hundreds of kilohertz depending on slug mass. So the difficulty is not one giant generator. It is a huge distributed array of moderate-force, high-rate, high-efficiency bidirectional modules.
 
 
-## Appendix D. Fault-domain and degraded-mode screen
+## Appendix E. Fault-domain and degraded-mode screen
 
 At the 500 km reference point, the moving stream stores about 82 GJ/m. That makes allowable fault energy the key quantity for architecture. If one chooses an allowable released energy $E_\mathrm{allow}$, the corresponding maximum isolated domain length is roughly
 
@@ -1408,7 +2209,7 @@ A simple worked screen shows how quickly the numbers become uncomfortable. In th
 That is not yet a complete fault simulation, but it is enough to show the architecture's character. Even sub-second degraded events are already too energetic to be treated as routine control glitches. They are containment-and-reconfiguration events.
 
 
-## Appendix E. Reference-frame lift bookkeeping for a co-rotating guide
+## Appendix F. Reference-frame lift bookkeeping for a co-rotating guide
 
 The main text uses a guide-relative lift screen because the guide shell's inertial speed is small compared with the slug speed in the reference case. Since that bookkeeping can be easy to misread, this appendix states the inertial-frame result explicitly and shows why the simpler expression is a good leading-order approximation for the symmetric lane pairs used in the paper.
 
