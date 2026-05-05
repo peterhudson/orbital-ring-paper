@@ -1389,7 +1389,7 @@ $$
 \begin{aligned}
 K_cY
 &= 3T_{\mathrm{eq,lane}}k^2Y \\
-&\approx 6.4~\mathrm{kN/m}.
+&\approx 6.4~\mathrm{kN/m}
 \end{aligned}
 $$
 
@@ -1413,9 +1413,7 @@ This appendix gives a local multi-lane eigenvalue screen for that question.
 
 The purpose is deliberately narrower than a full orbital-ring dynamics model. The goal is to test the local and middle wavelength bands of the guide shell: the regime where lane carriers, ribs, shell ovalization, local guide control, and neighboring-lane coupling dominate. Global ring modes, station-keeping, tether interaction, and long-wave orbital dynamics are outside the scope of this appendix.
 
-The screen asks the following falsification question:
-
-> Is there any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands?
+The screen asks the following falsification question: Is there any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands?
 
 The answer from the reduced-order map is conditional. The architecture is not immediately ruled out by local follower-force instability, but it survives only if the guide system acts as a high-bandwidth transverse magnetic bearing or equivalent local active suspension. The helical prestress alone is not stabilizing tangent stiffness. The balanced-cell axial tug field alone is also not a local transverse stabilizer unless its control-influence matrix is explicitly shown to couple into the unstable shell/lane modes.
 
