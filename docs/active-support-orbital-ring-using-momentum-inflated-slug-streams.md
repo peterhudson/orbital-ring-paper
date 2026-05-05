@@ -1302,7 +1302,7 @@ $$
 Multiplying through by $1+\tau_a\sigma$ gives a cubic eigenvalue problem:
 
 $$
-\left(1+\tau_a\sigma\right)\left{M\sigma^2+\left(C+2i\lambda v k\right)\sigma+B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right}+K_c+C_c\sigma=0.
+\left(1+\tau_a\sigma\right)\left\{M\sigma^2+\left(C+2i\lambda v k\right)\sigma+B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right\}+K_c+C_c\sigma=0.
 $$
 
 The mode is locally stable if every root satisfies
