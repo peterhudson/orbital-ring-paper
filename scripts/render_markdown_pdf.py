@@ -39,7 +39,11 @@ function Div(el)
     .. left
     .. "}{"
     .. right
-    .. "}\\setlength{\\columnwidth}{\\linewidth}"
+    .. "}"
+    .. "\\centering"
+    .. "\\setlength{\\columnwidth}{\\linewidth}"
+    .. "\\setlength{\\LTleft}{0pt plus 1fill}"
+    .. "\\setlength{\\LTright}{0pt plus 1fill}"
   local blocks = {pandoc.RawBlock("latex", begin_wide_table)}
 
   for _, block in ipairs(el.content) do
