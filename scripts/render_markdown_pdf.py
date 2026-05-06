@@ -5,6 +5,9 @@ Usage:
     python scripts/render_markdown_pdf.py [path/to/file.md] [--output-dir DIR]
 
 Requires `pandoc` to be installed and available on PATH.
+
+Tables wrapped in a Markdown `::: {.wide-table}` Div are widened and
+centered automatically for PDF output; no separate centering flag is needed.
 """
 
 from __future__ import annotations
@@ -35,6 +38,9 @@ function Div(el)
 
   local left = el.attributes["left"] or "-0.08\\textwidth"
   local right = el.attributes["right"] or left
+  -- Pandoc emits Markdown tables as longtable. Overwide longtables do not
+  -- center reliably with fill glue, so LTleft/LTright must use the same
+  -- negative offsets that widen the available line.
   local begin_wide_table = "\\begingroup\\begin{adjustwidth}{"
     .. left
     .. "}{"
@@ -42,8 +48,12 @@ function Div(el)
     .. "}"
     .. "\\centering"
     .. "\\setlength{\\columnwidth}{\\linewidth}"
-    .. "\\setlength{\\LTleft}{0pt plus 1fill}"
-    .. "\\setlength{\\LTright}{0pt plus 1fill}"
+    .. "\\setlength{\\LTleft}{"
+    .. left
+    .. "}"
+    .. "\\setlength{\\LTright}{"
+    .. right
+    .. "}"
   local blocks = {pandoc.RawBlock("latex", begin_wide_table)}
 
   for _, block in ipairs(el.content) do
