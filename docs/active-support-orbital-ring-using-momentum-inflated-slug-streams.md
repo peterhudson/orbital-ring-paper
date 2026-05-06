@@ -311,9 +311,7 @@ That observation cuts directly against naive pictures of a single giant monolith
 
 ## 5. Helical lanes in a prestressed membrane guide shell
 
-The helical toroidal guide architecture is the first major payoff of the paper.
-
-Instead of asking a fast lane to remain straight in free space, the architecture places the lane on an intentionally curved helical path wrapped around a very large tensile membrane tube. The simplest intuition is a lightweight fabric torus, but the hardware should be pictured more technically as a prestressed membrane-and-rib guide carrier with discrete lane carriers, distributed stators, power buses, sensors, thermal paths, and fault segmentation.
+Instead of asking a fast lane to remain straight in free space, this paper proposes an architecture that places the lanes on an intentionally curved helical path wrapped around a very large tensile membrane tube. The simplest intuition is a lightweight fabric torus, but the hardware should be pictured more technically as a prestressed membrane-and-rib guide carrier with discrete lane carriers, distributed stators, power buses, sensors, thermal paths, and fault segmentation.
 
 ### 5.1 Helical curvature creates a steady prestress channel
 
@@ -391,9 +389,7 @@ This prestress plausibly helps with:
 - increasing local indentation stiffness,
 - and providing a stable substrate onto which guides, sensors, power hardware, and auxiliary structure can be mounted.
 
-That is the architectural move. The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress.
-
-But that does not by itself prove local dynamic stability. Perturbations about the helical path still have follower-force character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
+The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress. But that does not by itself prove local dynamic stability. Perturbations about the helical path still have follower-force character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
 
 A more honest way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
 
@@ -407,11 +403,7 @@ $$
 \mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
 $$
 
-with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest.
-
-Put differently, the torus gives the lane something real to push against. It does not make the instability problem disappear.
-
-Lanes could in principle be mounted on the inner or outer surface of the membrane, or on shallow truss or rib hardware attached directly to it. The point is not the exact attachment detail at this stage. The point is that the prestressed membrane becomes the structural reaction surface for the helical lanes.
+with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The stability local stability question is addressed in details in Appendix A and B. 
 
 ### 5.4 Why the helix angle is likely small
 
@@ -467,11 +459,7 @@ So $\Gamma=10$ should be read as a lower-bound screening case, not as a settled 
 
 The prestressed membrane guide shell solves an important but limited problem. It gives the lanes a reaction structure, creates local prestress, and provides a platform for hardware. It does **not** automatically create a globally rigid torus, and it does **not** by itself close the local stability problem.
 
-For the $500~\mathrm{km}$, $u=10~\mathrm{km/s}$, $\Gamma=10$ reference case, the equivalent pressure is only about $2~\mathrm{kPa}$ and the corresponding hoop force is only about $100~\mathrm{kN/m}$. That may be enough to keep a ribbed membrane shell round and wrinkle-resistant. It is not enough to assume beam-like cross-sectional rigidity. If the useful shell needs something more like 0.3 to 1 MN/m of hoop force to control ovalization and rib-to-rib shear, then the prestress target must move into the $\Gamma\sim 30$ to $100$ range instead.
-
 The homogenized shell picture should also be bounded in wavelength. With about 300 lanes around a 314 m circumference, the pitch is about 1 m, so pressure-like averaging may be reasonable for long-wave deformation. It should not be trusted blindly for metre-scale guide deformation, local rib failure, lane dropout, or sharp control-sector gradients. A useful rule of thumb is that the smoothed shell model belongs to wavelengths well above the torus diameter and preferably well above the circumference, while shorter scales require an explicitly discrete lane-and-rib treatment.
-
-That is why the orbital ring still requires active macro-scale actuation, and why the four-lane balanced cell becomes essential.
 
 ### 5.6 Prestress is not tangent stiffness
 
