@@ -984,6 +984,7 @@ The paper's claim is architectural coherence at the actuation-primitive level. S
 
 Before going through them one by one, the main unresolved closure gates can be named compactly:
 
+::: {.wide-table}
 | Closure gate | Representative screening variable | Why it is central |
 | --- | --- | --- |
 | Passive-mass convergence | supported passive weight per metre $w_p$ | It closes directly into required momentum flux, stored energy, thermal hardware, and containment burden. |
@@ -992,6 +993,7 @@ Before going through them one by one, the main unresolved closure gates can be n
 | Shell load transfer | cross-sectional transfer efficiency $\eta_\mathrm{load}$ and rib spacing | Opposed sector tugs matter only if lane loads can be redistributed into a real long-wave bending couple rather than local ovalization. |
 | Fault containment | isolated domain energy and response time | The stored energy density is high enough that fault handling is likely a dominant feasibility gate rather than a secondary detail. |
 | Startup and reconfiguration | partial-commissioning support path and lane-phase initialization | The present paper treats startup, commissioning, and shutdown as open architectural problems rather than solved parts of the concept. |
+:::
 
 ### 8.1 Macro lift is still a separate burden
 
