@@ -1918,10 +1918,10 @@ The fixed-flux treatment is useful, but the slugs themselves cannot stay abstrac
 ::: {.wide-table}
 | Slug mass | Slugs per second per lane | Spacing at 10 km/s | Time headway | Kinetic energy per slug |
 | ---: | ---: | ---: | ---: | ---: |
-| 0.1 kg | about $5.4\times10^{5}$ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
-| 1 kg | about $5.4\times10^{4}$ /s | about 18 cm | about 18 µs | about 50 MJ |
-| 10 kg | about $5.4\times10^{3}$ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
-| 100 kg | about $5.4\times10^{2}$ /s | about 18 m | about 1.8 ms | about 5 GJ |
+| 0.1 kg | $\sim 5.4\times10^{5}$ /s | about 1.8 cm | about 1.8 µs | about 5 MJ |
+| 1 kg | $\sim 5.4\times10^{4}$ /s | about 18 cm | about 18 µs | about 50 MJ |
+| 10 kg | $\sim 5.4\times10^{3}$ /s | about 1.8 m | about 0.18 ms | about 500 MJ |
+| 100 kg | $\sim 5.4\times10^{2}$ /s | about 18 m | about 1.8 ms | about 5 GJ |
 :::
 
 This is a genuine design fork.
