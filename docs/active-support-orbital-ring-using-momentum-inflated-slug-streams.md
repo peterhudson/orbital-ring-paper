@@ -717,7 +717,7 @@ This is the macro-scale actuation mechanism. It turns distributed speed modulati
 
 \noindent\hspace*{-0.25\textwidth}![](../figures/figure-5-opposed-balanced-cells-bending2.svg){width=150%}
 
-**Figure 5.** Two opposed balanced four-cells on a local guide-shell segment. One cell spans $A$ to $B$ and the other spans $A{\prime}$ to $B{\prime}$. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple. 
+**Figure 5.** Two opposed balanced four-cells on a local guide-shell segment. One cell spans $A$ to $B$ and the other spans $A{\prime}$ to $B{\prime}$. Each helical path label 1-8 matches the lane numbers 1-8 used in Figure 6. 
 
 \noindent\hspace*{-0.25\textwidth}![](../figures/figure-6-opposed-balanced-cells-moment.svg){width=150%}
 
