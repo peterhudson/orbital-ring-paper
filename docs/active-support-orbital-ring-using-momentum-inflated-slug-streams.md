@@ -1918,10 +1918,10 @@ The fixed-flux treatment is useful, but the slugs themselves cannot stay abstrac
 ::: {.wide-table}
 | Slug mass | Slugs per second per lane | Spacing at 10 km/s | Time headway | Kinetic energy per slug |
 | ---: | ---: | ---: | ---: | ---: |
-| 0.1 kg | $\sim 5.4\times10^{5}$ /s | $\sim$ 1.8 cm | $\sim$ 1.8 µs | $\sim$ 5 MJ |
-| 1 kg | $\sim 5.4\times10^{4}$ /s | $\sim$ 18 cm | $\sim$ 18 µs | $\sim$ 50 MJ |
-| 10 kg | $\sim 5.4\times10^{3}$ /s | $\sim$ 1.8 m | $\sim$ 0.18 ms | $\sim$ 500 MJ |
-| 100 kg | $\sim 5.4\times10^{2}$ /s | $\sim$ 18 m | $\sim$ 1.8 ms | $\sim$ 5 GJ |
+| $0.1~\mathrm{kg}$ | $\sim 5.4\times10^{5}~\mathrm{s}^{-1}$ | $\sim 1.8~\mathrm{cm}$ | $\sim 1.8~\mu\mathrm{s}$ | $\sim 5~\mathrm{MJ}$ |
+| $1~\mathrm{kg}$ | $\sim 5.4\times10^{4}~\mathrm{s}^{-1}$ | $\sim 18~\mathrm{cm}$ | $\sim 18~\mu\mathrm{s}$ | $\sim 50~\mathrm{MJ}$ |
+| $10~\mathrm{kg}$ | $\sim 5.4\times10^{3}~\mathrm{s}^{-1}$ | $\sim 1.8~\mathrm{m}$ | $\sim 0.18~\mathrm{ms}$ | $\sim 500~\mathrm{MJ}$ |
+| $100~\mathrm{kg}$ | $\sim 5.4\times10^{2}~\mathrm{s}^{-1}$ | $\sim 18~\mathrm{m}$ | $\sim 1.8~\mathrm{ms}$ | $\sim 5~\mathrm{GJ}$ |
 :::
 
 This is a genuine design fork.
@@ -1937,11 +1937,11 @@ The 10 kg bookkeeping row also gives a simple cancellation-budget screen:
 
 | Quantity for the 10 kg row | Approximate value |
 | --- | ---: |
-| Slug rate per lane | about $5.4\times10^{3}$ /s |
-| Headway | about 0.185 ms |
-| Timing error for 1% headway error | about 1.8 µs |
-| Timing error for 0.1% headway error | about 0.18 µs |
-| Averaging time needed for one-slug count error to fall below 0.1% | about 0.19 s |
+| Slug rate per lane | $\approx 5.4\times10^{3}~\mathrm{s}^{-1}$ |
+| Headway | $\approx 0.185~\mathrm{ms}$ |
+| Timing error for 1% headway error | $\approx 1.8~\mu\mathrm{s}$ |
+| Timing error for 0.1% headway error | $\approx 0.18~\mu\mathrm{s}$ |
+| Averaging time needed for one-slug count error to fall below 0.1% | $\approx 0.19~\mathrm{s}$ |
 
 That last line is especially sobering. If balance is judged purely by counts, a one-slug mismatch does not average below 0.1% until the window is of order 0.2 s. But the lane and shell dynamics of concern are much faster than that. So precise four-lane balance is not just a matter of good average throughput accounting. It requires real-time synchronization, phase control, and fast local state estimation.
 
@@ -1977,8 +1977,8 @@ The result is brutal:
 
 | Allowable released energy | Maximum isolation length | Stream transit time across that length at 10 km/s |
 | ---: | ---: | ---: |
-| 1 GJ | about 1.2 cm | about 1.2 µs |
-| 10 GJ | about 12 cm | about 12 µs |
+| 1 GJ | about 1.2 cm | about $1.2~\mu\mathrm{s}$ |
+| 10 GJ | about 12 cm | about $12~\mu\mathrm{s}$ |
 | 100 GJ | about 1.2 m | about 0.12 ms |
 | 1 TJ | about 12 m | about 1.2 ms |
 | 10 TJ | about 120 m | about 12 ms |
