@@ -522,18 +522,18 @@ The minimal balanced cell therefore contains four lanes. To keep the sign bookke
 
 | Lane | Travel sign | Handedness | $s$-momentum | $\theta$-momentum | Role |
 | --- | ---: | --- | ---: | ---: | --- |
-| 1 | + | RH | + | + | pair A |
-| 2 | - | LH | - | + | pair A |
-| 3 | + | LH | + | - | pair B |
-| 4 | - | RH | - | - | pair B |
+| 1 | + | RH | + | + | pair X |
+| 2 | - | LH | - | + | pair X |
+| 3 | + | LH | + | - | pair Y |
+| 4 | - | RH | - | - | pair Y |
 
-Pair A therefore cancels $s$-momentum but retains positive $\theta$-momentum, pair B cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together.
+Pair X therefore cancels $s$-momentum but retains positive $\theta$-momentum, pair Y cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. Figure 3 shows the corresponding local geometry as a rendered guide-shell segment rather than a flat bookkeeping schematic. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
 
-![](../figures/figure-3-balanced-four-lane-cell.svg){width=100%}
+\noindent\hspace*{-0.25\textwidth}![](../figures/figure-3-balanced-four-lane-cell2.png){width=150%}
 
-**Figure 3.** Balanced four-lane cell on a local guide-shell segment, showing two right-handed and two left-handed lanes with opposing travel directions. Arrows indicate slug travel direction, and the helix angle is exaggerated for clarity.
+**Figure 3.** Rendered local guide-shell segment for the balanced-cell lane geometry. Orange and blue lanes indicate mirrored helical paths on the translucent membrane shell; arrows indicate local tangent and travel directions; the cut face defines the local $s$, $r$, and $\theta$ coordinates. The station A marks a representative control location, and the helix angle is exaggerated for clarity.
 
-Figure 4 makes the cancellation bookkeeping explicit in force-component form at two representative stations, A and B, of a control sector. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the cell contains equal positive and negative azimuthal slopes, the $\theta$-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction.
+Figure 4 then makes the cancellation bookkeeping explicit in force-component form at two representative stations, A and B, of a control sector. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the full cell contains equal positive and negative azimuthal slopes, the $\theta$-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction. 
 
 The $s$-components behave differently. In a stationary speed-gradient section, a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along $s$ on the stationary guide hardware. So the balanced four-cell can cancel the unwanted $\theta$-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
 
