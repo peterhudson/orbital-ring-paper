@@ -515,21 +515,25 @@ As such, the minimal balanced cell contains four lanes: To keep the sign bookkee
 | 3 | LH | + | - |
 | 4 | RH | - | - |
 
-Lane 1 and 4 therefore cancels $s$-momentum but retains positive $\theta$-momentum, lane 2 and 3 cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. Figure 3 shows the corresponding local geometry as a rendered guide-shell segment rather than a flat bookkeeping schematic. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
+Lane 1 and 4 therefore cancels $s$-momentum but retains positive $\theta$-momentum, lane 2 and 3 cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. Figure 3 shows the corresponding local geometry as a rendered guide-shell segment. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
 
 \noindent\hspace*{-0.25\textwidth}![](../figures/figure-3-balanced-four-lane-cell2.png){width=150%}
 
 **Figure 3.** Rendered local guide-shell segment for the balanced-cell lane geometry. Orange and blue lanes indicate mirrored helical paths on the translucent membrane shell; arrows indicate local tangent and travel directions; the cut face defines the local $s$, $r$, and $\theta$ coordinates. The station A marks a representative control location, and the helix angle is exaggerated for clarity.
 
-Figure 4 then makes the cancellation bookkeeping explicit in force-component form at two representative stations, A and B, of a control sector. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the full cell contains equal positive and negative azimuthal slopes, the $\theta$-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction. 
+The four-lane balanced cell allows for the exchange of momentum between pairs of lanes to generate a net force on the lane carriers / ring structure in the $s$-direction without introducing any net first order force in the $\theta$-direction. For example, to generate a force on the membrane-and-guide substrate in the negative $s$-direction at location A, we would accelerte slugs in lanes 1 and 3 while decelerating sluds in lane 2 and 4. 
 
-The $s$-components behave differently. In a stationary speed-gradient section, a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along $s$ on the stationary guide hardware. So the balanced four-cell can cancel the unwanted $\theta$-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
+Figure 4 then makes the cancellation bookkeeping explicit in force-component form. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the full cell contains equal positive and negative azimuthal slopes, the $\theta$-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction. 
 
-\noindent\hspace*{-0.25\textwidth}![](../figures/figure-4-balanced-cell-force-cancellation.svg){width=150%}
+But, the $s$-components behave differently. In a stationary speed-gradient section (i.e. Location A), a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along $s$ on the stationary guide hardware. So the balanced four-cell can cancel the unwanted $\theta$-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
 
-**Figure 4.** Force-component bookkeeping for a balanced four-lane cell at two representative control locations. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.
+![](../figures/figure-4-balanced-cell-force-cancellation.svg)
 
-Operated together, this cell can cancel to first order:
+**Figure 4.** Force-component bookkeeping for a balanced four-lane cell at a representative control location. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.
+
+Tug forces cannot be generated in isolation. A balanced four-lane cell that has its slugs accelerated and decelerated at one location (A) as depicted in Figure 4 needs to be operated with a second location (B) where the slugs are accelerated / decelerated back to normal ring velocity. The use of paired control locations is developed further in section 7 where it becomes critical for macro ring shape articulation and control. 
+
+Operated together, this four-lane cell can cancel to first order:
 
 - net axial momentum,
 - net circumferential momentum,
@@ -541,11 +545,9 @@ At the same time it preserves:
 - common-mode inflation pressure,
 - controllable pressure trim,
 - axial or tangential tug authority,
-- and azimuthally selective moment generation.
+- and azimuthally selective moment generation. 
 
-This is not a decorative symmetry argument. It is the architecture that makes the helical torus usable as an actuation machine rather than merely a pressurized tube.
-
-These cancellations are not automatic. They require equal mass flux, equal scalar speed profiles, matched helix angles, and symmetric placement of the four lanes within the cell. Flux mismatch, lane dropout, speed-trim error, or geometric asymmetry create residual force and torque channels.
+However, these cancellations are not automatic. They require equal mass flux, equal scalar speed profiles, matched helix angles, and symmetric placement of the four lanes within the cell. Flux mismatch, lane dropout, speed-trim error, or geometric asymmetry create residual force and torque channels.
 
 ### 6.1 Tolerance budget and degraded modes
 
