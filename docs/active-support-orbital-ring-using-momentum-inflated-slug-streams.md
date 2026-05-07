@@ -713,11 +713,11 @@ $$
 
 where $\Delta\phi$ is sector width and $C_\mathrm{sec}$ accounts for finite angular extent.
 
-This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 5 sketches the opposed balanced four-cells geometrically: one cell runs from $A$ to $B$, while a mirrored cell runs from $A{\prime}$ to $B{\prime}$ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 6 then makes the same logic more physical by resolving the lane reactions at representative control locations into local $s$- and $\theta$-components.
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. Figure 5 sketches the opposed balanced four-cells geometrically: one cell runs from $A$ to $B$, while a mirrored cell runs from $A{\prime}$ to $B{\prime}$ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. Figure 6 then makes the same logic more physical by resolving the lane reactions at representative control locations into local $s$- and $\theta$-components. The lane numbers from 1 to 8 are indicated in both Figure 5 and 6 for ease of bookkeeping.
 
 \noindent\hspace*{-0.25\textwidth}![](../figures/figure-5-opposed-balanced-cells-bending2.svg){width=150%}
 
-**Figure 5.** Two opposed balanced four-cells on a local guide-shell segment. One cell spans $A$ to $B$ and the other spans $A{\prime}$ to $B{\prime}$. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple.
+**Figure 5.** Two opposed balanced four-cells on a local guide-shell segment. One cell spans $A$ to $B$ and the other spans $A{\prime}$ to $B{\prime}$. Each plotted helical path represents the coincident positive and negative slug lanes for one handedness, highlighting how opposed sectors create a bending couple. 
 
 \noindent\hspace*{-0.25\textwidth}![](../figures/figure-6-opposed-balanced-cells-moment.svg){width=150%}
 
