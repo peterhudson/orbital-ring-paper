@@ -504,30 +504,18 @@ A full eigenvalue analysis of both the local lane and local tube levels is prese
 
 ## 6. The four-lane balanced cell
 
-A simple mirrored pair is useful, but it is not enough for a helical architecture.
+A helical lane patern is useful for generation of prestress inflation pressure on the tube. It's also useful to configure the lanes such that there are a matching number of lanes with slugs travelling in each direction ($\pm s$), as this allows momentum to be exchanged between one lane with $+s$ travelling slugs with one lane with $-s$ travelling slugs so that no net force in the $s$-direction is genearted. However, due to the twist in the $\theta$-direction of the lanes, an exchange in slug momentum between a pair of $\pm s$ direction lanes that have the same left or right handedness will generate a transfer of momentum from the slugs to the lanes in the $\theta$ direction. 
 
-If one chooses a mirrored helical pair with tangent vectors
+As such, the minimal balanced cell contains four lanes: To keep the sign bookkeeping explicit, define handedness geometrically by the sign of $d\theta/ds$ for the lane centerline itself: right-handed means positive azimuthal slope with increasing $s$, and left-handed means negative azimuthal slope. **This definition is geometric, not based on the slug's direction of travel.**
 
-$$
-t_x = \cos\alpha e_s + \sin\alpha e_\theta,
-$$
+| Lane | Handedness | $s$-momentum | $\theta$-momentum |
+| --- | --- | ---: | ---: |
+| 1 | RH | + | + |
+| 2 | LH | - | + |
+| 3 | LH | + | - |
+| 4 | RH | - | - |
 
-$$
-t_y = -\cos\alpha e_s + \sin\alpha e_\theta,
-$$
-
-then the axial components cancel, but the circumferential components add. That means a two-lane pair can still carry steady circumferential momentum and angular momentum around the torus.
-
-The minimal balanced cell therefore contains four lanes. To keep the sign bookkeeping explicit, define handedness geometrically by the sign of $d\theta/ds$ for the lane centerline itself: right-handed means positive azimuthal slope with increasing $s$, and left-handed means negative azimuthal slope. **This definition is geometric, not based on the slug's direction of travel.**
-
-| Lane | Travel sign | Handedness | $s$-momentum | $\theta$-momentum | Role |
-| --- | ---: | --- | ---: | ---: | --- |
-| 1 | + | RH | + | + | pair X |
-| 2 | - | LH | - | + | pair X |
-| 3 | + | LH | + | - | pair Y |
-| 4 | - | RH | - | - | pair Y |
-
-Pair X therefore cancels $s$-momentum but retains positive $\theta$-momentum, pair Y cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. Figure 3 shows the corresponding local geometry as a rendered guide-shell segment rather than a flat bookkeeping schematic. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
+Lane 1 and 4 therefore cancels $s$-momentum but retains positive $\theta$-momentum, lane 2 and 3 cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. Figure 3 shows the corresponding local geometry as a rendered guide-shell segment rather than a flat bookkeeping schematic. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
 
 \noindent\hspace*{-0.25\textwidth}![](../figures/figure-3-balanced-four-lane-cell2.png){width=150%}
 
