@@ -7,11 +7,11 @@ As such, the minimal balanced cell contains four lanes: To keep the sign bookkee
 | Lane | Handedness | $s$-momentum | $\theta$-momentum |
 | --- | --- | ---: | ---: |
 | 1 | RH | + | + |
-| 2 | LH | - | + |
+| 2 | RH | - | - |
 | 3 | LH | + | - |
-| 4 | RH | - | - |
+| 4 | LH | - | + |
 
-Lane 1 and 4 therefore cancels $s$-momentum but retains positive $\theta$-momentum, lane 2 and 3 cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. @fig-four-lane-cell shows the corresponding local geometry as a rendered guide-shell segment. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
+Lanes 1 and 4 therefore cancel $s$-momentum but retain positive $\theta$-momentum, lanes 2 and 3 cancel $s$-momentum but retain negative $\theta$-momentum, and the four-lane cell cancels both together. @fig-four-lane-cell shows the corresponding local geometry as a rendered guide-shell segment. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
 
 ![Rendered local guide-shell segment for the balanced-cell lane geometry. Orange and blue lanes indicate mirrored helical paths on the translucent membrane shell; arrows indicate local tangent and travel directions; the cut face defines the local $s$, $r$, and $\theta$ coordinates. The station A marks a representative control location, and the helix angle is exaggerated for clarity.](../figures/figure-3-balanced-four-lane-cell2.png){#fig-four-lane-cell}
 
