@@ -1,6 +1,6 @@
 # Distributed tug fields {#sec-tug-fields}
 
-The four-lane balanced cell has a second use beyond cancelling steady momentum. If the lanes of a cell are sped up or slowed down along a stretch of ring, the structure feels a force along its length, and counter-propagating lanes contribute to that force with the same sign. This chapter derives that result, which is the paper's second primitive, and then asks what such a force does to the ring.
+The four-lane balanced cell has a second use beyond canceling steady momentum. If the lanes of a cell are sped up or slowed down along a stretch of ring, the structure feels a force along its length, and counter-propagating lanes contribute to that force with the same sign. This chapter derives that result, which is the paper's second primitive, and then asks what such a force does to the ring.
 
 The right mental picture is not a rigid pipe with a single giant control thruster attached to it. It is a huge, lightly built but prestressed torus with many nearly axial lanes distributed around its wall, and selected neighborhoods of stator modules quietly speeding up or slowing down particular lanes over long distances.
 
@@ -108,7 +108,7 @@ So a distributed tug field preserves the same integrated authority as a hard tra
 
 ### All lanes together: tension in the structure {#sec-tug-hoop}
 
-If every lane along a stretch of ring is sped up by the same fraction $\epsilon$, the momentum flux there rises by $\epsilon\Pi$, and the tugs at the two ends of the stretch pull it apart. By @eq-tug-reaction the structure's tension rises by the same $\epsilon\Pi$. The harder outward push of the faster streams is cancelled by the inward pull of the tighter structure, and the ring's normal balance is unchanged.
+If every lane along a stretch of ring is sped up by the same fraction $\epsilon$, the momentum flux there rises by $\epsilon\Pi$, and the tugs at the two ends of the stretch pull it apart. By @eq-tug-reaction the structure's tension rises by the same $\epsilon\Pi$. The harder outward push of the faster streams is canceled by the inward pull of the tighter structure, and the ring's normal balance is unchanged.
 
 So the first thing a tug field controls is how axial load is shared between streams and structure, station by station. That has uses. A membrane has to be kept taut. A structure 43,000 km long changes length by kilometres with temperature, and something has to take up the difference. And it is the channel through which loads applied along the ring are reacted (@sec-tug-purpose).
 
@@ -116,7 +116,7 @@ It is also a sizing rule. The structure must be able to carry $\epsilon\Pi$. In 
 
 ### All lanes together: stream weight {#sec-tug-weight}
 
-At fixed mass flux, slugs bunch where they are slow, so a stretch of ring where the lanes run slow is heavier by @eq-weight-shift. This is the only way a speed field common to all lanes changes the ring's normal balance. It is weak: one part in a thousand of speed is 14 N/m, a little over a thousandth of the supported weight. And the ring answers it backwards (@sec-funicular): the heavier stretch rises.
+At fixed mass flux, slugs bunch where they are slow, so a stretch of ring where the lanes run slow is heavier by @eq-weight-shift. This is the only way a speed field common to all lanes changes the ring's normal balance. It is weak: one part in a thousand of speed is 14 N/m, a little over a thousandth of the supported weight. And the ring answers it backward (@sec-funicular): the heavier stretch rises.
 
 Weight trim is a slow, long-wave adjustment. Its proper use is to cancel a long-wave imbalance of load at its source, so that the ring's shape does not have to accommodate it.
 
@@ -306,7 +306,7 @@ $$
 \frac{P'}{q_y} = \frac{u}{ak} = \frac{uL}{2\pi a}
 $$ {#eq-tug-sideways-cost}
 
-for a wavelength $L$. At 100 km that is 3.2 MW handled per metre of ring for every newton per metre of sideways load. Holding a load mismatch of one per cent of the supported weight this way would keep 320 MW per metre circulating between counter-propagating lanes. At any realistic conversion efficiency that is not a control system. It is a heater.
+for a wavelength $L$. At 100 km that is 3.2 MW handled per metre of ring for every newton per metre of sideways load. Holding a load mismatch of 1% of the supported weight this way would keep 320 MW per metre circulating between counter-propagating lanes. At any realistic conversion efficiency that is not a control system. It is a heater.
 
 Weight trim (@sec-tug-weight) is cheaper at the longest wavelengths but follows the same logic. A speed ripple $\epsilon$ shifts weight by $\lambda g_h\epsilon$ and handles $\Pi\epsilon k u$ of power per unit length, so
 
@@ -316,7 +316,7 @@ $$ {#eq-weight-trim-cost}
 
 That is 0.74 MW per metre for each newton per metre at a wavelength of 1000 km, and 34 kW per metre for two waves round the ring.
 
-Set against these, recall from @sec-funicular what the ring does about a one per cent mismatch at 100 km if nothing is commanded at all: its shape shifts by 0.15 m.
+Set against these, recall from @sec-funicular what the ring does about a 1% mismatch at 100 km if nothing is commanded at all: its shape shifts by 0.15 m.
 
 The conclusion is that tug fields are the wrong tool for holding the ring's shape. Sideways control should be done by sideways forces on the streams, which cost no power to first order.
 
@@ -430,7 +430,7 @@ With the effects and the costs laid out, the jobs that suit this actuator can be
 
 - **Loads along the ring.** A vehicle accelerating or braking on the ring, drag on a ring low enough to feel the atmosphere, and the horizontal pull of a leaning tether all act along the ring. By @eq-ring-equilibrium-parts such a load has to change the effective tension from one side of it to the other. A tug field at the point of application hands the load to the streams there, so the structure does not have to carry it round the ring as tension. This is the job the tug field does best, and here its power is not a cost. It is the point: the 100 GW that a 10 MN tug handles is the power being delivered to the vehicle.
 - **Tension management.** Keeping the membrane taut, taking up thermal strain, and choosing where the structure carries load and where the streams do (@sec-tug-hoop).
-- **Weight trim at the longest wavelengths.** Cancelling slow, ring-scale imbalances of load at their source (@sec-tug-weight), within the cost of @eq-weight-trim-cost.
+- **Weight trim at the longest wavelengths.** Canceling slow, ring-scale imbalances of load at their source (@sec-tug-weight), within the cost of @eq-weight-trim-cost.
 - **Small sideways trims at short wavelength.** Shifting the thrust line by millimetres (@sec-opposed-sectors-create-bending), where @eq-tug-sideways-cost is tolerable.
 - **Spin-up, spin-down and momentum balance.** Bringing the streams to speed, and keeping the two travel directions balanced as loads come and go.
 

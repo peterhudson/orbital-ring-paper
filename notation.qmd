@@ -1,16 +1,16 @@
 # Notation {.unnumbered}
 
-SI units throughout. Quantities written "per unit ring length" are measured along the ring centreline $s$. Quantities written "per unit lane length" are measured along one helical lane. At the shallow helix angles used here the two differ by a factor of $\cos\alpha$, which is within 0.1% of one.
+SI units throughout. Quantities written "per unit ring length" are measured along the ring centerline $s$. Quantities written "per unit lane length" are measured along one helical lane. At the shallow helix angles used here the two differ by a factor of $\cos\alpha$, which is within 0.1% of one.
 
 ## Coordinates and geometry {.unnumbered}
 
 | Symbol | Meaning | Unit |
 | ------ | ------------------------------ | ----- |
-| $s$ | Distance along the ring centreline. The "axial" direction of the local tube. | m |
+| $s$ | Distance along the ring centerline. The "axial" direction of the local tube. | m |
 | $\theta$ | Azimuth around the tube cross-section | rad |
 | $r$ | Local radial direction, normal to the tube wall | m |
 | $x$ | Distance along a single lane (the [lane-guide](#sec-lane-guide) and [self-centering](#sec-no-self-centering) chapters) | m |
-| $R$ | Ring radius, measured from Earth's centre | m |
+| $R$ | Ring radius, measured from Earth's center | m |
 | $a$ | Tube radius (minor radius of the torus) | m |
 | $\alpha$ | Helix angle between a lane and the $s$ direction | rad |
 | $\kappa$ | Path curvature | m$^{-1}$ |
@@ -43,7 +43,7 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $J$ | Slug number flux in one lane | s$^{-1}$ |
 | $n(s)$ | Slug number density along a lane ([fill-and-drain section](#sec-fill-drain-required-steady)) | m$^{-1}$ |
 | $h$ | Time headway between slugs, $1/J$ | s |
-| $d$ | Centre-to-centre slug spacing, $vh$ | m |
+| $d$ | Center-to-center slug spacing, $vh$ | m |
 | $\ell_s$ | Slug length | m |
 | $g_\mathrm{min}$ | Minimum allowable gap between slugs | m |
 
@@ -52,7 +52,7 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | Symbol | Meaning | Unit |
 | ------ | ------------------------------ | ----- |
 | $f$ | Guide force per unit lane length | N/m |
-| $q$ | Force per unit ring length. Subscripts name the channel: lift, loc (helical), $s$ (tug), follow, $\parallel$, $\perp$, ctrl; or the direction: $t$ along the ring, $n$ toward the centre of curvature, $y$ sideways. | N/m |
+| $q$ | Force per unit ring length. Subscripts name the channel: lift, loc (helical), $s$ (tug), follow, $\parallel$, $\perp$, ctrl; or the direction: $t$ along the ring, $n$ toward the center of curvature, $y$ sideways. | N/m |
 | $p$ | Pressure or traction. Subscripts: eq (equivalent inflation), req, mag, $\parallel$, $\perp$. | Pa |
 | $A'$ | Magnetic interaction area per unit lane length | m |
 | $B$ | Magnetic flux density ([lane-guide chapter](#sec-lane-guide) only) | T |
@@ -96,7 +96,7 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $K_0$ | Transverse restoring stiffness per unit lane length | N/m² |
 | $K_c$, $C_c$ | Active stiffness and damping per unit lane length | N/m², N s/m² |
 | $\tau_a$ | Actuator lag | s |
-| $K_\mathrm{follow}$ | Destabilising stream stiffness, $T_\mathrm{eq}k^2$ | N/m² |
+| $K_\mathrm{follow}$ | Destabilizing stream stiffness, $T_\mathrm{eq}k^2$ | N/m² |
 | $\zeta$ | Target damping ratio | – |
 | $\gamma_K$ | Stiffness margin factor | – |
 | $\gamma_\mathrm{stab}$ | Required decay-rate margin | s$^{-1}$ |

@@ -36,7 +36,7 @@ $$
 \frac{dT_\mathrm{eff}}{ds} + q_t = 0, \qquad T_\mathrm{eff}\,\kappa + q_n = 0 ,
 $$ {#eq-ring-equilibrium-parts}
 
-with $q_n$ measured toward the centre of curvature. These are the equations of a cable. Everything that follows comes from the sign of $T_\mathrm{eff}$.
+with $q_n$ measured toward the center of curvature. These are the equations of a cable. Everything that follows comes from the sign of $T_\mathrm{eff}$.
 
 For a uniform ring of radius $R$ the load is the weight of structure and streams together, $q_n = (m + \lambda) g_h$ with $m = w_p/g_h$ the passive mass per unit length, and $\kappa = 1/R$. The normal balance gives
 
@@ -68,7 +68,7 @@ $$
 \delta w = -\lambda g_h \frac{\delta u}{u} .
 $$ {#eq-weight-shift}
 
-@fig-speed-ripple shows both statements on a numerical model of the whole ring (@sec-momentum-truss). A stationary speed ripple of one part in ten thousand, eight waves round the ring, changes the momentum flux by 16 MN peak. The tension in the structure follows it to within one per cent, and the effective tension stays flat. The ring's shape changes by about 6 m, and that change disappears entirely when the calculation is repeated with the stream weight held uniform.
+@fig-speed-ripple shows both statements on a numerical model of the whole ring (@sec-momentum-truss). A stationary speed ripple of one part in ten thousand, eight waves round the ring, changes the momentum flux by 16 MN peak. The tension in the structure follows it to within 1%, and the effective tension stays flat. The ring's shape changes by about 6 m, and that change disappears entirely when the calculation is repeated with the stream weight held uniform.
 
 ![Response of the whole ring to a stationary speed ripple of amplitude $10^{-4}$ with eight waves round the ring. Top: the change in stream momentum flux is taken up by tension in the structure. Bottom: the shape change is the weight shift alone.](../figures/generated/speed-ripple-response.svg){#fig-speed-ripple}
 
@@ -81,17 +81,17 @@ $$ {#eq-speed-ripple}
 
 Two things in @eq-speed-ripple matter later. The tension ripple is essentially the whole of $\epsilon\Pi$, so the structure has to be sized to carry whatever speed modulation is commanded: one part in a thousand is 164 MN. And $W$ is negative. Where the ring has been made lighter it moves inward, not outward. That is the next consequence.
 
-## The shape is a funicular, and it responds backwards {#sec-funicular}
+## The shape is a funicular, and it responds backward {#sec-funicular}
 
-For a load disturbance $q'$ of wavelength short compared with $R$, the normal balance for the sideways displacement $y$ is $T_\mathrm{eff}\,y'' + q' = 0$. For a sinusoid of wavenumber $k$,
+For a load disturbance $\delta q$ of wavelength short compared with $R$, the normal balance for the sideways displacement $y$ is $T_\mathrm{eff}\,y'' + \delta q = 0$. For a sinusoid of wavenumber $k$,
 
 $$
-y = \frac{q'}{T_\mathrm{eff}\,k^2} = -\frac{q'}{\Pi k^2} \qquad (N = 0) .
+y = \frac{\delta q}{T_\mathrm{eff}\,k^2} = -\frac{\delta q}{\Pi k^2} \qquad (N = 0) .
 $$ {#eq-funicular}
 
 A cable moves the way it is pushed. This ring moves the other way. Extra weight on one stretch makes that stretch rise, because the thrust line of an arch has to curve more sharply under a heavier load. The same expression holds for the whole ring with $k = n/R$ for $n$ waves round the circumference.
 
-The size of the response is modest. A load mismatch of one per cent of the supported weight, 100 N/m, displaces the reference ring by about 0.15 m at a wavelength of 100 km, 15 m at 1000 km, and 7 km for two waves round the ring. The ring does not need large forces to hold a nearly circular shape. Static authority is not the difficulty.
+The size of the response is modest. A load mismatch of 1% of the supported weight, 100 N/m, displaces the reference ring by about 0.15 m at a wavelength of 100 km, 15 m at 1000 km, and 7 km for two waves round the ring. The ring does not need large forces to hold a nearly circular shape. Static authority is not the difficulty.
 
 The difficulty is that this equilibrium is the top of a hill.
 
@@ -120,7 +120,7 @@ $$
 \sigma_n^2 = \Omega^2\left(n^2 - 1\right) \quad\text{(out of plane)} .
 $$ {#eq-ring-growth}
 
-The in-plane $n=1$ mode is the ring drifting off centre as a whole. Its rate, $\Omega/\sqrt 2$, is the classical result for a solid ring round a planet. The out-of-plane $n=1$ mode is a tilt of the whole ring, which is just a different orbital plane, and it is neutral. For large $n$ both expressions tend to $\sigma = n\Omega$, which is @eq-local-growth again.
+The in-plane $n=1$ mode is the ring drifting off center as a whole. Its rate, $\Omega/\sqrt 2$, is the classical result for a solid ring round a planet. The out-of-plane $n=1$ mode is a tilt of the whole ring, which is just a different orbital plane, and it is neutral. For large $n$ both expressions tend to $\sigma = n\Omega$, which is @eq-local-growth again.
 
 Now suppose the slugs coast, pushed sideways by the guide and not at all along the track. Then they behave like anything else in orbit. A stretch of stream that is carried outward slows down, and the slugs bunch there. Out of the ring's plane nothing changes. In the plane every mode grows a little more slowly: for large $n$ the rate tends to $\sigma_n^2 = \Omega^2\left(n^2 - 1.2\right)$, against $\Omega^2\left(n^2 - 1\right)$ with speed held.
 
@@ -130,16 +130,16 @@ This paper takes coasting as the baseline. In steady state the stators then have
 
 | Disturbance | Growth rate | Time to grow by a factor $e$ |
 | --- | ---: | ---: |
-| 100 m wavelength | 480 s⁻¹ | 2 ms |
+| 1 km wavelength | 48 s⁻¹ | 21 ms |
 | 10 km wavelength | 4.8 s⁻¹ | 0.2 s |
 | 100 km wavelength | 0.48 s⁻¹ | 2 s |
 | 1000 km wavelength | 0.048 s⁻¹ | 21 s |
 | Three waves round the ring, in plane | 0.0033 s⁻¹ | 5 min |
 | Two waves round the ring, in plane | 0.0022 s⁻¹ | 8 min |
-| Whole ring off centre | 0.0010 s⁻¹ | 17 min |
+| Whole ring off center | 0.0010 s⁻¹ | 17 min |
 | Uniform growth or shrinkage | none | oscillates, period 83 min |
 
-The last four rows are for coasting slugs and a structure with hoop stiffness $EA = 50$ GN. Hoop stiffness matters for the lowest modes. The measure of it is $EA/(m g_h R)$, which sets the hoop's stiffness against the structure's weight per unit length times the ring's radius, and at 50 GN that is only 0.73. Such a ring is soft in the hoop direction. If the hoop could not stretch at all, the off-centre mode would take 26 minutes to grow by a factor $e$, not 17.
+The first four rows are @eq-local-growth. It holds down to a wavelength of a few hundred metres. Below about 120 m the bending stiffness of a tube this size outweighs the streams' push, and waves that short do not grow. The last four rows are for coasting slugs and a structure with hoop stiffness $EA = 50$ GN. Hoop stiffness matters for the lowest modes. The measure of it is $EA/(m g_h R)$, which sets the hoop's stiffness against the structure's weight per unit length times the ring's radius, and at 50 GN that is only 0.73. Such a ring is soft in the hoop direction. If the hoop could not stretch at all, the off-center mode would take 26 minutes to grow by a factor $e$, not 17.
 
 These choices matter for the first few modes and for nothing else. In units of the orbital rate, the growth rates are:
 
@@ -170,7 +170,7 @@ The first, in `analysis/truss.py`, is a pin-jointed frame in which every member 
 
 The second, in `analysis/ring_modes.py`, gives each stream its own radial position, speed and spacing, so that slugs can coast, trade speed for height, and bunch. It is linear and treats one mode at a time.
 
-The third, in `analysis/ring_particles.py`, is a simulation of the whole ring: a ring of masses and hoop springs for the structure, several hundred point masses in each direction for the streams, all in the planet's inverse-square field, with the guide pushing each slug at right angles to the structure. Nothing in it is linearised. Because short waves grow fastest, it keeps only the long ones; short waves are taken up in the next chapters.
+The third, in `analysis/ring_particles.py`, is a simulation of the whole ring: a ring of masses and hoop springs for the structure, several hundred point masses in each direction for the streams, all in the planet's inverse-square field, with the guide pushing each slug at right angles to the structure. The slugs and the structure move under the full equations of motion. Only the guide's geometry is taken to first order in the structure's displacement, so the simulation is a test of the other models for small motions, not a study of large ones. Because short waves grow fastest, it keeps only the long ones.
 
 | Check | Reference | Model |
 | ---------------------------------------- | ----------------------------: | --------------------------------: |

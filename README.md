@@ -64,6 +64,6 @@ python -m analysis.make_figures
   - sections: `{#sec-name}` on the heading, `@sec-name` in the text
   - figures: `![Caption](../figures/file.svg){#fig-name}`, then `@fig-name`
   - equations: `$$ ... $$ {#eq-name}`, then `@eq-name`
-- **Equations** are labelled only when they are a result or are referred to elsewhere.
+- **Equations** are labeled only when they are a result or are referred to elsewhere.
 - **Symbols** are listed in `notation.qmd`. Add new ones there, and check the list before reusing a letter.
 - **Units** are SI.
