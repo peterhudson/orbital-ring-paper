@@ -1,6 +1,6 @@
 # Earlier work and what is new here {#sec-prior-work}
 
-The ideas in this paper touch four bodies of earlier work: rings round a planet, structures held up by moving mass, the mechanics of pipes and belts that carry a flow, and magnetic guides. This chapter says what each contributes, where this paper only restates a known result in new clothes, and what appears to be new.
+The ideas in this paper touch four main bodies of earlier work: rings round a planet, structures held up by moving mass, the mechanics of pipes and belts that carry a flow, and magnetic guides. Shorter notes on tabletop analogues and on neighbors of the helix idea follow them. This chapter says what each contributes, where this paper only restates a known result in new clothes, and what appears to be new.
 
 It comes late in the paper because the comparison needs the vocabulary of the chapters before it.
 
@@ -46,7 +46,7 @@ The picture of the ring's shape as a funicular, and of opposed tugs as a shift o
 
 ## Guides, bearings and motors {#sec-prior-guides}
 
-No arrangement of fixed magnets holds a body in stable equilibrium [@earnshaw1842nature], so a guide is either dynamic or active. Electrodynamic guides, in which the moving body induces the currents that repel it [@powell1971magnetic], are stable in themselves, and in the passive Halbach-array version their ratio of lift to drag rises in proportion to speed [@post1996inductrack; @post2000inductrack]. That is the property any estimate of guide loss will turn on (@sec-full-system-faces-closure). Their stability is a subject of its own, because their magnetic forces depend on the motion [@cai1997dynamic]. Attractive electromagnetic guides are unstable without control [@sinha1987electromagnetic; @lofstrom1985launch] and are stabilized by fast feedback on the gap.
+No arrangement of fixed magnets holds a body in stable equilibrium [@earnshaw1842nature], so a guide is either dynamic or active. Electrodynamic guides, in which the moving body induces the currents that repel it [@powell1971magnetic], are stable in themselves, and in the passive Halbach-array version their ratio of lift to drag rises in proportion to speed [@post1996inductrack; @post2000inductrack]. That is the property any estimate of guide loss will turn on (@sec-closure-gain). Their stability is a subject of its own, because their magnetic forces depend on the motion [@cai1997dynamic]. Attractive electromagnetic guides are unstable without control [@sinha1987electromagnetic; @lofstrom1985launch] and are stabilized by fast feedback on the gap.
 
 The mirror law needs the second kind, or the first kind with an active trim, because it commands force. Its set point (@sec-set-point) is borrowed from zero-power magnetic levitation, in which the controller drives the steady coil current to zero, so that the gap moves to where permanent magnets carry the steady load [@morishita1988zero]. A suspension controlled that way moves toward an added load instead of away from it, which is the backward response of @sec-funicular.
 

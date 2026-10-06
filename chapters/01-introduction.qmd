@@ -57,7 +57,7 @@ To keep later screens anchored, the paper uses one primary bookkeeping case unle
 | Torus radius $a$ | 50 m | Helix-curvature and shell screens |
 | Net inward non-stream load $w_p$ | 10 kN/m | Notional support burden |
 | Lane count | about 300 | Discrete-lane and balanced-cell screens |
-| Prestress ratio $\Gamma$ | 10 baseline, 30 to 100 sensitivity | Lower-bound shell-prestress screen |
+| Prestress ratio $\Gamma$ | 10 baseline, 30 to 100 sensitivity | Lower-bound shell-prestress screen. @sec-closure-gain shows what higher values cost in guide force. |
 
 This is a bookkeeping case, not an optimized design. The 500 km altitude is only a convenient reference point (indeed, a better altitude might be considerably lower, perhaps even below 100 km to avoid orbital debris), and none of the other ring parameters in this test case are claimed to be optimal. The case is used to keep the paper's numbers internally consistent while making clear which burdens grow when the passive mass or prestress target rises.
 
@@ -70,8 +70,8 @@ Because the local numbers are easy to underestimate, the corresponding whole-rin
 | Ring radius at 500 km altitude | about 6,871 km |
 | Circumference | about 43,000 km |
 | Passive mass for $w_p=10~\mathrm{kN/m}$ | about $5\times10^{10}$ kg |
-| Moving-stream mass for $\lambda_\mathrm{stream}\approx 1600~\mathrm{kg/m}$ | about $6.9\times10^{10}$ kg |
+| Moving-stream mass for $\lambda_\mathrm{stream}\approx 1640~\mathrm{kg/m}$ | about $7.1\times10^{10}$ kg |
 | Total moving kinetic energy | about $3.5\times10^{18}$ J |
-| Total slug count for 10 kg slugs | about $6.9\times10^{9}$ |
+| Total slug count for 10 kg slugs | about $7.1\times10^{9}$ |
 
 That table does not refute the architecture, but it does place the reference case firmly in the megastructure regime. Even the paper's nominally light reference point already involves tens of billions of kilograms of passive and moving inventory.

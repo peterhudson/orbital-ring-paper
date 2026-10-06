@@ -80,7 +80,7 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $\chi$ | Total weight shifted by a speed change over the stream weight shifted, $1 + m u^2/EA$ | – |
 | $EA$ | Axial stiffness of the structure | N |
 | $\beta_w$ | Weight-coupling coefficient, $\chi g_h/u^2$ | m$^{-1}$ |
-| $w$ | Stream weight per unit ring length | N/m |
+| $w$, $\delta w$ | Weight per unit ring length; the change in it that a speed change produces, streams and structure together | N/m |
 | $L_\mathrm{eff}$ | Effective speed-offset length of a tug command | m |
 | $\mathbf{S}$ | Local map from lane speed trims to tug, pressure and weight outputs | – |
 | $\tau_d$ | Total sensing, computation and actuation delay | s |
@@ -151,10 +151,12 @@ A few letters are reused in separate parts of the paper. Context and typeface te
 | $n$ | Slug number density; number of waves round the ring; cross-section mode number. As a subscript, the normal direction. |
 | $j$ | Index of a lane; in the shape-control chapter, of the two directions of travel |
 | $D$, $D_j$ | Guide's ratio of normal force to drag; with a subscript, rate of change following the slugs of stream $j$ |
-| $\eta$, $\eta_j$ | Fraction of supplied power that reaches the slugs; with a subscript, sideways position of stream $j$ |
-| $\eta$ | With a subscript such as load, an efficiency; otherwise the sideways position of a stream |
+| $\eta$ | Alone, in the closure-screens chapter: fraction of supplied power that reaches the slugs. As $\eta_j$, $\bar\eta$, $\eta^*$: sideways position of a stream. As $\eta_\mathrm{load}$: load-transfer efficiency. |
+| $\lambda$ | Line density of all the streams together (effective-tension chapter onward, also written $\lambda_\mathrm{stream}$); of one lane where a single lane is being discussed (also $\lambda_\mathrm{lane}$) |
+| $F$ | Integrated tug force; in the section on changing loads, a point load on the ring |
+| $\tau$ | Bare, in the shape-control chapter: lag of the path command. $\tau_d$ and $\tau_a$ are the delays of the stability appendices. |
 | $K$, $C$ | Guide stiffness and damping, per unit lane length in the stability appendices and per unit ring length for all lanes together in the shape-control chapter |
-| $h$, $h_j$ | Time headway; lane handedness. As a subscript in $g_h$, altitude. |
+| $h$, $h_j$ | Time headway; lane handedness; in the chapter beyond the ring, the rise of an arch or a height of column. As a subscript in $g_h$, altitude. |
 | $u$, $\mathbf{u}$ | Ring-direction slug speed; actuator command vector (bold) |
 | $y$, $\mathbf{y}$ | Transverse displacement; measured-output vector (bold) |
 | $L$ | Wavelength; with a subscript, a named length such as $L_\mathrm{eff}$ or $L_\mathrm{iso}$ |

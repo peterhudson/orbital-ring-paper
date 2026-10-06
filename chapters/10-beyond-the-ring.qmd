@@ -60,7 +60,7 @@ For balanced streams the rate depends on nothing else: not on the speed of the s
 
 For a column the same expression gives $\sigma = k\sqrt{g\,h}$, where $h$ is the height of uniform column that would weigh what the column above actually weighs. A column of momentum is a hanging chain turned upside down. Waves on a hanging chain travel at the square root of $g$ times the length of chain below. Errors in the column grow at $k$ times the square root of $g$ times the length of column above.
 
-**Steering.** The mirror law of @sec-mirror-law needs the structure to outweigh the part of the stream it commands, $c_m < m/\lambda$ (@sec-mirror-limits). For an arch,
+**Steering.** The mirror law of @sec-mirror-law needs the structure to outweigh the part of the stream it commands, $c_m < m/\lambda$. For an arch,
 
 $$
 c_m < \nu^2 - 1

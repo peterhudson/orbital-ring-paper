@@ -28,10 +28,10 @@ class Introduction(Base):
 
     def test_inventory(self):
         self.about(C.total_passive_mass, 5e10, 0.05)
-        self.about(C.lam_stream, 1600, 0.03)
-        self.about(C.total_stream_mass, 6.9e10, 0.03)
+        self.about(C.lam_stream, 1640, 0.005)
+        self.about(C.total_stream_mass, 7.1e10, 0.01)
         self.about(C.total_kinetic_energy, 3.5e18, 0.03)
-        self.about(C.total_stream_mass / C.slug_mass, 6.9e9, 0.03)
+        self.about(C.total_stream_mass / C.slug_mass, 7.1e9, 0.01)
 
 
 class LaneGuide(Base):
@@ -153,7 +153,7 @@ class ClosureScreens(Base):
     def test_lift_and_energy(self):
         self.about(C.lift_accel, 6.1, 0.01)
         self.about(C.E_prime, 82e9, 0.01)
-        for w, lam, e in [(10e3, 1600, 82e9), (30e3, 4900, 245e9), (100e3, 16000, 820e9)]:
+        for w, lam, e in [(10e3, 1640, 82e9), (30e3, 4900, 245e9), (100e3, 16000, 820e9)]:
             case = C.with_(w_p=w)
             self.about(case.lam_stream, lam, 0.03)
             self.about(case.E_prime, e, 0.01)

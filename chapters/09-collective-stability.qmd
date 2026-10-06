@@ -1,6 +1,6 @@
 # Holding the shape: steering the streams {#sec-collective-stability}
 
-@sec-effective-tension showed that every shape mode of the ring grows if the streams follow the structure. @sec-tug-fields showed that tug fields are the wrong tool for stopping it. This chapter asks what the right tool is.
+@sec-effective-tension showed that every shape mode of the ring grows if the streams follow the structure. @sec-tug-fields showed that tug fields are the wrong tool for stopping it at all but the longest wavelengths. This chapter asks what the right tool is.
 
 The answer is to stop making the streams follow the structure. If each stream is steered toward the mirror image of the structure's shape, the push of the streams on the structure changes sign, and the ring becomes a string in tension instead of an arch in compression. The rest of the chapter works out what that takes: how the motion is damped, how much room the guide needs, what happens under steady load, and what changes on the scale of the whole ring, where the stators turn out to be needed after all, and what it takes to carry loads that change, where for the longest modes the streams go back to following and the stators hold the shape.
 
@@ -78,7 +78,7 @@ $$
 d_a > u\tau\,\frac{m}{2\left(m - c_m\lambda\right)} ,
 $$ {#eq-look-ahead-floor}
 
-which is 3.6 m for $c_m = 0.5$ and a loop with a bandwidth of 1 kHz. The energy of the wave leaves through the steering actuators, which do work whenever they change the gap under load.
+which is 3.6 m for $c_m = 0.5$ and a command that lags by 0.22 ms, the lag of a second-order filter at 1 kHz. The energy of the wave leaves through the steering actuators, which do work whenever they change the gap under load.
 
 The reference design looks ahead by a fixed phase of the wave, $k d_a = 0.3$ rad, about a twentieth of a wavelength, and never by less than 20 m. The damping ratio of the structure's wave is then
 
@@ -150,13 +150,13 @@ $$ {#eq-bunching-limit}
 
 Above that the slugs surf the wave and bunch at a rate of order $\Omega$, at every wavelength. With look-ahead there is slow bunching at any gain. The cure is for the stators, which are linear synchronous motors [@gieras2011linear], to hold each slug softly to its place in their traveling wave, pulling its speed and position back at rates of $\Omega$ and $\Omega^2$. Softly, and only the pattern: a stiff hold on the mean speed would bring back the breathing instability of @sec-shape-modes-grow.
 
-With that soft hold in place the upper limit on the gain is $m/\lambda$ again. There is also a lower one, set by the lowest modes, where gravity and curvature work against the mirror law's stiffness: two waves round the ring are held only for $c_m$ above 0.36, three waves for $c_m$ above 0.16. At $c_m = 0.5$ every in-plane mode from $n = 2$ upward decays (@fig-ring-control). The slowest motions, which decay at 0.3 to 0.6 $\Omega$, are those of slug spacing. From $n = 4$ up the structure's own wave keeps the damping ratio of @eq-mirror-damping-ratio.
+With that soft hold in place the upper limit on the gain is $m/\lambda$ again. There is also a lower one, set by the lowest modes, where gravity and curvature work against the mirror law's stiffness: two waves round the ring are held only for $c_m$ above 0.35, three waves for $c_m$ above 0.16. That the first is close to the limit of @eq-bunching-limit is a coincidence. At $c_m = 0.5$ every in-plane mode from $n = 2$ upward decays (@fig-ring-control). The slowest motions, which decay at 0.3 to 0.6 $\Omega$, are those of slug spacing. From $n = 4$ up the structure's own wave keeps the damping ratio of @eq-mirror-damping-ratio.
 
 ![Growth or decay rate of the slowest-decaying motion in each in-plane mode of the ring, for three laws. The mirror law needs the stators' soft hold on the slugs. Mode 1 is shown under the stator feedback described in the text.](../figures/generated/ring-control-rates.svg){#fig-ring-control}
 
 **The breathing mode is left alone.** Mirroring $n = 0$ would make it run away. Left to coast it is the stable oscillation of @sec-shape-modes-grow, undamped by anything in this model.
 
-**The mirror law cannot hold the ring on center.** Shifting the stream's whole path sideways changes no curvature. With coasting slugs the steady force that steering can exert at $n = 1$ is exactly zero, and no value of $c_m$, with or without the stators' soft hold, makes the mode decay. What can hold it is weight. If the slugs run slower on the side of the ring that has drifted away from the planet, they bunch there, that side grows heavier, and gravity pulls the ring back. Steering can reach that lever indirectly, because a stream moved outward slows down, and an optimal steering law, a linear-quadratic regulator [@anderson1990optimal], does stabilize the mode. But it needs 3.6 m of offset for every metre the ring is off center. The stators reach the lever directly, with a speed ripple that has one wave round the ring.
+**The mirror law cannot hold the ring on center.** Shifting the stream's whole path sideways changes no curvature. With coasting slugs the steady force that steering can exert at $n = 1$ is exactly zero, and no value of $c_m$, with or without the stators' soft hold, makes the mode decay. What can hold it is weight. If the slugs run slower on the side of the ring that has drifted away from the planet, they bunch there, the structure slackens and thickens there too, that side grows heavier, and gravity pulls the ring back. Steering can reach that lever indirectly, because a stream moved outward slows down, and an optimal steering law, a linear-quadratic regulator [@anderson1990optimal], does stabilize the mode. But it needs 3.6 m of offset for every metre the ring is off center. The stators reach the lever directly, with a speed ripple that has one wave round the ring.
 
 The streams take 72 minutes to go round, which is the time scale of the instability itself, so a simple proportional law on the stators is not enough. A state-feedback law on the stators' force, designed for this one mode, makes the offset decay with a time constant of about two hours. It asks for a speed change of 10 mm/s per metre of offset. A ring 100 m off center needs 1 m/s, one part in ten thousand of the stream speed.
 
@@ -208,7 +208,7 @@ Under a load the streams stay centered, and the stators answer by changing the s
 | the 30 longest modes | 1.6 t | 157 t | 15 t | 1.8 t | 110 t | 0.7 GW |
 | the 170 longest modes | 9.0 t | 876 t | 85 t | 10 t | 16 t | 5 GW |
 
-: The largest point load that keeps every stream within 20 mm of the structure, put on suddenly and moving along the ring at three speeds; the largest that the stators answer with no more than 1 m/s of speed change; and the power that a load which stays keeps passing between the counter-moving lanes, in each direction of travel. {#tbl-load-capacity}
+: The largest point load that keeps every stream within 20 mm of the structure, put on suddenly and moving along the ring at three speeds; the largest that the stators answer with no more than 1 m/s of speed change; and the power that a load which stays keeps passing between the counter-propagating lanes, in each direction of travel. {#tbl-load-capacity}
 
 The offset that remains comes from the modes left to steering, and the longest of those are the weakest. Giving more modes to the stators raises the load the guide can take in proportion. It lowers the load the stators can answer, because they then gather the balancing weight into a shorter stretch of ring, 250 km for 170 modes, and that takes a larger change of speed. The two limits pull in opposite directions (@fig-load-capacity).
 
@@ -216,7 +216,7 @@ The offset that remains comes from the modes left to steering, and the longest o
 
 Below a few hundred metres a second the guide's limit is inversely proportional to the load's speed, because the set points of the steered modes follow a slow load. Their rate is 3% of the stream's transit rate, so a load that moves at more than about 3% of the stream speed outruns them. With 170 modes the limit levels off at 8 tonnes for a load moving at 2 or 3 km/s.
 
-**The power.** A stream that is slowed and then let go again gives up power on the way in and takes it back on the way out. Slowing one direction's streams by $\delta u$ takes $\tfrac12\Pi\,\delta u$ out of them, 82 MW for every millimetre a second, and at each end of the slow stretch the counter-moving lanes pass that much between them. Holding a tonne with 170 modes changes the speed by 61 mm/s and keeps 5 GW moving in each direction of travel for as long as the load stays. This is the cost that @sec-tug-power-cost put on weight trim, and it is why the stators should hold no more modes than the loads require, and should not go on holding a load that has come to stay.
+**The power.** A stream that is slowed and then let go again gives up power on the way in and takes it back on the way out. Slowing one direction's streams by $\delta u$ takes $\tfrac12\Pi\,\delta u$ out of them, 82 MW for every millimetre a second, and at each end of the slow stretch the counter-propagating lanes pass that much between them. Holding a tonne with 170 modes changes the speed by 61 mm/s and keeps 5 GW moving in each direction of travel for as long as the load stays. This is the cost that @sec-tug-power-cost put on weight trim, and it is why the stators should hold no more modes than the loads require, and should not go on holding a load that has come to stay.
 
 **The tide** is the same problem in a single mode. The Moon pulls on structure and slugs alike, outward and along the ring in turn, with an acceleration of 0.9 µm/s². Left to steering it asks for 0.6 m of offset. With the stators holding that mode the offset is nothing, the ring's shape moves by 0.06 m, and the speed ripple is 1.3 mm/s.
 
@@ -224,7 +224,7 @@ Below a few hundred metres a second the guide's limit is inversely proportional 
 
 **Limits.** In round numbers, a ring with 20 mm of guide room and 1 m/s of stator authority carries a point load of about eight tonnes without preparation, put on suddenly or moving at any speed up to 3 km/s. Several things qualify that.
 
-- The eight tonnes come from the linear model. The simulation has run one stator-held mode, under a load nearly forty times smaller than eight tonnes would put into it.
+- The eight tonnes come from the linear model. The simulation has run the stators holding three modes, with a load in one of them nearly forty times smaller than eight tonnes would put into it.
 - Heavier loads are not excluded, but they need more room in the guide, or preparation: a slow approach, or weight placed by the stators before the load arrives. That preparation has not been designed.
 - A load that stays should be handed over to the ring's shape, as the set points do for the steered modes, so that the stators stop spending power on it. That is not designed either.
 - The stators' feedback for each mode uses the full state of that mode: the shape of the structure and the position, speed and spacing of the slugs, all the way round the ring. And the split between the modes that follow and the modes that are steered has to be clean, because a stream that half-follows is in neither regime.
@@ -267,8 +267,8 @@ Put together, the ring is held by a handful of mechanisms, each with its own ran
 | 300 m to 250 km, or to half the ring if loads never change | Every shape mode grows | Steering: the mirror law with look-ahead | damping ratio 0.43 |
 | The same, for steady loads | The guide runs out of room | The set points move the ring to the funicular position | a minute at 100 km, hours at ring scale |
 | Above 250 km, when loads change | Every shape mode grows, and steering has no room for loads | Stators hold the shape by shifting weight, and the streams follow (@sec-changing-loads) | 15 to 29 minutes |
-| Slug spacing, all wavelengths | Bunching | Stators hold each slug softly in the traveling wave | decays in 30 to 50 minutes |
-| Ring off center ($n = 1$) | Grows in 12 to 17 minutes | Stators: a speed ripple that shifts weight | hours |
+| Slug spacing, all wavelengths | Bunching | Stators hold each slug softly in the traveling wave | decays in 25 to 50 minutes |
+| Ring off center ($n = 1$) | Grows in 17 minutes | Stators: a speed ripple that shifts weight | hours |
 | Uniform breathing ($n = 0$) | Nothing, if the slugs coast | Orbital mechanics | period 83 minutes |
 | Loads along the ring | Tension round the structure | Tug fields (@sec-tug-purpose) | as commanded |
 
@@ -285,7 +285,7 @@ Shown, in linear models and in particle simulations that agree with them for sma
 - A guide that makes the streams follow the structure cannot by itself hold the ring's shape at any stiffness.
 - Under the mirror law with look-ahead, a soft stator hold on slug spacing, and stator feedback on the off-center mode, every shape mode of the reference ring decays, in and out of plane, except uniform breathing, which is stable and undamped. Three models cover the range between them: the local model from 3 m to ring scale, with a real guide and control delay but no bunching; the ring model for mode numbers up to 30,000, with bunching and a real guide; and the ring simulation for the thirty longest modes.
 - Steady loads can be carried with every stream in the middle of its guide.
-- In the linear model, with the stators holding the 170 longest modes while the streams follow the structure in them, every mode still decays, and a point load of 9 tonnes put on suddenly, or of 8 tonnes moving at up to 3 km/s, stays within 20 mm of guide room. Only one stator-held mode under a small load has been run in the particle simulation.
+- In the linear model, with the stators holding the 170 longest modes while the streams follow the structure in them, every mode still decays, and a point load of 9 tonnes put on suddenly, or of 8 tonnes moving at up to 3 km/s, stays within 20 mm of guide room. The particle simulation has run the stators holding three modes, with a small load in one of them.
 - For errors of millimetres, the stream offsets needed are millimetres and the speed changes a fraction of a millimetre per second.
 
 Not shown:
@@ -297,4 +297,5 @@ Not shown:
 - **A ring that turns with the Earth.** The models hold the structure still. Turning with the Earth makes the two directions of travel unequal by 5% in speed, which @sec-unequal-streams covers in the linear model, and adds Coriolis terms on the structure, which it does not.
 - **Large motions and saturation.** The simulations confirm the linear models for small motions and show that the law fails abruptly when the guide runs out of room. What a recovery from that looks like has not been studied.
 - **The middle wavelengths in simulation.** From tens of kilometres to a thousand the evidence is linear.
+- **Discrete slugs.** The streams act as continuous flows for the shape control while the slugs are 20 m apart or less (@sec-discreteness-shape). What their passing does to the guide's own structure, thousands of times a second, is open.
 - **Faults.** Nothing here says what happens when a sector loses steering or a lane loses its stream.

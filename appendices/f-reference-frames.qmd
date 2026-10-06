@@ -31,4 +31,4 @@ $$
 
 is the leading-order result when $U_g \ll u$. The first-order $\pm 2U_g u/R$ correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, $U_g$ is about 0.50 km/s, so the retained correction is only about 0.25% of the main ring-curvature term in the reference case.
 
-This does not solve the broader orbital-dynamics problem. Station-keeping, tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open. It only shows why the guide-relative lift expression used in the main text is a reasonable leading-order screen for symmetric lane pairs.
+This does not solve the broader orbital-dynamics problem. Tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open, and keeping the ring centered is taken up in @sec-ring-control. It only shows why the guide-relative lift expression used in the main text is a reasonable leading-order screen for symmetric lane pairs.

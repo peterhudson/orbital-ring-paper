@@ -50,12 +50,12 @@ class MirrorLawOnTheRing(Base):
 
     def test_gain_has_a_lower_limit_at_the_lowest_modes(self):
         """With the stators' soft hold, mode 2 needs a mirror gain above
-        about 0.36, mode 3 above about 0.16."""
+        0.35, mode 3 above 0.16."""
         rate = lambda n, c0: MODEL.growth_rate(n, LAW.with_(mirror=c0)) / OM
-        self.assertGreater(rate(2, 0.3), 0.0)
-        self.assertLess(rate(2, 0.4), 0.0)
-        self.assertGreater(rate(3, 0.12), 0.0)
-        self.assertLess(rate(3, 0.2), 0.0)
+        self.assertGreater(rate(2, 0.345), 0.0)
+        self.assertLess(rate(2, 0.36), 0.0)
+        self.assertGreater(rate(3, 0.15), 0.0)
+        self.assertLess(rate(3, 0.16), 0.0)
         self.assertLess(rate(2, 0.7), 0.0)
 
     def test_reference_law_with_a_real_guide_and_set_points(self):

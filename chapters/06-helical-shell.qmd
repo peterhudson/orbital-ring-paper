@@ -84,7 +84,7 @@ This prestress plausibly helps with:
 - increasing local indentation stiffness,
 - and providing a stable substrate onto which guides, sensors, power hardware, and auxiliary structure can be mounted.
 
-The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress. But that does not by itself prove local dynamic stability. Perturbations about the helical path still have path-following character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
+The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress. But that does not by itself prove local dynamic stability. Perturbations about the helical path still have path-following character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental path-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
 
 A more honest way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
 
@@ -98,7 +98,7 @@ $$
 \mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
 $$ {#eq-stiffness-condition}
 
-with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The local stability question is addressed in detail in @sec-app-local-stability and @sec-app-tube-section. 
+with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The local stability question, of a lane against its shell, is taken up in @sec-app-local-stability and @sec-app-tube-section. 
 
 ## Why the helix angle is likely small {#sec-helix-angle-likely-small}
 
@@ -120,7 +120,7 @@ $$ {#eq-inflation-requirement}
 
 where $N_{\theta,\mathrm{req}}$ is required hoop membrane force per unit length.
 
-The macro-lift requirement, derived in @sec-full-system-faces-closure as @eq-lift-requirement, is
+The macro-lift requirement, stated in @sec-full-system-faces-closure as @eq-lift-requirement, is
 
 $$
 A_\mathrm{pair} \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
@@ -196,4 +196,4 @@ This does not mean the architecture is impossible, but it sharply limits what th
 
 Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream path-following scale remains of order $\dot m u$. Meaningful direct competition with the path-following scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
 
-A full eigenvalue analysis of both the local lane and local tube levels is presented in @sec-app-local-stability and @sec-app-tube-section.
+A minimal eigenvalue screen for one lane, and the framework for a tube-section screen, are in @sec-app-local-stability and @sec-app-tube-section. Both concern a lane against its shell. For the shape of the tube's own axis the remedy is not stiffness but steering (@sec-collective-stability).
