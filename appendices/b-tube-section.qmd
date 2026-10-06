@@ -4,7 +4,7 @@ The main text shows that helical momentum redirection can generate steady inflat
 
 This appendix gives a local multi-lane eigenvalue screen for that question.
 
-The purpose is deliberately narrower than a full orbital-ring dynamics model. The goal is to test the local and middle wavelength bands of the guide shell: the regime where lane carriers, ribs, shell ovalization, local guide control, and neighboring-lane coupling dominate. Global ring modes, station-keeping, tether interaction, and long-wave orbital dynamics are outside the scope of this appendix.
+The purpose is deliberately narrower than a full orbital-ring dynamics model. The goal is to test the local and middle wavelength bands of the guide shell: the regime where lane carriers, ribs, shell ovalization, local guide control, and neighboring-lane coupling dominate. Global ring modes, station-keeping, tether interaction, and long-wave orbital dynamics are outside the scope of this appendix. The ring's shape modes are the subject of @sec-collective-stability.
 
 The screen asks the following falsification question: Is there any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands?
 

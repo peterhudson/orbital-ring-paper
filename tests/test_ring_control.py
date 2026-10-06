@@ -82,33 +82,31 @@ class LowestModes(Base):
         self.assertGreater(min(rates), 0.85)
 
     def test_steering_costs_more_than_twice_the_error_in_gap(self):
-        cheap = rc.Scales(gap=0.02, speed=1e12, shape=2.0, floor=1.0, guide=C.g_h * 0.02 / C.R * 1e3)
-        for n, quoted in ((1, 3.6), (2, 2.9), (3, 2.6), (10, 2.4)):
-            K = rc.lqr_gain(MODEL, n, inputs=LATERAL, scales=cheap)
+        for n, quoted in ((1, 3.6), (2, 2.8), (3, 2.5), (10, 2.2), (30, 2.0)):
+            K = rc.lqr_gain(MODEL, n, inputs=LATERAL, scales=rc.least_gap_scales(MODEL))
             self.assertLess(MODEL.closed_loop_eigenvalues(n, K)[0].real, 0.0)
-            out = rc.recovery(MODEL, n, K, rc.unstable_direction(MODEL, n), duration=12.0 / MODEL.growth_rate(n))
-            self.about(out["gap"], quoted, 0.03)
+            self.about(rc.steering_gap_per_metre(MODEL, n), quoted, 0.03)
 
     def test_stators_hold_the_low_modes_with_small_speed_changes(self):
         """Peak speed change per metre of error on the growing mode."""
-        nu = MODEL.nu
         for n, quoted in ((1, 0.009), (2, 0.016), (3, 0.027), (10, 0.28), (30, 2.8)):
-            closed, K8, _ = rc.stator_lqr(MODEL, n, scales=rc.Scales(shape=10.0))
+            closed, _, _ = rc.stator_lqr(MODEL, n, scales=rc.Scales(shape=10.0))
             self.assertLess(np.linalg.eigvals(closed).real.max(), -0.1)
-            vals, vecs = np.linalg.eig(MODEL.tracking_matrix(n))
-            x = vecs[:, np.argmax(vals.real)]
-            x = x / x[0]
-            times = np.linspace(0.0, 12.0 / vals.real.max(), 3000)
-            step = expm(closed * (times[1] - times[0]))
-            peak = 0.0
-            for _ in times:
-                peak = max(peak, abs(x[4] + nu * x[0]), abs(x[6] - nu * x[0]))
-                x = step @ x
-            self.about(peak * OM, quoted, 0.06)
+            self.about(rc.stator_speed_per_metre(MODEL, n), quoted, 0.06)
+
+    def test_where_each_actuator_wins(self):
+        self.about(1.0 / rc.stator_speed_per_metre(MODEL, 1), 110, 0.03)             # metres recovered with 1 m/s
+        self.about(1.0 / rc.stator_speed_per_metre(MODEL, 30), 0.36, 0.03)
+        n_cross = 30 * math.sqrt(100.0 / rc.stator_speed_per_metre(MODEL, 30))      # where 1 m/s recovers 10 mm
+        self.about(n_cross, 180, 0.03)
+        self.about(2 * math.pi * C.R / 180, 240e3, 0.01)
+        self.assertTrue(0.005 < 0.02 / rc.steering_gap_per_metre(MODEL, 1) < 0.02 / rc.steering_gap_per_metre(MODEL, 30) <= 0.0101)
 
     def test_off_centre_controller(self):
         closed, _, _ = rc.off_centre_controller(MODEL, LAW)
         self.about(np.linalg.eigvals(closed).real.max(), -0.13, 0.05)      # in units of the orbital rate
+        self.about(-1.0 / (np.linalg.eigvals(closed).real.max() * OM) / 3600, 1.9, 0.03)      # hours
+        self.about(1.0 / OM / 60, 15, 0.01)                                # the stators' soft hold, minutes
         self.about(100 * 0.009 / C.u, 9e-5, 0.02)                         # a 100 m offset, as a fraction of stream speed
         self.about(100 * 0.009 / C.u * C.Pi_total, 15e6, 0.03)             # and as tension in the structure
 
@@ -123,8 +121,10 @@ class SteadyLoads(Base):
     def test_without_it_the_gap_needed_is_hopeless(self):
         n = 2
         w, gap = rc.static_response(MODEL, rc.adaptive_closed_loop(MODEL, n, LAW, adapt=0.0)[:12, :12])
-        self.assertGreater(w, 500.0)
-        self.assertLess(gap, -800.0)
+        self.about(w, 560, 0.01)
+        self.about(gap, -830, 0.01)
+        w, _ = rc.static_response(MODEL, rc.adaptive_closed_loop(MODEL, n, LAW))
+        self.about(w, -71, 0.01)
 
     def test_moon_tide(self):
         gm_moon, distance = 4.9028e12, 3.844e8

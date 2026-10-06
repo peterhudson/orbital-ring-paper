@@ -61,7 +61,7 @@ MIRROR_REFERENCE = dict(
     preview=20.0,          # m: the least look-ahead, to outrun the control delay
     cutoff=300.0,          # m: shorter waves are left to the structure's own stiffness
     zeta=0.3,              # damping ratio of the guide's hold on the commanded path
-    EI=1.0e13,             # N m^2
+    EI=6.25e13,            # N m^2: a thin tube of radius 50 m with axial stiffness 50 GN
     loss_factor=1.0e-3,    # structural damping
 )
 

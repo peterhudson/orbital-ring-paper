@@ -125,6 +125,36 @@ class Scales:
     floor: float = 1.0e-3      # small weight on every state, relative to `shape`
 
 
+def least_gap_scales(model: RingModes) -> Scales:
+    """A cost that counts the gap and almost nothing else, for asking how
+    little gap a steering-only controller can get away with."""
+    c = model.case
+    return Scales(gap=0.02, speed=1e12, shape=2.0, floor=1.0, guide=c.g_h * 0.02 / c.R * 1e5)
+
+
+def steering_gap_per_metre(model: RingModes, n: int) -> float:
+    """Peak gap, per metre of error on the growing mode, when mode n is
+    recovered by steering alone under the least-gap optimal law."""
+    K = lqr_gain(model, n, inputs=LATERAL, scales=least_gap_scales(model))
+    return recovery(model, n, K, unstable_direction(model, n), duration=12.0 / model.growth_rate(n), samples=6000)["gap"]
+
+
+def stator_speed_per_metre(model: RingModes, n: int, scales: Scales = Scales(shape=10.0)) -> float:
+    """Peak change of slug speed, m/s per metre of error on the growing
+    mode, when mode n is recovered by the stators with a following guide."""
+    closed, _, _ = stator_lqr(model, n, scales=scales)
+    vals, vecs = np.linalg.eig(model.tracking_matrix(n))
+    x = vecs[:, np.argmax(vals.real)]
+    x = x / x[0]
+    times = np.linspace(0.0, 12.0 / vals.real.max(), 3000)
+    step = expm(closed * (times[1] - times[0]))
+    peak = 0.0
+    for _ in times:
+        peak = max(peak, abs(x[4] + model.nu * x[0]), abs(x[6] - model.nu * x[0]))
+        x = step @ x
+    return peak * model.omega
+
+
 def outputs(model: RingModes):
     """Rows that pick out, from the plant's state: the two streams' gaps and
     speed deviations (both as fractions of R and R*Omega)."""

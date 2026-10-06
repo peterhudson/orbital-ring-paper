@@ -1,0 +1,200 @@
+# Holding the shape: steering the streams {#sec-collective-stability}
+
+@sec-effective-tension showed that every shape mode of the ring grows if the streams follow the structure. @sec-tug-fields showed that tug fields are the wrong tool for stopping it. This chapter asks what the right tool is.
+
+The answer is to stop making the streams follow the structure. If each stream is steered toward the mirror image of the structure's shape, the push of the streams on the structure changes sign, and the ring becomes a string in tension instead of an arch in compression. The rest of the chapter works out what that takes: how the motion is damped, how much room the guide needs, what happens under steady load, and what changes on the scale of the whole ring, where the stators turn out to be needed after all.
+
+## Stream and structure as two things {#sec-two-body-model}
+
+So far the stream has been treated as part of the structure. To ask what a guide should do, the two have to be separated.
+
+Take a straight run of ring, short compared with $R$, and one sideways direction. The structure has displacement $y(s,t)$ and mass $m$ per unit length. Each stream $j$ has its own centerline $\eta_j(s,t)$. A slug is a free body apart from the force the guide puts on it, so with $f_j$ the guide force per unit length on stream $j$,
+
+$$
+\lambda_j D_j^2 \eta_j = f_j , \qquad D_j = \frac{\partial}{\partial t} \pm u\,\frac{\partial}{\partial s} ,
+$$ {#eq-stream-motion}
+
+where $D_j$ follows the slugs, and the structure feels the reaction,
+
+$$
+m\,\ddot y = -\sum_j f_j .
+$$ {#eq-structure-motion}
+
+The guide is whatever sets $f_j$. Everything in this chapter is a choice of that rule.
+
+One property of a balanced pair of streams is used throughout. If both are given the same path $\eta$, the sum of their accelerations is $\lambda\left(\ddot\eta + u^2\eta''\right)$. The cross terms $\pm 2u\,\dot\eta'$ cancel, exactly as momentum density canceled in @sec-stress-resultant.
+
+## A guide that follows cannot hold the shape {#sec-following-fails}
+
+A stiff guide holds each stream on the structure, $\eta_j = y$. Adding the two equations gives $(m+\lambda)\ddot y = -\Pi y''$, which is @eq-local-growth: every wavelength grows at $0.76\,k u$.
+
+A softer guide does not help in the way one might hope. Suppose the guide is a spring between stream and structure, stiff enough that a slug displaced in it would oscillate at 10 Hz. A slug travels 1 km in one such oscillation. Waves much shorter than that go by too fast for the stream to respond, so the stream flies straight, the structure feels only a spring to a straight line, and those waves are stable. Waves longer than about 400 m are not. The stream follows them, and their growth rate climbs back to that of the stiff guide. A softer spring moves the boundary to longer waves and leaves everything beyond it unstable.
+
+The top panel of @fig-guide-laws shows both cases. Whatever its stiffness, a guide that pulls the stream toward the structure makes the long waves grow.
+
+![Growth and decay rates against wavelength for a straight run of the reference ring. Top: two guides that pull the stream toward the structure. Bottom: the mirror law of @sec-mirror-law with the look-ahead of @sec-look-ahead. The flat part of the lower curve is the guide's own hold on its commanded path.](../figures/generated/guide-law-rates.svg){#fig-guide-laws}
+
+## The mirror law {#sec-mirror-law}
+
+A stream pushes on the outside of its own bends. If its bends are the structure's bends, it pushes every bump of the structure further out. That is all the instability is.
+
+So give the stream different bends. Command each stream to fly the mirror image of the structure's shape, scaled by a gain $c_m$:
+
+$$
+\eta^* = -c_m\,y .
+$$ {#eq-mirror-command}
+
+Where the structure bulges one way, the stream now curves the other way and pushes the bulge back (@fig-mirror-sketch).
+
+![What the two kinds of guide do to a bump in the structure.](../figures/generated/mirror-law-sketch.svg){#fig-mirror-sketch}
+
+If the guide holds the streams on that path, @eq-stream-motion and @eq-structure-motion give
+
+$$
+\left(m - c_m\lambda\right)\ddot y = c_m\,\Pi\,y'' .
+$$ {#eq-mirror-string}
+
+This is the equation of a string in tension. The tension is $c_m\Pi$ and is made of the same momentum flux that made the arch, with its sign reversed. The mass is $m - c_m\lambda$, because the stream's reaction now adds inertia with the opposite sign, and that sets a limit: $c_m$ must be less than $m/\lambda$, which is 0.72 in the reference case. With $c_m = 0.5$ the tension is 82 GN, the effective mass is 370 kg/m, and waves travel along the structure at 15 km/s.
+
+The guide that does this has to be a force actuator. Its rule is
+
+$$
+f_j = \lambda_j D_j^2 \eta^* - K\left(\eta_j - \eta^*\right) - C\,D_j\left(\eta_j - \eta^*\right) :
+$$ {#eq-guide-law}
+
+the force that makes the stream fly the commanded path, plus a spring and a damper that bring it back if it strays. The first term matters. Without it the correction always lags and the lag feeds the motion. A passive guide, whose force is set by its gap, is the spring guide of @sec-following-fails and cannot be used this way. The mirror law needs a guide whose force is commanded.
+
+## Damping by looking ahead {#sec-look-ahead}
+
+@eq-mirror-string has no damping, and any delay in the loop turns that into slow growth. The cure is to steer each stream toward the mirror image of the shape it is about to meet, a distance $d_a$ ahead of it in its own direction of travel. For a wave of wavenumber $k$ the structure then obeys
+
+$$
+\left(m - c_m\lambda\cos k d_a\right)\ddot y + 2 c_m\lambda\,u k \sin(k d_a)\,\dot y + c_m\Pi k^2\cos(k d_a)\,y = 0 .
+$$ {#eq-mirror-damped}
+
+The middle term is damping, and its sign is the sign of $d_a$. Looking ahead damps the wave. Looking behind feeds it, and a control delay $\tau$ is the same thing as looking behind by $u\tau$. So the look-ahead has to exceed the distance a slug travels during the delay, which is 2.2 m for a loop with a bandwidth of 1 kHz. The energy of the wave leaves through the steering actuators, which do work whenever they change the gap under load.
+
+The reference design looks ahead by a fixed phase of the wave, $k d_a = 0.3$ rad, about a twentieth of a wavelength, and never by less than 20 m. The damping ratio of the structure's wave is then
+
+$$
+\zeta = \sin(k d_a)\sqrt{\frac{c_m\lambda}{\left(m - c_m\lambda\cos k d_a\right)\cos k d_a}} = 0.43
+$$ {#eq-mirror-damping-ratio}
+
+at every wavelength beyond a kilometre or so, where neither the 20 m floor nor the structure's own stiffness matters.
+
+Short waves are left alone. Below a cut-off wavelength of 300 m the commanded path ignores the structure's shape, so the streams fly a smooth path through its small wrinkles, and those are held by the structure's own bending stiffness, which overtakes the streams' influence below about 120 m. A little structural damping is needed there. With a loss factor of 0.1% the reference design is stable at every wavelength from 3 m to 10,000 km (lower panel of @fig-guide-laws). With none, a band near 20 m grows at 0.005 per second.
+
+The same model was run as a particle simulation: 5 km of structure as 250 masses, a thousand slugs as separate particles, each steered by @eq-guide-law with a commanded path that passes through a filter standing for sensing and actuation delay. @fig-local-runs shows one wave under a spring guide and under the mirror law. Both match the rates predicted from the equations.
+
+![A single wave in the particle simulation of a 5 km run of ring. With a spring guide it grows at the predicted rate. Under the mirror law it rings down inside the predicted envelope.](../figures/generated/local-particle-runs.svg){#fig-local-runs}
+
+## What the law asks for {#sec-mirror-limits}
+
+**Room in the guide.** Under the mirror law the stream sits away from the structure by $(1 + c_m)$ times the structure's displacement. A load $q$ per unit length at wavenumber $k$ displaces the string by $q/(c_m\Pi k^2)$, so if the guide allows an offset of at most $\delta_\mathrm{max}$, the largest load it can hold is
+
+$$
+q_\mathrm{max} = \frac{c_m}{1 + c_m}\,\Pi k^2\,\delta_\mathrm{max} .
+$$ {#eq-stroke-capacity}
+
+With 20 mm of room that is 430 N/m at a wavelength of 10 km, which is 4% of the supported weight. It is 4.3 N/m at 100 km and 0.043 N/m at 1000 km. The capacity falls as the square of the wavelength. The particle simulation confirms @eq-stroke-capacity and shows what lies beyond it: once the offset saturates the stream is following the structure again, and the wave runs away.
+
+**A measurement of shape.** The command is built from the structure's displacement from where it should be, over wavelengths from 300 m to the size of the ring. Gap sensors cannot supply that. It needs an alignment reference, optical or inertial, that this paper does not design.
+
+**A fast force actuator.** The guide force has to be commanded, as above, and the loop has to be quick enough that a slug moves only metres during its delay.
+
+## Steady loads and the set point {#sec-set-point}
+
+@eq-stroke-capacity looks fatal for long waves. A steady load mismatch of 1% of the supported weight would use up 20 mm of room at any wavelength beyond 21 km.
+
+But a steady load does not have to be held with an offset. @sec-funicular found the position where the streams carry a load with no offset at all: the funicular position, in which the structure has moved backwards by $q/(\Pi k^2)$. It is an unstable equilibrium, and the mirror law is exactly what is needed to hold the ring at one.
+
+To make it go there, add a set point $z$ to the commanded path, $\eta^* = z - c_m y$, and let the set point drift in the direction of the offset it sees:
+
+$$
+\dot z = \epsilon_z\,k u\left(\bar\eta - y\right) ,
+$$ {#eq-set-point}
+
+where $\bar\eta$ is the mean of the two streams' positions. The feedback is positive, which looks wrong and is right. It is how a zero-power magnetic bearing finds the position where its permanent magnets carry the load and its coils carry none. With $\epsilon_z = 0.03$ the set point settles in a few wave-transit times, 24 s at a wavelength of 100 km, and the design stays stable at every wavelength. Only waves longer than 1 km are given a set point.
+
+The response to a sudden load has a characteristic shape (@fig-sudden-load). The structure first gives way in the direction of the push, as a string would. Then, as the set point adapts, it comes back through where it started and settles on the far side, at the funicular position, with the streams back in the middle of the guide.
+
+![The whole-ring particle simulation of @sec-ring-simulation under a sudden steady load. The structure first moves with the push, then settles at the funicular position on the other side as the set point adapts, and the mean offset of the streams returns to zero.](../figures/generated/sudden-load.svg){#fig-sudden-load}
+
+So room in the guide is spent only on changes faster than the set point can follow. A steady load costs shape and no room: 0.15 m at 100 km for a 1% mismatch, 15 m at 1000 km. Where that much shape error is unwelcome, which means at the longest wavelengths, the load should be canceled at its source by the weight trim of @sec-tug-weight.
+
+## The whole ring {#sec-ring-control}
+
+The local model leaves out the ring's curvature, the change of gravity with height, and the steady lift force. On the whole ring the lift force matters in a new way. A guide pushes at right angles to itself, not to the slug's path. When the mirror law tilts the path of the stream against the structure, the lift force acquires a component along the slugs' motion, speeds them up and slows them down, and they bunch.
+
+The linear model of @sec-momentum-truss, extended with the guide and stator laws of this chapter, gives four results.
+
+**Bunching has to be damped by the stators.** With coasting slugs and no look-ahead, the mirror law leaves the short modes neutral only while the structure's wave is slower than the stream, which requires
+
+$$
+c_m < \frac{m}{2\lambda} = 0.36 .
+$$ {#eq-bunching-limit}
+
+Above that the slugs surf the wave and bunch at a rate of order $\Omega$, at every wavelength. With look-ahead there is slow bunching at any gain. The cure is for the stators to hold each slug softly to its place in their traveling wave, pulling its speed and position back at rates of $\Omega$ and $\Omega^2$, a time constant of 15 minutes. Softly, and only the pattern: a stiff hold on the mean speed would bring back the breathing instability of @sec-shape-modes-grow. With that soft hold in place there is no limit on the gain short of $m/\lambda$, and with $c_m = 0.5$ every in-plane mode from $n = 2$ upward decays (@fig-ring-control). The slowest decay rates, 0.3 to 0.6 $\Omega$, belong to the slug-spacing motions. The structure's own wave keeps the damping ratio of @eq-mirror-damping-ratio.
+
+![Growth or decay rate of the slowest-decaying motion in each in-plane mode of the ring, for three laws. The mirror law needs the stators' soft hold on the slugs. Mode 1 needs the stators outright.](../figures/generated/ring-control-rates.svg){#fig-ring-control}
+
+**The breathing mode is left alone.** Mirroring $n = 0$ would make it run away. Left to coast it is the stable oscillation of @sec-shape-modes-grow.
+
+**Steering cannot hold the ring on center.** Shifting the stream's whole path sideways changes no curvature, so at $n = 1$ the steady authority of steering is exactly zero, and no value of $c_m$ stabilizes the mode. What can hold it is weight. If the slugs run slower on the side of the ring that has drifted away from the planet, they bunch there, that side grows heavier, and gravity pulls the ring back. That is a speed ripple with one wave round the ring, and it is a job for the stators. The streams take 72 minutes to go round, which is the time scale of the instability itself, so a simple proportional law is not enough. A state-feedback law on the stators' force, designed for this one mode, makes the offset decay with a time constant of about two hours. It asks for a speed change of 9 mm/s per metre of offset. A ring 100 m off center needs 0.9 m/s, less than one part in ten thousand of the stream speed, and by @sec-tug-hoop 15 MN of tension in the structure.
+
+**Each actuator has its range.** @fig-actuator-travel asks the same question of both: starting one metre along the growing mode, how far must the actuator move to bring the ring back? For steering alone, under the law that uses the least offset, the answer is 2 to 3.6 m of offset per metre of error at any mode number. With 20 mm of room, steering recovers errors of under a centimetre. For the stators the answer is a speed change that grows as $n^2$: 9 mm/s per metre at $n = 1$, 0.28 m/s at $n = 10$, 2.8 m/s at $n = 30$. With 1 m/s of authority the stators recover 110 m at $n = 1$ and 0.36 m at $n = 30$, and they do no better than steering only beyond about $n = 180$, a wavelength of 240 km.
+
+![Actuator travel needed to recover one metre of error on the growing mode. Left: stream offset when steering is the only actuator. Right: slug speed change when the stators are used and the guide simply follows.](../figures/generated/actuator-travel.svg){#fig-actuator-travel}
+
+So the stators are the long-wave actuator and steering the short-wave one, with a wide overlap. The difference is in what they cost. Steering does no work to first order. Stators handle power in proportion to the load they shift, at the rate of @eq-weight-trim-cost.
+
+Out of the ring's plane none of this arises. Nothing along the track is involved, and the mirror law alone holds every out-of-plane mode.
+
+Steady loads behave on the ring as they do locally, with larger numbers. Without a set point, a steady load of 1 N/m with two waves round the ring would displace the structure by 560 m and ask for 830 m of offset. With it, the ring settles 71 m backwards with no offset. The Moon's tide is such a load, about 2.5 mN/m, which would move the ring by 0.18 m. It turns too fast for the set point to follow, but it is known in advance and can be canceled at its source with a speed ripple of 2 mm/s that turns with the Moon.
+
+## The whole ring in simulation {#sec-ring-simulation}
+
+The complete controller was run on the nonlinear particle simulation of @sec-momentum-truss: a structure of 120 masses and hoop springs, 1,200 slugs, inverse-square gravity, the guide pushing at right angles to the structure, the mirror law with look-ahead on modes 2 and up, the stators' soft hold on the slugs, and the stator feedback on mode 1.
+
+@fig-ring-recovery starts the ring with its first three shape modes displaced by 10, 5 and 3 mm. With a guide that follows, the fastest of them reaches hundreds of metres within the hour. Under the controller they die away, the offset of the streams from the structure never exceeds 12 mm, and no slug's speed changes by more than 0.1 mm/s. The simulation follows the linear model's prediction to within 1% of the largest amplitude.
+
+![The whole ring in the particle simulation, started with modes 1, 2 and 3 displaced by 10, 5 and 3 mm. Left: a guide that makes the streams follow the structure. Right: the complete controller. Lines are the linear model's prediction from the same starting state.](../figures/generated/ring-recovery.svg){#fig-ring-recovery}
+
+@fig-sudden-load is the same simulation under a suddenly applied load, with the set point adapting. It matches the linear prediction to within 2%.
+
+The simulation keeps only the ring's longest modes, because the shortest ones the mesh can hold would otherwise swamp it, and the local simulation of @sec-look-ahead covers wavelengths of a few kilometres. Between the two, from tens of kilometres to a few thousand, the evidence is the linear models, which agree with each other where they overlap.
+
+## The control hierarchy {#sec-control-hierarchy}
+
+Put together, the ring is held by a handful of mechanisms, each with its own range.
+
+| Range | What would go wrong | What holds it | Time scale |
+| -------------------- | ---------------------------- | ---------------------------------------- | ------------------ |
+| Wavelengths under 300 m | Nothing: the structure is stiff enough | Bending stiffness and structural damping. The streams fly a smooth path. | milliseconds |
+| 300 m to half the ring ($n \ge 2$) | Every shape mode grows | Steering: the mirror law with look-ahead | damping ratio 0.43 |
+| The same, for steady loads | The guide runs out of room | The set point moves the ring to the funicular position | a few wave-transit times |
+| Slug spacing, all wavelengths | Bunching | Stators hold each slug softly in the traveling wave | 15 minutes |
+| Ring off center ($n = 1$) | Grows in 17 minutes | Stators: a speed ripple that shifts stream weight | hours |
+| Uniform breathing ($n = 0$) | Nothing, if the slugs coast | Orbital mechanics | period 83 minutes |
+| Loads along the ring | Tension round the structure | Tug fields (@sec-tug-purpose) | as commanded |
+
+Two things stand out. Shape is held by sideways forces on the streams at all but the two lowest modes, and that costs room in the guide, not power. And the tug primitive of @sec-tug-fields has a second job beyond loads along the ring: it is the only actuator that can keep the ring centered on the planet.
+
+## What has and has not been shown {#sec-control-status}
+
+Shown, in linear models and in two particle simulations that agree with them:
+
+- A guide that makes the streams follow the structure cannot hold the ring's shape at any stiffness.
+- The mirror law with look-ahead, a soft stator hold on slug spacing, and stator feedback on the off-center mode make every mode of the reference ring decay, in and out of plane, from 3 m wavelength to the whole circumference.
+- Steady loads can be carried with no steady offset in the guide.
+- For errors of millimetres, the stream offsets needed are millimetres and the speed changes a fraction of a millimetre per second.
+
+Not shown:
+
+- **Sensing.** The law assumes the ring's shape is known against an absolute reference at every wavelength from 300 m up. How well it must be known, and how, is open.
+- **The guide as a force actuator.** A real magnetic guide has its own stiffness, positive or negative, that the control has to cancel. The models command force directly.
+- **Disturbances.** The stroke budget depends on how large and how sudden the real loads are. Only the capacity has been worked out, not the demand.
+- **The tube.** These models have two streams and one sideways direction at a time. The real ring has 300 lanes wound helically round a tube 100 m across, so the two sideways directions are coupled along every lane, and the tube has cross-section modes of its own (@sec-app-tube-section).
+- **Large motions and saturation.** The simulations confirm the linear models for small motions and show that the law fails abruptly when the guide runs out of room. What a recovery from that looks like has not been studied.
+- **The middle wavelengths in simulation.** From tens to thousands of kilometres the evidence is linear.
+- **Faults.** Nothing here says what happens when a sector loses steering or a lane loses its stream.

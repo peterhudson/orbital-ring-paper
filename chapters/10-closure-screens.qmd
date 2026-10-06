@@ -1,12 +1,13 @@
 # Remaining closure screens {#sec-closure-screens}
 
-The paper's claim is architectural coherence at the actuation-primitive level. Several closure screens are still decisive.
+The paper's claim is architectural coherence at the level of the actuation primitive and the control scheme. Several closure screens are still decisive.
 
 Before going through them one by one, the main unresolved closure gates can be named compactly:
 
 | Closure gate | Representative screening variable | Why it is central |
 | --- | --- | --- |
 | Passive-mass convergence | supported passive weight per metre $w_p$ | It closes directly into required momentum flux, stored energy, thermal hardware, and containment burden. |
+| Shape control in a real machine | accuracy of the shape measurement, room in the guide against the size and suddenness of real loads | @sec-collective-stability holds every shape mode in models that assume the shape is measured, the guide force is commanded, and the tube's cross-section plays no part (@sec-control-status). |
 | Guide feasibility | allowable loss, gap-control bandwidth, and bidirectional power-transfer efficiency | The lane can look gentle in force density while still being extreme in switching rate, synchronization, and power flow. |
 | Four-lane balance | timing, mass, and speed mismatch budget | The balanced cell is only useful if residual momentum channels stay well below commanded tug channels. |
 | Shell load transfer | cross-sectional transfer efficiency $\eta_\mathrm{load}$ and rib spacing | Opposed sector tugs shift the thrust line only if lane loads can cross the tube's section as shear rather than as local ovalization (@sec-load-path-lane-tug). |

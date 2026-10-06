@@ -39,6 +39,13 @@ class FollowingGuides(Base):
         for wavelength in (3e3, 1e4, 1e5, 1e6):
             self.about(model.growth_rate(k_of(wavelength)), model.rigid_growth_rate(k_of(wavelength)), 0.12)
 
+    def test_quoted_boundary_of_the_spring_guide(self):
+        model = CollectiveModel.reference(zeta=0.2)
+        wavelengths = np.geomspace(100, 1e4, 2000)
+        rates = model.growth_curve(wavelengths)
+        self.about(wavelengths[np.argmax(rates > 0)], 400, 0.05)
+        self.about(model.guide_wavelength, 1000, 1e-9)
+
     def test_softer_guide_moves_the_unstable_band_to_longer_waves(self):
         self.about(CollectiveModel.reference(guide_hz=10).guide_wavelength, 1000, 1e-9)
         self.about(CollectiveModel.reference(guide_hz=1).guide_wavelength, 10000, 1e-9)
@@ -61,9 +68,27 @@ class MirrorLaw(Base):
 
     def test_short_waves_lean_on_structural_damping(self):
         model = CollectiveModel.mirror_reference(loss_factor=0.0)
-        rates = model.growth_curve(np.geomspace(3, 300, 200))
-        self.assertGreater(rates.max(), 0.0)
-        self.assertLess(rates.max(), 0.1)
+        wavelengths = np.geomspace(3, 300, 400)
+        rates = model.growth_curve(wavelengths)
+        self.about(rates.max(), 0.005, 0.15)
+        self.about(wavelengths[rates.argmax()], 20, 0.1)
+        self.about(2 * math.pi * math.sqrt(model.EI / model.Pi), 120, 0.03)      # where bending stiffness takes over
+        self.about(model.EI, 5e10 * C.a**2 / 2, 1e-9)
+
+    def test_set_point(self):
+        model = CollectiveModel.mirror_reference(adapt=0.03)
+        wavelengths = np.concatenate([np.geomspace(3, 1e3, 200), np.geomspace(1e3, 1e7, 60)])
+        self.assertLess(model.growth_curve(wavelengths).max(), 0.0)
+        k = k_of(1e5)
+        self.about(-1.0 / model.growth_rate(k), 24, 0.03)                            # settling time, s
+        y, gap = model.static_response(k, 100.0)
+        self.about(y, -funicular_deflection(100.0, k, model.Pi), 1e-3)
+        self.assertLess(abs(gap), 1e-9)
+        y, gap = CollectiveModel.mirror_reference().static_response(k, 100.0)
+        self.assertGreater(y, 0.3)
+        self.about(gap / y, -(1 + 0.5 * math.cos(0.3)), 0.01)
+        # a 1% load mismatch uses 20 mm of room beyond this wavelength
+        self.about(2 * math.pi / math.sqrt(100.0 / (model.Pi * 0.02 / 3)), 21e3, 0.02)
 
     def test_structure_behaves_as_a_damped_string_in_tension(self):
         model = CollectiveModel.mirror_reference()
@@ -73,7 +98,7 @@ class MirrorLaw(Base):
         self.about(math.sqrt(model.apparent_tension() / model.apparent_mass()), 15e3, 0.01)
         for wavelength in (1e3, 1e4, 1e5, 1e6):
             k = k_of(wavelength)
-            self.about(model.ideal_damping_ratio(k), 0.43, 0.02)
+            self.about(model.ideal_damping_ratio(k), 0.43, 0.03 if wavelength < 5e3 else 0.005)
             least = max(model.eigenvalues(k), key=lambda z: z.real)
             if wavelength >= 1e4:
                 self.about(least.real, model.ideal_roots(k)[0].real, 0.01)

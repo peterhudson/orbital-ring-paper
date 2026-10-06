@@ -1,10 +1,10 @@
 # Distributed tug fields {#sec-tug-fields}
 
-The four-lane balanced cell has a second use beyond cancelling steady momentum. If the lanes of a cell are sped up or slowed down along a stretch of ring, the structure feels a force along its length, and counter-propagating lanes contribute to that force with the same sign. This chapter derives that result, which is the paper's second primitive, and then asks what such a force does to the ring.
+The four-lane balanced cell has a second use beyond canceling steady momentum. If the lanes of a cell are sped up or slowed down along a stretch of ring, the structure feels a force along its length, and counter-propagating lanes contribute to that force with the same sign. This chapter derives that result, which is the paper's second primitive, and then asks what such a force does to the ring.
 
 The right mental picture is not a rigid pipe with a single giant control thruster attached to it. It is a huge, lightly built but prestressed torus with many nearly axial lanes distributed around its wall, and selected neighborhoods of stator modules quietly speeding up or slowing down particular lanes over long distances.
 
-What those neighborhoods can and cannot do follows from @sec-effective-tension. A tug is a force along the ring, and the ring answers it along the ring: as tension in the structure, as a shift of stream weight, and, when opposed sectors work against each other, as a sideways shift of the line along which the streams push. That makes the tug field the natural actuator for loads that act along the ring. It is a costly way to push the ring sideways, and @sec-tug-power-cost says how costly.
+What those neighborhoods can and cannot do follows from @sec-effective-tension. A tug is a force along the ring, and the ring answers it along the ring: as tension in the structure, as a shift of stream weight, and, when opposed sectors work against each other, as a sideways shift of the line along which the streams push. That makes the tug field the natural actuator for loads that act along the ring. It is a costly way to push the ring sideways, and @sec-tug-power-cost says how costly. Holding the ring's shape is left to @sec-collective-stability.
 
 ## Stationary spatial speed gradients act on momentum flux {#sec-stationary-spatial-speed-gradients}
 
@@ -108,7 +108,7 @@ So a distributed tug field preserves the same integrated authority as a hard tra
 
 ### All lanes together: tension in the structure {#sec-tug-hoop}
 
-If every lane along a stretch of ring is sped up by the same fraction $\epsilon$, the momentum flux there rises by $\epsilon\Pi$, and the tugs at the two ends of the stretch pull it apart. By @eq-tug-reaction the structure's tension rises by the same $\epsilon\Pi$. The harder outward push of the faster streams is cancelled by the inward pull of the tighter structure, and the ring's normal balance is unchanged.
+If every lane along a stretch of ring is sped up by the same fraction $\epsilon$, the momentum flux there rises by $\epsilon\Pi$, and the tugs at the two ends of the stretch pull it apart. By @eq-tug-reaction the structure's tension rises by the same $\epsilon\Pi$. The harder outward push of the faster streams is canceled by the inward pull of the tighter structure, and the ring's normal balance is unchanged.
 
 So the first thing a tug field controls is how axial load is shared between streams and structure, station by station. That has uses. A membrane has to be kept taut. A structure 43,000 km long changes length by kilometres with temperature, and something has to take up the difference. And it is the channel through which loads applied along the ring are reacted (@sec-tug-purpose).
 
@@ -318,7 +318,7 @@ That is 0.74 MW per metre for each newton per metre at a wavelength of 1000 km, 
 
 Set against these, recall from @sec-funicular what the ring does about a one per cent mismatch at 100 km if nothing is commanded at all: its shape shifts by 0.15 m.
 
-The conclusion is that tug fields are the wrong tool for holding the ring's shape. Sideways control should be done by sideways forces on the streams, which cost no power to first order.
+The conclusion is that tug fields are the wrong tool for holding the ring's shape. Sideways control should be done by sideways forces on the streams, which cost no power to first order. @sec-collective-stability shows how.
 
 ## Control-channel coupling and allocation {#sec-control-channel-coupling-allocation}
 
@@ -430,8 +430,8 @@ With the effects and the costs laid out, the jobs that suit this actuator can be
 
 - **Loads along the ring.** A vehicle accelerating or braking on the ring, drag on a ring low enough to feel the atmosphere, and the horizontal pull of a leaning tether all act along the ring. By @eq-ring-equilibrium-parts such a load has to change the effective tension from one side of it to the other. A tug field at the point of application hands the load to the streams there, so the structure does not have to carry it round the ring as tension. This is the job the tug field does best, and here its power is not a cost. It is the point: the 100 GW that a 10 MN tug handles is the power being delivered to the vehicle.
 - **Tension management.** Keeping the membrane taut, taking up thermal strain, and choosing where the structure carries load and where the streams do (@sec-tug-hoop).
-- **Weight trim at the longest wavelengths.** Cancelling slow, ring-scale imbalances of load at their source (@sec-tug-weight), within the cost of @eq-weight-trim-cost.
+- **Weight trim at the longest wavelengths.** Canceling slow, ring-scale imbalances of load at their source (@sec-tug-weight), within the cost of @eq-weight-trim-cost.
 - **Small sideways trims at short wavelength.** Shifting the thrust line by millimetres (@sec-opposed-sectors-create-bending), where @eq-tug-sideways-cost is tolerable.
 - **Spin-up, spin-down and momentum balance.** Bringing the streams to speed, and keeping the two travel directions balanced as loads come and go.
 
-Holding the ring's shape is not on the list. That is a job for sideways forces on the streams.
+Holding the ring's shape is not on the list. That is a job for sideways forces on the streams, with one exception that @sec-ring-control arrives at: keeping the whole ring centered on the planet turns out to be weight trim at the longest wavelength there is.

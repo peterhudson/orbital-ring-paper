@@ -21,6 +21,7 @@ book:
     - chapters/06-helical-shell.qmd
     - chapters/07-four-lane-cell.qmd
     - chapters/08-tug-fields.qmd
+    - chapters/09-collective-stability.qmd
     - chapters/10-closure-screens.qmd
     - chapters/11-conclusion.qmd
   appendices:

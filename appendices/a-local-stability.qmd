@@ -2,6 +2,8 @@
 
 The perturbation argument in the main text shows that the moving streams generate nonconservative follower-force terms. A steady force balance is therefore not sufficient. A viable architecture must possess a stable linearized equilibrium.
 
+The scope of this appendix is one lane against a shell that is taken to stay where it is. It is the inner loop: can a lane be held to its carrier. The motion of the shell itself, carrying all its lanes, is the outer problem, and @sec-collective-stability treats it differently, by steering the streams instead of making them follow.
+
 This appendix gives a deliberately minimal local eigenvalue screen, it asks whether there exists any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands.
 
 The answer from this screen is conditional. The follower-force instability is not automatically fatal at wavelengths of order $100~\mathrm{m}$ and longer, provided the local guide supplies high-bandwidth transverse stiffness and damping with sub-millisecond effective delay. At wavelengths of order $10~\mathrm{m}$ and below, active control becomes severe enough that the burden probably has to move to passive guide stiffness, local carrier bending stiffness, very short magnetic-bearing loops, or a different lane architecture. The balanced-cell tug actuator by itself should not be credited with stabilizing those short and middle wavelengths unless its transverse control-influence matrix is explicitly demonstrated.
