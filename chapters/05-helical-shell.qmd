@@ -92,7 +92,7 @@ $$
 \mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
 $$
 
-with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The stability local stability question is addressed in details in Appendix A and B. 
+with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The local stability question is addressed in detail in @sec-app-local-stability and @sec-app-tube-section. 
 
 ## Why the helix angle is likely small {#sec-helix-angle-likely-small}
 
@@ -182,8 +182,8 @@ For $Y=1~\mathrm{mm}$ this gives approximately:
 
 The steady helical normal load in the same reference case is only about 2.1 kN/m per lane. Thus, at 100 m wavelength, a 1 mm perturbation already creates an anti-restoring incremental load comparable to the entire steady helical preload; at 10 m wavelength it is roughly two orders of magnitude larger.
 
-This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local follower-force instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
+This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local follower-force instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e. internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
 
 Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream follower-force scale remains of order $\dot m u$. Meaningful direct competition with the follower-force scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
 
-A full eigenvalue analysis of both the local lane and local tube levels is presented in Appendix A and B.
+A full eigenvalue analysis of both the local lane and local tube levels is presented in @sec-app-local-stability and @sec-app-tube-section.

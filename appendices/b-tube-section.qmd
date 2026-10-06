@@ -104,7 +104,7 @@ $$
 
 the following table gives the worst-case follower stiffness for several representative axial wavelengths and cross-section mode numbers, taking the handedness sign that maximizes $|k_{\parallel,j}|$.
 
-| Axial wavelength $L_s$ | Mode $n$ | $|k_{\parallel}|$ | $K_{\mathrm{follow}}$ | Load for $Y=1~\mathrm{mm}$ |
+| Axial wavelength $L_s$ | Mode $n$ | $\lvert k_{\parallel}\rvert$ | $K_{\mathrm{follow}}$ | Load for $Y=1~\mathrm{mm}$ |
 | ---: | ---: | ---: | ---: | ---: |
 | $30~\mathrm{m}$ | 0 | $0.209~\mathrm{m^{-1}}$ | $2.4\times10^7~\mathrm{N/m^2}$ | $24~\mathrm{kN/m}$ |
 | $30~\mathrm{m}$ | 64 | $0.227~\mathrm{m^{-1}}$ | $2.8\times10^7~\mathrm{N/m^2}$ | $28~\mathrm{kN/m}$ |

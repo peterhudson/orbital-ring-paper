@@ -17,7 +17,7 @@ Before going through them one by one, the main unresolved closure gates can be n
 
 The helical torus gives local prestress. It does not, by itself, loft the entire ring around Earth. Macro lift comes from turning the ring-tangential component of stream momentum around Earth.
 
-For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in Appendix E.
+For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in @sec-app-reference-frames.
 
 Let $u=v\cos\alpha$ be ring-tangential speed and let the ring radius be $R$. For one slug lane with mass flux $\dot m$, the net outward lift per unit ring length is
 

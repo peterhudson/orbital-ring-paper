@@ -175,7 +175,7 @@ $$
 where $n(s)$ is slug number density along the lane. Equivalently, if $h=1/J$ is time headway, then the center-to-center spacing in a locally uniform region is
 
 $$
-s(s) = \frac{1}{n(s)} = v(s)h.
+d(s) = \frac{1}{n(s)} = v(s)h.
 $$
 
 So a region with lower speed automatically compresses spacing and raises local occupancy, while a region with higher speed automatically expands spacing and lowers it. No source term is required. The lane stores more or less slug inventory simply because the same flux is moving more slowly or more quickly through that region.
@@ -195,7 +195,7 @@ So the useful mental picture is not "the ring has a slow patch." It is "the ring
 The main constraints are instead collision and delay limits. For a monotone low-speed region with minimum speed $v_1$, the minimum spacing becomes
 
 $$
-s_\mathrm{min} = h v_1
+d_\mathrm{min} = h v_1
 $$
 
 so collision avoidance requires
