@@ -42,6 +42,8 @@ Shape control has its own pair of models for a straight run of ring, `analysis/c
 
 `analysis/ring_loads.py` adds up the modes to give the ring's response to a point load, put on suddenly or moving, with steering alone and with the stators holding the long modes (`tests/test_ring_loads.py`).
 
+`analysis/ring_balance.py` asks what unequal streams do to the controlled ring (`tests/test_ring_balance.py`).
+
 `analysis/closure.py` turns the closure loop into a gain (`tests/test_closure.py`).
 
 `analysis/generalize.py` applies the same force balance to arches and columns of momentum and to rings on other worlds (`tests/test_generalize.py`). `tests/test_figures.py` pins the numbers behind the explanatory figures.

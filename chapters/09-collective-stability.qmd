@@ -233,6 +233,30 @@ Below a few hundred metres a second the guide's limit is inversely proportional 
 - Weight acts in the plane of the ring. Against a sideways load at long wavelength the stators have nothing to shift, and steering, with the small capacity of the table's first row, is all there is.
 - How much the stators can shift depends on the structure's stiffness through $\chi$. A stiffer hoop leaves them less.
 
+## Unequal streams {#sec-unequal-streams}
+
+Everything so far has taken the two directions of travel to be equal. They will not be. The four-lane cell balances only as well as its lanes are matched (@sec-tolerance-budget-degraded-modes), and on a ring that turns with the Earth the two directions' inertial speeds are 5% above and below their mean. The linear model was run with the directions unequal, in mass per metre and in speed, with the pair scaled so that together they still carry the structure. An imbalance of 1% here means one direction 1% above the mean and the other 1% below.
+
+| Imbalance between the directions | Steered modes, 2 up | Stator-held modes, feedback designed for equal streams | Feedback designed for the imbalance |
+| ------------------------ | ------------------------ | ------------------------ | ---------------- |
+| Mass per metre, 0.3% | stable | stable | stable |
+| Mass per metre, 1% | stable | modes from 149 up grow | stable |
+| Mass per metre, 10% | stable | modes from 27 up grow | stable |
+| Speed, 0.3% | stable | stable | stable |
+| Speed, 1% | stable | modes from 77 up grow | stable |
+| Speed, 4% | stable | modes from 27 up grow | stable |
+| Speed, 5% | the set points drift, growing over hours | modes from 23 up grow | stable |
+
+: The controlled ring with unequal streams, in the linear model. The stator-held modes are 2 to 170. {#tbl-unequal-streams}
+
+Steering is tolerant. The mirror law itself holds every mode with an imbalance of 10% in mass or 5% in speed. Its set points, as designed here for equal streams, lose their footing at 5% in speed. Slowing them from 3% of the transit rate to 2% restores them, and a law written for unequal streams is the proper remedy.
+
+The stator feedback is not tolerant. Designed for equal streams, it loses its highest modes at an imbalance of 1%, and holds only the first twenty or so at 5% in speed. Designed for the streams as they are, it holds all 170 in every case in the table. So the stators' feedback has to know the imbalance to a few tenths of a percent, which makes the balance of the two directions something to be measured and tracked, not assumed.
+
+The off-center controller, which acts on a single slow mode, is indifferent: its decay rate changes by less than a tenth across the table.
+
+The structure in these models does not turn. The unequal speeds are the larger part of what turning with the Earth does, but the Coriolis force on the structure itself is left out.
+
 ## The control hierarchy {#sec-control-hierarchy}
 
 Put together, the ring is held by a handful of mechanisms, each with its own range.
@@ -270,7 +294,7 @@ Not shown:
 - **The guide as a force actuator.** A real magnetic guide has its own stiffness, positive or negative, that the control has to cancel. The models command force directly.
 - **Disturbances and heavy loads.** The room in the guide has been set against point loads, not against the loads a real ring would see. Loads beyond about eight tonnes need preparation that is not designed here, loads that stay need handing over to the ring's shape, and sideways loads at long wavelength have only steering to meet them (@sec-changing-loads).
 - **The tube.** These models have two streams and one sideways direction at a time. The real ring has 300 lanes wound helically round a tube 100 m across, so the two sideways directions are coupled along every lane, and the tube has cross-section modes of its own (@sec-app-tube-section). Below a few hundred metres a tube that wide does not bend like the slender beam assumed here.
-- **A ring that turns with the Earth.** The models hold the structure still. Turning with the Earth makes the two directions of travel unequal by 5% in speed and adds Coriolis terms.
+- **A ring that turns with the Earth.** The models hold the structure still. Turning with the Earth makes the two directions of travel unequal by 5% in speed, which @sec-unequal-streams covers in the linear model, and adds Coriolis terms on the structure, which it does not.
 - **Large motions and saturation.** The simulations confirm the linear models for small motions and show that the law fails abruptly when the guide runs out of room. What a recovery from that looks like has not been studied.
 - **The middle wavelengths in simulation.** From tens of kilometres to a thousand the evidence is linear.
 - **Faults.** Nothing here says what happens when a sector loses steering or a lane loses its stream.

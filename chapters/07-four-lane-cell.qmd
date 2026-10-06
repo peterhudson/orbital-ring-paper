@@ -55,6 +55,8 @@ That means even a small fractional mismatch creates a real residual channel:
 | 0.1% | about 0.54 MN | about 7.6 kN |
 | 1% | about 5.4 MN | about 76 kN |
 
+What such an imbalance does to the control of the ring's shape is taken up in @sec-unequal-streams.
+
 So the cancellation tolerances are not cosmetic. A four-lane cell only behaves like the intended primitive if mass flux, speed profile, and phasing are held tightly enough that the residual channels remain small compared with the commanded ones.
 
 Slug discreteness makes the same point in time-domain form. In the $10~\mathrm{kg}$ bookkeeping row developed in @sec-app-slug-discreteness, one lane carries about $5.4\times10^{3}$ slugs/s, so the nominal headway is about $0.185~\mathrm{ms}$. That means any short-time cancellation budget is quantized by individual slug arrivals.

@@ -32,4 +32,19 @@ The 10 kg bookkeeping row also gives a simple cancellation-budget screen:
 
 That last line is especially sobering. If balance is judged purely by counts, a one-slug mismatch does not average below 0.1% until the window is of order 0.2 s. But the lane and shell dynamics of concern are much faster than that. So precise four-lane balance is not just a matter of good average throughput accounting. It requires real-time synchronization, phase control, and fast local state estimation.
 
-Discreteness also raises a stability question that this paper does not answer. A train of separate slugs loads its guide periodically, at the passing frequency and its multiples: 5.4 kHz for the 10 kg row. Separate masses moving along a beam can destabilize it where a continuous flow of the same mean density would not, as a train of masses [@nelson1971dynamic] and even as a single one [@metrikine1997instability]. The models of this paper treat each stream as a continuous flow, and the particle simulations use far fewer and far heavier slugs than the ring would, so neither settles it.
+## Discreteness and the shape control {#sec-discreteness-shape}
+
+The shape control of @sec-collective-stability treats each stream as a continuous flow. The local particle simulation of @sec-look-ahead was rerun with the slugs spaced more and more widely, to see where that stops being true. The test is the decay rate of a wave 2.5 km long under the mirror law.
+
+| Slug spacing | Decay rate against its value at 5 m |
+| ---: | ---: |
+| 5, 10, 20 m | the same to four figures |
+| 50 m | 2 to 4% faster |
+| 83 m | about half |
+| 125 m | a quarter to a third |
+
+: Decay rate of a 2.5 km wave in the local particle simulation as the slugs are spaced more widely. {#tbl-discreteness}
+
+The shortest wavelength the control acts on is its 300 m cut-off, so the streams behave as continuous while there are more than about fifteen slugs to that length, and the control is badly weakened when there are fewer than about four. The reference spacing is 1.8 m. Slugs of 100 kg, 18 m apart, would still pass. Slugs of a tonne would not. The ranges are over meshes of 125, 250 and 500 nodes.
+
+Discreteness also raises a stability question that this paper does not answer. A train of separate slugs loads its guide periodically, at the passing frequency and its multiples: 5.4 kHz for the 10 kg row. Separate masses moving along a beam can destabilize it where a continuous flow of the same mean density would not, as a train of masses [@nelson1971dynamic] and even as a single one [@metrikine1997instability]. That is a question about the guide's own structure at the slug-passing frequency, thousands of times a second. The models of this paper have nothing at that scale, and the test above, which concerns waves hundreds of metres long, does not settle it.

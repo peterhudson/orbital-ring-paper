@@ -182,6 +182,26 @@ class ParticleSimulation(Base):
         self.about(envelope_rate(t, a[:, 0]), model.growth_rate(k_of(2500.0)), 0.15)
         self.assertLess(np.abs(sim.gap()).max(), 5e-3)
 
+    def test_streams_act_as_continuous_until_the_slugs_are_far_apart(self):
+        """Appendix C: decay rate of a 2.5 km wave under the mirror law against slug spacing."""
+        model = CollectiveModel.mirror_reference(f_filter=200.0, preview=30.0)
+
+        def rate(slugs):
+            sim = LocalParticleSim(model, length=5e3, n_nodes=250, slugs_per_direction=slugs)
+            sim.y += 1e-3 * np.cos(2 * math.pi * 2 * sim.s_nodes / 5e3)
+            t, a = sim.run(1.0, record_modes=(2,), every=10)
+            return envelope_rate(t, a[:, 0])
+
+        fine = rate(1000)                                   # 5 m apart
+        self.about(rate(500), fine, 1e-3)                   # 10 m
+        self.about(rate(250), fine, 1e-3)                   # 20 m
+        at_50 = rate(100) / fine
+        self.assertTrue(1.015 < at_50 < 1.045)              # 2 to 4% faster
+        self.assertTrue(0.4 < rate(60) / fine < 0.6)        # 83 m: about half
+        self.assertTrue(0.2 < rate(40) / fine < 0.4)        # 125 m: a quarter to a third
+        self.about(300.0 / 20.0, 15.0, 1e-9)                # slugs per cut-off wavelength where it is still exact
+        self.about(C.spacing(100.0), 18.0, 0.03)            # 100 kg slugs
+
     def test_static_load_is_held_up_to_the_stroke_limit(self):
         model = CollectiveModel.mirror_reference(f_filter=200.0, preview=30.0)
         k = k_of(2500.0)
