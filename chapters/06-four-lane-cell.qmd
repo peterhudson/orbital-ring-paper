@@ -1,0 +1,71 @@
+# The four-lane balanced cell {#sec-four-lane-cell}
+
+A helical lane patern is useful for generation of prestress inflation pressure on the tube. It's also useful to configure the lanes such that there are a matching number of lanes with slugs travelling in each direction ($\pm s$), as this allows momentum to be exchanged between one lane with $+s$ travelling slugs with one lane with $-s$ travelling slugs so that no net force in the $s$-direction is genearted. However, due to the twist in the $\theta$-direction of the lanes, an exchange in slug momentum between a pair of $\pm s$ direction lanes that have the same left or right handedness will generate a transfer of momentum from the slugs to the lanes in the $\theta$ direction. 
+
+As such, the minimal balanced cell contains four lanes: To keep the sign bookkeeping explicit, define handedness geometrically by the sign of $d\theta/ds$ for the lane centerline itself: right-handed means positive azimuthal slope with increasing $s$, and left-handed means negative azimuthal slope. **This definition is geometric, not based on the slug's direction of travel.**
+
+| Lane | Handedness | $s$-momentum | $\theta$-momentum |
+| --- | --- | ---: | ---: |
+| 1 | RH | + | + |
+| 2 | LH | - | + |
+| 3 | LH | + | - |
+| 4 | RH | - | - |
+
+Lane 1 and 4 therefore cancels $s$-momentum but retains positive $\theta$-momentum, lane 2 and 3 cancels $s$-momentum but retains negative $\theta$-momentum, and the four-lane cell cancels both together. @fig-four-lane-cell shows the corresponding local geometry as a rendered guide-shell segment. The translucent cylindrical shell is the membrane-and-guide substrate, the colored lanes are the mirrored helical paths, and the cut face defines the local $(s,r,\theta)$ coordinates used in the sign convention above. The station marked A should be read as a representative control-sector location, not as a separate structural component.
+
+![Rendered local guide-shell segment for the balanced-cell lane geometry. Orange and blue lanes indicate mirrored helical paths on the translucent membrane shell; arrows indicate local tangent and travel directions; the cut face defines the local $s$, $r$, and $\theta$ coordinates. The station A marks a representative control location, and the helix angle is exaggerated for clarity.](../figures/figure-3-balanced-four-lane-cell2.png){#fig-four-lane-cell}
+
+The four-lane balanced cell allows for the exchange of momentum between pairs of lanes to generate a net force on the lane carriers / ring structure in the $s$-direction without introducing any net first order force in the $\theta$-direction. For example, to generate a force on the membrane-and-guide substrate in the negative $s$-direction at location A, we would accelerte slugs in lanes 1 and 3 while decelerating sluds in lane 2 and 4. 
+
+@fig-force-cancellation then makes the cancellation bookkeeping explicit in force-component form. Each lane reaction is decomposed into ring-centerline and circumferential components. Because the full cell contains equal positive and negative azimuthal slopes, the $\theta$-components occur in equal and opposite pairs, so the four-lane sum removes the first-order circumferential reaction. 
+
+But, the $s$-components behave differently. In a stationary speed-gradient section (i.e. Location A), a lane that accelerates in its own direction of travel and a mirrored lane that decelerates in the opposite direction still impose the same structural reaction along $s$ on the stationary guide hardware. So the balanced four-cell can cancel the unwanted $\theta$-channel while retaining a net axial tug, which is the actuator channel used later for distributed ring-scale control.
+
+![Force-component bookkeeping for a balanced four-lane cell at a representative control location. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.](../figures/figure-4-balanced-cell-force-cancellation.svg){#fig-force-cancellation}
+
+Tug forces cannot be generated in isolation. A balanced four-lane cell that has its slugs accelerated and decelerated at one location (A) as depicted in @fig-force-cancellation needs to be operated with a second location (B) where the slugs are accelerated / decelerated back to normal ring velocity. The use of paired control locations is developed further in section 7 where it becomes critical for macro ring shape articulation and control. 
+
+Operated together, this four-lane cell can cancel to first order:
+
+- net axial momentum,
+- net circumferential momentum,
+- net angular momentum about the torus,
+- and first-order structural torque in symmetric operation.
+
+At the same time it preserves:
+
+- common-mode inflation pressure,
+- controllable pressure trim,
+- axial or tangential tug authority,
+- and azimuthally selective moment generation. 
+
+However, these cancellations are not automatic. They require equal mass flux, equal scalar speed profiles, matched helix angles, and symmetric placement of the four lanes within the cell. Flux mismatch, lane dropout, speed-trim error, or geometric asymmetry create residual force and torque channels.
+
+## Tolerance budget and degraded modes {#sec-tolerance-budget-degraded-modes}
+
+The balanced cell is elegant, but it is not forgiving. In the $500~\mathrm{km}$, $u=10~\mathrm{km/s}$, 300-lane reference case, one lane carries about $5.4\times10^{4}~\mathrm{kg/s}$ of mass flux. Its ring-direction momentum flux is therefore about $5.4\times10^{8}~\mathrm{N}$, and its circumferential momentum flux at $0.79^\circ$ helix angle is about $7.6\times10^{6}~\mathrm{N}$.
+
+That means even a small fractional mismatch creates a real residual channel:
+
+| Fractional mismatch in one lane | Residual $s$-momentum-flux channel | Residual $\theta$-momentum-flux channel |
+| --- | ---: | ---: |
+| 0.01% | about 54 kN | about 0.76 kN |
+| 0.1% | about 0.54 MN | about 7.6 kN |
+| 1% | about 5.4 MN | about 76 kN |
+
+So the cancellation tolerances are not cosmetic. A four-lane cell only behaves like the intended primitive if mass flux, speed profile, and phasing are held tightly enough that the residual channels remain small compared with the commanded ones.
+
+Slug discreteness makes the same point in time-domain form. In the $10~\mathrm{kg}$ bookkeeping row developed later, one lane carries about $5.4\times10^{3}$ slugs/s, so the nominal headway is about $0.185~\mathrm{ms}$. That means any short-time cancellation budget is quantized by individual slug arrivals.
+
+| Averaging window in one lane | Expected slug count | One extra or missing slug implies average flux error of |
+| ---: | ---: | ---: |
+| 1 ms | about 5.4 | about 18.5% |
+| 10 ms | about 54 | about 1.85% |
+| 100 ms | about 540 | about 0.185% |
+| 1 s | about 5,400 | about 0.0185% |
+
+So a millisecond-scale controller cannot rely on statistical averaging to preserve 0.01% to 0.1% balance. It needs explicit synchronization, timing discipline, and local bookkeeping of actual slugs, not just average mass flux.
+
+The same severity appears as phase tolerance. In the $10~\mathrm{kg}$ row, 1% headway accuracy means about $1.8~\mu\mathrm{s}$, while 0.1% headway accuracy means about $0.18~\mu\mathrm{s}$. That does not automatically kill the concept, but it does mean the four-lane cell is as much a synchronization architecture as it is a symmetry argument.
+
+Single-lane failure is harsher still. A lane dropout does not produce a slightly imperfect balanced cell. It destroys the symmetry class of that cell. The safe response is therefore not to keep operating the remaining three lanes as if nothing happened. It is to isolate the failed cell, dump or bleed its associated tug command, and transition neighboring cells into a degraded but still symmetric support mode. That degraded-mode architecture is a first-class requirement, not a later embellishment.

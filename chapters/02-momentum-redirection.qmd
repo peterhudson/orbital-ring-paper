@@ -1,0 +1,44 @@
+# Momentum redirection is the force mechanism {#sec-momentum-redirection}
+
+Consider a mass stream moving at speed $v$ along a guide path of curvature $\kappa$. The stream requires normal acceleration
+
+$$
+a_n = v^2\kappa.
+$$
+
+For a continuous stream of line density $\mu$, the required guide force per unit path length is
+
+$$
+f = \mu v^2\kappa.
+$$
+
+For a discrete slug train with fixed mass flux $\dot m$, the effective line density is $\mu_\mathrm{eff}=\dot m/v$, so the corresponding force law becomes
+
+$$
+f = \dot m v\kappa.
+$$
+
+That distinction matters. A continuously filled cable-like stream at fixed line density scales as $v^2$. A throughput-limited slug train whose spacing changes with speed scales as $v$.
+
+The physical interpretation is straightforward. The guide pushes the stream onto a curved path. The stream pushes back on the guide with equal and opposite force. This is the structural force source. No speculative physics is required.
+
+It is often convenient to introduce an equivalent dynamic-tension scale
+
+$$
+T_\mathrm{eq} = \mu v^2
+$$
+
+for the continuous case, or equivalently $T_\mathrm{eq}=\dot m v$ for the fixed-flux slug-train case. That notation is useful, but it must not be over-read. In this architecture the support force does not require a passive material hoop carrying literal mechanical tension equal to $T_\mathrm{eq}$. The force can instead arise from guided momentum redirection in discrete moving masses.
+
+At this early stage it is worth previewing an organizing distinction that becomes central later. The paper is not claiming that local helical inflation replaces orbital support. The two curvature channels do different jobs:
+
+- **tube-scale helical curvature** supplies local prestress in the membrane torus,
+- **Earth-scale ring curvature** supplies macro lift.
+
+For one lane with ring-centerline speed component $u=v\cos\alpha$, the Earth-scale lift channel is
+
+$$
+q_{\mathrm{lift,lane}} = \dot m\left(\frac{u}{R} - \frac{g_h}{u}\right)
+$$
+
+where $R$ is ring radius and $g_h$ is gravity at altitude. At this point it is enough to note that local helix curvature and Earth-scale curvature are separate channels and must not be conflated.

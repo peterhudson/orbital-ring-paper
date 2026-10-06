@@ -1,0 +1,52 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Helical Slug Streams as a Prestress and Actuation Primitive for Active-Support Orbital Ring Concepts"
+  author: "Peter Hudson"
+  date: last-modified
+  date-format: "YYYY-MM-DD"
+  output-file: orbital-ring-paper
+  repo-url: https://github.com/peterhudson/orbital-ring-paper
+  downloads: [pdf]
+  chapters:
+    - index.qmd
+    - chapters/01-introduction.qmd
+    - chapters/02-momentum-redirection.qmd
+    - chapters/03-lane-guide.qmd
+    - chapters/04-no-self-centering.qmd
+    - chapters/05-helical-shell.qmd
+    - chapters/06-four-lane-cell.qmd
+    - chapters/07-tug-fields.qmd
+    - chapters/08-closure-screens.qmd
+    - chapters/09-conclusion.qmd
+  appendices:
+    - appendices/a-local-stability.qmd
+    - appendices/b-tube-section.qmd
+    - appendices/c-slug-discreteness.qmd
+    - appendices/d-power-thermal.qmd
+    - appendices/e-fault-domains.qmd
+    - appendices/f-reference-frames.qmd
+
+number-depth: 3
+
+format:
+  html:
+    theme: cosmo
+    toc-depth: 3
+    html-math-method: mathjax
+    fig-align: center
+  pdf:
+    documentclass: scrreprt
+    papersize: letter
+    pdf-engine: xelatex
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    fig-pos: "H"
+    geometry:
+      - left=1.15in
+      - right=1.15in
+      - top=1in
+      - bottom=1.1in

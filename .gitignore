@@ -1,0 +1,5 @@
+/_book/
+/.quarto/
+*.aux
+*.log
+__pycache__/
