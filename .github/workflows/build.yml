@@ -16,6 +16,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+      - name: Run the analysis tests
+        run: python -m unittest discover -s tests -v
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -39,13 +51,16 @@ jobs:
           path: _book/orbital-ring-paper.pdf
 
       - name: Upload site
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.PUBLISH_PAGES == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _book
 
+  # Publishing is off until GitHub Pages is enabled for the repository
+  # (Settings > Pages > Source: GitHub Actions) and the repository variable
+  # PUBLISH_PAGES is set to 'true' (Settings > Secrets and variables > Actions > Variables).
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.PUBLISH_PAGES == 'true'
     needs: build
     runs-on: ubuntu-latest
     environment:
