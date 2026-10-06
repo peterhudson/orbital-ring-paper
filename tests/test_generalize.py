@@ -105,8 +105,9 @@ class OtherWorlds(Base):
                 self.about(rows[name][key], want, 0.03)
 
     def test_whole_ring_growth_times(self):
-        for case, minutes in ((EARTH_500, 7.7), (gen.MARS_200, 9.6), (MOON_20, 10.1)):
-            self.about(1.0 / RingModes(case, 50.0e9).growth_rate(2) / 60.0, minutes, 0.01)
+        for case, two_waves, off_center in ((EARTH_500, 7.7, 16.7), (gen.MARS_200, 9.6, 25.9), (MOON_20, 10.1, 29.4)):
+            self.about(1.0 / RingModes(case, 50.0e9).growth_rate(2) / 60.0, two_waves, 0.01)
+            self.about(1.0 / RingModes(case, 50.0e9).growth_rate(1) / 60.0, off_center, 0.01)
 
     def test_ratios_quoted(self):
         self.about(EARTH_500.u_orb / MOON_20.u_orb, 4.6, 0.01)
@@ -119,10 +120,23 @@ class OtherWorlds(Base):
 class Tabletop(Base):
     def test_numbers_quoted(self):
         t = gen.TabletopArch()
-        self.about(t.threshold, 3.1, 0.02)
-        self.about(t.carried_per_length, 0.15, 0.04)
-        self.about(t.thrust, 2.5, 1e-9)
-        self.about(t.efold_time(1.0), 0.065, 0.02)
+        self.about(t.threshold, 3.6, 0.02)
+        self.about(t.max_carried, 0.096, 0.02)
+        self.assertLess(t.guide_per_length, t.max_carried)
+        self.assertGreater(t.foot_tension, 0.0)
+        self.assertGreater(t.crown_tension, t.foot_tension)
+        self.about(1.0 / t.growth_rate(1.0), 0.11, 0.03)
+        self.about(t.lightest_guide_that_kinks, 0.06, 0.03)
+        self.assertEqual(gen.TabletopArch(guide_per_length=0.05).growth_rate(1.0), 0.0)
+
+    def test_one_stream_grows_more_slowly_than_two(self):
+        t = gen.TabletopArch()
+        k = 2.0 * math.pi
+        self.assertLess(t.growth_rate(1.0), k * gen.growth_speed(t.g, t.radius))
+        # with no tension in the structure the one-stream rate is the local model's k u sqrt(lambda m) / M
+        lam, m, u = 0.1, 0.1 * (25.0 / (t.g * 1.0) - 1.0), 5.0
+        bare = gen.TabletopArch(guide_per_length=m, rise=0.0)
+        self.about(bare.growth_rate(1.0), k * u * math.sqrt(lam * m) / (lam + m), 1e-9)
 
 
 if __name__ == "__main__":

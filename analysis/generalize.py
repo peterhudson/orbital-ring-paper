@@ -155,28 +155,54 @@ FOUNTAIN_100 = Fountain(height=100.0e3, station_mass=1.0e5, tower_per_length=10.
 
 @dataclass(frozen=True)
 class TabletopArch:
-    """A chain thrown between two wheels, carrying a light guide: the smallest arch of momentum."""
+    """A chain running between two wheels and standing as an arch, with a light
+    guide riding on it: the smallest arch of momentum.
 
-    radius: float = 1.0           # radius of curvature at the crown, m
+    A chain that moves along itself takes the same shapes as one at rest, with
+    its tension raised by lambda u^2. An arch at rest would be in compression
+    everywhere, by (weight per metre) x (height above the catenary's
+    directrix): M g R_c at the crown and M g (R_c + rise) at the feet. The
+    moving chain can stand in that shape if its tension stays positive, which
+    is hardest at the feet.
+    """
+
+    radius: float = 1.0            # radius of curvature at the crown, m
+    rise: float = 0.3              # height of the crown above the wheels, m
     chain_per_length: float = 0.1  # kg/m
-    speed: float = 5.0            # m/s
+    speed: float = 5.0             # m/s
+    guide_per_length: float = 0.08  # kg/m of guide riding on the chain
     g: float = 9.80665
 
     @property
     def threshold(self) -> float:
-        return threshold_speed(self.g, self.radius)
+        """Slowest speed at which the bare chain stands, m/s."""
+        return math.sqrt(self.g * (self.radius + self.rise))
 
     @property
-    def carried_per_length(self) -> float:
-        """Stationary mass the chain can carry per metre at the crown, kg/m."""
-        return self.chain_per_length * (self.speed**2 / (self.g * self.radius) - 1.0)
+    def max_carried(self) -> float:
+        """Most guide the chain can carry per metre with its tension still positive at the feet, kg/m."""
+        return self.chain_per_length * (self.speed**2 / (self.g * (self.radius + self.rise)) - 1.0)
 
     @property
-    def thrust(self) -> float:
-        return self.chain_per_length * self.speed**2
+    def crown_tension(self) -> float:
+        total = self.chain_per_length + self.guide_per_length
+        return self.chain_per_length * self.speed**2 - total * self.g * self.radius
 
-    def efold_time(self, wavelength: float) -> float:
-        """With one stream, a guide locked to the chain grows at k u sqrt(lambda m) / (lambda + m)."""
-        m, lam = self.carried_per_length, self.chain_per_length
+    @property
+    def foot_tension(self) -> float:
+        total = self.chain_per_length + self.guide_per_length
+        return self.chain_per_length * self.speed**2 - total * self.g * (self.radius + self.rise)
+
+    def growth_rate(self, wavelength: float) -> float:
+        """Growth rate at the crown of a kink in a guide locked to the chain, 1/s.
+        One stream keeps its convective term, so the rate is
+        k sqrt(g R_c - (lambda u / M)^2), and zero if that is negative."""
+        total = self.chain_per_length + self.guide_per_length
         k = 2.0 * math.pi / wavelength
-        return 1.0 / (k * self.speed * math.sqrt(lam * m) / (lam + m))
+        inside = self.g * self.radius - (self.chain_per_length * self.speed / total) ** 2
+        return k * math.sqrt(inside) if inside > 0.0 else 0.0
+
+    @property
+    def lightest_guide_that_kinks(self) -> float:
+        """Below this guide mass per metre one stream's convective term holds the arch neutral, kg/m."""
+        return self.chain_per_length * (self.speed / math.sqrt(self.g * self.radius) - 1.0)
