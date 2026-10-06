@@ -29,6 +29,9 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $u_\mathrm{orb}$ | Circular orbital speed at the ring radius, $\sqrt{g_h R}$ | m/s |
 | $g_h$ | Gravitational acceleration at ring altitude | m/s² |
 | $\Omega$ | Orbital rate at the ring radius, $\sqrt{g_h/R}$ | s$^{-1}$ |
+| $R_c$ | Radius of curvature of an arch of momentum. For a ring, $R$. | m |
+| $u_c$ | Threshold speed $\sqrt{g R_c}$, above which a curving stream carries more than itself. For a ring, $u_\mathrm{orb}$. | m/s |
+| $\nu$ | Speed ratio $u/u_c$ | – |
 
 ## Stream and slugs {.unnumbered}
 
