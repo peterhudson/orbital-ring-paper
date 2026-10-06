@@ -8,7 +8,7 @@ For a helix on a cylinder of radius $a$, with helix angle $\alpha$ measured rela
 
 $$
 \kappa_\mathrm{helix} = \frac{\sin^2\alpha}{a}
-$$
+$$ {#eq-helix-curvature}
 
 in the local-cylinder approximation.
 
@@ -18,7 +18,7 @@ For a fixed-flux slug lane, the local outward load per unit ring length is
 
 $$
 q_\mathrm{loc,lane} = \dot m u \frac{\tan^2\alpha}{a}
-$$
+$$ {#eq-helix-load-lane}
 
 where
 
@@ -44,7 +44,7 @@ For $N_p$ paired modules distributed around the torus,
 
 $$
 p_\mathrm{eq} = \frac{N_p \dot m u \tan^2\alpha}{\pi a^2}.
-$$
+$$ {#eq-equivalent-pressure}
 
 So the helical lanes create a steady outward load channel that can inflate the torus and prestress its membrane.
 
@@ -68,7 +68,7 @@ Equivalent pressure $p_\mathrm{eq}$ creates hoop membrane force per unit ring le
 
 $$
 N_\theta = p_\mathrm{eq} a.
-$$
+$$ {#eq-hoop-force}
 
 This prestress plausibly helps with:
 
@@ -90,7 +90,7 @@ Then, for a sinusoidal perturbation of wavenumber $k$, the real part must satisf
 
 $$
 \mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
-$$
+$$ {#eq-stiffness-condition}
 
 with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The local stability question is addressed in detail in @sec-app-local-stability and @sec-app-tube-section. 
 
@@ -102,7 +102,7 @@ Define the paired-module momentum-flux scale
 
 $$
 A_\mathrm{pair} = N_p \dot m u.
-$$
+$$ {#eq-pair-flux}
 
 The total paired-lane contribution is then $2A_\mathrm{pair}$.
 
@@ -110,11 +110,11 @@ The inflation requirement can be written as
 
 $$
 A_\mathrm{pair} \ge \frac{\pi a N_{\theta,\mathrm{req}}}{\tan^2\alpha}
-$$
+$$ {#eq-inflation-requirement}
 
 where $N_{\theta,\mathrm{req}}$ is required hoop membrane force per unit length.
 
-The macro-lift requirement, derived later, is
+The macro-lift requirement, derived in @sec-full-system-faces-closure as @eq-lift-requirement, is
 
 $$
 A_\mathrm{pair} \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
@@ -124,13 +124,13 @@ Balancing the two gives a useful screening estimate
 
 $$
 \tan^2\alpha_\mathrm{cross} = 2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)
-$$
+$$ {#eq-crossover-angle}
 
 with
 
 $$
 \Gamma = \frac{N_{\theta,\mathrm{req}}}{w_p}.
-$$
+$$ {#eq-prestress-ratio}
 
 For small angles,
 
@@ -158,7 +158,7 @@ For one lane, the moving-stream dynamic-tension scale is
 
 $$
 T_{\mathrm{eq,lane}} = \lambda_{\mathrm{lane}} v^2 .
-$$
+$$ {#eq-lane-tension}
 
 In the reference case, $\lambda_{\mathrm{lane}}\approx 5.4~\mathrm{kg/m}$ and $v\approx10~\mathrm{km/s}$, giving
 
@@ -169,8 +169,8 @@ $$
 For a perturbation of wavelength $L$, the quasi-static follower contribution scales as
 
 $$
-q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left({2\pi\over L}\right)^2Y .
-$$
+q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left(\frac{2\pi}{L}\right)^2Y .
+$$ {#eq-follower-load}
 
 For $Y=1~\mathrm{mm}$ this gives approximately:
 

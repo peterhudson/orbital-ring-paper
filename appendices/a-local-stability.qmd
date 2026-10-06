@@ -59,7 +59,7 @@ Let $y(s,t)$ be one transverse generalized coordinate of a lane carrier relative
 
 $$
 M y_{tt}+2\lambda v y_{st}+C y_t+B y_{ssss}+K_0 y+T_{\mathrm{eq,lane}} y_{ss}+q_{\mathrm{ctrl}}=0.
-$$
+$$ {#eq-lane-pde}
 
 The stream term enters with a positive sign because $y_{ss}=-k^2y$ for a Fourier mode, so it subtracts from the stiffness. It is clearer to write the Fourier-mode form directly. For
 
@@ -71,7 +71,7 @@ the open-loop characteristic equation is
 
 $$
 M\sigma^2+\left(C+2i\lambda v k\right)\sigma+\left[B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right]=0.
-$$
+$$ {#eq-open-loop-characteristic}
 
 Here:
 
@@ -92,7 +92,7 @@ Equivalently,
 
 $$
 K_{\mathrm{margin}}(k)=B k^4 + K_0 - T_{\mathrm{eq,lane}}k^2>0.
-$$
+$$ {#eq-stiffness-margin}
 
 If this margin is negative, the mode is locally divergent unless active control supplies additional stabilizing stiffness and damping.
 
@@ -133,7 +133,7 @@ $$
 
 $$
 \tau_a \dot z + z=K_c y + C_c \dot y,
-$$
+$$ {#eq-controller-lag}
 
 where:
 
@@ -151,7 +151,7 @@ Multiplying through by $1+\tau_a\sigma$ gives a cubic eigenvalue problem:
 
 $$
 \left(1+\tau_a\sigma\right)\left\{M\sigma^2+\left(C+2i\lambda v k\right)\sigma+B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right\}+K_c+C_c\sigma=0.
-$$
+$$ {#eq-closed-loop-cubic}
 
 The mode is locally stable if every root satisfies
 
@@ -173,7 +173,7 @@ A crude $30^\circ$ phase-lag bound gives
 
 $$
 \tau_{\mathrm{max}}\sim \frac{L}{12v}.
-$$
+$$ {#eq-delay-budget}
 
 At $v=10~\mathrm{km/s}$,
 
@@ -189,11 +189,11 @@ This immediately separates the problem into bands. Metre-scale disturbances cann
 
 ## Worked scalar eigenvalue screen {#sec-worked-scalar-eigenvalue-screen}
 
-To test whether the equations above have any plausible stable region, take a deliberately simple active-guide law:
+To test whether @eq-closed-loop-cubic has any plausible stable region, take a deliberately simple active-guide law:
 
 $$
 K_c = 3T_{\mathrm{eq,lane}}k^2,
-$$
+$$ {#eq-gain-choice}
 
 so the controller supplies three times the destabilizing follower stiffness. The resulting net positive stiffness margin, ignoring passive $B$ and $K_0$, is then approximately
 

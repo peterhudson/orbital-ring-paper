@@ -6,17 +6,17 @@ $$
 a_n = v^2\kappa.
 $$
 
-For a continuous stream of line density $\mu$, the required guide force per unit path length is
+For a continuous stream of line density $\lambda$, the required guide force per unit path length is
 
 $$
-f = \mu v^2\kappa.
-$$
+f = \lambda v^2\kappa.
+$$ {#eq-guide-force-continuous}
 
-For a discrete slug train with fixed mass flux $\dot m$, the effective line density is $\mu_\mathrm{eff}=\dot m/v$, so the corresponding force law becomes
+For a discrete slug train with fixed mass flux $\dot m$, the effective line density is $\lambda_\mathrm{eff}=\dot m/v$, so the corresponding force law becomes
 
 $$
 f = \dot m v\kappa.
-$$
+$$ {#eq-guide-force-slug}
 
 That distinction matters. A continuously filled cable-like stream at fixed line density scales as $v^2$. A throughput-limited slug train whose spacing changes with speed scales as $v$.
 
@@ -25,8 +25,8 @@ The physical interpretation is straightforward. The guide pushes the stream onto
 It is often convenient to introduce an equivalent dynamic-tension scale
 
 $$
-T_\mathrm{eq} = \mu v^2
-$$
+T_\mathrm{eq} = \lambda v^2
+$$ {#eq-dynamic-tension}
 
 for the continuous case, or equivalently $T_\mathrm{eq}=\dot m v$ for the fixed-flux slug-train case. That notation is useful, but it must not be over-read. In this architecture the support force does not require a passive material hoop carrying literal mechanical tension equal to $T_\mathrm{eq}$. The force can instead arise from guided momentum redirection in discrete moving masses.
 
@@ -39,6 +39,6 @@ For one lane with ring-centerline speed component $u=v\cos\alpha$, the Earth-sca
 
 $$
 q_{\mathrm{lift,lane}} = \dot m\left(\frac{u}{R} - \frac{g_h}{u}\right)
-$$
+$$ {#eq-lift-lane}
 
 where $R$ is ring radius and $g_h$ is gravity at altitude. At this point it is enough to note that local helix curvature and Earth-scale curvature are separate channels and must not be conflated.

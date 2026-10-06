@@ -44,7 +44,7 @@ For a lane of handedness $h_j=\pm 1$, the wavenumber seen along the helical lane
 
 $$
 k_{\parallel,j} = k_s\cos\alpha + h_j\frac{n}{a}\sin\alpha .
-$$
+$$ {#eq-lane-wavenumber}
 
 For shallow helix angle $\alpha$, the first term usually dominates for short axial wavelengths, but the cross-section term becomes important for high-$n$ ovalization or shear modes at long axial wavelength.
 
@@ -90,7 +90,7 @@ For each lane, the destabilizing follower stiffness per unit lane length is
 
 $$
 K_{\mathrm{follow},j} = T_{\mathrm{eq,lane}}k_{\parallel,j}^2 .
-$$
+$$ {#eq-follower-stiffness}
 
 This is the term that must be overcome by shell stiffness, guide stiffness, passive damping, active damping, and local control.
 
@@ -143,7 +143,7 @@ $$
 &+ \left(\mathbf{C}_{\mathrm{struct}} + \mathbf{C}_{\mathrm{conv}}\right)\dot{\mathbf{x}} \\
 &+ \left(\mathbf{K}_{\mathrm{shell}} + \mathbf{K}_{\mathrm{rib}} + \mathbf{K}_{\mathrm{guide}} - \mathbf{K}_{\mathrm{follow}}\right)\mathbf{x} = \mathbf{B}\mathbf{u}.
 \end{aligned}
-$$
+$$ {#eq-tube-state-model}
 
 Here:
 
@@ -168,10 +168,10 @@ projected into the corresponding lane-carrier and shell coordinates.
 The convective term for lane $j$ has the corresponding non-self-adjoint contribution
 
 $$
-\left[\mathbf{C}_{\mathrm{conv}}\right]_{jj} = 2i\sigma_j\lambda_j v_j k_{\parallel,j},
+\left[\mathbf{C}_{\mathrm{conv}}\right]_{jj} = \pm 2i\lambda_j v_j k_{\parallel,j},
 $$
 
-where $\sigma_j=\pm1$ is the slug travel direction along the lane.
+with the upper sign for $+s$ travel and the lower sign for $-s$ travel along the lane.
 
 This term is not necessarily destabilizing by itself, but it shifts modal phase and directional wave response. It must be retained in any serious stability map.
 
@@ -211,7 +211,7 @@ A local transverse follower-force instability cannot be assumed controllable mer
 
 $$
 \boldsymbol{\phi}_r^\dagger \mathbf{B} \ne 0.
-$$
+$$ {#eq-modal-controllability}
 
 More specifically, if the unstable mode is mainly transverse, then the direct or indirect transverse projection must satisfy
 
@@ -271,7 +271,7 @@ For each $(k_s,n)$,
 
 $$
 \dot{\mathbf{z}} = \mathbf{A}_{\mathrm{cl}}(k_s,n)\mathbf{z}.
-$$
+$$ {#eq-closed-loop-state}
 
 The local small-signal stability criterion is
 
@@ -493,7 +493,7 @@ A useful degraded-mode criterion is
 
 $$
 \frac{1}{\max \mathrm{Re}(\sigma_r^{(D3)})} > t_{\mathrm{iso}}
-$$
+$$ {#eq-degraded-criterion}
 
 for all newly unstable modes, where $t_{\mathrm{iso}}$ is the physical isolation and unloading time. If this inequality fails, a lane dropout becomes a prompt structural instability rather than a containable fault.
 

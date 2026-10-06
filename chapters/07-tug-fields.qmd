@@ -19,24 +19,24 @@ Physically, one should imagine a control sector as a long run of stator hardware
 Let one lane in a balanced cell have signed centerline speed
 
 $$
-V_s(s) = \sigma u(s)
+V_s(s) = \pm u(s)
 $$
 
-with $\sigma = \pm 1$ for the two travel directions. Here $u=v\cos\alpha$ is the scalar ring-centerline speed component.
+with the upper sign for $+s$ travel and the lower sign for $-s$ travel. Here $u=v\cos\alpha$ is the scalar ring-centerline speed component.
 
 For a stationary speed field, the convective acceleration along $s$ is
 
 $$
 a_s = V_s \frac{dV_s}{ds} = u \frac{du}{ds}.
-$$
+$$ {#eq-convective-acceleration-s}
 
-The key point is that $a_s$ is independent of $\sigma$. A fixed spatial speed gradient acts the same way on counter-propagating lanes when projected onto the stationary structure.
+The key point is that $a_s$ is independent of the travel direction. A fixed spatial speed gradient acts the same way on counter-propagating lanes when projected onto the stationary structure.
 
 For one lane with scalar mass flux $\dot m$, the structural force per unit ring length is therefore
 
 $$
 q_{s,\mathrm{lane}} = -\dot m \frac{du}{ds}.
-$$
+$$ {#eq-tug-law}
 
 If $\alpha$ is locally constant so that $u=v\cos\alpha$, this may also be written as
 
@@ -48,13 +48,13 @@ That is the basic tug-field law.
 
 ## Why counter-propagating lanes add instead of canceling {#sec-counter-propagating-lanes-add}
 
-Now consider a mirrored pair in the same fixed spatial speed gradient. If $du/ds>0$, the $+s$-traveling lane accelerates through the section while the counter-propagating lane decelerates through the same section. Yet their structural force densities are the same, because both are governed by the same stationary gradient law above.
+Now consider a mirrored pair in the same fixed spatial speed gradient. If $du/ds>0$, the $+s$-traveling lane accelerates through the section while the counter-propagating lane decelerates through the same section. Yet their structural force densities are the same, because both are governed by the same stationary gradient law, @eq-tug-law.
 
 So for one mirrored pair,
 
 $$
 q_{s,\mathrm{pair}} = -2\dot m \frac{du}{ds}.
-$$
+$$ {#eq-tug-pair}
 
 This is the real reason the pair adds instead of cancels. It is not that both lanes slow down in their own direction of travel. It is that a fixed spatial speed gradient produces the same structural reaction for both travel directions.
 
@@ -64,13 +64,13 @@ Integrating across a control section from $u_1$ to $u_2$ gives
 
 $$
 F_{\mathrm{pair}} = -2\dot m (u_2-u_1).
-$$
+$$ {#eq-tug-pair-integrated}
 
 For $N_s$ participating paired modules in one azimuthal sector,
 
 $$
 F_{\mathrm{sector}} = -2N_s\dot m (u_2-u_1).
-$$
+$$ {#eq-tug-sector}
 
 If one only needs the magnitude, this becomes
 
@@ -114,13 +114,13 @@ At the level of order of magnitude,
 
 $$
 M \sim 2a |F_{\mathrm{sector}}|.
-$$
+$$ {#eq-couple}
 
 A more explicit finite-sector estimate is
 
 $$
 M_{\mathrm{pair}} = 4aN_s\dot m |\Delta u| C_\mathrm{sec}(\Delta\phi)
-$$
+$$ {#eq-couple-finite-sector}
 
 with
 
@@ -150,7 +150,7 @@ That means the simple couple law belongs to the long-wave regime. A more honest 
 
 $$
 M_\mathrm{eff} \approx \eta_\mathrm{load} 2a |F_\mathrm{sector}|,
-$$
+$$ {#eq-couple-effective}
 
 where $\eta_\mathrm{load}$ is a cross-sectional transfer efficiency between zero and one that absorbs ovalization, shear lag, local twist, and other non-ideal shell behavior. At wavelengths comparable with the torus diameter, rib spacing, or shell ovalization modes, one should expect $\eta_\mathrm{load}$ to fall below unity and local distortion to appear before clean global bending emerges. The present paper therefore treats the tug-sector couple as a plausible long-wave actuation primitive, not as proof that every local shell mode cooperates automatically.
 
@@ -170,7 +170,7 @@ where $m_s$ is mass per slug. In steady flow through a lane with local speed $v(
 
 $$
 n(s) = \frac{J}{v(s)}
-$$
+$$ {#eq-number-density}
 
 where $n(s)$ is slug number density along the lane. Equivalently, if $h=1/J$ is time headway, then the center-to-center spacing in a locally uniform region is
 
@@ -202,7 +202,7 @@ so collision avoidance requires
 
 $$
 h v_1 \ge \ell_s + g_\mathrm{min}
-$$
+$$ {#eq-collision-limit}
 
 where $\ell_s$ is slug length and $g_\mathrm{min}$ is the minimum allowable gap.
 
@@ -210,7 +210,7 @@ For an upward ramp, incomplete actuation can let a trailing slug catch a slower 
 
 $$
 \tau_d < \frac{h v_0 - (\ell_s + g_\mathrm{min})}{v_1-v_0}
-$$
+$$ {#eq-delay-bound}
 
 where $\tau_d$ is total sensing, computation, actuation, and field-establishment delay.
 
@@ -218,7 +218,7 @@ For time-varying control profiles, the continuity constraint is stronger still. 
 
 $$
 \frac{\partial n}{\partial t} + \frac{\partial (nV)}{\partial s} = 0.
-$$
+$$ {#eq-continuity}
 
 So the no-fill/no-drain claim applies only to steady or slowly varying speed fields. A controller cannot arbitrarily command $u(s,t)$ without launching density and headway waves through the lane. Dynamic control therefore requires phase and inventory management so that those waves do not create collision, starvation, or excessive headway error.
 
@@ -232,7 +232,7 @@ For one lane, the exact finite power transfer across a section that changes spee
 
 $$
 P_{\mathrm{lane}} = \frac{1}{2}\dot m\left(u_2^2-u_1^2\right) = \dot m \bar u \Delta u
-$$
+$$ {#eq-lane-power}
 
 where $\bar u=(u_1+u_2)/2$. For small $\Delta u$, this reduces to
 
@@ -294,7 +294,7 @@ so the corresponding first-order sensitivity is
 
 $$
 \delta q_\mathrm{lift} = 2N_p\dot m\left(\frac{1}{R} + \frac{g_h}{u^2}\right)\delta u.
-$$
+$$ {#eq-lift-sensitivity}
 
 The fractional lift sensitivity is therefore
 
@@ -310,7 +310,7 @@ The right coupling metric is not just the local gradient. It is the speed-offset
 
 $$
 \beta = \frac{1}{R} + \frac{g_h}{u^2}.
-$$
+$$ {#eq-beta}
 
 For the participating lane pairs in one control sector, the integrated lift side-effect is
 
@@ -328,9 +328,9 @@ So the coupling ratio becomes
 
 $$
 \frac{\Delta W_{\mathrm{lift,sector}}}{F_{\mathrm{sector}}} = -\beta \frac{\int \delta u(s) ds}{\Delta u}.
-$$
+$$ {#eq-coupling-ratio}
 
-If one defines an effective speed-offset length, called $L_\mathrm{eff}$, as the speed-offset area divided by the speed step, then the earlier $\beta L$ estimate is just the special case in which that effective length happens to equal the physical sector length. A triangular ramp gives about $L_\mathrm{eff}=L/2$. A long low-speed pocket is dominated by its plateau length. An antisymmetric profile can partly cancel its own lift side-effect.
+If one defines an effective speed-offset length, called $L_\mathrm{eff}$, as the speed-offset area divided by the speed step, then a simple $\beta L$ estimate is just the special case in which that effective length happens to equal the physical sector length. A triangular ramp gives about $L_\mathrm{eff}=L/2$. A long low-speed pocket is dominated by its plateau length. An antisymmetric profile can partly cancel its own lift side-effect.
 
 So the honest statement is this: the control coupling is governed by the speed-offset area associated with the tug command, not by the gradient alone.
 
@@ -349,8 +349,8 @@ That is why the coupling can converge rather than blow up. The strong inner-loop
 A useful way to name that problem is with a local linearized control map. Write
 
 $$
-\delta y = \mathbf{M} \delta u
-$$
+\delta y = \mathbf{S} \delta u
+$$ {#eq-allocation-map}
 
 with output vector
 
@@ -364,7 +364,7 @@ $$
 \delta u = \left(\delta u_1,  \delta u_2,  \delta u_3,  \delta u_4\right)^T.
 $$
 
-Here $\mathbf{M}$ depends on lane placement, handedness, sector participation, and operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
+Here $\mathbf{S}$ depends on lane placement, handedness, sector participation, and operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
 
 In plain language, the controller is trying to combine four lane-speed trims into three useful local effects, while suppressing the residual unwanted ones. That is a recognizable control-allocation problem, not handwaving.
 

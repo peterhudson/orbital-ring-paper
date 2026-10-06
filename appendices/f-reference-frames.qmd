@@ -4,16 +4,16 @@ The main text uses a guide-relative lift screen because the guide shell's inerti
 
 Even a ring intended to remain stationary relative to the ground is not inertially stationary. An equatorial ring that supports ground-referenced tethers must co-rotate with Earth so that those tethers do not sweep across the surface. The guide shell therefore carries a real inertial ring-tangential speed set mainly by Earth rotation, even though the slug streams move much faster relative to the guide.
 
-Let the local guide shell have inertial ring-tangential speed $U_g$, and let each lane have guide-relative speed $\sigma u$ with $\sigma = \pm 1$ for the two travel directions. The inertial lane speed is then
+Let the local guide shell have inertial ring-tangential speed $U_g$, and let each lane have guide-relative speed $\pm u$, with the sign set by the travel direction. The inertial lane speed is then
 
 $$
-U_\sigma = U_g + \sigma u.
-$$
+U_\pm = U_g \pm u.
+$$ {#eq-inertial-speed}
 
 If $\dot m$ is the guide-frame mass flux in one lane, then the mass per unit guide length is $\lambda = \dot m/u$. The outward reaction per unit guide length from that lane is therefore
 
 $$
-q_{\mathrm{lift},\sigma} = \frac{\dot m}{u}\left(\frac{(U_g+\sigma u)^2}{R} - g_h\right).
+q_{\mathrm{lift},\pm} = \frac{\dot m}{u}\left(\frac{(U_g\pm u)^2}{R} - g_h\right).
 $$
 
 For a symmetric counter-propagating pair, the sum becomes
@@ -21,7 +21,7 @@ For a symmetric counter-propagating pair, the sum becomes
 $$
 q_{\mathrm{lift,pair}} = \frac{2\dot m}{u}\left(\frac{u^2 + U_g^2}{R} - g_h\right)
 = 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right) + 2\dot m\frac{U_g^2}{uR}.
-$$
+$$ {#eq-inertial-pair-lift}
 
 So the pair-averaged lift law used in the main text,
 

@@ -4,7 +4,7 @@ At the 500 km reference point, the moving stream stores about 82 GJ/m. That make
 
 $$
 L_\mathrm{iso} \approx \frac{E_\mathrm{allow}}{82~\mathrm{GJ/m}}.
-$$
+$$ {#eq-isolation-length}
 
 The result is brutal:
 

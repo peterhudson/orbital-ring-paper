@@ -12,9 +12,9 @@ The moving stream must then be forced to follow that curved path. The stream exe
 
 $$
 q_\mathrm{stream} \approx -T_\mathrm{eq} y_{xx},
-$$
+$$ {#eq-stream-reaction}
 
-where $T_\mathrm{eq}=\mu v^2$ or $T_\mathrm{eq}=\dot m v$, depending on whether one uses the continuous or fixed-flux picture.
+where $T_\mathrm{eq}=\lambda v^2$ or $T_\mathrm{eq}=\dot m v$, depending on whether one uses the continuous or fixed-flux picture.
 
 Now consider a sinusoidal perturbation,
 
@@ -32,7 +32,7 @@ so the stream reaction becomes
 
 $$
 q_\mathrm{stream} = +T_\mathrm{eq} k^2 y.
-$$
+$$ {#eq-anti-restoring}
 
 That has the **same sign as the displacement**. If the lane is displaced upward at some point, the stream pushes upward there as well. The moving mass therefore pushes further into an existing curvature perturbation rather than restoring the lane to straightness.
 

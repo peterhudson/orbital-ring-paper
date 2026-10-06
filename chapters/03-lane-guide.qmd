@@ -8,7 +8,7 @@ A rough upper bound on magnetic normal stress is
 
 $$
 p_\mathrm{mag,max} \sim \frac{B^2}{2\mu_0},
-$$
+$$ {#eq-magnetic-pressure}
 
 where $B$ is field strength and $\mu_0$ is the permeability of free space. The ideal upper-bound values from $B^2/(2\mu_0)$ are:
 
@@ -31,7 +31,7 @@ For a fixed-flux slug lane this becomes
 
 $$
 p_\mathrm{req} = \frac{\dot m v\kappa}{A'}.
-$$
+$$ {#eq-required-traction}
 
 So tight curvature, high speed, and small interaction perimeter all make the lane harder to guide.
 
@@ -45,7 +45,7 @@ For one lane, a stationary speed gradient requires tangential force density
 
 $$
 q_\parallel = \dot m \frac{du}{ds}
-$$
+$$ {#eq-tangential-force-density}
 
 along the lane. The corresponding mean tangential traction scale is therefore roughly
 
@@ -82,10 +82,10 @@ So the mild force-density result depends on broad participation and long actuati
 A lane is not merely static curvature plus average force. The stream is convected through the guide at high speed, so disturbances arrive on a timescale
 
 $$
-t_\mathrm{conv} \sim \frac{\lambda}{v},
-$$
+t_\mathrm{conv} \sim \frac{L}{v},
+$$ {#eq-convective-time}
 
-where $\lambda$ is disturbance wavelength. At $v=10~\mathrm{km/s}$, a $100~\mathrm{m}$ disturbance convects past in $10~\mathrm{ms}$, a $10~\mathrm{m}$ disturbance in $1~\mathrm{ms}$, and a $1~\mathrm{m}$ disturbance in $0.1~\mathrm{ms}$. High speed helps force generation and hurts control.
+where $L$ is disturbance wavelength. At $v=10~\mathrm{km/s}$, a $100~\mathrm{m}$ disturbance convects past in $10~\mathrm{ms}$, a $10~\mathrm{m}$ disturbance in $1~\mathrm{ms}$, and a $1~\mathrm{m}$ disturbance in $0.1~\mathrm{ms}$. High speed helps force generation and hurts control.
 
 Using lateral displacement $y(x,t)$ along a lane coordinate $x$, the convective derivative is
 
@@ -97,7 +97,7 @@ so the lateral acceleration contains
 
 $$
 \frac{D^2y}{Dt^2} = y_{tt} + 2v y_{xt} + v^2 y_{xx}.
-$$
+$$ {#eq-convective-acceleration}
 
 The last term is the same curvature-following term that generates support force. The middle term is transport coupling. Both must be handled by the guide.
 

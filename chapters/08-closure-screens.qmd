@@ -31,13 +31,13 @@ For $N_p$ paired modules,
 
 $$
 q_\mathrm{lift} = 2N_p\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right).
-$$
+$$ {#eq-lift-total}
 
 The lift changes sign at
 
 $$
 u_\mathrm{orb} = \sqrt{g_hR}.
-$$
+$$ {#eq-orbital-speed}
 
 If $u<u_\mathrm{orb}$, the moving stream loads the ring downward overall. Only for $u>u_\mathrm{orb}$ does it contribute net outward lift.
 
@@ -49,7 +49,7 @@ Let $w_p$ denote the net inward non-stream load per unit ring length. The lift r
 
 $$
 A_\mathrm{pair} = N_p \dot m\,u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
-$$
+$$ {#eq-lift-requirement}
 
 where $A_\mathrm{pair}$ is the paired-module momentum-flux scale and the total paired-lane contribution is $2A_\mathrm{pair}$.
 
@@ -57,7 +57,7 @@ That sounds like a simple scaling law, but it closes several hard subsystems int
 
 $$
 w_p \to A_\mathrm{pair} \to \left(E_{\mathrm{kin}},  P_{\mathrm{loss}}\right) \to \left(w_{\mathrm{contain}},  w_{\mathrm{thermal}},  w_{\mathrm{power}}\right) \to w_p
-$$
+$$ {#eq-closure-loop}
 
 In words:
 
@@ -91,7 +91,7 @@ The corresponding kinetic energy per metre is then
 
 $$
 E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
-$$
+$$ {#eq-energy-per-metre}
 
 For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of $3.5\times10^{18}$ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
 
@@ -113,7 +113,7 @@ Fault-domain length must be set by allowable segment energy, not by construction
 
 $$
 E_{\mathrm{segment}} = E' L_{\mathrm{segment}},
-$$
+$$ {#eq-segment-energy}
 
 and the isolation architecture has to be sized from that energy, not merely named.
 
