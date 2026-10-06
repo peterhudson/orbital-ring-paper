@@ -429,7 +429,7 @@ $$
 
 then balanced-cell speed-gradient control cannot be claimed to stabilize local shell/lane perturbations.
 
-This is the expected result for short and middle wavelengths. The balanced-cell tug field is primarily a long-wave shape-control actuator, not a substitute for local transverse guide stiffness.
+This is the expected result for short and middle wavelengths. The balanced-cell tug field acts along the ring (@sec-tug-purpose). It is not a substitute for local transverse guide stiffness.
 
 ### Case G: transverse guide control {.unnumbered}
 
@@ -507,7 +507,7 @@ The reduced-order tube-section screen gives the following qualitative map.
 | $L_s \sim 30~\mathrm{m}$                     | Tens of kN/m per lane for millimetre motion; delay budget $\sim0.25~\mathrm{ms}$ | Passive guide stiffness plus extremely fast local transverse bearing            | Severe / marginal                                      |
 | $L_s \sim 100~\mathrm{m}$                    | Few kN/m per lane for millimetre motion; delay budget $\sim0.8~\mathrm{ms}$      | High-bandwidth transverse guide control                                         | Plausible future-technology window                     |
 | $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lower path-following stiffness but larger structural participation                     | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
-| $L_s \gtrsim 10^2$ to $10^3~\mathrm{km}$     | Long-wave ring shape and alignment                                               | Distributed balanced-cell tug fields                                            | Natural domain of macro actuator                       |
+| $L_s \gtrsim 10^2$ to $10^3~\mathrm{km}$     | Long-wave ring shape and alignment                                               | Steering of the streams, with stator weight trim at the longest waves (@sec-collective-stability) | Stable in the models of @sec-collective-stability |
 
 The most important negative result is Case T: axial tug authority by itself does not close the local stability problem. It is not enough to show that neighboring lanes can generate large internal axial forces. The transverse influence matrix must have the right rank, sign, phase, and saturation margin.
 

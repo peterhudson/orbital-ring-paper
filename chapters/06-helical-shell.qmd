@@ -48,6 +48,12 @@ $$ {#eq-equivalent-pressure}
 
 So the helical lanes create a steady outward load channel that can inflate the torus and prestress its membrane.
 
+@fig-unrolled-helix shows the geometry with the tube's surface laid flat, and the reference numbers. At the helix angle worked out in @sec-helix-angle-likely-small, each slug circles the tube's axis at 139 m/s while it travels along the ring at 10 km/s. Holding it on that circle takes an inward acceleration of 384 m/s², about 39 times surface gravity, and the reaction on the wall is 2.1 kN/m for each lane.
+
+![Left: the tube's surface cut along its length and laid flat, with the four lanes of one balanced cell (@sec-four-lane-cell) and their directions of travel. The axes are not to one scale. One wrap takes 23 km of ring and 314 m of girth, a slope of 0.79°. Right: what the wrap does. Each slug circles the tube's axis, the wall supplies the inward force, and the reaction is the outward push that inflates the tube.](../figures/generated/unrolled-helix.svg){#fig-unrolled-helix}
+
+The wrap also evens out the lanes. A lane that stayed on the side of the tube away from the planet would be 628 m longer, per circuit of the ring, than one on the side toward it, and the two would carry different shares of the ring's lift. A wrapped lane spends equal distances at every position round the tube, so over each wrap all lanes are the same length and carry the same load. What remains is a ripple within the wrap. The lift on a lane, 33 N/m, points away from the planet, so it adds to the guide's inflation load on one side of the tube and subtracts on the other: a variation of 1.6% in guide force, once per wrap.
+
 ## Equivalent pressure is an averaged load model {#sec-equivalent-pressure-averaged-load}
 
 The pressure language is useful, but it is an azimuthally averaged approximation. The real loads are applied through discrete lanes, ribs, or lane carriers.
@@ -143,6 +149,10 @@ Using a reference case with $a=50~\mathrm{m}$, altitude $500~\mathrm{km}$, $u=10
 The more important question is whether that shallow helix produces enough prestress. With passive supported weight of $10~\mathrm{kN/m}$ and prestress ratio $\Gamma=10$, the implied hoop-force target is only about $100~\mathrm{kN/m}$. At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
 
 So $\Gamma=10$ should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same $500~\mathrm{km}$, $10~\mathrm{km/s}$ point, $\Gamma=30$ gives about $1.38^\circ$ and a wrap pitch of about $13~\mathrm{km}$, while $\Gamma=100$ gives about $2.51^\circ$ and a wrap pitch of about $7~\mathrm{km}$. The geometry therefore remains in the shallow-helix regime even for substantially higher prestress targets. The real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
+
+@fig-crossover-angle shows the same relation across the range of prestress and for several stream speeds.
+
+![The helix angle at which inflation and lift ask for the same momentum flux (@eq-crossover-angle), and the length of ring taken by one wrap, for a tube of 50 m radius at 500 km altitude. The dot is the reference case. A faster stream needs less of its momentum for lift, which leaves room for a steeper helix.](../figures/generated/crossover-angle.svg){#fig-crossover-angle}
 
 ## What the prestressed shell does and does not solve {#sec-prestressed-shell-solve}
 

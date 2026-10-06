@@ -23,7 +23,9 @@ But, the $s$-components behave differently. In a stationary speed-gradient secti
 
 ![Force-component bookkeeping for a balanced four-lane cell at a representative control location. The circumferential $\theta$ components cancel in the four-lane sum, while the ring-direction $s$ components add to produce a net axial structural tug during acceleration or deceleration.](../figures/figure-4-balanced-cell-force-cancellation.svg){#fig-force-cancellation}
 
-Tug forces cannot be generated in isolation. A balanced four-lane cell that has its slugs accelerated and decelerated at one location (A) as depicted in @fig-force-cancellation needs to be operated with a second location (B) where the slugs are accelerated / decelerated back to normal ring velocity. The use of paired control locations is developed further in @sec-tug-fields, where it becomes critical for macro ring shape articulation and control. 
+Tug forces cannot be generated in isolation. A balanced four-lane cell that has its slugs accelerated and decelerated at one location (A) as depicted in @fig-force-cancellation needs to be operated with a second location (B) where the slugs are accelerated / decelerated back to normal ring velocity. @fig-speed-ramp shows the pair. What paired control locations can and cannot do to the ring is worked out in @sec-tug-fields.
+
+![Two lanes running opposite ways through the same pair of stationary speed ramps. The speed change is exaggerated. At fixed mass flux the slugs are spaced in proportion to their speed. In ramp A the stators speed up the slugs running toward $+s$ and slow down those running toward $-s$, and both reactions push the structure toward $-s$. Ramp B undoes the speed change and pushes the other way. The structure between the ramps carries the pair of pushes as tension (@sec-tug-hoop).](../figures/generated/speed-ramp.svg){#fig-speed-ramp}
 
 Operated together, this four-lane cell can cancel to first order:
 

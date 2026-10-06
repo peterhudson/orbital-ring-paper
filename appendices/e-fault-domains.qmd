@@ -17,6 +17,10 @@ The result is brutal:
 | 10 TJ | about 120 m | about 12 ms |
 | 82 TJ | about 1 km | about 0.10 s |
 
+@fig-fault-ladder sets the energies involved on one scale. The streams of the whole ring hold 3.5 EJ, the yield of about 840 megatons of TNT.
+
+![The kinetic energy of the streams in the reference case, from one slug to the whole ring, with explosive yields for scale. One tonne of TNT is 4.184 GJ by definition.](../figures/generated/fault-energy-ladder.svg){#fig-fault-ladder}
+
 So if tolerable fault release is only gigajoule-scale, the implied isolation lengths are absurdly short. Even if one accepts terajoule-scale domains, the required gates, dump paths, catchers, and bypass logic still have to operate on millisecond-to-tens-of-milliseconds timescales.
 
 This is also where four-lane degraded mode becomes inseparable from containment. A lane dropout is not just a control nuisance. It is a fault-domain event that may force local cell isolation, rapid unloading of neighboring cells, and transfer of support demand to a wider region. The safe machine is therefore not merely a balanced nominal lattice. It is a balanced lattice plus an explicit fault-response architecture.
