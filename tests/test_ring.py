@@ -57,10 +57,7 @@ class RingModes(Base):
         """e-folding times quoted in the text, minutes."""
         minutes = lambda rate: 1.0 / rate / 60.0
         self.about(minutes(ring.growth_rate_in_plane(1)), 21, 0.03)
-        self.about(minutes(ring.growth_rate_in_plane(2)), 8.4, 0.03)
-        self.about(minutes(ring.growth_rate_in_plane(1, ea=5e10)), 10, 0.05)
         self.about(minutes(ring.growth_rate_out_of_plane(2)), 8.7, 0.03)
-        self.about(ring.hoop_stiffness_ratio(5e10), 0.31, 0.03)
         self.about(ring.growth_rate_local(100e3), 0.48, 0.02)
         self.about(ring.growth_rate_local(1000e3), 0.048, 0.02)
 

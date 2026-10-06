@@ -111,7 +111,9 @@ $$ {#eq-local-growth}
 
 This is @eq-anti-restoring with the structure's inertia included. In the reference case the square root is 0.76.
 
-On the scale of the whole ring, curvature and the fall-off of gravity with height both enter. For a ring whose hoop does not stretch, in a central field with orbital rate $\Omega = \sqrt{g_h/R}$, mode $n$ grows at
+On the scale of the whole ring three more things enter: the ring's curvature, the fall-off of gravity with height, and what the slugs do along the track.
+
+The last is a choice. Suppose first that the stators hold every slug at a fixed speed and that the hoop does not stretch. In a central field with orbital rate $\Omega = \sqrt{g_h/R}$, mode $n$ then grows at
 
 $$
 \sigma_n^2 = \Omega^2\,\frac{n^4}{n^2+1} \quad\text{(in the ring's plane)}, \qquad
@@ -120,18 +122,37 @@ $$ {#eq-ring-growth}
 
 The in-plane $n=1$ mode is the ring drifting off centre as a whole. Its rate, $\Omega/\sqrt 2$, is the classical result for a solid ring round a planet. The out-of-plane $n=1$ mode is a tilt of the whole ring, which is just a different orbital plane, and it is neutral. For large $n$ both expressions tend to $\sigma = n\Omega$, which is @eq-local-growth again.
 
+Now suppose the slugs coast, pushed sideways by the guide and not at all along the track. Then they behave like anything else in orbit. A stretch of stream that is carried outward slows down, and the slugs bunch there. Out of the ring's plane nothing changes. In the plane every mode grows a little more slowly: for large $n$ the rate tends to $\sigma_n^2 = \Omega^2\left(n^2 - 1.2\right)$, against $\Omega^2\left(n^2 - 1\right)$ with speed held.
+
+One mode changes completely. It is $n = 0$, the ring growing or shrinking uniformly. With the streams held at speed, their outward push falls off as $1/r$ while the weight it carries falls off as $1/r^2$, so the ring runs away outward or inward unless the hoop holds it. A coasting stream conserves angular momentum instead. It slows as the ring grows, its push falls off as $1/r^3$, and the mode becomes a stable oscillation, as it is for any orbit.
+
+This paper takes coasting as the baseline. In steady state the stators then have nothing to do along the track except make up losses.
+
 | Disturbance | Growth rate | Time to grow by a factor $e$ |
 | --- | ---: | ---: |
 | 100 m wavelength | 480 s⁻¹ | 2 ms |
 | 10 km wavelength | 4.8 s⁻¹ | 0.2 s |
 | 100 km wavelength | 0.48 s⁻¹ | 2 s |
 | 1000 km wavelength | 0.048 s⁻¹ | 21 s |
-| Two waves round the ring, in plane | 0.0020 s⁻¹ | 8 min |
-| Whole ring off centre | 0.00078 s⁻¹ | 21 min |
+| Three waves round the ring, in plane | 0.0033 s⁻¹ | 5 min |
+| Two waves round the ring, in plane | 0.0022 s⁻¹ | 8 min |
+| Whole ring off centre | 0.0010 s⁻¹ | 17 min |
+| Uniform growth or shrinkage | none | oscillates, period 83 min |
 
-These rates assume a hoop that does not stretch. The ring's hoop stiffness is better compared with gravity than with its own weight: the measure is $EA/\left((m+\lambda)R^2\Omega^2\right)$, and for a structure with $EA = 50$ GN it is only 0.31. Such a ring is soft in the hoop direction, and its lowest modes grow faster. The off-centre mode then takes 10 minutes to grow by a factor $e$, not 21. @fig-ring-modes shows the low modes for both cases.
+The last four rows are for coasting slugs and a structure with hoop stiffness $EA = 50$ GN. Hoop stiffness matters for the lowest modes. The measure of it is $EA/(m g_h R)$, which sets the hoop's stiffness against the structure's weight per unit length times the ring's radius, and at 50 GN that is only 0.73. Such a ring is soft in the hoop direction. If the hoop could not stretch at all, the off-centre mode would take 26 minutes to grow by a factor $e$, not 17.
 
-![Growth rate of whole-ring modes in units of the orbital rate. Lines are the closed forms. Points are the numerical model of @sec-momentum-truss.](../figures/generated/ring-mode-growth.svg){#fig-ring-modes}
+These choices matter for the first few modes and for nothing else. In units of the orbital rate, the growth rates are:
+
+| Case | $n = 1$ | $n = 2$ | $n = 3$ | $n = 4$ |
+| --- | ---: | ---: | ---: | ---: |
+| Slugs coast, hoop stiffness 50 GN | 0.90 | 1.94 | 2.96 | 3.97 |
+| Slugs coast, stiff hoop | 0.57 | 1.72 | 2.81 | 3.85 |
+| Speed held, stiff hoop | 0.71 | 1.79 | 2.85 | 3.88 |
+| Out of plane | 0 | 1.73 | 2.83 | 3.87 |
+
+@fig-ring-modes shows the baseline case and the out-of-plane modes against mode number.
+
+![Growth rate of whole-ring modes in units of the orbital rate. In-plane modes are for coasting slugs and a hoop stiffness of 50 GN. Points are from the two other numerical models of @sec-momentum-truss.](../figures/generated/ring-mode-growth.svg){#fig-ring-modes}
 
 Three remarks put these numbers in their place.
 
@@ -141,18 +162,25 @@ Second, the helical prestress of @sec-helical-shell does not enter. Prestress ac
 
 Third, every rate here assumes that the streams follow the structure's shape exactly. That is what a stiff guide does, and it is a design choice, not a law.
 
-## The numerical model {#sec-momentum-truss}
+## The numerical models {#sec-momentum-truss}
 
-The whole-ring results above were checked on a model built for the purpose, in `analysis/truss.py`. It is a pin-jointed frame in which every member has an elastic tension and, in addition, carries a balanced pair of streams with a prescribed momentum flux and line density. By the momentum theorem the streams load the joints exactly as a compression $\Pi$ along the member would, so each member's stress resultant is $N - \Pi$ and the stream mass is lumped with the joints. The model finds static equilibria by Newton iteration, whether or not they are stable, and the growth rates of small motions about them.
+Three models stand behind the whole-ring results. Each was built separately and each checks the others.
 
-| Check | Closed form | Model |
-| --- | ---: | ---: |
-| Regular polygon is in equilibrium | residual 0 | $2\times10^{-12}$ of the weight |
-| In-plane growth, $n = 1, 2, 3$, stiff hoop: $\sigma_n^2/\Omega^2$ | 0.500, 3.200, 8.100 | 0.500, 3.201, 8.101 |
-| In-plane growth, $n = 1, 2, 3$, $EA = 50$ GN | 2.147, 5.164, 10.170 | 2.147, 5.164, 10.169 |
-| Out-of-plane growth, $n = 1, 2, 3$ | 0, 3, 8 | 0.000, 2.999, 7.996 |
-| Speed ripple, $n = 8$, $\epsilon = 10^{-4}$: radial amplitude | −6.23 m | −6.24 m |
-| Same ripple: tension ripple over flux ripple | 0.991 | 0.991 |
-| Same ripple, stream weight held uniform: radial amplitude | 0 | −0.01 m |
+The first, in `analysis/truss.py`, is a pin-jointed frame in which every member has an elastic tension and, in addition, carries a balanced pair of streams with a prescribed momentum flux and line density. By the momentum theorem the streams load the joints exactly as a compression $\Pi$ along the member would, so each member's stress resultant is $N - \Pi$ and the stream mass is lumped with the joints. The model finds static equilibria by Newton iteration, whether or not they are stable, and the growth rates of small motions about them. Because it prescribes the streams' speed, it describes streams whose speed is held.
 
-The tests in `tests/test_ring.py` repeat these comparisons on every change to the repository.
+The second, in `analysis/ring_modes.py`, gives each stream its own radial position, speed and spacing, so that slugs can coast, trade speed for height, and bunch. It is linear and treats one mode at a time.
+
+The third, in `analysis/ring_particles.py`, is a simulation of the whole ring: a ring of masses and hoop springs for the structure, several hundred point masses in each direction for the streams, all in the planet's inverse-square field, with the guide pushing each slug at right angles to the structure. Nothing in it is linearised. Because short waves grow fastest, it keeps only the long ones; short waves are taken up in the next chapters.
+
+| Check | Reference | Model |
+| ---------------------------------------- | ----------------------------: | --------------------------------: |
+| Regular polygon is in equilibrium | residual 0 | truss: $2\times10^{-12}$ of the weight |
+| In-plane growth, speed held, stiff hoop: $\sigma_n^2/\Omega^2$ for $n = 1, 2, 3$ | @eq-ring-growth: 0.500, 3.200, 8.100 | truss: 0.500, 3.201, 8.100; linear: 0.500, 3.201, 8.101 |
+| In-plane growth, coasting, stiff hoop: $\sigma_n^2/\Omega^2$ | cubic: 0.3305, 2.973, 7.869 | linear: 0.3305, 2.973, 7.869 |
+| In-plane growth, coasting, $EA = 50$ GN: $\sigma_n/\Omega$ | linear: 0.9016, 1.9406, 2.9589 | particles: 0.9017, 1.9397, 2.9576 |
+| Out-of-plane growth: $\sigma_n^2/\Omega^2$ | @eq-ring-growth: 0, 3, 8 | truss: 0.000, 2.999, 7.996 |
+| Speed ripple, $n = 8$, $\epsilon = 10^{-4}$: radial amplitude | @eq-speed-ripple: −6.23 m | truss: −6.24 m |
+| Same ripple: tension ripple over flux ripple | @eq-speed-ripple: 0.991 | truss: 0.991 |
+| Same ripple, stream weight held uniform: radial amplitude | 0 | truss: −0.01 m |
+
+The cubic in the third row is the dispersion relation of the linear model for a stiff hoop, worked out by hand; it is written out in `analysis/ring_modes.py`. The tests in `tests/test_ring.py` and `tests/test_ring_modes.py` repeat these comparisons on every change to the repository.
