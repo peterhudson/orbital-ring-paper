@@ -1,0 +1,189 @@
+# Helical lanes in a prestressed membrane guide shell {#sec-helical-shell}
+
+Instead of asking a fast lane to remain straight in free space, this paper proposes an architecture that places the lanes on an intentionally curved helical path wrapped around a very large tensile membrane tube. The simplest intuition is a lightweight fabric torus, but the hardware should be pictured more technically as a prestressed membrane-and-rib guide carrier with discrete lane carriers, distributed stators, power buses, sensors, thermal paths, and fault segmentation.
+
+## Helical curvature creates a steady prestress channel {#sec-helical-curvature-creates-steady}
+
+For a helix on a cylinder of radius $a$, with helix angle $\alpha$ measured relative to the local $s$ direction,
+
+$$
+\kappa_\mathrm{helix} = \frac{\sin^2\alpha}{a}
+$$ {#eq-helix-curvature}
+
+in the local-cylinder approximation.
+
+That curvature is not an accident. It is the local mechanism that converts moving momentum into distributed outward reaction on the membrane-supported lane system.
+
+For a fixed-flux slug lane, the local outward load per unit ring length is
+
+$$
+q_\mathrm{loc,lane} = \dot m u \frac{\tan^2\alpha}{a}
+$$ {#eq-helix-load-lane}
+
+where
+
+$$
+u = v\cos\alpha
+$$
+
+is the ring-centerline speed component.
+
+For one symmetric pair of lanes,
+
+$$
+q_\mathrm{loc,pair} = 2\dot m u \frac{\tan^2\alpha}{a}
+$$
+
+and, if those loads are azimuthally smoothed, the corresponding equivalent pressure from one pair is
+
+$$
+p_\mathrm{pair} = \frac{\dot m u \tan^2\alpha}{\pi a^2}.
+$$
+
+For $N_p$ paired modules distributed around the torus,
+
+$$
+p_\mathrm{eq} = \frac{N_p \dot m u \tan^2\alpha}{\pi a^2}.
+$$ {#eq-equivalent-pressure}
+
+So the helical lanes create a steady outward load channel that can inflate the torus and prestress its membrane.
+
+## Equivalent pressure is an averaged load model {#sec-equivalent-pressure-averaged-load}
+
+The pressure language is useful, but it is an azimuthally averaged approximation. The real loads are applied through discrete lanes, ribs, or lane carriers.
+
+The averaging is only justified when lane pitch, rib stiffness, and membrane shear transfer are fine enough that the discrete loads appear smooth at the wavelengths of interest. At $a=50~\mathrm{m}$, the circumference is about
+
+$$
+2\pi a \approx 314~\mathrm{m}.
+$$
+
+If the torus carries on the order of 300 lanes, the pitch is about 1 m and a pressure-like description may be reasonable for long-wave structural modes. If it carries only a few tens of lanes, the loading is much less pressure-like and the discrete rib-and-membrane mechanics become first-order.
+
+Equivalent pressure should therefore be read as a useful homogenized model, not as proof that the membrane literally feels a perfectly smooth gas-like pressure field.
+
+## Prestress creates a reaction substrate, not automatic stability {#sec-prestress-creates-reaction-substrate}
+
+Equivalent pressure $p_\mathrm{eq}$ creates hoop membrane force per unit ring length
+
+$$
+N_\theta = p_\mathrm{eq} a.
+$$ {#eq-hoop-force}
+
+This prestress plausibly helps with:
+
+- maintaining circular cross-section,
+- resisting ovalization,
+- suppressing wrinkling in a membrane wall,
+- increasing local indentation stiffness,
+- and providing a stable substrate onto which guides, sensors, power hardware, and auxiliary structure can be mounted.
+
+The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress. But that does not by itself prove local dynamic stability. Perturbations about the helical path still have follower-force character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
+
+A more honest way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
+
+$$
+K_\mathrm{tot}(k,\omega) = K_\mathrm{membrane}(k,\omega) + K_\mathrm{guide}(k,\omega) + K_\mathrm{control}(k,\omega).
+$$
+
+Then, for a sinusoidal perturbation of wavenumber $k$, the real part must satisfy
+
+$$
+\mathrm{Re} K_\mathrm{tot}(k,\omega) > T_\mathrm{eq} k^2.
+$$ {#eq-stiffness-condition}
+
+with positive damping and adequate phase margin required separately. In other words, the real difficulty is not merely static stiffness. It is whether the membrane, guide, and delayed controller together remain stabilizing over the disturbance band of interest. The local stability question is addressed in detail in @sec-app-local-stability and @sec-app-tube-section. 
+
+## Why the helix angle is likely small {#sec-helix-angle-likely-small}
+
+The architecture wants helical curvature for local prestress, but it also wants most of the speed to remain ring-tangential so the orbital ring can loft itself. That trade pushes the design toward shallow helical angles.
+
+Define the paired-module momentum-flux scale
+
+$$
+A_\mathrm{pair} = N_p \dot m u.
+$$ {#eq-pair-flux}
+
+The total paired-lane contribution is then $2A_\mathrm{pair}$.
+
+The inflation requirement can be written as
+
+$$
+A_\mathrm{pair} \ge \frac{\pi a N_{\theta,\mathrm{req}}}{\tan^2\alpha}
+$$ {#eq-inflation-requirement}
+
+where $N_{\theta,\mathrm{req}}$ is required hoop membrane force per unit length.
+
+The macro-lift requirement, derived in @sec-full-system-faces-closure as @eq-lift-requirement, is
+
+$$
+A_\mathrm{pair} \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
+$$
+
+Balancing the two gives a useful screening estimate
+
+$$
+\tan^2\alpha_\mathrm{cross} = 2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)
+$$ {#eq-crossover-angle}
+
+with
+
+$$
+\Gamma = \frac{N_{\theta,\mathrm{req}}}{w_p}.
+$$ {#eq-prestress-ratio}
+
+For small angles,
+
+$$
+\alpha_\mathrm{cross} \approx \sqrt{2\pi a\Gamma\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}.
+$$
+
+Using a reference case with $a=50~\mathrm{m}$, altitude $500~\mathrm{km}$, $u=10~\mathrm{km/s}$, and $\Gamma=10$, one gets a screening crossover angle of about $0.014~\mathrm{rad}$, or about $0.79^\circ$. So once macro lift matters, the preferred helical bias is very shallow. At $a=50~\mathrm{m}$ and $\alpha\approx0.79^\circ$, one full wrap pitch is about $23~\mathrm{km}$, which means the intended architecture is a field of many nearly axial lanes with only slight azimuthal drift, not a steep screw conveyor.
+
+The more important question is whether that shallow helix produces enough prestress. With passive supported weight of $10~\mathrm{kN/m}$ and prestress ratio $\Gamma=10$, the implied hoop-force target is only about $100~\mathrm{kN/m}$. At a 50 m torus radius, that corresponds to only about 2 kPa of equivalent pressure. That is useful for roundness and wrinkle suppression, but it is not obviously enough to make a 100 m diameter shell behave like a stiff beam.
+
+So $\Gamma=10$ should be read as a lower-bound screening case, not as a settled design point. If shell-mode analysis demands higher prestress, the required helix angle rises only slowly. At the same $500~\mathrm{km}$, $10~\mathrm{km/s}$ point, $\Gamma=30$ gives about $1.38^\circ$ and a wrap pitch of about $13~\mathrm{km}$, while $\Gamma=100$ gives about $2.51^\circ$ and a wrap pitch of about $7~\mathrm{km}$. The geometry therefore remains in the shallow-helix regime even for substantially higher prestress targets. The real requirement has to come from shell stiffness, ovalization modes, rib spacing, and load-path analysis rather than from geometry alone.
+
+## What the prestressed shell does and does not solve {#sec-prestressed-shell-solve}
+
+The prestressed membrane guide shell solves an important but limited problem. It gives the lanes a reaction structure, creates local prestress, and provides a platform for hardware. It does **not** automatically create a globally rigid torus, and it does **not** by itself close the local stability problem.
+
+The homogenized shell picture should also be bounded in wavelength. With about 300 lanes around a 314 m circumference, the pitch is about 1 m, so pressure-like averaging may be reasonable for long-wave deformation. It should not be trusted blindly for metre-scale guide deformation, local rib failure, lane dropout, or sharp control-sector gradients. A useful rule of thumb is that the smoothed shell model belongs to wavelengths well above the torus diameter and preferably well above the circumference, while shorter scales require an explicitly discrete lane-and-rib treatment.
+
+## Prestress is not tangent stiffness {#sec-prestress-tangent-stiffness}
+
+The helical stream-generated load must not be double-counted. The same moving masses that generate the steady outward preload also generate nonconservative incremental follower-force terms when the guide path is perturbed.
+
+For one lane, the moving-stream dynamic-tension scale is
+
+$$
+T_{\mathrm{eq,lane}} = \lambda_{\mathrm{lane}} v^2 .
+$$ {#eq-lane-tension}
+
+In the reference case, $\lambda_{\mathrm{lane}}\approx 5.4~\mathrm{kg/m}$ and $v\approx10~\mathrm{km/s}$, giving
+
+$$
+T_{\mathrm{eq,lane}}\approx5.4\times10^8~\mathrm{N}.
+$$
+
+For a perturbation of wavelength $L$, the quasi-static follower contribution scales as
+
+$$
+q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left(\frac{2\pi}{L}\right)^2Y .
+$$ {#eq-follower-load}
+
+For $Y=1~\mathrm{mm}$ this gives approximately:
+
+| Wavelength $L$ | Anti-restoring load per lane |
+| ---: | ---: |
+| 100 m | about 2.1 kN/m |
+| 10 m | about 210 kN/m |
+| 1 m | about 21 MN/m |
+
+The steady helical normal load in the same reference case is only about 2.1 kN/m per lane. Thus, at 100 m wavelength, a 1 mm perturbation already creates an anti-restoring incremental load comparable to the entire steady helical preload; at 10 m wavelength it is roughly two orders of magnitude larger.
+
+This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local follower-force instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e. internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
+
+Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream follower-force scale remains of order $\dot m u$. Meaningful direct competition with the follower-force scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
+
+A full eigenvalue analysis of both the local lane and local tube levels is presented in @sec-app-local-stability and @sec-app-tube-section.

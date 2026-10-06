@@ -1,0 +1,112 @@
+# Notation {.unnumbered}
+
+SI units throughout. Quantities written "per unit ring length" are measured along the ring centreline $s$. Quantities written "per unit lane length" are measured along one helical lane. At the shallow helix angles used here the two differ by a factor of $\cos\alpha$, which is within 0.1% of one.
+
+## Coordinates and geometry {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $s$ | Distance along the ring centreline. The "axial" direction of the local tube. | m |
+| $\theta$ | Azimuth around the tube cross-section | rad |
+| $r$ | Local radial direction, normal to the tube wall | m |
+| $x$ | Distance along a single lane (the [lane-guide](#sec-lane-guide) and [self-centering](#sec-no-self-centering) chapters) | m |
+| $R$ | Ring radius, measured from Earth's centre | m |
+| $a$ | Tube radius (minor radius of the torus) | m |
+| $\alpha$ | Helix angle between a lane and the $s$ direction | rad |
+| $\kappa$ | Path curvature | m$^{-1}$ |
+| $h_j$ | Handedness of lane $j$, $\pm1$ ([tube-section appendix](#sec-app-tube-section)) | – |
+| $\Delta\phi$ | Angular width of a control sector around the tube | rad |
+
+## Speeds and gravity {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $v$ | Slug speed along its lane | m/s |
+| $u = v\cos\alpha$ | Ring-direction component of slug speed | m/s |
+| $V_s = \pm u$ | Signed ring-direction speed. Upper sign for $+s$ travel. | m/s |
+| $U_g$ | Inertial tangential speed of the guide shell ([reference-frame appendix](#sec-app-reference-frames)) | m/s |
+| $u_\mathrm{orb}$ | Circular orbital speed at the ring radius, $\sqrt{g_h R}$ | m/s |
+| $g_h$ | Gravitational acceleration at ring altitude | m/s² |
+
+## Stream and slugs {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $\dot m$ | Mass flux in one lane | kg/s |
+| $\lambda$ | Moving mass per unit length. Subscripts: lane, stream (all lanes), eff ($=\dot m/v$). | kg/m |
+| $T_\mathrm{eq}$ | Dynamic-tension scale, $\lambda v^2 = \dot m v$. Not a material tension. | N |
+| $E'$ | Stream kinetic energy per unit ring length | J/m |
+| $m_s$ | Mass of one slug | kg |
+| $J$ | Slug number flux in one lane | s$^{-1}$ |
+| $n(s)$ | Slug number density along a lane ([fill-and-drain section](#sec-fill-drain-required-steady)) | m$^{-1}$ |
+| $h$ | Time headway between slugs, $1/J$ | s |
+| $d$ | Centre-to-centre slug spacing, $vh$ | m |
+| $\ell_s$ | Slug length | m |
+| $g_\mathrm{min}$ | Minimum allowable gap between slugs | m |
+
+## Loads and structure {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $f$ | Guide force per unit lane length | N/m |
+| $q$ | Force per unit ring length. Subscripts name the channel: lift, loc (helical), $s$ (tug), follow, $\parallel$, $\perp$, ctrl. | N/m |
+| $p$ | Pressure or traction. Subscripts: eq (equivalent inflation), req, mag, $\parallel$, $\perp$. | Pa |
+| $A'$ | Magnetic interaction area per unit lane length | m |
+| $B$ | Magnetic flux density ([lane-guide chapter](#sec-lane-guide) only) | T |
+| $w_p$ | Net inward non-stream load per unit ring length | N/m |
+| $N_\theta$ | Hoop membrane force per unit ring length | N/m |
+| $\Gamma$ | Prestress ratio, $N_{\theta,\mathrm{req}}/w_p$ | – |
+| $N_p$ | Number of paired lane modules around the tube | – |
+| $N_s$ | Number of paired modules taking part in one control sector | – |
+| $N_\ell$ | Number of lanes in a tube section ([tube-section appendix](#sec-app-tube-section)) | – |
+| $A_\mathrm{pair}$ | Paired-module momentum-flux scale, $N_p\dot m u$ | N |
+| $F$ | Integrated tug force. Subscripts: lane, pair, sector. | N |
+| $M$ | Bending couple from opposed sectors ([tug-field chapter](#sec-tug-fields)) | N m |
+| $C_\mathrm{sec}$ | Finite-sector factor in the couple estimate | – |
+| $\eta_\mathrm{load}$ | Cross-section load-transfer efficiency, 0 to 1 | – |
+| $P$ | Power | W |
+| $\beta$ | Lift-coupling coefficient, $1/R + g_h/u^2$ | m$^{-1}$ |
+| $L_\mathrm{eff}$ | Effective speed-offset length of a tug command | m |
+| $\mathbf{S}$ | Local map from lane speed trims to tug, pressure and lift outputs | – |
+| $\tau_d$ | Total sensing, computation and actuation delay | s |
+
+## Stability appendices {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $y$, $Y$ | Transverse displacement and its amplitude | m |
+| $k$, $k_s$, $k_\parallel$ | Wavenumber: generic, along the ring, along a lane | m$^{-1}$ |
+| $L$, $L_s$ | Wavelength: generic, along the ring | m |
+| $n$ | Cross-section mode number ([tube-section appendix](#sec-app-tube-section)) | – |
+| $\sigma$ | Complex growth rate. A mode is stable when $\mathrm{Re}\,\sigma<0$. | s$^{-1}$ |
+| $M$ | Supported mass per unit lane length ([local-stability appendix](#sec-app-local-stability)) | kg/m |
+| $C$ | Passive damping per unit lane length | N s/m² |
+| $B$ | Bending stiffness of the lane carrier ([local-stability appendix](#sec-app-local-stability)) | N m² |
+| $K_0$ | Transverse restoring stiffness per unit lane length | N/m² |
+| $K_c$, $C_c$ | Active stiffness and damping per unit lane length | N/m², N s/m² |
+| $\tau_a$ | Actuator lag | s |
+| $K_\mathrm{follow}$ | Destabilising stream stiffness, $T_\mathrm{eq}k^2$ | N/m² |
+| $\zeta$ | Target damping ratio | – |
+| $\gamma_K$ | Stiffness margin factor | – |
+| $\gamma_\mathrm{stab}$ | Required decay-rate margin | s$^{-1}$ |
+| $t_\mathrm{conv}$ | Time for a disturbance of wavelength $L$ to convect past, $L/v$ | s |
+| $\mathbf{x}$, $\mathbf{z}$ | Tube-section state and augmented closed-loop state | – |
+| $\mathbf{u}$, $\mathbf{B}$ | Actuator command vector and its influence matrix | – |
+| $\mathbf{M}$, $\mathbf{C}$, $\mathbf{K}$ | Mass, damping and stiffness matrices | – |
+| $\boldsymbol{\phi}_r$ | Mode shape $r$ | – |
+| $\epsilon$ | Fractional mismatch in one lane | – |
+| $t_\mathrm{iso}$ | Time to isolate and unload a faulted cell | s |
+
+## Symbols with more than one meaning {.unnumbered}
+
+A few letters are reused in separate parts of the paper. Context and typeface tell them apart.
+
+| Symbol | Meanings |
+| ------ | ------------------------------ |
+| $B$, $\mathbf{B}$ | Magnetic flux density; lane-carrier bending stiffness; actuator influence matrix (bold) |
+| $M$, $\mathbf{M}$ | Bending couple; supported mass per unit lane length; mass matrix (bold) |
+| $n$ | Slug number density; cross-section mode number |
+| $h$, $h_j$ | Time headway; lane handedness. As a subscript in $g_h$, altitude. |
+| $u$, $\mathbf{u}$ | Ring-direction slug speed; actuator command vector (bold) |
+| $y$, $\mathbf{y}$ | Transverse displacement; measured-output vector (bold) |
+| $L$ | Wavelength; with a subscript, a named length such as $L_\mathrm{eff}$ or $L_\mathrm{iso}$ |

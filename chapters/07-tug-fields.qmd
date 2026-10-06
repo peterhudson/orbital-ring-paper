@@ -1,0 +1,379 @@
+# Distributed tug fields and macro-scale ring actuation {#sec-tug-fields}
+
+This is the second major payoff of the architecture, and arguably the main result of the paper.
+
+The inflated torus makes a locally stiff substrate. The four-lane balanced cell gives that substrate a distributed long-wave actuation channel.
+
+The right mental picture is not a rigid pipe with a single giant control thruster attached to it. It is a huge, lightly built but prestressed torus with many nearly axial lanes distributed around its wall, and selected neighborhoods of stator modules quietly speeding up or slowing down particular lanes over long distances. Those neighborhoods are what let the ring "lean" on itself internally.
+
+At this point the architecture has solved an important local problem. The helical lanes can inflate and prestress the membrane guide shell, and the four-lane cell can remove hidden steady momentum and torque channels. But a locally stiff torus is not yet a globally well-aligned orbital ring. A 100 m diameter prestressed membrane can still be flexible at long wavelength. The ring still has to respond to tether loads, payload-launch impulses, gravity-gradient effects, construction asymmetries, and wobble modes.
+
+So the decisive question is whether this lane architecture identifies a plausible macro-scale actuation channel. The claim of this section is narrower than full control closure: if one places spatial speed gradients in the right lanes, in the right sectors, then the torus can in principle develop distributed internal tugs and ring-scale bending moments. Whether the resulting shell, guide, controller, and power system can stabilize those modes in practice is a later question.
+
+## Stationary spatial speed gradients act on momentum flux {#sec-stationary-spatial-speed-gradients}
+
+The quantity being controlled is momentum flux along the ring centerline direction $s$.
+
+Physically, one should imagine a control sector as a long run of stator hardware that does not grab the whole torus at once. Instead, it gently biases the speed of selected lanes over some distance, rather like a very long electromagnetic grade in a maglev line. The force on the structure comes from those distributed speed ramps.
+
+Let one lane in a balanced cell have signed centerline speed
+
+$$
+V_s(s) = \pm u(s)
+$$
+
+with the upper sign for $+s$ travel and the lower sign for $-s$ travel. Here $u=v\cos\alpha$ is the scalar ring-centerline speed component.
+
+For a stationary speed field, the convective acceleration along $s$ is
+
+$$
+a_s = V_s \frac{dV_s}{ds} = u \frac{du}{ds}.
+$$ {#eq-convective-acceleration-s}
+
+The key point is that $a_s$ is independent of the travel direction. A fixed spatial speed gradient acts the same way on counter-propagating lanes when projected onto the stationary structure.
+
+For one lane with scalar mass flux $\dot m$, the structural force per unit ring length is therefore
+
+$$
+q_{s,\mathrm{lane}} = -\dot m \frac{du}{ds}.
+$$ {#eq-tug-law}
+
+If $\alpha$ is locally constant so that $u=v\cos\alpha$, this may also be written as
+
+$$
+q_{s,\mathrm{lane}} = -\dot m \cos\alpha \frac{dv}{ds}.
+$$
+
+That is the basic tug-field law.
+
+## Why counter-propagating lanes add instead of canceling {#sec-counter-propagating-lanes-add}
+
+Now consider a mirrored pair in the same fixed spatial speed gradient. If $du/ds>0$, the $+s$-traveling lane accelerates through the section while the counter-propagating lane decelerates through the same section. Yet their structural force densities are the same, because both are governed by the same stationary gradient law, @eq-tug-law.
+
+So for one mirrored pair,
+
+$$
+q_{s,\mathrm{pair}} = -2\dot m \frac{du}{ds}.
+$$ {#eq-tug-pair}
+
+This is the real reason the pair adds instead of cancels. It is not that both lanes slow down in their own direction of travel. It is that a fixed spatial speed gradient produces the same structural reaction for both travel directions.
+
+In more visual terms, a mirrored lane pair passing through one control sector behaves less like two carts hitting two brakes and more like two opposite traffic lanes passing through the same hill in the road. One stream is climbing while the other is descending, but the roadbed still feels the same net push in the same place.
+
+Integrating across a control section from $u_1$ to $u_2$ gives
+
+$$
+F_{\mathrm{pair}} = -2\dot m (u_2-u_1).
+$$ {#eq-tug-pair-integrated}
+
+For $N_s$ participating paired modules in one azimuthal sector,
+
+$$
+F_{\mathrm{sector}} = -2N_s\dot m (u_2-u_1).
+$$ {#eq-tug-sector}
+
+If one only needs the magnitude, this becomes
+
+$$
+|F_{\mathrm{sector}}| = 2N_s\dot m |\Delta u|.
+$$
+
+For constant $\alpha$, $|\Delta u| = \cos\alpha |\Delta v|$.
+
+## Distributed tug fields {#sec-distributed-tug-fields}
+
+The control section need not be a hard boundary. In fact, a distributed transition is usually better because it lowers peak local force density.
+
+That means the actuator is best imagined not as a point force but as a long, quiet patch of guideway that slightly changes lane speed over hundreds of metres or kilometres. The tug is smeared out along the structure instead of being applied at one violent station.
+
+For one mirrored pair,
+
+$$
+q_{s,\mathrm{pair}}(s) = -2\dot m \frac{du}{ds}.
+$$
+
+For $N_s$ participating paired modules,
+
+$$
+q_{s,\mathrm{sector}}(s) = -2N_s\dot m \frac{du}{ds}.
+$$
+
+Integrating over the transition width gives
+
+$$
+F_{\mathrm{sector}} = \int q_{s,\mathrm{sector}}(s) ds = -2N_s\dot m \Delta u.
+$$
+
+So a distributed tug field preserves the same integrated authority as a hard transition while spreading the load over a useful finite distance.
+
+## Opposed sectors create bending moments {#sec-opposed-sectors-create-bending}
+
+Now place such tug fields in opposed azimuthal sectors of a torus of radius $a$. Then the sector tugs form a couple.
+
+At the level of order of magnitude,
+
+$$
+M \sim 2a |F_{\mathrm{sector}}|.
+$$ {#eq-couple}
+
+A more explicit finite-sector estimate is
+
+$$
+M_{\mathrm{pair}} = 4aN_s\dot m |\Delta u| C_\mathrm{sec}(\Delta\phi)
+$$ {#eq-couple-finite-sector}
+
+with
+
+$$
+C_\mathrm{sec}(\Delta\phi) = \frac{\sin(\Delta\phi/2)}{\Delta\phi/2}
+$$
+
+where $\Delta\phi$ is sector width and $C_\mathrm{sec}$ accounts for finite angular extent.
+
+This is the macro-scale actuation mechanism. It turns distributed speed modulation in balanced helical lanes into a real bending moment on the torus. @fig-opposed-cells sketches the opposed balanced four-cells geometrically: one cell runs from $A$ to $B$, while a mirrored cell runs from $A{\prime}$ to $B{\prime}$ on the opposite side of the guide shell. To keep the geometry readable, each plotted helix stands for the coincident positive and negative slug lanes of one handedness within that cell. @fig-opposed-cells-moment then makes the same logic more physical by resolving the lane reactions at representative control locations into local $s$- and $\theta$-components. The lane numbers from 1 to 8 are indicated in both @fig-opposed-cells and @fig-opposed-cells-moment for ease of bookkeeping.
+
+![Two opposed balanced four-cells on a local guide-shell segment. One cell spans $A$ to $B$ and the other spans $A{\prime}$ to $B{\prime}$. Each helical path label 1-8 matches the lane numbers 1-8 used in @fig-opposed-cells-moment.](../figures/figure-5-opposed-balanced-cells-bending2.svg){#fig-opposed-cells}
+
+![Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential $F_\theta$ components cancel, while the ring-direction $F_s$ components add. In the opposed sectors, those surviving axial reactions push $A$ and $B$ apart while pulling $A{\prime}$ and $B{\prime}$ together, producing the bending couple sketched in @fig-opposed-cells.](../figures/figure-6-opposed-balanced-cells-moment.svg){#fig-opposed-cells-moment}
+
+So the physical picture is two-stage. Within each balanced cell, the unwanted circumferential reaction is removed by symmetry. Across the torus, the surviving $s$-directed reactions push $A$ and $B$ apart while pulling $A{\prime}$ and $B{\prime}$ together, so the opposed sectors generate a couple rather than a mere net force.
+
+The simplest mental picture is squeezing a hoop on two opposite sides, except here the squeeze is generated internally by momentum exchange inside the lane system rather than by external hands.
+
+### Load path from lane tug to ring bending {#sec-load-path-lane-tug}
+
+The couple estimate above is only useful if the torus can actually transmit sector forces as a ring-scale bending moment rather than merely ovalizing locally.
+
+The intended free-body path is: lane force into lane carrier, lane carrier into rib or local cross-brace, rib into membrane hoop tension and circumferential shear, and then that distributed cross-sectional load closing against the opposed sector to create a couple about the ring centerline. In other words, the lane does not push directly on a rigid beam. It pushes on a ribbed shell that must redistribute the load around the torus cross-section before that load can look like ring-scale bending.
+
+That means the simple couple law belongs to the long-wave regime. A more honest bookkeeping form is
+
+$$
+M_\mathrm{eff} \approx \eta_\mathrm{load} 2a |F_\mathrm{sector}|,
+$$ {#eq-couple-effective}
+
+where $\eta_\mathrm{load}$ is a cross-sectional transfer efficiency between zero and one that absorbs ovalization, shear lag, local twist, and other non-ideal shell behavior. At wavelengths comparable with the torus diameter, rib spacing, or shell ovalization modes, one should expect $\eta_\mathrm{load}$ to fall below unity and local distortion to appear before clean global bending emerges. The present paper therefore treats the tug-sector couple as a plausible long-wave actuation primitive, not as proof that every local shell mode cooperates automatically.
+
+A crude screening estimate helps pin that down. In the illustrative 10 MN tug example spread over a 100 km sector, the average structural load is only about 100 N/m along that sector. If ribs or cross-braces are spaced every 10 m, that corresponds to only about 1 kN of incremental axial transfer per rib bay before azimuthal sharing. Even if only a minority of the circumference participates efficiently, the average per-bay transfer still lands in the kilonewton range rather than the meganewton range. That does not prove that $\eta_\mathrm{load}$ is near unity, but it does suggest that long-wave load transfer is not obviously absurd provided rib spacing is on the order of metres to tens of metres and the hoop prestress is already in the $\Gamma\sim30$ to 100 regime rather than the bare $\Gamma=10$ lower bound.
+
+## Why fill and drain are not required for steady speed fields {#sec-fill-drain-required-steady}
+
+The remaining concern is whether such speed modulation requires literal insertion and removal of slugs at every ordinary control section. For the architecture considered here, the answer is no.
+
+Let slug number flux be $J$, so that
+
+$$
+\dot m = J m_s
+$$
+
+where $m_s$ is mass per slug. In steady flow through a lane with local speed $v(s)$, number continuity gives
+
+$$
+n(s) = \frac{J}{v(s)}
+$$ {#eq-number-density}
+
+where $n(s)$ is slug number density along the lane. Equivalently, if $h=1/J$ is time headway, then the center-to-center spacing in a locally uniform region is
+
+$$
+d(s) = \frac{1}{n(s)} = v(s)h.
+$$
+
+So a region with lower speed automatically compresses spacing and raises local occupancy, while a region with higher speed automatically expands spacing and lowers it. No source term is required. The lane stores more or less slug inventory simply because the same flux is moving more slowly or more quickly through that region.
+
+That is the clean kinematic reason why ordinary tug fields do not require fill-and-drain hardware.
+
+It is also important to state where the force actually comes from. The force is generated at the speed-gradient zones, not in a uniform low-speed pocket by itself. A closed low-speed pocket that returns to its starting speed has zero net integrated tug,
+
+$$
+\int -2\dot m \frac{du}{ds} ds = -2\dot m\Delta u = 0,
+$$
+
+so its entry and exit ramps produce equal and opposite tugs at different positions. Useful macro-scale actuation therefore comes from placing those opposite gradient zones deliberately in space, so they generate internal load, bending moment, or stress redistribution where desired.
+
+So the useful mental picture is not "the ring has a slow patch." It is "the ring has a deliberately placed slow-down ramp here and a deliberately placed speed-up ramp somewhere else," with the separation between those ramps creating the useful internal couple.
+
+The main constraints are instead collision and delay limits. For a monotone low-speed region with minimum speed $v_1$, the minimum spacing becomes
+
+$$
+d_\mathrm{min} = h v_1
+$$
+
+so collision avoidance requires
+
+$$
+h v_1 \ge \ell_s + g_\mathrm{min}
+$$ {#eq-collision-limit}
+
+where $\ell_s$ is slug length and $g_\mathrm{min}$ is the minimum allowable gap.
+
+For an upward ramp, incomplete actuation can let a trailing slug catch a slower incumbent. A useful first delay bound is
+
+$$
+\tau_d < \frac{h v_0 - (\ell_s + g_\mathrm{min})}{v_1-v_0}
+$$ {#eq-delay-bound}
+
+where $\tau_d$ is total sensing, computation, actuation, and field-establishment delay.
+
+For time-varying control profiles, the continuity constraint is stronger still. The slug density must satisfy
+
+$$
+\frac{\partial n}{\partial t} + \frac{\partial (nV)}{\partial s} = 0.
+$$ {#eq-continuity}
+
+So the no-fill/no-drain claim applies only to steady or slowly varying speed fields. A controller cannot arbitrarily command $u(s,t)$ without launching density and headway waves through the lane. Dynamic control therefore requires phase and inventory management so that those waves do not create collision, starvation, or excessive headway error.
+
+So the issue is not that mass must be added or removed in ordinary control sections. The issue is that the speed profile has to respect both static spacing limits and dynamic continuity.
+
+## The tug actuator is also a high-power energy exchanger {#sec-tug-actuator-high-power}
+
+The tug equations are momentum-flux equations, but the next question is about power, and rightly so.
+
+For one lane, the exact finite power transfer across a section that changes speed from $u_1$ to $u_2$ is
+
+$$
+P_{\mathrm{lane}} = \frac{1}{2}\dot m\left(u_2^2-u_1^2\right) = \dot m \bar u \Delta u
+$$ {#eq-lane-power}
+
+where $\bar u=(u_1+u_2)/2$. For small $\Delta u$, this reduces to
+
+$$
+P_{\mathrm{lane}} \approx \dot m u   \Delta u.
+$$
+
+Using the force magnitude $|F_{\mathrm{lane}}| = \dot m |\Delta u|$, this is
+
+$$
+P_{\mathrm{lane}} \approx |F_{\mathrm{lane}}|\,u.
+$$
+
+At $u \sim 10~\mathrm{km/s}$, even modest structural tug implies enormous power exchange. A 1 MN tug at 10 km/s corresponds to roughly 10 GW.
+
+For the notional ring used throughout the paper, the more relevant number is larger. Take the screening passive load to be
+
+$$
+w_p = 10~\mathrm{kN/m}.
+$$
+
+Then a 100 km arc with a 1% local weight-or-lift mismatch carries an unbalanced load of about 10 MN.
+
+So the grounded long-wave control example for this hypothetical ring is 10 MN, not 1 MN. At 10 km/s, that implies about 100 GW of exchanged power.
+
+If the notional 300-lane cross-section participates broadly in that correction, the mean integrated axial contribution is only about 33 kN per lane. The surprising quantity is therefore not force per lane. It is the power associated with making even a small speed change at 10 km/s.
+
+That does not by itself kill the architecture, but it does mean the tug-field actuator is not a gentle trim system. It is a very high-power bidirectional momentum-and-energy exchanger. The paired-gradient argument gives local power balance only if the accelerating and decelerating channels are physically co-located, phase-matched, and tied together by a bidirectional electrical or magnetic power-transfer path. Otherwise the control sector is not a locally self-balancing actuator. It is a high-power grid node that must exchange power with a bus, buffer, or some other part of the ring.
+
+Any serious realization would therefore require bidirectional power electronics, local energy buffering, phase-managed transfer between accelerating and decelerating lanes, and heat rejection for conversion losses.
+
+Again, the helpful mental model is not a small trim tab. It is a distributed, reversible linear-motor system moving very large power between lanes and sectors while only modestly changing speed.
+
+## Control-channel coupling and allocation {#sec-control-channel-coupling-allocation}
+
+The tug channel is not dynamically independent. Spatial speed gradients generate structural tug, but the associated local speed field also changes helical prestress and Earth-scale lift.
+
+This is the point where the machine stops looking like three separate knobs and starts looking like a coupled control surface. Turning the "tug" knob also nudges the local pressure and local lift channels because all three are functions of the same lane-speed field.
+
+For the prestress channel,
+
+$$
+p_\mathrm{eq} \propto \dot m u \tan^2\alpha,
+$$
+
+so, at fixed $\dot m$ and $\alpha$, the first-order pressure sensitivity is simply
+
+$$
+\frac{\delta p_\mathrm{eq}}{p_\mathrm{eq}} = \frac{\delta u}{u}.
+$$
+
+For the lift channel,
+
+$$
+q_\mathrm{lift} = 2N_p\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
+$$
+
+so the corresponding first-order sensitivity is
+
+$$
+\delta q_\mathrm{lift} = 2N_p\dot m\left(\frac{1}{R} + \frac{g_h}{u^2}\right)\delta u.
+$$ {#eq-lift-sensitivity}
+
+The fractional lift sensitivity is therefore
+
+$$
+\frac{\delta q_\mathrm{lift}}{q_\mathrm{lift}} = \frac{\left(\frac{1}{R} + \frac{g_h}{u^2}\right)}{\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}\frac{\delta u}{u}.
+$$
+
+At the illustrative 500 km, $u=10~\mathrm{km/s}$ reference point, that multiplier is about 3.8. So a 1% local speed modulation produces roughly a 3.8% local lift modulation in the participating lift stream.
+
+The same speed field therefore actuates three coupled outputs: axial tug, local pressure, and local lift. A real machine would need a control-allocation layer that distributes commands across the four lanes and across neighboring sectors so that desired tug, pressure trim, and lift trim are separated as well as possible.
+
+The right coupling metric is not just the local gradient. It is the speed-offset area associated with the tug command. Define
+
+$$
+\beta = \frac{1}{R} + \frac{g_h}{u^2}.
+$$ {#eq-beta}
+
+For the participating lane pairs in one control sector, the integrated lift side-effect is
+
+$$
+\Delta W_{\mathrm{lift,sector}} = 2N_s\dot m\beta \int \delta u(s) ds.
+$$
+
+The associated tug from one gradient zone is still
+
+$$
+F_{\mathrm{sector}} = -2N_s\dot m \Delta u.
+$$
+
+So the coupling ratio becomes
+
+$$
+\frac{\Delta W_{\mathrm{lift,sector}}}{F_{\mathrm{sector}}} = -\beta \frac{\int \delta u(s) ds}{\Delta u}.
+$$ {#eq-coupling-ratio}
+
+If one defines an effective speed-offset length, called $L_\mathrm{eff}$, as the speed-offset area divided by the speed step, then a simple $\beta L$ estimate is just the special case in which that effective length happens to equal the physical sector length. A triangular ramp gives about $L_\mathrm{eff}=L/2$. A long low-speed pocket is dominated by its plateau length. An antisymmetric profile can partly cancel its own lift side-effect.
+
+So the honest statement is this: the control coupling is governed by the speed-offset area associated with the tug command, not by the gradient alone.
+
+At the illustrative 500 km, u = 10 km/s point, beta is about $2.3\times10^{-7}$ per metre, and the corresponding inverse length scale is about 4,350 km. Commands whose effective offset length is far shorter than a few thousand kilometres therefore sit in a weak-coupling regime.
+
+It is useful to separate three different smallness claims.
+
+First, the required speed trim for a long-wave tug can be small because the moving mass flux is enormous. A 10 MN tug spread across 300 participating lanes is only about 33 kN per lane. With about $5.4\times10^{4}$ kg/s per lane, that implies a speed step of only about 0.61 m/s, or about $6\times10^{-5}$ of the 10 km/s operating speed.
+
+Second, the integrated lift side-effect per tug is small only when the effective speed-offset length is short compared with about 4,350 km. For a conservative 100 km box-like offset profile, the coupling factor is about 0.023, so a 10 MN tug carries about 230 kN of integrated lift side-effect. For a triangular profile of the same span, the side-effect is about half that.
+
+Third, the resulting compensation burden can also be small, but only if the controller has spare lift and pressure trim authority. Spreading the conservative 230 kN side-effect over a 1000 km neighboring compensation arc gives only about 0.23 N/m, which is $2.3\times10^{-5}$ of the screening 10 kN/m supported load. With the 3.8 lift sensitivity, the required common-mode speed correction is then only about $6\times10^{-6}$. But that compensation is not free. It consumes trim margin and may introduce lower-frequency interactions between sectors.
+
+That is why the coupling can converge rather than blow up. The strong inner-loop channel is axial tug. Pressure and lift correction are weaker outer-loop trims only if the speed-offset area is short enough and spare trim authority exists.
+
+A useful way to name that problem is with a local linearized control map. Write
+
+$$
+\delta y = \mathbf{S} \delta u
+$$ {#eq-allocation-map}
+
+with output vector
+
+$$
+\delta y = \left(\delta F_s,  \delta p_\mathrm{eq},  \delta q_\mathrm{lift}\right)^T
+$$
+
+and lane-command vector
+
+$$
+\delta u = \left(\delta u_1,  \delta u_2,  \delta u_3,  \delta u_4\right)^T.
+$$
+
+Here $\mathbf{S}$ depends on lane placement, handedness, sector participation, and operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
+
+In plain language, the controller is trying to combine four lane-speed trims into three useful local effects, while suppressing the residual unwanted ones. That is a recognizable control-allocation problem, not handwaving.
+
+## Global bookkeeping and compensating zones {#sec-global-bookkeeping-compensating-zones}
+
+The ring is not creating net momentum from nowhere. A tugging sector must be paired with other sectors or stations that close the momentum and energy bookkeeping.
+
+What the architecture offers is not free net force. It offers a way to **redistribute** momentum flux and the associated structural reaction in space. That is exactly what a shape-control system needs.
+
+The important result is that this redistribution can be accomplished internally, in balanced four-lane cells, by smooth spatial speed fields. One does not need monolithic moving hoops or routine fill-and-drain hardware throughout the ring to generate useful macro moments.
+
+In practice, one should picture families of cooperating sectors around the ring, not a single magic control patch acting in isolation. One sector borrows momentum and another pays it back.

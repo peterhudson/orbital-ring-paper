@@ -1,0 +1,252 @@
+# Local closed-loop stability screen {#sec-app-local-stability}
+
+The perturbation argument in the main text shows that the moving streams generate nonconservative follower-force terms. A steady force balance is therefore not sufficient. A viable architecture must possess a stable linearized equilibrium.
+
+This appendix gives a deliberately minimal local eigenvalue screen, it asks whether there exists any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands.
+
+The answer from this screen is conditional. The follower-force instability is not automatically fatal at wavelengths of order $100~\mathrm{m}$ and longer, provided the local guide supplies high-bandwidth transverse stiffness and damping with sub-millisecond effective delay. At wavelengths of order $10~\mathrm{m}$ and below, active control becomes severe enough that the burden probably has to move to passive guide stiffness, local carrier bending stiffness, very short magnetic-bearing loops, or a different lane architecture. The balanced-cell tug actuator by itself should not be credited with stabilizing those short and middle wavelengths unless its transverse control-influence matrix is explicitly demonstrated.
+
+## Reference lane parameters {#sec-reference-lane-parameters}
+
+Use the reference case from the main text:
+
+$$
+\lambda_{\mathrm{lane}}\approx 5.4~\mathrm{kg/m},
+$$
+
+$$
+v\approx 10^4~\mathrm{m/s},
+$$
+
+so that the lane-level moving-stream dynamic-tension scale is
+
+$$
+T_{\mathrm{eq,lane}}=
+\lambda_{\mathrm{lane}}v^2
+\approx
+5.4\times 10^8~\mathrm{N}.
+$$
+
+For a transverse perturbation of the lane carrier,
+
+$$
+y(s,t)=Y e^{i k s},
+$$
+
+the quasi-static follower-force contribution has stiffness magnitude per unit lane length
+
+$$
+K_{\mathrm{follow}}(k)=
+T_{\mathrm{eq,lane}}k^2.
+$$
+
+This is a negative tangent stiffness in the transverse perturbation equation. Numerically,
+
+|   Wavelength $L$ |                $k=2\pi/L$ | $K_{\mathrm{follow}}=T_{\mathrm{eq,lane}}k^2$ | Load for $Y=1~\mathrm{mm}$ |
+| ---------------: | ------------------------: | --------------------------------------------: | -------------------------: |
+|  $10~\mathrm{m}$ |   $0.628~\mathrm{m^{-1}}$ |                $2.1\times10^8~\mathrm{N/m^2}$ |        $210~\mathrm{kN/m}$ |
+|  $30~\mathrm{m}$ |   $0.209~\mathrm{m^{-1}}$ |                $2.4\times10^7~\mathrm{N/m^2}$ |         $24~\mathrm{kN/m}$ |
+| $100~\mathrm{m}$ |  $0.0628~\mathrm{m^{-1}}$ |                $2.1\times10^6~\mathrm{N/m^2}$ |        $2.1~\mathrm{kN/m}$ |
+| $300~\mathrm{m}$ |  $0.0209~\mathrm{m^{-1}}$ |                $2.4\times10^5~\mathrm{N/m^2}$ |       $0.24~\mathrm{kN/m}$ |
+|  $1~\mathrm{km}$ | $0.00628~\mathrm{m^{-1}}$ |                $2.1\times10^4~\mathrm{N/m^2}$ |          $21~\mathrm{N/m}$ |
+|  $3~\mathrm{km}$ | $0.00209~\mathrm{m^{-1}}$ |                $2.4\times10^3~\mathrm{N/m^2}$ |         $2.4~\mathrm{N/m}$ |
+
+The $100~\mathrm{m}$ case is important. The destabilizing incremental force for a $1~\mathrm{mm}$ perturbation is only a few kilonewtons per metre per lane, which is not obviously beyond magnetic-guide authority. The problem is not force magnitude alone. The problem is that the force is destabilizing, convected at $10~\mathrm{km/s}$, and must be opposed with the correct sign and phase.
+
+## Minimal scalar lane model {#sec-minimal-scalar-lane-model}
+
+Let $y(s,t)$ be one transverse generalized coordinate of a lane carrier relative to the local guide shell. The simplest linearized local model retaining the moving-stream terms is
+
+$$
+M y_{tt}+2\lambda v y_{st}+C y_t+B y_{ssss}+K_0 y+T_{\mathrm{eq,lane}} y_{ss}+q_{\mathrm{ctrl}}=0.
+$$ {#eq-lane-pde}
+
+The stream term enters with a positive sign because $y_{ss}=-k^2y$ for a Fourier mode, so it subtracts from the stiffness. It is clearer to write the Fourier-mode form directly. For
+
+$$
+y(s,t)=\hat y e^{\sigma t+i k s},
+$$
+
+the open-loop characteristic equation is
+
+$$
+M\sigma^2+\left(C+2i\lambda v k\right)\sigma+\left[B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right]=0.
+$$ {#eq-open-loop-characteristic}
+
+Here:
+
+* $M$ is the effective supported modal mass per lane length.
+* $C$ is passive damping per lane length.
+* $B k^4$ represents short-wave lane-carrier, rib, or local guide bending stiffness.
+* $K_0$ represents transverse shell/guide restoring stiffness.
+* $T_{\mathrm{eq,lane}}k^2$ is the destabilizing follower-force stiffness.
+* $2i\lambda v k\sigma$ is the non-self-adjoint convective term.
+
+The sign convention above has the stabilizing stiffness terms positive and the moving-stream follower stiffness negative. The necessary open-loop static-stiffness condition is therefore
+
+$$
+B k^4 + K_0 > T_{\mathrm{eq,lane}}k^2.
+$$
+
+Equivalently,
+
+$$
+K_{\mathrm{margin}}(k)=B k^4 + K_0 - T_{\mathrm{eq,lane}}k^2>0.
+$$ {#eq-stiffness-margin}
+
+If this margin is negative, the mode is locally divergent unless active control supplies additional stabilizing stiffness and damping.
+
+## Passive stiffness alone is unlikely to cover all wavelengths {#sec-passive-stiffness-alone-unlikely}
+
+Bending stiffness helps at short wavelength because it scales as $k^4$. It is ineffective at long wavelength compared with the follower term, which scales as $k^2$.
+
+If one tried to stabilize a mode using bending stiffness alone, the requirement would be
+
+$$
+B k^4 > T_{\mathrm{eq,lane}}k^2,
+$$
+
+or
+
+$$
+B > \frac{T_{\mathrm{eq,lane}}}{k^2}=T_{\mathrm{eq,lane}}\left(\frac{L}{2\pi}\right)^2.
+$$
+
+Numerically,
+
+|   Wavelength $L$ | Required $B$ for bending-only stabilization |
+| ---------------: | ------------------------------------------: |
+|  $10~\mathrm{m}$ |              $1.4\times10^9~\mathrm{N\,m^2}$ |
+|  $30~\mathrm{m}$ |           $1.2\times10^{10}~\mathrm{N\,m^2}$ |
+| $100~\mathrm{m}$ |           $1.4\times10^{11}~\mathrm{N\,m^2}$ |
+|  $1~\mathrm{km}$ |           $1.4\times10^{13}~\mathrm{N\,m^2}$ |
+
+Thus, local bending stiffness may plausibly help at metre-to-tens-of-metres wavelengths, but it is not a credible complete answer at $100~\mathrm{m}$ and above. Those wavelengths require guide stiffness, shell/guy-web stiffness, or active control.
+
+## Active transverse guide model {#sec-active-transverse-guide-model}
+
+The local guide must therefore be treated as an active transverse bearing. A minimal proportional-derivative controller with actuator lag is
+
+$$
+q_{\mathrm{ctrl}} = z,
+$$
+
+$$
+\tau_a \dot z + z=K_c y + C_c \dot y,
+$$ {#eq-controller-lag}
+
+where:
+
+* $K_c$ is active transverse stiffness per unit lane length,
+* $C_c$ is active damping per unit lane length,
+* $\tau_a$ is the effective actuator, sensing, computation, and field-establishment lag.
+
+For one Fourier mode, the closed-loop characteristic equation becomes
+
+$$
+M\sigma^2+\left(C+2i\lambda v k\right)\sigma+\left[B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right]+\frac{K_c+C_c\sigma}{1+\tau_a\sigma}=0.
+$$
+
+Multiplying through by $1+\tau_a\sigma$ gives a cubic eigenvalue problem:
+
+$$
+\left(1+\tau_a\sigma\right)\left\{M\sigma^2+\left(C+2i\lambda v k\right)\sigma+B k^4+K_0-T_{\mathrm{eq,lane}}k^2\right\}+K_c+C_c\sigma=0.
+$$ {#eq-closed-loop-cubic}
+
+The mode is locally stable if every root satisfies
+
+$$
+\mathrm{Re}(\sigma)<0.
+$$
+
+This is the minimum local eigenvalue test. Any full shell model should reduce to this form in the single-lane/single-mode limit.
+
+## Delay scale {#sec-delay-scale}
+
+A disturbance with wavelength $L$ convects past local hardware on the timescale
+
+$$
+t_{\mathrm{conv}}=\frac{L}{v}.
+$$
+
+A crude $30^\circ$ phase-lag bound gives
+
+$$
+\tau_{\mathrm{max}}\sim \frac{L}{12v}.
+$$ {#eq-delay-budget}
+
+At $v=10~\mathrm{km/s}$,
+
+|   Wavelength $L$ | Convective time $L/v$ | Approximate $30^\circ$ delay budget |
+| ---------------: | --------------------: | ----------------------------------: |
+|  $10~\mathrm{m}$ |       $1~\mathrm{ms}$ |                 $0.083~\mathrm{ms}$ |
+|  $30~\mathrm{m}$ |       $3~\mathrm{ms}$ |                  $0.25~\mathrm{ms}$ |
+| $100~\mathrm{m}$ |      $10~\mathrm{ms}$ |                  $0.83~\mathrm{ms}$ |
+| $300~\mathrm{m}$ |      $30~\mathrm{ms}$ |                   $2.5~\mathrm{ms}$ |
+|  $1~\mathrm{km}$ |     $100~\mathrm{ms}$ |                   $8.3~\mathrm{ms}$ |
+
+This immediately separates the problem into bands. Metre-scale disturbances cannot be stabilized by ordinary sector-level control. The $100~\mathrm{m}$ band is severe but not obviously impossible for local electromagnetic guide hardware. Kilometre-scale modes are much less demanding in delay, but may involve more shell mass and more cross-section coupling.
+
+## Worked scalar eigenvalue screen {#sec-worked-scalar-eigenvalue-screen}
+
+To test whether @eq-closed-loop-cubic has any plausible stable region, take a deliberately simple active-guide law:
+
+$$
+K_c = 3T_{\mathrm{eq,lane}}k^2,
+$$ {#eq-gain-choice}
+
+so the controller supplies three times the destabilizing follower stiffness. The resulting net positive stiffness margin, ignoring passive $B$ and $K_0$, is then approximately
+
+$$
+\begin{aligned}
+K_{\mathrm{net}}
+&= K_c - T_{\mathrm{eq,lane}}k^2 \\
+&= 2T_{\mathrm{eq,lane}}k^2.
+\end{aligned}
+$$
+
+Choose active damping corresponding to a target damping ratio $\zeta=0.35$:
+
+$$
+C_c = 2\zeta\sqrt{M K_{\mathrm{net}}}.
+$$
+
+For illustration, set
+
+$$
+M=50~\mathrm{kg/m},
+$$
+
+with $B=0$, $K_0=0$, and negligible passive damping. This is not a design claim. It is a screening mass chosen to ask whether the eigenvalue problem is categorically impossible.
+
+The table below gives the largest real part of the closed-loop eigenvalues for several actuator lags. Negative values are stable in this scalar model.
+
+|   Wavelength $L$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=0.1~\mathrm{ms}$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=0.5~\mathrm{ms}$ | $\max\mathrm{Re}(\sigma)$ with $\tau_a=1.0~\mathrm{ms}$ |
+| ---------------: | ------------------------------------------------------: | ------------------------------------------------------: | ------------------------------------------------------: |
+|  $10~\mathrm{m}$ |                        $-3.0\times10^2~\mathrm{s^{-1}}$ |                        $+7.7\times10^2~\mathrm{s^{-1}}$ |                        $+9.9\times10^2~\mathrm{s^{-1}}$ |
+|  $30~\mathrm{m}$ |                        $-2.2\times10^2~\mathrm{s^{-1}}$ |                        $+1.3\times10^1~\mathrm{s^{-1}}$ |                        $+1.9\times10^2~\mathrm{s^{-1}}$ |
+| $100~\mathrm{m}$ |                        $-7.4\times10^1~\mathrm{s^{-1}}$ |                        $-5.7\times10^1~\mathrm{s^{-1}}$ |                        $-3.0\times10^1~\mathrm{s^{-1}}$ |
+| $300~\mathrm{m}$ |                        $-2.6\times10^1~\mathrm{s^{-1}}$ |                        $-2.4\times10^1~\mathrm{s^{-1}}$ |                        $-2.2\times10^1~\mathrm{s^{-1}}$ |
+|  $1~\mathrm{km}$ |                                  $-7.7~\mathrm{s^{-1}}$ |                                  $-7.6~\mathrm{s^{-1}}$ |                                  $-7.4~\mathrm{s^{-1}}$ |
+
+This toy calculation gives a useful answer. The local follower-force problem is not mathematically hopeless. There are stable closed-loop eigenvalues for the $100~\mathrm{m}$ to kilometre band with sub-millisecond to millisecond-class local actuation. But the same controller becomes unstable at $10$ to $30~\mathrm{m}$ once delay rises into the $0.5$ to $1.0~\mathrm{ms}$ range.
+
+The force scale is also revealing. At $L=100~\mathrm{m}$, the active stiffness choice above corresponds to approximately
+
+$$
+\begin{aligned}
+K_cY
+&= 3T_{\mathrm{eq,lane}}k^2Y \\
+&\approx 6.4~\mathrm{kN/m}
+\end{aligned}
+$$
+
+for a $1~\mathrm{mm}$ displacement. That is severe but not obviously beyond local magnetic-bearing authority.
+
+At $L=10~\mathrm{m}$, the same rule requires about
+
+$$
+640~\mathrm{kN/m}
+$$
+
+for a $1~\mathrm{mm}$ displacement, with an effective delay well below $0.1~\mathrm{ms}$. That is a very different regime. It is probably not credible as ordinary distributed shell control. It would need to be handled by extremely local guide stiffness, short magnetic-bearing loops, stiff lane carriers, or by designing the lane geometry so that such modes are not permitted to grow.

@@ -1,0 +1,41 @@
+# Why straight lanes and monolithic rotors do not provide passive self-centering by momentum redirection alone {#sec-no-self-centering}
+
+This is the missing structural argument in many simple orbital-ring pictures.
+
+Consider a nominally straight lane or monolithic rotor segment with a small transverse deflection $y(x,t)$. For small slope, the centerline curvature is approximately
+
+$$
+\kappa \approx y_{xx}.
+$$
+
+The moving stream must then be forced to follow that curved path. The stream exerts on the guide a reaction load per unit length of the form
+
+$$
+q_\mathrm{stream} \approx -T_\mathrm{eq} y_{xx},
+$$ {#eq-stream-reaction}
+
+where $T_\mathrm{eq}=\lambda v^2$ or $T_\mathrm{eq}=\dot m v$, depending on whether one uses the continuous or fixed-flux picture.
+
+Now consider a sinusoidal perturbation,
+
+$$
+y(x,t) = Y\sin(kx).
+$$
+
+Then
+
+$$
+y_{xx} = -k^2 y,
+$$
+
+so the stream reaction becomes
+
+$$
+q_\mathrm{stream} = +T_\mathrm{eq} k^2 y.
+$$ {#eq-anti-restoring}
+
+That has the **same sign as the displacement**. If the lane is displaced upward at some point, the stream pushes upward there as well. The moving mass therefore pushes further into an existing curvature perturbation rather than restoring the lane to straightness.
+
+This is not yet a complete stability model. Real dynamics also involve beam stiffness, membrane stiffness, damping, actuator delay, boundary conditions, and control law. But it is enough to establish the key point: a straight high-speed lane does not passively self-center by momentum redirection alone. The moving stream behaves like an anti-restoring curvature follower unless the surrounding structure and controls provide compensating reaction.
+
+That observation cuts directly against naive pictures of a single giant monolithic rotor or a set of parallel straight rotors simply going around Earth. Such concepts may contain enough momentum to generate support in principle, but they do not automatically contain a good structural answer to perturbations.

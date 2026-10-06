@@ -1,0 +1,110 @@
+# What one lane requires from its guide {#sec-lane-guide}
+
+Before discussing orbital-ring architecture, it is worth asking what one lane demands from its stator.
+
+## Magnetic reaction scale {#sec-magnetic-reaction-scale}
+
+A rough upper bound on magnetic normal stress is
+
+$$
+p_\mathrm{mag,max} \sim \frac{B^2}{2\mu_0},
+$$ {#eq-magnetic-pressure}
+
+where $B$ is field strength and $\mu_0$ is the permeability of free space. The ideal upper-bound values from $B^2/(2\mu_0)$ are:
+
+| Field strength $B$ | Ideal upper-bound normal stress |
+| ---: | ---: |
+| 0.5 T | about 0.10 MPa |
+| 1 T | about 0.40 MPa |
+| 2 T | about 1.59 MPa |
+| 3 T | about 3.58 MPa |
+
+Real delivered traction will be lower because of gap, fringing, force margin, thermal limits, imperfect field topology, and control requirements.
+
+If $A'$ is effective magnetic interaction area per unit lane length, then the required mean traction is
+
+$$
+p_\mathrm{req} = \frac{f}{A'}.
+$$
+
+For a fixed-flux slug lane this becomes
+
+$$
+p_\mathrm{req} = \frac{\dot m v\kappa}{A'}.
+$$ {#eq-required-traction}
+
+So tight curvature, high speed, and small interaction perimeter all make the lane harder to guide.
+
+It is tempting to look for a simple square-cube optimum in slug size here, but this particular screen does not produce one cleanly. The relevant quantity is $A'$, effective interaction area per unit lane length, not the perimeter of one isolated slug. If a slug family is scaled uniformly at fixed aspect ratio and lane fill fraction, then per-slug mass scales like $L^3$ while slug count per unit lane length scales like $1/L$, so moving mass per unit lane length scales like $L^2$, just as interaction area per unit lane length does. On that simplified scaling, $p_\mathrm{req} = \dot m v\kappa/A'$ does not by itself force a single geometric optimum. The sharper slug-size trade appears later through switching rate, timing precision, gap control, eddy-current loss, and per-slug fault energy rather than through this one ratio alone.
+
+## Tugging also requires tangential traction {#sec-tugging-requires-tangential-traction}
+
+The guide-force screen is not only a normal-force screen. Any speed-gradient control section must also accelerate or decelerate the slugs longitudinally.
+
+For one lane, a stationary speed gradient requires tangential force density
+
+$$
+q_\parallel = \dot m \frac{du}{ds}
+$$ {#eq-tangential-force-density}
+
+along the lane. The corresponding mean tangential traction scale is therefore roughly
+
+$$
+p_\parallel \sim \frac{\dot m |du/ds|}{A'}.
+$$
+
+The normal guide requirement from curvature following is still
+
+$$
+p_\perp \sim \frac{\dot m v\kappa}{A'},
+$$
+
+so a more honest first screen on the stator is a vector resultant,
+
+$$
+p_{\mathrm{req,total}} \sim \sqrt{p_\perp^2 + p_\parallel^2},
+$$
+
+before adding control margin, thermal margin, gap margin, and loss margin. A ring that can guide the lane laterally but cannot push and brake it longitudinally does not yet possess the proposed macro-scale actuation channel.
+
+A representative numerical case is useful here. In the paper's notional 500 km, 10 kN/m passive-load example, the moving-stream line density is about 1600 kg/m. If that is spread across roughly 300 lanes, each lane carries about 5.4 kg/m, so at 10 km/s the mass flux per lane is about $5.4\times10^{4}$ kg/s. With helix angle about $0.79^\circ$ and tube radius $a=50~\mathrm{m}$, the local helical curvature is about $3.8\times10^{-6}\,\mathrm{m^{-1}}$. The resulting normal guide load is then only about 2.1 kN per metre of lane. Even a 10 MN long-wave tug shared across 300 lanes corresponds to only about 33 kN integrated axial contribution per lane, or about 0.33 N/m if spread over a 100 km control sector.
+
+A useful caveat is
+
+$$
+q_{\parallel,\mathrm{lane}} \sim \frac{F_{\mathrm{sector}}}{N_{\mathrm{lanes}}L_{\mathrm{sector}}}.
+$$
+
+So the mild force-density result depends on broad participation and long actuation length. If only 30 lanes participate, or if the actuation length is 10 km instead of 100 km, the average tangential force density rises by about two orders of magnitude. The lane-level distributed force densities are therefore not automatically benign. They are merely not the dominant horror under the broad-participation reference case used here. The harsher burdens remain the associated power exchange, synchronization, thermal management, and fault energy.
+
+## Convective local control {#sec-convective-local-control}
+
+A lane is not merely static curvature plus average force. The stream is convected through the guide at high speed, so disturbances arrive on a timescale
+
+$$
+t_\mathrm{conv} \sim \frac{L}{v},
+$$ {#eq-convective-time}
+
+where $L$ is disturbance wavelength. At $v=10~\mathrm{km/s}$, a $100~\mathrm{m}$ disturbance convects past in $10~\mathrm{ms}$, a $10~\mathrm{m}$ disturbance in $1~\mathrm{ms}$, and a $1~\mathrm{m}$ disturbance in $0.1~\mathrm{ms}$. High speed helps force generation and hurts control.
+
+Using lateral displacement $y(x,t)$ along a lane coordinate $x$, the convective derivative is
+
+$$
+\frac{D}{Dt} = \frac{\partial}{\partial t} + v\frac{\partial}{\partial x},
+$$
+
+so the lateral acceleration contains
+
+$$
+\frac{D^2y}{Dt^2} = y_{tt} + 2v y_{xt} + v^2 y_{xx}.
+$$ {#eq-convective-acceleration}
+
+The last term is the same curvature-following term that generates support force. The middle term is transport coupling. Both must be handled by the guide.
+
+A credible architecture therefore needs layered control:
+
+- very fast local gap control at the lane level,
+- bus-level coordination of nearby lanes and sectors,
+- and slower macro-shape control at the ring scale.
+
+The orbital ring cannot be treated as a single centralized control loop.

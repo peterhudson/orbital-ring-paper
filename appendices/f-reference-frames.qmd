@@ -1,0 +1,34 @@
+# Reference-frame lift bookkeeping for a co-rotating guide {#sec-app-reference-frames}
+
+The main text uses a guide-relative lift screen because the guide shell's inertial speed is small compared with the slug speed in the reference case. Since that bookkeeping can be easy to misread, this appendix states the inertial-frame result explicitly and shows why the simpler expression is a good leading-order approximation for the symmetric lane pairs used in the paper.
+
+Even a ring intended to remain stationary relative to the ground is not inertially stationary. An equatorial ring that supports ground-referenced tethers must co-rotate with Earth so that those tethers do not sweep across the surface. The guide shell therefore carries a real inertial ring-tangential speed set mainly by Earth rotation, even though the slug streams move much faster relative to the guide.
+
+Let the local guide shell have inertial ring-tangential speed $U_g$, and let each lane have guide-relative speed $\pm u$, with the sign set by the travel direction. The inertial lane speed is then
+
+$$
+U_\pm = U_g \pm u.
+$$ {#eq-inertial-speed}
+
+If $\dot m$ is the guide-frame mass flux in one lane, then the mass per unit guide length is $\lambda = \dot m/u$. The outward reaction per unit guide length from that lane is therefore
+
+$$
+q_{\mathrm{lift},\pm} = \frac{\dot m}{u}\left(\frac{(U_g\pm u)^2}{R} - g_h\right).
+$$
+
+For a symmetric counter-propagating pair, the sum becomes
+
+$$
+q_{\mathrm{lift,pair}} = \frac{2\dot m}{u}\left(\frac{u^2 + U_g^2}{R} - g_h\right)
+= 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right) + 2\dot m\frac{U_g^2}{uR}.
+$$ {#eq-inertial-pair-lift}
+
+So the pair-averaged lift law used in the main text,
+
+$$
+q_{\mathrm{lift,pair}} \approx 2\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
+$$
+
+is the leading-order result when $U_g \ll u$. The first-order $\pm 2U_g u/R$ correction cancels between the two travel directions. For an Earth-fixed equatorial guide at 500 km altitude, $U_g$ is about 0.50 km/s, so the retained correction is only about 0.25% of the main ring-curvature term in the reference case.
+
+This does not solve the broader orbital-dynamics problem. Station-keeping, tether interaction, nodal precession, non-equatorial geometries, and deployment dynamics remain open. It only shows why the guide-relative lift expression used in the main text is a reasonable leading-order screen for symmetric lane pairs.

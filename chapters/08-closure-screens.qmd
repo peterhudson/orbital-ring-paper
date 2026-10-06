@@ -1,0 +1,134 @@
+# Remaining closure screens {#sec-closure-screens}
+
+The paper's claim is architectural coherence at the actuation-primitive level. Several closure screens are still decisive.
+
+Before going through them one by one, the main unresolved closure gates can be named compactly:
+
+| Closure gate | Representative screening variable | Why it is central |
+| --- | --- | --- |
+| Passive-mass convergence | supported passive weight per metre $w_p$ | It closes directly into required momentum flux, stored energy, thermal hardware, and containment burden. |
+| Guide feasibility | allowable loss, gap-control bandwidth, and bidirectional power-transfer efficiency | The lane can look gentle in force density while still being extreme in switching rate, synchronization, and power flow. |
+| Four-lane balance | timing, mass, and speed mismatch budget | The balanced cell is only useful if residual momentum channels stay well below commanded tug channels. |
+| Shell load transfer | cross-sectional transfer efficiency $\eta_\mathrm{load}$ and rib spacing | Opposed sector tugs matter only if lane loads can be redistributed into a real long-wave bending couple rather than local ovalization. |
+| Fault containment | isolated domain energy and response time | The stored energy density is high enough that fault handling is likely a dominant feasibility gate rather than a secondary detail. |
+| Startup and reconfiguration | partial-commissioning support path and lane-phase initialization | The present paper treats startup, commissioning, and shutdown as open architectural problems rather than solved parts of the concept. |
+
+## Macro lift is still a separate burden {#sec-macro-lift-separate-burden}
+
+The helical torus gives local prestress. It does not, by itself, loft the entire ring around Earth. Macro lift comes from turning the ring-tangential component of stream momentum around Earth.
+
+For the symmetric counter-propagating pairs used throughout the paper, the guide-relative expression below should be read as the leading-order form derived from the explicit inertial-frame bookkeeping in @sec-app-reference-frames.
+
+Let $u=v\cos\alpha$ be ring-tangential speed and let the ring radius be $R$. For one slug lane with mass flux $\dot m$, the net outward lift per unit ring length is
+
+$$
+q_\mathrm{lift,lane} = \dot m\left(\frac{u}{R} - \frac{g_h}{u}\right),
+$$
+
+where $g_h$ is gravity at altitude.
+
+For $N_p$ paired modules,
+
+$$
+q_\mathrm{lift} = 2N_p\dot m\left(\frac{u}{R} - \frac{g_h}{u}\right).
+$$ {#eq-lift-total}
+
+The lift changes sign at
+
+$$
+u_\mathrm{orb} = \sqrt{g_hR}.
+$$ {#eq-orbital-speed}
+
+If $u<u_\mathrm{orb}$, the moving stream loads the ring downward overall. Only for $u>u_\mathrm{orb}$ does it contribute net outward lift.
+
+This is why the helical angle has to stay small at full scale. The ring needs its speed mostly in the ring-tangential direction.
+
+## The full system faces a closure loop {#sec-full-system-faces-closure}
+
+Let $w_p$ denote the net inward non-stream load per unit ring length. The lift requirement can be written as
+
+$$
+A_\mathrm{pair} = N_p \dot m\,u \ge \frac{w_p}{2\left(\frac{1}{R} - \frac{g_h}{u^2}\right)}
+$$ {#eq-lift-requirement}
+
+where $A_\mathrm{pair}$ is the paired-module momentum-flux scale and the total paired-lane contribution is $2A_\mathrm{pair}$.
+
+That sounds like a simple scaling law, but it closes several hard subsystems into one loop:
+
+$$
+w_p \to A_\mathrm{pair} \to \left(E_{\mathrm{kin}},  P_{\mathrm{loss}}\right) \to \left(w_{\mathrm{contain}},  w_{\mathrm{thermal}},  w_{\mathrm{power}}\right) \to w_p
+$$ {#eq-closure-loop}
+
+In words:
+
+1. more passive hardware raises ring weight,
+2. more weight requires more momentum flux,
+3. more momentum flux raises stored energy per metre and usually raises losses,
+4. those burdens demand more containment, thermal hardware, and power infrastructure,
+5. which raises ring weight again.
+
+The concept stands or falls on whether this loop converges.
+
+One brutal scale number is worth stating explicitly. In the illustrative 500 km, $u=10~\mathrm{km/s}$ reference case,
+
+$$
+\frac{u^2}{R} - g_h \approx 6.1~\mathrm{m/s^2}.
+$$
+
+So supporting even
+
+$$
+w_p = 10~\mathrm{kN/m}
+$$
+
+of passive weight requires moving-stream line density of about
+
+$$
+\lambda_\mathrm{stream} \approx \frac{w_p}{u^2/R-g_h} \approx \frac{10{,}000}{6.1} \approx 1600~\mathrm{kg/m}.
+$$
+
+The corresponding kinetic energy per metre is then
+
+$$
+E' \approx \frac{1}{2}\lambda_\mathrm{stream}u^2 \approx 82~\mathrm{GJ/m}.
+$$ {#eq-energy-per-metre}
+
+For a full 43,000 km class ring, that implies total moving-stream kinetic energy on the order of $3.5\times10^{18}$ J in this notional case. That is the energy scale associated with the notional $10~\mathrm{kN/m}$ passive load case. It does not refute the architecture, but it should stop the reader from underestimating the closure burden.
+
+The harder message is that the moving-energy burden scales linearly with passive weight. A crude closure worksheet therefore looks like this:
+
+| Passive weight assumption | Moving-stream line density | Moving kinetic energy per metre |
+| --- | ---: | ---: |
+| 10 kN/m | about 1,600 kg/m | about 82 GJ/m |
+| 30 kN/m | about 4,900 kg/m | about 245 GJ/m |
+| 100 kN/m | about 16,000 kg/m | about 820 GJ/m |
+
+So the closure loop is not a subtle second-order effect. If containment, thermal hardware, guide modules, ribs, and fault isolation drive passive weight up by a factor of only a few, the moving-energy burden rises by the same factor.
+
+## Fault domains still need an explicit architecture {#sec-fault-domains-need-explicit}
+
+The helical membrane guide shell should not be interpreted as a containment solution by itself. Any serious version of the architecture would still require physical segmentation into independently isolated sectors, energy-isolating gates, sacrificial catchers, controlled dump paths, distributed braking, and faulted-section bypass.
+
+Fault-domain length must be set by allowable segment energy, not by construction convenience. If the moving stream stores energy per unit length $E'$, then each isolated domain inherits
+
+$$
+E_{\mathrm{segment}} = E' L_{\mathrm{segment}},
+$$ {#eq-segment-energy}
+
+and the isolation architecture has to be sized from that energy, not merely named.
+
+At the notional 82 GJ/m energy density, even a 1 km isolated fault domain still contains about 82 TJ. So "small" domains are still enormous energetic objects. This paper does not develop that system in detail, but the energy scale has to be stated explicitly because containment cannot be left implicit.
+
+The right conclusion is not merely that fault isolation is required. It is that fault isolation is likely one of the dominant feasibility gates for any real machine built around this primitive.
+
+The helical geometry may, however, offer real dump-path degrees of freedom. A deliberately opened path can in principle eject a failed slug stream outward from the torus rather than through the ring body itself, which is locally valuable. But safe disposal is still an orbital-mechanics problem, not just a local containment problem. At the 500 km reference point, the stream speed relative to the guide is 10 km/s and the guide's inertial ring-tangential speed is about 0.5 km/s. The inertial prograde and retrograde stream speeds are therefore roughly 10.5 km/s and 9.5 km/s, while local escape speed is about 10.8 km/s. So a prograde dump can be near escape while a retrograde dump remains a very energetic bound-orbit release. Depending on inertial velocity, direction, and dump impulse, unguided slugs may enter atmosphere, escape, or occupy long elliptical trajectories that re-cross the ring altitude. Emergency dumping therefore requires dedicated debris-trajectory and range-safety analysis. The present paper does not analyze that trade in detail.
+
+## Startup, deployment, shutdown, and reconfiguration remain open {#sec-startup-deployment-shutdown-reconfiguration}
+
+The present paper is still strongly steady-state. That is a real limitation and should be admitted directly.
+
+The paper does not yet answer how billions of slugs are inserted, how the stream is accelerated to operating speed, how partially commissioned sectors are supported before full lift is available, how lane phases are initialized, or how the ring is safely spun down. Those are not secondary implementation details. They are part of the architecture.
+
+At the same time, the helical membrane concept may create deployment options that more monolithic orbital-ring sketches do not obviously possess. A membrane-and-lane system could in principle be assembled in a compact geometry, perhaps even a very large folded terrestrial or near-terrestrial staging geometry, brought to partial prestress at comparatively high helix angle, and then unfolded or reconfigured as more ring-tangential throughput comes online. In that picture, some commissioning cells might temporarily favor higher $\alpha$ for prestress and handling margin, then later be reconfigured toward shallower steady-state $\alpha$ once enough lift throughput exists elsewhere in the ring.
+
+That idea is speculative, and this paper does not claim it as solved. But it is a real architectural question raised by the helical torus concept: the geometry that is best for deployment or early commissioning may not be the geometry that is best for final orbital operation. Modular lane segments and staged reconfiguration could therefore matter as much as the steady-state actuation primitive itself.
