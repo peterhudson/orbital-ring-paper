@@ -192,15 +192,14 @@ class ParticleSimulation(Base):
             t, a = sim.run(1.0, record_modes=(2,), every=10)
             return envelope_rate(t, a[:, 0])
 
-        fine = rate(1000)                                   # 5 m apart
-        self.about(rate(500), fine, 1e-3)                   # 10 m
+        fine = rate(500)                                    # 10 m apart
+        self.about(rate(1000), fine, 1e-3)                  # 5 m
         self.about(rate(250), fine, 1e-3)                   # 20 m
-        at_50 = rate(100) / fine
-        self.assertTrue(1.015 < at_50 < 1.045)              # 2 to 4% faster
+        self.about(rate(100), fine, 0.06)                   # 50 m: still within a few percent at this wavelength
         self.assertTrue(0.4 < rate(60) / fine < 0.6)        # 83 m: about half
-        self.assertTrue(0.2 < rate(40) / fine < 0.4)        # 125 m: a quarter to a third
-        self.about(300.0 / 20.0, 15.0, 1e-9)                # slugs per cut-off wavelength where it is still exact
+        self.assertTrue(0.2 < rate(40) / fine < 0.4)        # 125 m: about a third
         self.about(C.spacing(100.0), 18.0, 0.03)            # 100 kg slugs
+        self.about(2.0 * math.pi * math.sqrt(model.EI / model.Pi), 120.0, 0.03)   # the tube's bending length
 
     def test_static_load_is_held_up_to_the_stroke_limit(self):
         model = CollectiveModel.mirror_reference(f_filter=200.0, preview=30.0)

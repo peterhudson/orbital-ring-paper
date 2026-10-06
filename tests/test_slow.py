@@ -48,6 +48,25 @@ class SlowRuns(unittest.TestCase):
         self.assertLess(worst, 0.035)
         self.assertTrue(math.isclose(2 * math.pi * C.R / top, 1.44e6, rel_tol=0.01))
 
+    def test_slug_spacing_table(self):
+        """Appendix C: decay rate under the mirror law against slug spacing, on a 10 m mesh."""
+        from analysis.collective import CollectiveModel
+        from analysis.particles import LocalParticleSim, envelope_rate
+
+        model = CollectiveModel.mirror_reference(f_filter=200.0, preview=30.0)
+
+        def rate(slugs, mode):
+            sim = LocalParticleSim(model, length=5e3, n_nodes=500, slugs_per_direction=slugs, dt=5e-5)
+            sim.y += 1e-3 * np.cos(2 * math.pi * mode * sim.s_nodes / 5e3)
+            t, a = sim.run(1.0, record_modes=(mode,), every=20)
+            return envelope_rate(t, a[:, 0])
+
+        table = {12: (1.00, 0.97, 0.34, 0.24, 0.22), 4: (0.97, 0.93, 0.45, 0.18, 0.24), 2: (1.00, 1.00, 1.05, 0.51, 0.35), 1: (1.00, 1.00, 1.00, 1.04, 1.15)}
+        for mode, row in table.items():
+            fine = rate(500, mode)
+            for spacing, want in zip((20.0, 31.25, 50.0, 250.0 / 3.0, 125.0), row):
+                self.assertLess(abs(rate(int(round(5e3 / spacing)), mode) / fine - want), 0.03, (mode, spacing))
+
     def test_two_hours_under_a_sudden_load_with_the_stators_holding_three_modes(self):
         """The run drawn in the stator-held-load figure."""
         from analysis.plots import stator_held_load

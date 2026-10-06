@@ -34,17 +34,17 @@ That last line is especially sobering. If balance is judged purely by counts, a 
 
 ## Discreteness and the shape control {#sec-discreteness-shape}
 
-The shape control of @sec-collective-stability treats each stream as a continuous flow. The local particle simulation of @sec-look-ahead was rerun with the slugs spaced more and more widely, to see where that stops being true. The test is the decay rate of a wave 2.5 km long under the mirror law.
+The shape control of @sec-collective-stability treats each stream as a continuous flow. The local particle simulation of @sec-look-ahead was rerun with the slugs spaced more and more widely, to see where that stops being true. The test is the decay rate of a wave under the mirror law.
 
-| Slug spacing | Decay rate against its value at 5 m |
-| ---: | ---: |
-| 5, 10, 20 m | the same to four figures |
-| 50 m | 2 to 4% faster |
-| 83 m | about half |
-| 125 m | a quarter to a third |
+| Wavelength | Slugs 20 m apart | 31 m | 50 m | 83 m | 125 m |
+| --------------- | ---------: | ---------: | ---------: | ---------: | ---------: |
+| 417 m | 1.00 | 0.97 | 0.34 | 0.24 | 0.22 |
+| 1.25 km | 0.97 | 0.93 | 0.45 | 0.18 | 0.24 |
+| 2.5 km | 1.00 | 1.00 | 1.05 | 0.51 | 0.35 |
+| 5 km | 1.00 | 1.00 | 1.00 | 1.04 | 1.15 |
 
-: Decay rate of a 2.5 km wave in the local particle simulation as the slugs are spaced more widely. {#tbl-discreteness}
+: Decay rate of a wave under the mirror law in the local particle simulation, as a fraction of its value with the slugs 10 m apart. {#tbl-discreteness}
 
-The shortest wavelength the control acts on is its 300 m cut-off, so the streams behave as continuous while there are more than about fifteen slugs to that length, and the control is badly weakened when there are fewer than about four. The reference spacing is 1.8 m. Slugs of 100 kg, 18 m apart, would still pass. Slugs of a tonne would not. The ranges are over meshes of 125, 250 and 500 nodes.
+Up to 20 m the spacing makes no difference worth the name. Beyond that the damping goes, first for the shortest waves: at 50 m for waves of 400 m to 1.25 km, and at 83 m for 2.5 km. The reference spacing is 1.8 m. Slugs of 100 kg, 18 m apart, would be at the edge of the safe range, and slugs of a tonne would be outside it. Which of the control's lengths sets the limit has not been isolated. The tube's bending length, 120 m, is of that order.
 
 Discreteness also raises a stability question that this paper does not answer. A train of separate slugs loads its guide periodically, at the passing frequency and its multiples: 5.4 kHz for the 10 kg row. Separate masses moving along a beam can destabilize it where a continuous flow of the same mean density would not, as a train of masses [@nelson1971dynamic] and even as a single one [@metrikine1997instability]. That is a question about the guide's own structure at the slug-passing frequency, thousands of times a second. The models of this paper have nothing at that scale, and the test above, which concerns waves hundreds of metres long, does not settle it.
