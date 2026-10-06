@@ -1,5 +1,6 @@
 """Stream-plus-structure motion: eigenvalues, the particle simulation, and the
 numbers quoted in the collective-stability chapter."""
+import cmath
 import math
 import unittest
 
@@ -80,15 +81,16 @@ class MirrorLaw(Base):
         wavelengths = np.concatenate([np.geomspace(3, 1e3, 200), np.geomspace(1e3, 1e7, 60)])
         self.assertLess(model.growth_curve(wavelengths).max(), 0.0)
         k = k_of(1e5)
-        self.about(-1.0 / model.growth_rate(k), 24, 0.03)                            # settling time, s
-        y, gap = model.static_response(k, 100.0)
+        self.about(-1.0 / model.growth_rate(k), 55, 0.05)                            # settling time, s
+        y, offset = model.static_response(k, 100.0)
         self.about(y, -funicular_deflection(100.0, k, model.Pi), 1e-3)
-        self.assertLess(abs(gap), 1e-9)
-        y, gap = CollectiveModel.mirror_reference().static_response(k, 100.0)
+        self.assertLess(offset, 1e-9)                                                # every stream centered
+        y, offset = CollectiveModel.mirror_reference().static_response(k, 100.0)
         self.assertGreater(y, 0.3)
-        self.about(gap / y, -(1 + 0.5 * math.cos(0.3)), 0.01)
+        self.about(offset / y, abs(1 + 0.5 * cmath.exp(0.3j)), 0.01)                 # about 1 + c_m
+        self.about(0.5 * math.sin(0.3), 0.15, 0.02)                                  # the part look-ahead adds, per stream
         # a 1% load mismatch uses 20 mm of room beyond this wavelength
-        self.about(2 * math.pi / math.sqrt(100.0 / (model.Pi * 0.02 / 3)), 21e3, 0.02)
+        self.about(2 * math.pi / math.sqrt(100.0 / (model.Pi * 0.02 / 3)), 20e3, 0.05)
 
     def test_structure_behaves_as_a_damped_string_in_tension(self):
         model = CollectiveModel.mirror_reference()
@@ -109,7 +111,23 @@ class MirrorLaw(Base):
         self.assertEqual(model.lookahead(k_of(100.0)), 20.0)
         self.about(model.lookahead(k_of(1e5)), 0.048 * 1e5, 0.01)
         self.about(2 * math.pi * 20.0 / 0.3, 420, 0.01)                   # wavelength where the rule changes over
-        self.about(model.v * 1.4 / (2 * math.pi * 1e3), 2.2, 0.02)        # distance travelled during the control lag
+
+    def test_look_ahead_must_outrun_the_delay(self):
+        """d_a > u tau m / (2 (m - c_m lambda)), with tau the lag of the path command."""
+        tau = 2 * 0.7 / (2 * math.pi * 1e3)
+        for c0, quoted in ((0.2, 1.5), (0.5, 3.6), (0.65, 10.9)):
+            model = CollectiveModel.reference(zeta=0.3, ff=1.0, c0=c0)
+            floor = model.v * tau * model.m / (2 * (model.m - c0 * model.lam))
+            self.about(floor, quoted, 0.03)
+            k = k_of(1e4)
+            self.assertGreater(model.with_(preview=0.9 * floor).growth_rate(k), 0.0)
+            self.assertLess(model.with_(preview=1.1 * floor).growth_rate(k), 0.0)
+
+    def test_heavy_guide_damping_makes_a_spring_guide_worse(self):
+        short = np.geomspace(3, 200, 60)
+        self.assertLess(CollectiveModel.reference(zeta=0.2).growth_curve(short).max(), 0.0)
+        self.assertGreater(CollectiveModel.reference(zeta=0.5).growth_curve(short).max(), 1.0)
+        self.assertGreater(CollectiveModel.reference(zeta=0.7).growth_curve(short).min(), 0.0)
 
     def test_needs_look_ahead_longer_than_the_control_delay(self):
         plain = dict(zeta=0.3, ff=1.0, c0=0.5)

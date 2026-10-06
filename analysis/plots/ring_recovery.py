@@ -10,11 +10,11 @@ from . import style
 
 MODES = (1, 2, 3)
 START = ((1, 0.010, 0.0), (2, 0.005, 0.7), (3, 0.003, 1.9))
-GUIDE = 0.5
+LOOPS = dict(guide_bandwidth=0.5, filter_bandwidth=1.5)
 
 
 def _perturbed(**kw):
-    sim = RingParticleSim(n_keep=4, dt=0.25, guide_bandwidth=GUIDE, **kw)
+    sim = RingParticleSim(n_keep=4, dt=0.25, **LOOPS, **kw)
     for n, amplitude, phase in START:
         sim.perturb(n, amplitude, phase=phase)
     return sim
@@ -27,18 +27,17 @@ def make(outdir=None):
     _, _, K1 = rc.off_centre_controller(model, law)
     duration = 4500.0
     fig, (left, right) = style.figure(6.8, 3.9, ncols=2, sharey=True)
-    for ax, sim, gains, title in (
-        (left, _perturbed(law=FOLLOW), lambda n: rc.baseline_gain(model, n, FOLLOW, guide_bandwidth=GUIDE), "Stream follows the structure"),
-        (right, _perturbed(law=law, feedback={1: K1}), lambda n: rc.baseline_gain(model, n, law, guide_bandwidth=GUIDE) + (K1 if n == 1 else 0), "Complete controller"),
+    for ax, sim, matrix, title in (
+        (left, _perturbed(law=FOLLOW), lambda n: rc.closed_loop(model, n, FOLLOW, **LOOPS), "Stream follows the structure"),
+        (right, _perturbed(law=law, feedback={1: K1}), lambda n: rc.closed_loop(model, n, law, extra=K1 if n == 1 else None, **LOOPS), "Complete controller"),
     ):
-        start = {n: sim.modal_state(n) for n in MODES}
+        start = {n: sim.full_state(n) for n in MODES}
         t, a, _, _ = sim.run(duration, record=MODES, every=480)
         fine = np.linspace(0.0, duration, 400)
         for colour, (i, n) in zip(style.SERIES, enumerate(MODES)):
-            A, B = model.plant(n)
-            closed = A - B @ gains(n)
+            closed = matrix(n)
             step = expm(closed * (fine[1] - fine[0]) * om)
-            x, predicted = start[n].copy(), []
+            x, predicted = start[n][:closed.shape[0]].copy(), []
             for _ in fine:
                 predicted.append(abs(x[0]) * R)
                 x = step @ x

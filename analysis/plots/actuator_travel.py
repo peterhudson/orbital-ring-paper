@@ -12,7 +12,8 @@ def make(outdir=None):
     model = RingModes()
     ns = np.array([1, 2, 3, 4, 5, 6, 8, 10, 14, 20, 30])
     gap = [rc.steering_gap_per_metre(model, n) for n in ns]
-    speed = [rc.stator_speed_per_metre(model, n) for n in ns]
+    hold = rc.reference_law(model).with_(mirror=None, lead=0.0)       # guide follows, stators hold the slugs softly
+    speed = [rc.stator_speed_per_metre(model, n, hold) for n in ns]
     fig, (left, right) = style.figure(6.8, 3.4, ncols=2)
     left.plot(ns, gap, "o-", color=style.SERIES[0])
     left.set_xscale("log")

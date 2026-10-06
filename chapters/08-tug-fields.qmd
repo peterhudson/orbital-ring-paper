@@ -116,7 +116,7 @@ It is also a sizing rule. The structure must be able to carry $\epsilon\Pi$. In 
 
 ### All lanes together: stream weight {#sec-tug-weight}
 
-At fixed mass flux, slugs bunch where they are slow, so a stretch of ring where the lanes run slow is heavier by @eq-weight-shift. This is the only way a speed field common to all lanes changes the ring's normal balance. It is weak: one part in a thousand of speed is 14 N/m, a little over a thousandth of the supported weight. And the ring answers it backwards (@sec-funicular): the heavier stretch rises.
+At fixed mass flux, slugs bunch where they are slow, so a stretch of ring where the lanes run slow is heavier by @eq-weight-shift. This is the only way a speed field common to all lanes changes the ring's normal balance. It is weak: one part in a thousand of speed is 14 N/m, a little over a thousandth of the supported weight. And the ring answers it backward (@sec-funicular): the heavier stretch rises.
 
 Weight trim is a slow, long-wave adjustment. Its proper use is to cancel a long-wave imbalance of load at its source, so that the ring's shape does not have to accommodate it.
 
@@ -306,7 +306,7 @@ $$
 \frac{P'}{q_y} = \frac{u}{ak} = \frac{uL}{2\pi a}
 $$ {#eq-tug-sideways-cost}
 
-for a wavelength $L$. At 100 km that is 3.2 MW handled per metre of ring for every newton per metre of sideways load. Holding a load mismatch of one per cent of the supported weight this way would keep 320 MW per metre circulating between counter-propagating lanes. At any realistic conversion efficiency that is not a control system. It is a heater.
+for a wavelength $L$. At 100 km that is 3.2 MW handled per metre of ring for every newton per metre of sideways load. Holding a load mismatch of 1% of the supported weight this way would keep 320 MW per metre circulating between counter-propagating lanes. At any realistic conversion efficiency that is not a control system. It is a heater.
 
 Weight trim (@sec-tug-weight) is cheaper at the longest wavelengths but follows the same logic. A speed ripple $\epsilon$ shifts weight by $\lambda g_h\epsilon$ and handles $\Pi\epsilon k u$ of power per unit length, so
 
@@ -316,7 +316,7 @@ $$ {#eq-weight-trim-cost}
 
 That is 0.74 MW per metre for each newton per metre at a wavelength of 1000 km, and 34 kW per metre for two waves round the ring.
 
-Set against these, recall from @sec-funicular what the ring does about a one per cent mismatch at 100 km if nothing is commanded at all: its shape shifts by 0.15 m.
+Set against these, recall from @sec-funicular what the ring does about a 1% mismatch at 100 km if nothing is commanded at all: its shape shifts by 0.15 m.
 
 The conclusion is that tug fields are the wrong tool for holding the ring's shape. Sideways control should be done by sideways forces on the streams, which cost no power to first order. @sec-collective-stability shows how.
 

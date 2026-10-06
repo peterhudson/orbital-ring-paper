@@ -44,6 +44,8 @@ class LocalParticleSim:
         m = self.model
         if not m.counter:
             raise ValueError("the particle simulation assumes balanced counter-propagating streams")
+        if m.adapt:
+            raise NotImplementedError("set-point adaptation is simulated on the whole ring, in analysis/ring_particles.py")
         n, L = self.n_nodes, self.length
         self.h = L / n
         self.s_nodes = np.arange(n) * self.h

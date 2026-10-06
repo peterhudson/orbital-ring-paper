@@ -266,16 +266,23 @@ def held_speed_growth_rate(n: int, case: RefCase = EARTH_500) -> float:
     return case.omega_orb * math.sqrt(n**4 / (n * n + 1.0))
 
 
-def out_of_plane_rate(n: int, case: RefCase = EARTH_500, mirror: float | None = None) -> complex:
-    """Out-of-plane mode n. Nothing along the track is involved, so the
-    local model plus gravity's restoring pull is the whole story:
+def out_of_plane_rate(n: int, case: RefCase = EARTH_500, mirror: float | None = None, lead: float = 0.0) -> complex:
+    """Out-of-plane mode n: the root with the largest real part, 1/s.
 
-        (m + c lambda) z'' = -(m + c lambda) Omega^2 z + c Pi n^2 z / R^2,
+    Nothing along the track is involved, so the local model plus gravity's
+    restoring pull is the whole story. With the streams held on
+    zeta_+- = c exp(+-i lead) z (c = 1 for a following guide, -c_m for the
+    mirror law):
 
-    with c = 1 for a following guide and c = -c0 for the mirror law.
-    Returns sigma in 1/s: real for growth, imaginary for oscillation.
+        (m + c lam cos) z'' - 2 c lam n nu Omega sin z'
+            + [(m + c lam cos) Omega^2 - c lam n^2 nu^2 Omega^2 cos] z = 0,
+
+    with cos and sin of the lead. For a following guide this is
+    sigma^2 = Omega^2 (n^2 - 1).
     """
     c = 1.0 if mirror is None else -mirror
-    m, lam = case.m_passive, case.lam_stream
-    pi_over_r2 = (m + lam) * case.omega_orb**2
-    return cmath.sqrt(-case.omega_orb**2 + c * pi_over_r2 * n * n / (m + c * lam))
+    m, lam, om = case.m_passive, case.lam_stream, case.omega_orb
+    nu = case.u / case.u_orb
+    cs, sn = math.cos(lead), math.sin(lead)
+    roots = np.roots([m + c * lam * cs, -2.0 * c * lam * n * nu * om * sn, (m + c * lam * cs) * om**2 - c * lam * (n * nu * om) ** 2 * cs])
+    return complex(max(roots, key=lambda z: z.real))

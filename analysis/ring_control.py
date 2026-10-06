@@ -5,10 +5,10 @@ Two kinds are built here, both as state feedback u = -K x on the plant of
 
   * the structured law: the guide holds each stream on the mirror image of
     the structure's shape, read a little ahead, and the stators hold each
-    slug softly to its place in their travelling wave;
+    slug softly to its place in their traveling wave;
   * optimal (LQR) feedback for one mode at a time, used where the structured
-    law is not enough and to measure how much actuator travel any
-    stabilising law must spend.
+    law is not enough and to measure how much actuator travel a
+    stabilizing law must spend.
 
 The same gains can be handed to analysis/ring_particles.py to run on the
 nonlinear simulation.
@@ -25,9 +25,8 @@ from dataclasses import dataclass
 import numpy as np
 from scipy.linalg import expm, solve_continuous_are
 
-from .ring_modes import ALONG_TRACK, FOLLOW, LATERAL, N_INPUTS, N_STATES, GuideLaw, RingModes
-
 from .collective import LEAD, MIRROR_GAIN
+from .ring_modes import ALONG_TRACK, FOLLOW, LATERAL, N_INPUTS, N_STATES, GuideLaw, RingModes
 
 # The reference structured law: the mirror gain and phase lead of the local
 # model, and a stator lock whose rates are the orbital rate and its square
@@ -51,66 +50,99 @@ def law_for_mode(n: int, law: GuideLaw, mirror_from: int = MIRROR_FROM) -> Guide
     return law
 
 
-GUIDE_BANDWIDTH = 2.0 * math.pi * 10.0     # rad/s: the reference guide holds its commanded path at 10 Hz
+GUIDE_BANDWIDTH = 2.0 * math.pi * 10.0      # rad/s: the reference guide holds its commanded path at 10 Hz
+FILTER_BANDWIDTH = 2.0 * math.pi * 1000.0   # rad/s: bandwidth of the path command (sensing and actuation lag)
+
+# Layout of the closed loop's state: the plant's N_STATES, then each stream's
+# filtered path command and its rate, then (if the set point adapts) the
+# common set point z and the differential set point z_d.
+I_CMD = N_STATES
+I_SET = N_STATES + 4
 
 
-def baseline_gain(model: RingModes, n: int, law: GuideLaw, mirror_from: int = MIRROR_FROM,
-                  guide_bandwidth: float = GUIDE_BANDWIDTH, guide_zeta: float = 0.7) -> np.ndarray:
-    """The structured law as state feedback on the plant, with a guide of
-    finite bandwidth (rad/s) that first cancels each slug's own centrifugal
-    and gravity terms, as analysis/ring_particles.py does."""
-    this = law_for_mode(n, law, mirror_from)
-    K = model.stator_gain(n, this)
-    wb = guide_bandwidth / model.omega
-    for q, (_, v) in enumerate(model._streams()):
-        ie, ied, io = 4 + 4 * q, 5 + 4 * q, 6 + 4 * q
-        c = model._path(this, v)
-        D = 1j * n * v
-        K[2 * q, ie] = wb**2 + 2 * guide_zeta * wb * D + (v * v + 2.0)
-        K[2 * q, ied] = 2 * guide_zeta * wb
-        K[2 * q, io] = 2.0 * v
-        K[2 * q, 0] = -c * (wb**2 + 2 * guide_zeta * wb * D)
-        K[2 * q, 1] = -c * 2 * guide_zeta * wb
-    return K
+def closed_loop(model: RingModes, n: int, law: GuideLaw, mirror_from: int = MIRROR_FROM, adapt: float = 0.0,
+                guide_bandwidth: float = GUIDE_BANDWIDTH, guide_zeta: float = 0.7,
+                filter_bandwidth: float = FILTER_BANDWIDTH, filter_zeta: float = 0.7,
+                extra: np.ndarray | None = None) -> np.ndarray:
+    """Closed-loop matrix of mode n under the structured law, nondimensional.
 
+    Each stream's target path is  p_i w + z +- z_d,  with p_i = 1 where the
+    stream follows the structure and -c_m exp(+-i lead) where it is
+    mirrored. The target passes through a second-order filter of bandwidth
+    `filter_bandwidth` to give the command c_i, and the guide's force per
+    unit slug mass is
 
-def adaptive_closed_loop(model: RingModes, n: int, law: GuideLaw, adapt: float = ADAPT, mirror_from: int = MIRROR_FROM,
-                         guide_bandwidth: float = GUIDE_BANDWIDTH, guide_zeta: float = 0.7, extra: np.ndarray | None = None) -> np.ndarray:
-    """Closed-loop matrix of the plant under the structured law with a set
-    point z added to both streams' commanded paths (state N_STATES, last),
+        a_n = -(slug's own centrifugal and gravity terms)
+              + D^2 c_i                       the force that flies the commanded path
+              - wb^2 (eta_i - c_i) - 2 zeta wb D (eta_i - c_i).
 
-        z' = adapt * n nu * (mean gap),
+    The stators follow `law`. With `adapt` > 0 the set points drift at the
+    rate adapt * n * nu:
 
-    which drives the steady gap to zero under a steady load. `extra` is any
-    further state feedback on the plant's states."""
+        z'   = +rate * (mean of the streams' offsets from the structure),
+        z_d' = -rate * (half the difference of the streams' positions),
+
+    so that under a steady load every stream ends in the middle of its
+    guide. `extra` is further state feedback u = -extra x on the plant's
+    states. analysis/ring_particles.py implements the same law.
+    """
     A, B = model.plant(n)
-    K = baseline_gain(model, n, law, mirror_from, guide_bandwidth, guide_zeta)
+    this = law_for_mode(n, law, mirror_from)
+    rate = adapt * n * model.nu if (adapt and this.mirror is not None) else 0.0
+    size = N_STATES + 4 + (2 if rate else 0)
+    out = np.zeros((size, size), complex)
+    wb, wf = guide_bandwidth / model.omega, filter_bandwidth / model.omega
+    G = np.zeros((N_INPUTS, size), complex)                    # u = G @ state
+    G[:, :N_STATES] = -model.stator_gain(n, this)
     if extra is not None:
-        K = K + extra
-    wb = guide_bandwidth / model.omega
-    rate = adapt * n * model.nu
-    gap_row = np.zeros(N_STATES, complex)
-    gap_row[4], gap_row[8], gap_row[0] = 0.5, 0.5, -1.0
-    Kz = np.zeros(N_INPUTS, complex)        # u += Kz z + Kzd z'
-    Kzd = np.zeros(N_INPUTS, complex)
+        G[:, :N_STATES] -= extra
     for q, (_, v) in enumerate(model._streams()):
-        Kz[2 * q] = wb**2 + 2 * guide_zeta * wb * 1j * n * v
-        Kzd[2 * q] = 2 * guide_zeta * wb
-    out = np.zeros((N_STATES + 1, N_STATES + 1), complex)
-    out[:N_STATES, :N_STATES] = A - B @ K + rate * np.outer(B @ Kzd, gap_row)
-    out[:N_STATES, N_STATES] = B @ Kz
-    out[N_STATES, :N_STATES] = rate * gap_row
+        sign = 1.0 if v > 0 else -1.0
+        ie, ied, io = 4 + 4 * q, 5 + 4 * q, 6 + 4 * q
+        ic = I_CMD + 2 * q
+        D = 1j * n * v
+        # the command filter:  c'' = wf^2 (target - c) - 2 zeta_f wf c'
+        target = np.zeros(size, complex)
+        target[0] = model._path(this, v)
+        if rate:
+            target[I_SET], target[I_SET + 1] = 1.0, sign
+        acc = wf**2 * target
+        acc[ic] -= wf**2
+        acc[ic + 1] -= 2.0 * filter_zeta * wf
+        out[ic, ic + 1] = 1.0
+        out[ic + 1] = acc
+        # the guide
+        row = 2 * q
+        G[row] += acc                                           # D^2 c = c'' + 2 D c' + D^2 c
+        G[row, ic + 1] += 2.0 * D
+        G[row, ic] += D * D
+        G[row, ie] += -(v * v + 2.0) - wb**2 - 2.0 * guide_zeta * wb * D
+        G[row, ied] += -2.0 * guide_zeta * wb
+        G[row, io] += -2.0 * v
+        G[row, ic] += wb**2 + 2.0 * guide_zeta * wb * D
+        G[row, ic + 1] += 2.0 * guide_zeta * wb
+    out[:N_STATES, :N_STATES] = A
+    out[:N_STATES] += B @ G
+    if rate:
+        out[I_SET, 4], out[I_SET, 8], out[I_SET, 0] = 0.5 * rate, 0.5 * rate, -rate
+        out[I_SET + 1, 4], out[I_SET + 1, 8] = -0.5 * rate, 0.5 * rate
     return out
 
 
-def static_response(model: RingModes, closed_loop: np.ndarray, load: float = 1.0):
-    """Steady radial displacement of the structure and steady mean gap, m,
-    under a radial dead load on the structure of amplitude `load` N/m
-    (outward positive) in the mode the closed loop was built for."""
-    b = np.zeros(closed_loop.shape[0], complex)
+def slowest_rate(model: RingModes, matrix: np.ndarray) -> float:
+    """Largest real part of the closed loop's eigenvalues, 1/s (negative = everything decays)."""
+    return float(np.linalg.eigvals(matrix).real.max() * model.omega)
+
+
+def static_response(model: RingModes, matrix: np.ndarray, load: float = 1.0):
+    """Under a radial dead load on the structure of amplitude `load` N/m
+    (outward positive) in the mode `matrix` was built for: the structure's
+    steady radial displacement, and the larger of the two streams' steady
+    offsets from the structure, m."""
+    b = np.zeros(matrix.shape[0], complex)
     b[1] = load / (model.case.m_passive * model.case.g_h)
-    x = -np.linalg.solve(closed_loop, b) * model.case.R
-    return x[0].real, (0.5 * (x[4] + x[8]) - x[0]).real
+    x = -np.linalg.solve(matrix, b) * model.case.R
+    return x[0].real, max(abs(x[4] - x[0]), abs(x[8] - x[0]))
 
 
 # ---- optimal feedback -------------------------------------------------------------------
@@ -125,32 +157,36 @@ class Scales:
     floor: float = 1.0e-3      # small weight on every state, relative to `shape`
 
 
-def least_gap_scales(model: RingModes) -> Scales:
-    """A cost that counts the gap and almost nothing else, for asking how
-    little gap a steering-only controller can get away with."""
+def steering_scales(model: RingModes) -> Scales:
+    """A cost that weighs a metre of stream offset and a metre of shape error
+    equally and makes guide force almost free, for asking how much offset a
+    steering-only controller needs."""
     c = model.case
-    return Scales(gap=0.02, speed=1e12, shape=2.0, floor=1.0, guide=c.g_h * 0.02 / c.R * 1e5)
+    return Scales(gap=1.0, speed=1e12, shape=1.0, floor=1e-3, guide=c.g_h / c.R * 1e5)
 
 
 def steering_gap_per_metre(model: RingModes, n: int) -> float:
-    """Peak gap, per metre of error on the growing mode, when mode n is
-    recovered by steering alone under the least-gap optimal law."""
-    K = lqr_gain(model, n, inputs=LATERAL, scales=least_gap_scales(model))
+    """Peak offset of a stream from the structure, per metre of error on the
+    growing mode, when mode n is recovered by steering alone under the
+    optimal law for `steering_scales`."""
+    K = lqr_gain(model, n, inputs=LATERAL, scales=steering_scales(model))
     return recovery(model, n, K, unstable_direction(model, n), duration=12.0 / model.growth_rate(n), samples=6000)["gap"]
 
 
-def stator_speed_per_metre(model: RingModes, n: int, scales: Scales = Scales(shape=10.0)) -> float:
+def stator_speed_per_metre(model: RingModes, n: int, law: GuideLaw = FOLLOW, scales: Scales = Scales(shape=10.0)) -> float:
     """Peak change of slug speed, m/s per metre of error on the growing
-    mode, when mode n is recovered by the stators with a following guide."""
-    closed, _, _ = stator_lqr(model, n, scales=scales)
-    vals, vecs = np.linalg.eig(model.tracking_matrix(n))
+    mode, when mode n is recovered by optimal stator feedback with the
+    guide and stators otherwise following `law`."""
+    closed, _, _ = stator_lqr(model, n, law, scales)
+    vals, vecs = np.linalg.eig(model.tracking_matrix(n, law))
     x = vecs[:, np.argmax(vals.real)]
     x = x / x[0]
+    paths = [model._path(law, v) for _, v in model._streams()]
     times = np.linspace(0.0, 12.0 / vals.real.max(), 3000)
     step = expm(closed * (times[1] - times[0]))
     peak = 0.0
     for _ in times:
-        peak = max(peak, abs(x[4] + model.nu * x[0]), abs(x[6] - model.nu * x[0]))
+        peak = max(peak, *(abs(x[4 + 2 * q] + v * paths[q] * x[0]) for q, (_, v) in enumerate(model._streams())))
         x = step @ x
     return peak * model.omega
 

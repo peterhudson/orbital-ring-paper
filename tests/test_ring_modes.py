@@ -71,10 +71,10 @@ class OpenLoopGrowth(Base):
         self.about(2 * math.pi * C.R / C.u / 60, 72, 0.01)                 # one circuit of the stream, minutes
 
     def test_out_of_plane(self):
-        self.assertEqual(out_of_plane_rate(1), 0)
+        self.assertLess(abs(out_of_plane_rate(1)), 1e-6 * OM)
         for n in (2, 3, 5):
-            self.about(out_of_plane_rate(n).real, ring.growth_rate_out_of_plane(n), 1e-12)
-            self.assertEqual(out_of_plane_rate(n, mirror=0.3).real, 0.0)
+            self.about(out_of_plane_rate(n).real, ring.growth_rate_out_of_plane(n), 1e-9)
+            self.assertLess(abs(out_of_plane_rate(n, mirror=0.3).real), 1e-9 * OM)       # no look-ahead: neutral
 
     def test_plant_with_a_stiff_guide_matches_ideal_tracking(self):
         for law in (FOLLOW, GuideLaw(mirror=0.4, lead=0.3, speed_rate=OM, lock_rate=OM**2)):
@@ -90,6 +90,26 @@ class ParticleSimulation(Base):
             sim.step()
         self.assertLess(np.abs(sim.structure_fields()[0]).max(), 1e-6)
         self.assertLess(np.abs(sim.gap()).max(), 1e-6)
+
+    def test_guide_force_does_no_work_on_a_coasting_slug(self):
+        """Hold the structure still in a shape with three waves 2 km high and
+        let the slugs run along it for a full wavelength. If the guide pushes
+        at right angles to the path, each slug's energy stays fixed. With the
+        tilt of the guide force reversed it would change by several times
+        g times the height. (A check suggested in review.)"""
+        sim = RingParticleSim(n_keep=3, dt=0.25)
+        height = 2000.0
+        sim.perturb(3, height)
+        shape = sim.X.copy()
+        energy = lambda: 0.5 * (sim.rd**2 + (sim.r * sim.phid) ** 2) - sim.gm / sim.r
+        start = energy()
+        worst = 0.0
+        for _ in range(int(2 * math.pi * C.R / 3 / C.u / sim.dt)):
+            sim.step()
+            sim.X[:], sim.V[:] = shape, 0.0                   # the structure is held still
+            worst = max(worst, np.abs(energy() - start).max())
+        self.assertLess(worst, 0.02 * C.g_h * height)
+        self.assertGreater(np.abs(sim.speed_deviation()).max(), 0.5 * C.g_h * height / C.u)     # and the slugs did change speed
 
     def test_growth_rate_matches_the_linear_model(self):
         """Three waves round the ring, coasting slugs, hoop stiffness 50 GN."""

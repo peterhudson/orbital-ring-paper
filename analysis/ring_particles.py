@@ -41,6 +41,8 @@ class RingParticleSim:
     mirror_from: int = 2               # lowest mode the mirror law is applied to; lower modes follow
     guide_bandwidth: float = 0.5       # of the guide's hold on the commanded path, rad/s
     guide_zeta: float = 0.7
+    filter_bandwidth: float = 1.5      # of the path command (sensing and actuation lag), rad/s
+    filter_zeta: float = 0.7
     feedback: dict | None = None       # extra state feedback, {n: K} with K as in ring_modes.RingModes.plant
     adapt: float = 0.0                 # set-point adaptation rate, as a fraction of the stream's transit rate n u / R
     load: np.ndarray | None = None     # radial dead load on the structure at each node, N/m (outward positive)
@@ -73,7 +75,14 @@ class RingParticleSim:
         self._modes = np.arange(N // 2 + 1)
         self._keep = self._modes <= self.n_keep
         self._M = self.fine * N
-        self.set_point = np.zeros(N // 2 + 1, complex)      # rfft coefficients of the set-point field, m
+        # rfft coefficients of fields round the ring, m: each stream's filtered path
+        # command and its rate, and the common and differential set points
+        self.cmd = np.zeros((2, N // 2 + 1), complex)
+        self.cmd_rate = np.zeros((2, N // 2 + 1), complex)
+        self.set_point = np.zeros(N // 2 + 1, complex)
+        self.set_point_diff = np.zeros(N // 2 + 1, complex)
+        if self.filter_bandwidth * self.dt > 0.5:
+            raise ValueError("time step too long for the command filter; reduce dt or filter_bandwidth")
 
     # ---- the structure's shape as fields ---------------------------------------------
     def structure_fields(self):
@@ -84,10 +93,10 @@ class RingParticleSim:
         dth = np.angle(np.exp(1j * (np.arctan2(self.X[:, 1], self.X[:, 0]) - self.th0)))
         return r - self.R, self.R * dth, (self.V * er).sum(1), (self.V * et).sum(1), er, et, dth
 
-    def _fine(self, coeffs, derivative=False):
+    def _fine(self, coeffs, derivative=0):
         ck = np.where(self._keep, coeffs, 0.0)
         if derivative:
-            ck = 1j * self._modes * ck
+            ck = (1j * self._modes) ** int(derivative) * ck
         return np.fft.irfft(ck, self.n_nodes) if self.fine == 1 else np.fft.irfft(np.concatenate([ck, np.zeros(self._M // 2 + 1 - len(ck))]), self._M) * self.fine
 
     def _at(self, values, phi):
@@ -103,18 +112,26 @@ class RingParticleSim:
             c[self._modes >= self.mirror_from] = -self.law.mirror * cmath.exp(1j * sign * self.law.lead)
         return c
 
-    def _set_point_rate(self, wk):
-        """Rate of change of the set point: proportional to the mean gap,
-        mode by mode, for the modes the mirror law steers."""
-        rate = np.zeros_like(self.set_point)
+    def _target(self, q, wk):
+        """Stream q's target path: mirrored or followed shape plus set points."""
+        sign = 1.0 if q == 0 else -1.0
+        return np.where(self._keep, self._path_gain(sign) * wk + self.set_point + sign * self.set_point_diff, 0.0)
+
+    def _set_point_rates(self, wk):
+        """Rates of change of the common and differential set points, mode by
+        mode, for the modes the mirror law steers: the first follows the
+        streams' mean offset from the structure, the second opposes the
+        difference between the two streams."""
+        common, diff = np.zeros_like(self.set_point), np.zeros_like(self.set_point)
         if not self.adapt or self.law.mirror is None:
-            return rate
+            return common, diff
         N = self.n_nodes
         for n in range(self.mirror_from, self.n_keep + 1):
-            eta = sum(np.mean((self.r[sl] - self.R) * np.exp(-1j * n * self.phi[sl])) for sl in self.stream) / 2.0
-            gap = eta * N - wk[n]                     # in the scaling of rfft
-            rate[n] = self.adapt * n * (self.u / self.R) * gap
-        return rate
+            eta = [np.mean((self.r[sl] - self.R) * np.exp(-1j * n * self.phi[sl])) * N for sl in self.stream]    # rfft scaling
+            rate = self.adapt * n * self.u / self.R
+            common[n] = rate * (0.5 * (eta[0] + eta[1]) - wk[n])
+            diff[n] = -rate * 0.5 * (eta[0] - eta[1])
+        return common, diff
 
     # ---- modal amplitudes ---------------------------------------------------------------
     def mode(self, n: int) -> complex:
@@ -139,6 +156,18 @@ class RingParticleSim:
             x += [eta, eta_t, om, xi]
         return np.array(x)
 
+    def full_state(self, n: int) -> np.ndarray:
+        """State of mode n in the layout of ring_control.closed_loop: the
+        plant's states, each stream's path command and its rate, and the two
+        set points."""
+        f = (2.0 if n else 1.0) / self.n_nodes
+        R, Om = self.R, self.omega
+        extra = []
+        for q in range(2):
+            extra += [f * self.cmd[q, n] / R, f * self.cmd_rate[q, n] / (R * Om)]
+        extra += [f * self.set_point[n] / R, f * self.set_point_diff[n] / R]
+        return np.concatenate([self.modal_state(n), extra])
+
     def gap(self) -> np.ndarray:
         """Radial offset of every slug from the structure at its position, m."""
         w = self._fine(np.fft.rfft(self.structure_fields()[0]))
@@ -158,11 +187,10 @@ class RingParticleSim:
         self.X = self.X + w[:, None] * self.er0 + v[:, None] * self.et0
         wk = np.fft.rfft(self.structure_fields()[0])
         for q, sl in enumerate(self.stream):
-            sign = 1.0 if q == 0 else -1.0
-            path = self._fine(self._path_gain(sign) * wk)
-            slope = self._fine(self._path_gain(sign) * wk, derivative=True)
-            self.r[sl] = self.R + self._at(path, self.phi[sl])
-            self.rd[sl] = self.phid[sl] * self._at(slope, self.phi[sl])
+            self.cmd[q] = self._target(q, wk)
+            self.cmd_rate[q] = 0.0
+            self.r[sl] = self.R + self._at(self._fine(self.cmd[q]), self.phi[sl])
+            self.rd[sl] = self.phid[sl] * self._at(self._fine(self.cmd[q], derivative=1), self.phi[sl])
 
     # ---- one step ---------------------------------------------------------------------------
     def step(self):
@@ -176,15 +204,20 @@ class RingParticleSim:
         law = self.law
         if law.speed_rate or law.lock_rate:
             v_f, v_slope, vd_f = self._fine(vk), self._fine(vk, derivative=True), self._fine(vdk)
-        zk, zdk = self.set_point, self._set_point_rate(wk)
+        wf = self.filter_bandwidth
+        z_rate, zd_rate = self._set_point_rates(wk)
+        cmd_acc = np.empty_like(self.cmd)
         for q, sl in enumerate(self.stream):
-            sign = 1.0 if q == 0 else -1.0
-            gain = self._path_gain(sign)
-            path, path_slope, path_rate = self._fine(gain * wk + zk), self._fine(gain * wk + zk, derivative=True), self._fine(gain * wdk + zdk)
+            cmd, rate = self.cmd[q], self.cmd_rate[q]
+            cmd_acc[q] = wf**2 * (self._target(q, wk) - cmd) - 2.0 * self.filter_zeta * wf * rate
             phi, phid = self.phi[sl], self.phid[sl]
-            err = self.r[sl] - R - self._at(path, phi)
-            err_rate = self.rd[sl] - (self._at(path_rate, phi) + phid * self._at(path_slope, phi))
-            a_r[sl] = -(self.r[sl] * phid**2 - self.gm / self.r[sl] ** 2) - K * err - C * err_rate
+            c, c_s, c_ss = (self._at(self._fine(cmd, derivative=d), phi) for d in (0, 1, 2))
+            c_t, c_ts = (self._at(self._fine(rate, derivative=d), phi) for d in (0, 1))
+            c_tt = self._at(self._fine(cmd_acc[q]), phi)
+            err = self.r[sl] - R - c
+            err_rate = self.rd[sl] - (c_t + phid * c_s)
+            fly = c_tt + 2.0 * phid * c_ts + phid**2 * c_ss            # what the commanded path asks of the slug
+            a_r[sl] = -(self.r[sl] * phid**2 - self.gm / self.r[sl] ** 2) + fly - K * err - C * err_rate
             if law.speed_rate or law.lock_rate:
                 w0 = self.w0[sl][0]
                 if law.reference == "bucket":
@@ -244,7 +277,10 @@ class RingParticleSim:
         self.r += dt * self.rd
         self.phi += dt * self.phid
         self.phi_nominal += dt * self.w0
-        self.set_point = zk + dt * zdk
+        self.cmd_rate += dt * cmd_acc
+        self.cmd += dt * self.cmd_rate
+        self.set_point = self.set_point + dt * z_rate
+        self.set_point_diff = self.set_point_diff + dt * zd_rate
         self.t += dt
 
     def run(self, duration: float, record=(1,), every: int = 100):

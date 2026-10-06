@@ -178,20 +178,25 @@ class CollectiveModel:
         return [(self.lam, self.v, self.K, self.C)]
 
     def matrix(self, k: float) -> np.ndarray:
-        """State matrix for x = [y, y', (eta_i, eta_i', eta*_i, eta*_i') per stream, z].
+        """State matrix for x = [y, y', (eta_i, eta_i', eta*_i, eta*_i') per stream, z, z_d].
 
-        z is the set point: an offset added to every stream's commanded path,
-        integrated from the mean gap so that the steady gap is driven to zero,
-            z' = adapt * v k * (mean(eta_i) - y),
-        for wavelengths of `adapt_from` and longer (the state is absent otherwise).
-        The feedback is positive, as in a zero-power magnetic bearing: under a
-        steady load the structure settles where the streams carry the load
-        with no offset in the guide.
+        z and z_d are set points added to the streams' commanded paths, z to
+        both and z_d with opposite signs to the two directions of travel:
+            z'   = +adapt * v k * (mean(eta_i) - y),
+            z_d' = -adapt * v k * (eta_+ - eta_-) / 2,
+        for wavelengths of `adapt_from` and longer (the states are absent
+        otherwise, and z_d is absent for a one-way stream). The feedback on z
+        is positive, as in a zero-power magnetic bearing: under a steady load
+        the structure settles where the streams carry the load with no offset
+        in the guide. z_d removes the opposite offsets that look-ahead would
+        otherwise leave in the two streams.
         """
         streams = self._streams()
         rate = self.adapt_rate(k)
-        n = 2 + 4 * len(streams) + (1 if rate else 0)
-        iz = n - 1
+        n_set = (2 if self.counter else 1) if rate else 0
+        n = 2 + 4 * len(streams) + n_set
+        iz = n - n_set
+        izd = iz + 1
         wf = 2.0 * math.pi * self.f_filter
         A = np.zeros((n, n), dtype=complex)
         A[0, 1] = 1.0
@@ -208,6 +213,10 @@ class CollectiveModel:
             if rate:
                 A[ic + 1, iz] = wf**2
                 A[iz, ie] += rate / len(streams)
+                if self.counter:
+                    sign = math.copysign(1.0, v_i)
+                    A[ic + 1, izd] = sign * wf**2
+                    A[izd, ie] -= 0.5 * sign * rate
             ikv = 1j * k * v_i
             err = np.zeros(n, dtype=complex)
             err[ie], err[ic] = 1.0, -1.0
@@ -233,14 +242,14 @@ class CollectiveModel:
         return self.adapt * abs(self.v) * k
 
     def static_response(self, k: float, load: float = 1.0):
-        """Steady displacement of the structure and steady mean gap under a
-        sinusoidal dead load of amplitude `load` N/m on the structure, m."""
+        """Under a sinusoidal dead load of amplitude `load` N/m on the
+        structure: its steady displacement, and the largest steady offset of
+        any stream from it, m."""
         A = self.matrix(k)
         b = np.zeros(A.shape[0], complex)
         b[1] = load / self.m
         x = -np.linalg.solve(A, b)
-        etas = [x[2 + 4 * q] for q in range(len(self._streams()))]
-        return x[0].real, (np.mean(etas) - x[0]).real
+        return x[0].real, max(abs(x[2 + 4 * q] - x[0]) for q in range(len(self._streams())))
 
     def eigenvalues(self, k: float) -> np.ndarray:
         return np.linalg.eigvals(self.matrix(k))
