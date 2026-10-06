@@ -48,11 +48,18 @@ jobs:
       - name: Render website and PDF
         run: quarto render
 
-      - name: Upload PDF
+      - name: Render the short paper and put it beside the book
+        run: |
+          quarto render paper/short-paper.qmd --to pdf
+          cp paper/short-paper.pdf _book/short-paper.pdf
+
+      - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
           name: orbital-ring-paper-pdf
-          path: _book/orbital-ring-paper.pdf
+          path: |
+            _book/orbital-ring-paper.pdf
+            _book/short-paper.pdf
 
       - name: Upload site
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.PUBLISH_PAGES == 'true'

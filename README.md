@@ -2,12 +2,12 @@
 
 A concept paper on the control of an active-support structure. The reference case is an orbital ring built from magnetically guided slug streams that run in shallow helical lanes around a large membrane tube.
 
-The paper is a [Quarto](https://quarto.org) book. One source builds a website and a PDF.
+The paper is a [Quarto](https://quarto.org) book. One source builds a website and a PDF. A nine-page version, `paper/short-paper.qmd`, states the main results without the derivations.
 
 ## Reading it
 
-- **PDF:** built by GitHub Actions on every push and pull request, and attached to the workflow run as an artifact.
-- **Website:** published to GitHub Pages from `main` once two switches are on: Pages enabled with "GitHub Actions" as the source (Settings → Pages), and the repository variable `PUBLISH_PAGES` set to `true` (Settings → Secrets and variables → Actions → Variables). Until then the deploy step is skipped.
+- **Website:** <https://peterhudson.github.io/orbital-ring-paper/>, published from `main` by GitHub Actions. (Publishing needs Pages enabled with "GitHub Actions" as the source, and the repository variable `PUBLISH_PAGES` set to `true`.)
+- **PDFs:** the book and the short paper are built on every push and pull request and attached to the workflow run as an artifact. On the website they are `orbital-ring-paper.pdf` and `short-paper.pdf`.
 - **On GitHub directly:** the `.qmd` files are readable as plain text, but GitHub does not render the equations, cross-references or figure captions. Use the built site or PDF.
 
 ## Building it locally
@@ -23,7 +23,11 @@ quarto render            # website and PDF, into _book/
 quarto render --to html  # website only
 quarto render --to pdf   # PDF only
 quarto preview           # live-reloading preview while editing
+
+quarto render paper/short-paper.qmd --to pdf   # the short paper, into paper/
 ```
+
+The short paper takes its figures from `figures/generated/` and its numbers from the book. When a test fails after a change of input, both need the new number.
 
 ## Calculations
 
@@ -67,6 +71,7 @@ python -m analysis.make_figures
 | `figures/` | Figure files. `figures/generated/` is drawn by `analysis/make_figures.py`. |
 | `analysis/` | Calculations and simulations |
 | `tests/` | Checks that tie the text to the calculations |
+| `paper/` | The short paper: one file and its own small Quarto project |
 | `references.bib` | Bibliography. Each entry was checked against a publisher or library record. |
 | `_quarto.yml` | Book configuration: chapter order, output formats |
 
