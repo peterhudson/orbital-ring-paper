@@ -42,6 +42,8 @@ class RingParticleSim:
     guide_bandwidth: float = 0.5       # of the guide's hold on the commanded path, rad/s
     guide_zeta: float = 0.7
     feedback: dict | None = None       # extra state feedback, {n: K} with K as in ring_modes.RingModes.plant
+    adapt: float = 0.0                 # set-point adaptation rate, as a fraction of the stream's transit rate n u / R
+    load: np.ndarray | None = None     # radial dead load on the structure at each node, N/m (outward positive)
     fine: int = 8                      # the shape is rebuilt on fine * n_nodes points for interpolation
     t: float = field(init=False, default=0.0)
 
@@ -71,6 +73,7 @@ class RingParticleSim:
         self._modes = np.arange(N // 2 + 1)
         self._keep = self._modes <= self.n_keep
         self._M = self.fine * N
+        self.set_point = np.zeros(N // 2 + 1, complex)      # rfft coefficients of the set-point field, m
 
     # ---- the structure's shape as fields ---------------------------------------------
     def structure_fields(self):
@@ -99,6 +102,19 @@ class RingParticleSim:
         if self.law.mirror is not None:
             c[self._modes >= self.mirror_from] = -self.law.mirror * cmath.exp(1j * sign * self.law.lead)
         return c
+
+    def _set_point_rate(self, wk):
+        """Rate of change of the set point: proportional to the mean gap,
+        mode by mode, for the modes the mirror law steers."""
+        rate = np.zeros_like(self.set_point)
+        if not self.adapt or self.law.mirror is None:
+            return rate
+        N = self.n_nodes
+        for n in range(self.mirror_from, self.n_keep + 1):
+            eta = sum(np.mean((self.r[sl] - self.R) * np.exp(-1j * n * self.phi[sl])) for sl in self.stream) / 2.0
+            gap = eta * N - wk[n]                     # in the scaling of rfft
+            rate[n] = self.adapt * n * (self.u / self.R) * gap
+        return rate
 
     # ---- modal amplitudes ---------------------------------------------------------------
     def mode(self, n: int) -> complex:
@@ -160,10 +176,11 @@ class RingParticleSim:
         law = self.law
         if law.speed_rate or law.lock_rate:
             v_f, v_slope, vd_f = self._fine(vk), self._fine(vk, derivative=True), self._fine(vdk)
+        zk, zdk = self.set_point, self._set_point_rate(wk)
         for q, sl in enumerate(self.stream):
             sign = 1.0 if q == 0 else -1.0
             gain = self._path_gain(sign)
-            path, path_slope, path_rate = self._fine(gain * wk), self._fine(gain * wk, derivative=True), self._fine(gain * wdk)
+            path, path_slope, path_rate = self._fine(gain * wk + zk), self._fine(gain * wk + zk, derivative=True), self._fine(gain * wdk + zdk)
             phi, phid = self.phi[sl], self.phid[sl]
             err = self.r[sl] - R - self._at(path, phi)
             err_rate = self.rd[sl] - (self._at(path_rate, phi) + phid * self._at(path_slope, phi))
@@ -200,6 +217,8 @@ class RingParticleSim:
         fr, ft = -self.slug_mass * a_r, -self.slug_mass * a_t
         Fr = np.bincount(j, weights=fr * (1.0 - wt), minlength=N) + np.bincount(jn, weights=fr * wt, minlength=N)
         Ft = np.bincount(j, weights=ft * (1.0 - wt), minlength=N) + np.bincount(jn, weights=ft * wt, minlength=N)
+        if self.load is not None:
+            Fr = Fr + self.load * R * self.dth
         F = Fr[:, None] * er + Ft[:, None] * et
         # gravity and the hoop
         rn = np.hypot(self.X[:, 0], self.X[:, 1])
@@ -225,6 +244,7 @@ class RingParticleSim:
         self.r += dt * self.rd
         self.phi += dt * self.phid
         self.phi_nominal += dt * self.w0
+        self.set_point = zk + dt * zdk
         self.t += dt
 
     def run(self, duration: float, record=(1,), every: int = 100):
