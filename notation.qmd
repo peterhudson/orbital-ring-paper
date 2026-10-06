@@ -77,7 +77,9 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $C_\mathrm{sec}$ | Finite-sector factor in the couple estimate | – |
 | $\eta_\mathrm{load}$ | Cross-section load-transfer efficiency, 0 to 1 | – |
 | $P$ | Power | W |
-| $\beta_w$ | Weight-coupling coefficient, $g_h/u^2$ | m$^{-1}$ |
+| $\chi$ | Total weight shifted by a speed change over the stream weight shifted, $1 + m u^2/EA$ | – |
+| $EA$ | Axial stiffness of the structure | N |
+| $\beta_w$ | Weight-coupling coefficient, $\chi g_h/u^2$ | m$^{-1}$ |
 | $w$ | Stream weight per unit ring length | N/m |
 | $L_\mathrm{eff}$ | Effective speed-offset length of a tug command | m |
 | $\mathbf{S}$ | Local map from lane speed trims to tug, pressure and weight outputs | – |

@@ -118,13 +118,19 @@ class TugFields(Base):
         per_newton = C.u * 100e3 / (2 * math.pi * C.a)
         self.about(per_newton, 3.2e6, 0.01)
         self.about(0.01 * C.w_p * per_newton, 320e6, 0.01)
-        self.about(C.u**3 * (2 * math.pi / 1000e3) / C.g_h, 0.74e6, 0.01)
-        self.about(C.u**3 * (2 / C.R) / C.g_h, 34e3, 0.02)
+        chi = C.weight_factor()
+        self.about(chi, 3.4, 0.01)
+        self.about(C.u**3 * (2 * math.pi / 1000e3) / (chi * C.g_h), 0.22e6, 0.01)
+        # two waves round the ring: the hoop's give lowers the factor to 2.5 (tests/test_ring.py)
+        self.about(C.u**3 * (2 / C.R) / (2.5 * C.g_h), 14e3, 0.03)
 
     def test_weight_coupling(self):
-        self.about(C.weight_multiplier, 1.4, 0.02)
-        self.about(C.beta_w, 8.4e-8, 0.01)
-        self.about(1 / C.beta_w, 11.8e6, 0.01)
+        self.about(C.weight_multiplier, 1.4, 0.02)           # streams alone, or a structure too stiff to stretch
+        self.about(C.total_weight_multiplier(), 4.7, 0.02)
+        self.about(C.weight_coupling(), 2.8e-7, 0.02)
+        self.about(1 / C.weight_coupling(), 3.5e6, 0.01)
+        self.about(C.weight_factor() * C.lam_stream * C.g_h * 1e-3, 47.0, 0.01)   # N/m per part in a thousand of speed
+        self.about(C.lam_stream * C.g_h * 1e-3, 14.0, 0.02)
         # the stream-only sensitivity is larger by the curvature term that
         # tension in the structure cancels
         self.about(C.lift_multiplier - C.weight_multiplier, 1 / (1 - C.g_h * C.R / C.u**2), 1e-9)
@@ -133,15 +139,14 @@ class TugFields(Base):
         du = 10e6 / (C.n_lanes * C.mdot_lane)
         self.about(du, 0.61, 0.01)
         self.about(du / C.u, 6e-5, 0.03)
-        coupling = C.beta_w * 100e3
-        self.about(coupling, 0.0084, 0.01)
-        self.about(coupling * 10e6, 84e3, 0.01)
+        coupling = C.weight_coupling() * 100e3
+        self.about(coupling, 0.03, 0.06)
+        self.about(coupling * 10e6, 280e3, 0.02)
         side = coupling * 10e6 / 1000e3
-        self.assertLess(side, 0.1)
-        self.assertLess(side / C.w_p, 1e-5)
-        for wavelength in (1000e3, 2000e3):
-            shift = side / (C.Pi_total * (2 * math.pi / wavelength) ** 2)
-            self.assertTrue(0.01 < shift < 0.06)
+        self.about(side, 0.3, 0.06)
+        self.assertTrue(2e-5 < side / C.w_p < 4e-5)             # "a few hundred-thousandths"
+        shift = side / (C.Pi_total * (2 * math.pi / 1000e3) ** 2)
+        self.assertTrue(0.03 < shift < 0.06)                    # "a few centimetres"
 
 
 class ClosureScreens(Base):

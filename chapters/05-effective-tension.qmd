@@ -62,15 +62,23 @@ $$ {#eq-tug-reaction}
 
 Between a ramp where the streams speed up and the next ramp where they slow down, the two tugs pull the structure apart with exactly the force by which the faster streams push outward harder. The normal balance does not notice. A stationary speed field cannot move curvature lift from one part of the ring to another.
 
-What a speed field does move is weight. At fixed mass flux the line density is $\lambda = \dot m/u$, so slugs bunch where they are slow. A fractional speed change $\delta u/u$ changes the local stream weight by
+What a speed field does move is weight, in two ways. At fixed mass flux the line density is $\lambda = \dot m/u$, so slugs bunch where they are slow. A fractional speed change $\delta u/u$ changes the local stream weight by
 
 $$
 \delta w = -\lambda g_h \frac{\delta u}{u} .
 $$ {#eq-weight-shift}
 
-@fig-speed-ripple shows both statements on a numerical model of the whole ring (@sec-momentum-truss). A stationary speed ripple of one part in ten thousand, eight waves round the ring, changes the momentum flux by 16 MN peak. The tension in the structure follows it to within 1%, and the effective tension stays flat. The ring's shape changes by about 6 m, and that change disappears entirely when the calculation is repeated with the stream weight held uniform.
+The structure's weight moves as well. Where the streams are slower the structure's tension is lower, by @eq-tug-reaction, so the structure is less stretched there and there is more of it per metre of ring. With an axial stiffness $EA$ its weight changes by $-m g_h\,\delta N/EA$, and $\delta N = \Pi\,\delta u/u$. The two add:
 
-![Response of the whole ring to a stationary speed ripple of amplitude $10^{-4}$ with eight waves round the ring. Top: the change in stream momentum flux is taken up by tension in the structure. Bottom: the shape change is the weight shift alone.](../figures/generated/speed-ripple-response.svg){#fig-speed-ripple}
+$$
+\delta w = -\chi\,\lambda g_h \frac{\delta u}{u}, \qquad \chi = 1 + \frac{m u^2}{EA} .
+$$ {#eq-weight-shift-total}
+
+For a structure too stiff to stretch, $\chi = 1$ and only the streams' weight moves. The reference structure has $EA = 50$ GN, the stiffness of the 0.16 m² of carbon composite that @sec-tug-hoop sizes it with. Then $\chi = 3.4$, and the structure's weight moves more than the streams' does.
+
+@fig-speed-ripple shows these statements on a numerical model of the whole ring (@sec-momentum-truss). A stationary speed ripple of one part in ten thousand, eight waves round the ring, changes the momentum flux by 16 MN peak. The tension in the structure follows it to within 3%, so the effective tension stays flat to that accuracy. The ring's shape changes by about 20 m. With the stream weight held uniform it still changes by 14 m, which is the structure's share, and with a structure too stiff to stretch as well it does not change at all.
+
+![Response of the whole ring to a stationary speed ripple of amplitude $10^{-4}$ with eight waves round the ring. Top: the change in stream momentum flux is taken up by tension in the structure. Bottom: the shape changes because weight moves, the streams' and the structure's.](../figures/generated/speed-ripple-response.svg){#fig-speed-ripple}
 
 For a ripple $u = u_0\left(1 + \epsilon\cos n\vartheta\right)$ with $n$ waves round the ring, $\vartheta$ being the angle round the planet, on a ring whose hoop is stiff, the first-order response is a radial displacement and a tension ripple of amplitudes
 
@@ -78,6 +86,8 @@ $$
 W = -\frac{\lambda}{m+\lambda}\,\frac{R}{n^2}\,\epsilon , \qquad
 N_1 = \left(\Pi - \frac{\lambda g_h R}{n^2}\right)\epsilon .
 $$ {#eq-speed-ripple}
+
+On a ring that stretches, $W$ is larger by the factor $\chi$, a little less at the longest wavelengths, where the hoop's own give lowers the tension ripple.
 
 Two things in @eq-speed-ripple matter later. The tension ripple is essentially the whole of $\epsilon\Pi$, so the structure has to be sized to carry whatever speed modulation is commanded: one part in a thousand is 164 MN. And $W$ is negative. Where the ring has been made lighter it moves inward, not outward. That is the next consequence.
 

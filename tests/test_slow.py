@@ -48,6 +48,17 @@ class SlowRuns(unittest.TestCase):
         self.assertLess(worst, 0.035)
         self.assertTrue(math.isclose(2 * math.pi * C.R / top, 1.44e6, rel_tol=0.01))
 
+    def test_two_hours_under_a_sudden_load_with_the_stators_holding_three_modes(self):
+        """The run drawn in the stator-held-load figure."""
+        from analysis.plots import stator_held_load
+        _, data = stator_held_load.run()
+        sim, lin = data["sim"], data["linear"]
+        self.assertLess(np.abs(sim[:, 0] - lin[:, 0]).max(), 0.005 * np.abs(lin[:, 0]).max())
+        self.assertLess(np.abs(sim[:, 2] - lin[:, 2]).max(), 0.005 * np.abs(lin[:, 2]).max())
+        self.assertLess(sim[:, 1].max(), 3.0e-6)
+        self.assertTrue(math.isclose(sim[-1, 0], 1.9e-3, rel_tol=0.03))
+        self.assertTrue(math.isclose(sim[-1, 2], 0.04e-3, rel_tol=0.03))
+
 
 if __name__ == "__main__":
     unittest.main()
