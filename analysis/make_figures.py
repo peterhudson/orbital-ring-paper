@@ -5,7 +5,7 @@ import time
 
 MODULES = ["ring_modes", "speed_ripple", "thrust_line", "mirror_sketch", "guide_laws", "local_runs", "ring_control_rates", "ring_recovery", "actuator_travel", "sudden_load",
            "cable_and_arch", "unrolled_helix", "crossover_angle", "speed_ramp", "control_bands", "slug_mass_trade", "fault_energy",
-           "stream_family", "speed_ratio", "load_capacity", "stator_held_load"]
+           "stream_family", "speed_ratio", "load_capacity", "stator_held_load", "closure_gain"]
 
 
 def main(names=None):
