@@ -36,15 +36,23 @@ python -m unittest discover -s tests -v
 
 `analysis/params.py` holds every input of the reference case. `tests/test_refcase.py` checks each number quoted in the paper against it, so after changing an input the failing tests list the statements that need updating.
 
+`analysis/truss.py` is the structural model used for the whole-ring results: a pin-jointed frame whose members also carry streams. `analysis/ring.py` and `analysis/ladder.py` build the ring and the two-chord frame from it, and `tests/test_ring.py` checks the model against the closed forms in the text.
+
+Figures drawn from the calculations live in `figures/generated/` and are committed, so the book builds without Python. To redraw them:
+
+```sh
+python -m analysis.make_figures
+```
+
 ## Layout
 
 | Path | Contents |
 | --- | --- |
 | `index.qmd` | Cover image and abstract |
 | `notation.qmd` | Symbol tables |
-| `chapters/` | Chapters 1 to 9 |
+| `chapters/` | Chapters, numbered in reading order |
 | `appendices/` | Appendices A to F |
-| `figures/` | Figure files |
+| `figures/` | Figure files. `figures/generated/` is drawn by `analysis/make_figures.py`. |
 | `analysis/` | Calculations and simulations |
 | `tests/` | Checks that tie the text to the calculations |
 | `_quarto.yml` | Book configuration: chapter order, output formats |
