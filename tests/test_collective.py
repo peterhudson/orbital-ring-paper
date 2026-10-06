@@ -26,6 +26,17 @@ class FollowingGuides(Base):
         for wavelength in (300, 3e3, 1e5, 1e7):
             self.about(model.growth_rate(k_of(wavelength)), model.rigid_growth_rate(k_of(wavelength)), 0.03)
 
+    def test_a_tube_as_tight_as_its_streams_push_is_neutral(self):
+        """Birch's 1982 result: with structure tension equal to the momentum
+        flux the tube neither straightens nor kinks. Less tension, and it grows."""
+        model = CollectiveModel.reference(zeta=0.3, ff=1.0)
+        for wavelength in (300, 3e3, 1e5):
+            k = k_of(wavelength)
+            rigid = model.rigid_growth_rate(k)
+            self.assertLess(abs(model.with_(N=model.Pi).growth_rate(k)), 1e-3 * rigid)
+            self.about(model.with_(N=0.5 * model.Pi).growth_rate(k), rigid * math.sqrt(0.5), 0.03)
+            self.assertLess(model.with_(N=1.5 * model.Pi).growth_rate(k), 0.0)
+
     def test_rigid_rate_factors(self):
         model = CollectiveModel.reference()
         k = k_of(1e5)

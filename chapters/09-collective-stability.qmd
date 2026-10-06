@@ -66,7 +66,7 @@ the force that makes the stream fly the commanded path, plus a spring and a damp
 
 ## Damping by looking ahead {#sec-look-ahead}
 
-@eq-mirror-string has no damping, and any delay in the loop turns that into slow growth. The cure is to steer each stream toward the mirror image of the shape it is about to meet, a distance $d_a$ ahead of it in its own direction of travel. For a wave of wavenumber $k$ the structure then obeys
+@eq-mirror-string has no damping, and any delay in the loop turns that into slow growth. The cure is to steer each stream toward the mirror image of the shape it is about to meet, a distance $d_a$ ahead of it in its own direction of travel. The launch loop uses the stream's known speed in the same way, passing measurements downstream to meet the piece of ribbon they describe [@lofstrom1985launch]. For a wave of wavenumber $k$ the structure then obeys
 
 $$
 \left(m - c_m\lambda\cos k d_a\right)\ddot y + 2 c_m\lambda\,u k \sin(k d_a)\,\dot y + c_m\Pi k^2\cos(k d_a)\,y = 0 .
@@ -120,7 +120,7 @@ $$
 \dot z = \epsilon_z\,k u\left(\bar\eta - y\right) ,
 $$ {#eq-set-point}
 
-where $\bar\eta$ is the mean of the two streams' positions. The feedback is positive, which looks wrong and is right. It is how a zero-power magnetic bearing finds the position where its permanent magnets carry the load and its coils carry none.
+where $\bar\eta$ is the mean of the two streams' positions. The feedback is positive, which looks wrong and is right. The idea is that of zero-power magnetic levitation, in which the suspension is let drift to the position where its permanent magnets carry the load and its coils carry none [@morishita1988zero].
 
 That centers the streams on average. Look-ahead still commands the two streams to opposite sides of the structure, by 15% of its displacement each, and at long wavelengths that alone would fill the guide. A second set point $z_d$, added to one stream's path and subtracted from the other's, removes it. It is driven the ordinary way round, against the difference it sees:
 
@@ -148,7 +148,7 @@ $$
 c_m < \frac{m}{2\lambda} = 0.36 .
 $$ {#eq-bunching-limit}
 
-Above that the slugs surf the wave and bunch at a rate of order $\Omega$, at every wavelength. With look-ahead there is slow bunching at any gain. The cure is for the stators to hold each slug softly to its place in their traveling wave, pulling its speed and position back at rates of $\Omega$ and $\Omega^2$. Softly, and only the pattern: a stiff hold on the mean speed would bring back the breathing instability of @sec-shape-modes-grow.
+Above that the slugs surf the wave and bunch at a rate of order $\Omega$, at every wavelength. With look-ahead there is slow bunching at any gain. The cure is for the stators, which are linear synchronous motors [@gieras2011linear], to hold each slug softly to its place in their traveling wave, pulling its speed and position back at rates of $\Omega$ and $\Omega^2$. Softly, and only the pattern: a stiff hold on the mean speed would bring back the breathing instability of @sec-shape-modes-grow.
 
 With that soft hold in place the upper limit on the gain is $m/\lambda$ again. There is also a lower one, set by the lowest modes, where gravity and curvature work against the mirror law's stiffness: two waves round the ring are held only for $c_m$ above 0.36, three waves for $c_m$ above 0.16. At $c_m = 0.5$ every in-plane mode from $n = 2$ upward decays (@fig-ring-control). The slowest motions, which decay at 0.3 to 0.6 $\Omega$, are those of slug spacing. From $n = 4$ up the structure's own wave keeps the damping ratio of @eq-mirror-damping-ratio.
 
@@ -156,7 +156,7 @@ With that soft hold in place the upper limit on the gain is $m/\lambda$ again. T
 
 **The breathing mode is left alone.** Mirroring $n = 0$ would make it run away. Left to coast it is the stable oscillation of @sec-shape-modes-grow, undamped by anything in this model.
 
-**The mirror law cannot hold the ring on center.** Shifting the stream's whole path sideways changes no curvature. With coasting slugs the steady force that steering can exert at $n = 1$ is exactly zero, and no value of $c_m$, with or without the stators' soft hold, makes the mode decay. What can hold it is weight. If the slugs run slower on the side of the ring that has drifted away from the planet, they bunch there, that side grows heavier, and gravity pulls the ring back. Steering can reach that lever indirectly, because a stream moved outward slows down, and an optimal steering law does stabilize the mode. But it needs 3.6 m of offset for every metre the ring is off center. The stators reach the lever directly, with a speed ripple that has one wave round the ring.
+**The mirror law cannot hold the ring on center.** Shifting the stream's whole path sideways changes no curvature. With coasting slugs the steady force that steering can exert at $n = 1$ is exactly zero, and no value of $c_m$, with or without the stators' soft hold, makes the mode decay. What can hold it is weight. If the slugs run slower on the side of the ring that has drifted away from the planet, they bunch there, that side grows heavier, and gravity pulls the ring back. Steering can reach that lever indirectly, because a stream moved outward slows down, and an optimal steering law, a linear-quadratic regulator [@anderson1990optimal], does stabilize the mode. But it needs 3.6 m of offset for every metre the ring is off center. The stators reach the lever directly, with a speed ripple that has one wave round the ring.
 
 The streams take 72 minutes to go round, which is the time scale of the instability itself, so a simple proportional law on the stators is not enough. A state-feedback law on the stators' force, designed for this one mode, makes the offset decay with a time constant of about two hours. It asks for a speed change of 10 mm/s per metre of offset. A ring 100 m off center needs 1 m/s, one part in ten thousand of the stream speed.
 
