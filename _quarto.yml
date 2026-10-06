@@ -17,11 +17,12 @@ book:
     - chapters/02-momentum-redirection.qmd
     - chapters/03-lane-guide.qmd
     - chapters/04-no-self-centering.qmd
-    - chapters/05-helical-shell.qmd
-    - chapters/06-four-lane-cell.qmd
-    - chapters/07-tug-fields.qmd
-    - chapters/08-closure-screens.qmd
-    - chapters/09-conclusion.qmd
+    - chapters/05-effective-tension.qmd
+    - chapters/06-helical-shell.qmd
+    - chapters/07-four-lane-cell.qmd
+    - chapters/08-tug-fields.qmd
+    - chapters/10-closure-screens.qmd
+    - chapters/11-conclusion.qmd
   appendices:
     - appendices/a-local-stability.qmd
     - appendices/b-tube-section.qmd
