@@ -92,24 +92,56 @@ class FourLaneCell(Base):
 class TugFields(Base):
     def test_power_examples(self):
         self.about(1e6 * C.u, 10e9, 1e-9)
-        self.about(0.01 * C.w_p * 100e3, 10e6, 1e-9)
         self.about(10e6 * C.u, 100e9, 1e-9)
+        self.about(10e6 / (3 * 9.80665), 340e3, 0.01)        # vehicle at 3 g
+        self.about(C.Pi_total / 10e6, 16e3, 0.03)
+        self.about(10e6 / C.n_lanes, 33e3, 0.02)
 
-    def test_lift_coupling(self):
-        self.about(C.lift_multiplier, 3.8, 0.02)
-        self.about(C.beta, 2.3e-7, 0.01)
-        self.about(1 / C.beta, 4350e3, 0.01)
+    def test_common_mode_tug(self):
+        hoop = 1e-3 * C.Pi_total
+        self.about(hoop, 164e6, 0.01)
+        self.about(hoop / 1e9, 0.16, 0.03)                   # m^2 at 1 GPa
+        self.about(hoop / 1e9 * 1600, 260, 0.02)             # kg/m at 1600 kg/m^3
+        self.about(C.m_passive, 1200, 0.02)
+        self.about(1e-3 * C.lam_stream * C.g_h, 14, 0.02)
+        self.about(1e-3 * C.lam_stream * C.g_h / C.w_p, 1.4e-3, 0.02)
+
+    def test_thrust_line_example(self):
+        couple = 10e6 * 2 * C.a
+        self.about(couple, 1e9, 1e-9)
+        self.about(couple / C.Pi_total, 6e-3, 0.03)
+        k = 2 * math.pi / 100e3
+        self.about(couple * k, 60e3, 0.05)                   # shear force
+        self.about(couple * k / (2 * C.a) * 10, 6e3, 0.05)   # one sector's tug on a 10 m bay
+
+    def test_cost_of_sideways_load(self):
+        per_newton = C.u * 100e3 / (2 * math.pi * C.a)
+        self.about(per_newton, 3.2e6, 0.01)
+        self.about(0.01 * C.w_p * per_newton, 320e6, 0.01)
+        self.about(C.u**3 * (2 * math.pi / 1000e3) / C.g_h, 0.74e6, 0.01)
+        self.about(C.u**3 * (2 / C.R) / C.g_h, 34e3, 0.02)
+
+    def test_weight_coupling(self):
+        self.about(C.weight_multiplier, 1.4, 0.02)
+        self.about(C.beta_w, 8.4e-8, 0.01)
+        self.about(1 / C.beta_w, 11.8e6, 0.01)
+        # the stream-only sensitivity is larger by the curvature term that
+        # tension in the structure cancels
+        self.about(C.lift_multiplier - C.weight_multiplier, 1 / (1 - C.g_h * C.R / C.u**2), 1e-9)
 
     def test_speed_trim_example(self):
         du = 10e6 / (C.n_lanes * C.mdot_lane)
         self.about(du, 0.61, 0.01)
         self.about(du / C.u, 6e-5, 0.03)
-        coupling = C.beta * 100e3
-        self.about(coupling, 0.023, 0.01)
-        self.about(coupling * 10e6, 230e3, 0.01)
-        self.about(coupling * 10e6 / 1000e3, 0.23, 0.01)
-        self.about(coupling * 10e6 / 1000e3 / C.w_p, 2.3e-5, 0.01)
-        self.about(coupling * 10e6 / 1000e3 / C.w_p / C.lift_multiplier, 6e-6, 0.03)
+        coupling = C.beta_w * 100e3
+        self.about(coupling, 0.0084, 0.01)
+        self.about(coupling * 10e6, 84e3, 0.01)
+        side = coupling * 10e6 / 1000e3
+        self.assertLess(side, 0.1)
+        self.assertLess(side / C.w_p, 1e-5)
+        for wavelength in (1000e3, 2000e3):
+            shift = side / (C.Pi_total * (2 * math.pi / wavelength) ** 2)
+            self.assertTrue(0.01 < shift < 0.06)
 
 
 class ClosureScreens(Base):

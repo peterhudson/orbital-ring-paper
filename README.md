@@ -36,15 +36,23 @@ python -m unittest discover -s tests -v
 
 `analysis/params.py` holds every input of the reference case. `tests/test_refcase.py` checks each number quoted in the paper against it, so after changing an input the failing tests list the statements that need updating.
 
+Three models of the whole ring check one another. `analysis/truss.py` is a pin-jointed frame whose members also carry streams; `analysis/ring.py` and `analysis/ladder.py` build the ring and a two-chord frame from it. `analysis/ring_modes.py` is a linear model, one mode at a time, in which each stream has its own position, speed and spacing. `analysis/ring_particles.py` is a nonlinear simulation of the ring with the streams as separate slugs. `tests/test_ring.py` and `tests/test_ring_modes.py` compare them with each other and with the closed forms in the text.
+
+Figures drawn from the calculations live in `figures/generated/` and are committed, so the book builds without Python. To redraw them:
+
+```sh
+python -m analysis.make_figures
+```
+
 ## Layout
 
 | Path | Contents |
 | --- | --- |
 | `index.qmd` | Cover image and abstract |
 | `notation.qmd` | Symbol tables |
-| `chapters/` | Chapters 1 to 9 |
+| `chapters/` | Chapters, numbered in reading order |
 | `appendices/` | Appendices A to F |
-| `figures/` | Figure files |
+| `figures/` | Figure files. `figures/generated/` is drawn by `analysis/make_figures.py`. |
 | `analysis/` | Calculations and simulations |
 | `tests/` | Checks that tie the text to the calculations |
 | `_quarto.yml` | Book configuration: chapter order, output formats |
@@ -56,6 +64,6 @@ python -m unittest discover -s tests -v
   - sections: `{#sec-name}` on the heading, `@sec-name` in the text
   - figures: `![Caption](../figures/file.svg){#fig-name}`, then `@fig-name`
   - equations: `$$ ... $$ {#eq-name}`, then `@eq-name`
-- **Equations** are labelled only when they are a result or are referred to elsewhere.
+- **Equations** are labeled only when they are a result or are referred to elsewhere.
 - **Symbols** are listed in `notation.qmd`. Add new ones there, and check the list before reusing a letter.
 - **Units** are SI.

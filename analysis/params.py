@@ -128,13 +128,30 @@ class RefCase:
 
     @property
     def beta(self) -> float:
-        """Lift-coupling coefficient 1/R + g_h/u^2, 1/m."""
+        """Speed sensitivity of the streams' own outward push, 1/R + g_h/u^2, 1/m.
+
+        Stream only. On a free ring the 1/R part is cancelled by tension in
+        the structure, so the net coefficient is `beta_w`.
+        """
         return 1.0 / self.R + self.g_h / self.u**2
 
     @property
     def lift_multiplier(self) -> float:
-        """Fractional lift change per fractional speed change, stream only."""
+        """Fractional change of the streams' own push per fractional speed
+        change. Stream only; see `weight_multiplier` for the net effect."""
         return self.beta / (1.0 / self.R - self.g_h / self.u**2)
+
+    @property
+    def beta_w(self) -> float:
+        """Weight-coupling coefficient g_h/u^2, 1/m: the net speed sensitivity
+        of the normal balance once the structure's tension is counted."""
+        return self.g_h / self.u**2
+
+    @property
+    def weight_multiplier(self) -> float:
+        """Change in stream weight, as a fraction of the supported load, per
+        fractional speed change."""
+        return self.beta_w / (1.0 / self.R - self.g_h / self.u**2)
 
     # ---- helix and prestress ----------------------------------------------
     def alpha_cross(self, gamma: float | None = None) -> float:

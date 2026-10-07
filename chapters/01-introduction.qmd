@@ -9,7 +9,7 @@ Second, even if one has enough moving momentum to loft a ring, that does not by 
 This paper proposes a specific answer to both problems.
 
 1. **Helical slug streams at small $\alpha$ in a prestressed membrane guide shell.** The lanes are wrapped helically around a large tensile membrane tube. Their curvature creates outward pressure that inflates and prestresses the torus, turning moving momentum into a steady prestress channel and reaction substrate for an independently stabilized guide structure.
-2. **A four-lane balanced cell for macro-scale actuation.** The same helical geometry allows balanced groups of lanes whose momentum components cancel in steady operation but can be modulated through fixed spatial speed gradients to produce distributed tug fields and ring-scale bending moments.
+2. **A four-lane balanced cell for macro-scale actuation.** The same helical geometry allows balanced groups of lanes whose momentum components cancel in steady operation but can be modulated through fixed spatial speed gradients to produce distributed tug fields: forces along the ring that add between counter-propagating lanes.
 
 The claim envelope should be stated early. This paper does not claim closure of the full orbital-ring system, nor does it claim demonstrated closed-loop controllability. It claims that shallow helical momentum streams plus four-lane balanced cells define a plausible internal prestress and actuation primitive. Dynamic stability, guide technology, thermal rejection, fault isolation, startup, deployment, and passive-mass closure remain explicit closure requirements.
 
@@ -25,7 +25,7 @@ The highlighted section of the orbital ring is displayed below in @fig-local-hel
 
 ## Paper structure {#sec-paper-structure}
 
-The argument proceeds in six steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Fifth, it develops the four-lane balanced cell and distributed tug fields as the main macro-scale actuation result. Only then does it turn to the harder practicality screens: macro lift throughput, fault-domain architecture, and closure.
+The argument proceeds in seven steps. First, momentum redirection is established as the basic force mechanism. Second, the paper asks what one lane demands from its magnetic guide. Third, it shows why a straight high-speed lane does not self-center under perturbation. Fourth, it restates the force balance of the whole ring in terms of an effective tension, which says what holds the ring up, what a force along the ring does to it, and how fast its shape runs away if nothing intervenes. Fifth, it introduces the helical toroidal guide architecture as a way to turn the dominant steady curvature load into useful local prestress while making the remaining stability problem explicit. Sixth, it develops the four-lane balanced cell. Seventh, it derives distributed tug fields and works out what they can and cannot do to the ring. Only then does it turn to the harder practicality screens: macro lift throughput, fault-domain architecture, and closure.
 
 ## Coordinate convention {#sec-coordinate-convention}
 
