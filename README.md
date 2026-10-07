@@ -6,7 +6,8 @@ The paper is a [Quarto](https://quarto.org) book. One source builds a website an
 
 ## Reading it
 
-- **Website and PDF:** built by GitHub Actions on every push to `main`. The site is published to GitHub Pages once Pages is enabled for this repository (Settings → Pages → Source: GitHub Actions). The PDF is also attached to each workflow run as an artifact.
+- **PDF:** built by GitHub Actions on every push and pull request, and attached to the workflow run as an artifact.
+- **Website:** published to GitHub Pages from `main` once two switches are on: Pages enabled with "GitHub Actions" as the source (Settings → Pages), and the repository variable `PUBLISH_PAGES` set to `true` (Settings → Secrets and variables → Actions → Variables). Until then the deploy step is skipped.
 - **On GitHub directly:** the `.qmd` files are readable as plain text, but GitHub does not render the equations, cross-references or figure captions. Use the built site or PDF.
 
 ## Building it locally
@@ -24,6 +25,17 @@ quarto render --to pdf   # PDF only
 quarto preview           # live-reloading preview while editing
 ```
 
+## Calculations
+
+The numbers in the text come from `analysis/`, plain Python with numpy, scipy and matplotlib.
+
+```sh
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+```
+
+`analysis/params.py` holds every input of the reference case. `tests/test_refcase.py` checks each number quoted in the paper against it, so after changing an input the failing tests list the statements that need updating.
+
 ## Layout
 
 | Path | Contents |
@@ -33,6 +45,8 @@ quarto preview           # live-reloading preview while editing
 | `chapters/` | Chapters 1 to 9 |
 | `appendices/` | Appendices A to F |
 | `figures/` | Figure files |
+| `analysis/` | Calculations and simulations |
+| `tests/` | Checks that tie the text to the calculations |
 | `_quarto.yml` | Book configuration: chapter order, output formats |
 
 ## Editing conventions
