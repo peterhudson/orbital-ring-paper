@@ -8,7 +8,9 @@ The purpose is deliberately narrower than a full orbital-ring dynamics model. Th
 
 The screen asks the following falsification question: Is there any plausible local shell/guide/controller parameter regime in which the moving-stream path-following terms can be stabilized over the local and middle wavelength bands?
 
-The answer from the reduced-order map is conditional. The architecture is not immediately ruled out by local path-following instability, but it survives only if the guide system acts as a high-bandwidth transverse magnetic bearing or equivalent local active suspension. The helical prestress alone is not stabilizing tangent stiffness. The balanced-cell axial tug field alone is also not a local transverse stabilizer unless its control-influence matrix is explicitly shown to couple into the unstable shell/lane modes.
+The answer from the reduced-order map is conditional. The architecture is not immediately ruled out by local path-following instability, but it survives only if the guide system acts as a high-bandwidth transverse magnetic bearing or equivalent local active suspension. The helical prestress alone is not stabilizing tangent stiffness. The balanced-cell axial tug field is not a local transverse stabilizer either (@sec-tug-power-cost).
+
+The scope is the lanes against a shell whose axis is taken to stay where it is. The motion of that axis, with all its lanes, is the outer problem, and @sec-collective-stability treats it differently, by steering the streams.
 
 ## Local coordinates and Fourier modes {#sec-local-coordinates-fourier-modes}
 
@@ -66,7 +68,7 @@ T_{\mathrm{eq,lane}}
 \end{aligned}
 $$
 
-This is not a passive material tension. It is the coefficient multiplying the curvature-following term in the linearized moving-stream reaction.
+This is not a passive material tension. It is the coefficient multiplying the path-following term in the linearized moving-stream reaction.
 
 Using the reference case,
 
@@ -499,15 +501,15 @@ for all newly unstable modes, where $t_{\mathrm{iso}}$ is the physical isolation
 
 ## Reduced-order map result {#sec-reduced-order-map-result}
 
-The reduced-order tube-section screen gives the following qualitative map.
+The force and delay tables above, with the single-lane screen of @sec-app-local-stability, suggest the following qualitative map. It is a judgment from those tables. The eigenvalue map for the cases listed above has not been computed. All rows but the last concern a lane against its shell.
 
 | Band                                         | Dominant problem                                                                 | Likely stabilizing mechanism                                                    | Result                                                 |
 | -------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
 | $L_s \lesssim 10~\mathrm{m}$                 | Very large path-following stiffness and sub-$0.1~\mathrm{ms}$ delay budget             | Passive guide stiffness, very local magnetic-bearing loops, stiff lane carriers | Not credible as ordinary shell-level active control    |
 | $L_s \sim 30~\mathrm{m}$                     | Tens of kN/m per lane for millimetre motion; delay budget $\sim0.25~\mathrm{ms}$ | Passive guide stiffness plus extremely fast local transverse bearing            | Severe / marginal                                      |
 | $L_s \sim 100~\mathrm{m}$                    | Few kN/m per lane for millimetre motion; delay budget $\sim0.8~\mathrm{ms}$      | High-bandwidth transverse guide control                                         | Plausible future-technology window                     |
-| $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lower path-following stiffness but larger structural participation                     | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
-| $L_s \gtrsim 10^2$ to $10^3~\mathrm{km}$     | Long-wave ring shape and alignment                                               | Steering of the streams, with stator weight trim at the longest waves (@sec-collective-stability) | Stable in the models of @sec-collective-stability |
+| $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lane against shell: lower path-following stiffness but larger structural participation | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
+| $L_s \gtrsim 300~\mathrm{m}$                 | The tube's axis: the shape of the ring                                           | Steering of the streams, with the stators at the longest waves (@sec-collective-stability) | Stable in the models of @sec-collective-stability |
 
 The most important negative result is Case T: axial tug authority by itself does not close the local stability problem. It is not enough to show that neighboring lanes can generate large internal axial forces. The transverse influence matrix must have the right rank, sign, phase, and saturation margin.
 

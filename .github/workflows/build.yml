@@ -35,6 +35,10 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          # Without a token the TinyTeX install asks GitHub's API anonymously
+          # and is sometimes refused (403) when the shared runner is rate-limited.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tinytex: true
 

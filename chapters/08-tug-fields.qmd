@@ -4,7 +4,7 @@ The four-lane balanced cell has a second use beyond canceling steady momentum. I
 
 The right mental picture is not a rigid pipe with a single giant control thruster attached to it. It is a huge, lightly built but prestressed torus with many nearly axial lanes distributed around its wall, and selected neighborhoods of stator modules quietly speeding up or slowing down particular lanes over long distances.
 
-What those neighborhoods can and cannot do follows from @sec-effective-tension. A tug is a force along the ring, and the ring answers it along the ring: as tension in the structure, as a shift of stream weight, and, when opposed sectors work against each other, as a sideways shift of the line along which the streams push. That makes the tug field the natural actuator for loads that act along the ring. It is a costly way to push the ring sideways, and @sec-tug-power-cost says how costly. Holding the ring's shape is left to @sec-collective-stability.
+What those neighborhoods can and cannot do follows from @sec-effective-tension. A tug is a force along the ring, and the ring answers it along the ring: as tension in the structure, as a shift of weight, and, when opposed sectors work against each other, as a sideways shift of the line along which the streams push. That makes the tug field the natural actuator for loads that act along the ring. It is a costly way to push the ring sideways, and @sec-tug-power-cost says how costly. Holding the ring's shape is left to @sec-collective-stability.
 
 ## Stationary spatial speed gradients act on momentum flux {#sec-stationary-spatial-speed-gradients}
 
@@ -118,7 +118,7 @@ It is also a sizing rule. The structure must be able to carry $\epsilon\Pi$. In 
 
 At fixed mass flux, slugs bunch where they are slow. The structure, less stretched where the streams push less, is denser there too. So a stretch of ring where the lanes run slow is heavier, by @eq-weight-shift-total. This is the only way a speed field common to all lanes changes the ring's normal balance. It is weak: one part in a thousand of speed is 47 N/m, half a percent of the supported weight, of which 14 N/m is the streams' and the rest the structure's. And the ring answers it backward (@sec-funicular): the heavier stretch rises.
 
-Weight trim is a slow, long-wave adjustment. Its proper use is to cancel a long-wave imbalance of load at its source, so that the ring's shape does not have to accommodate it.
+Weight trim is a long-wave adjustment. Its proper use is to cancel a long-wave imbalance of load at its source, so that the ring's shape does not have to accommodate it. In @sec-changing-loads it also becomes the feedback actuator for the longest shape modes.
 
 ### Opposed sectors: the thrust line {#sec-opposed-sectors-create-bending}
 
@@ -148,7 +148,7 @@ where $\Delta\phi$ is sector width and $C_\mathrm{sec}$ accounts for finite angu
 
 ![Two opposed balanced four-cells on a local guide-shell segment. One cell spans $A$ to $B$ and the other spans $A{\prime}$ to $B{\prime}$. Each helical path label 1-8 matches the lane numbers 1-8 used in @fig-opposed-cells-moment.](../figures/figure-5-opposed-balanced-cells-bending2.svg){#fig-opposed-cells}
 
-![Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential $F_\theta$ components cancel, while the ring-direction $F_s$ components add. In the opposed sectors, those surviving axial reactions push $A$ and $B$ apart while pulling $A{\prime}$ and $B{\prime}$ together, producing the bending couple sketched in @fig-opposed-cells.](../figures/figure-6-opposed-balanced-cells-moment.svg){#fig-opposed-cells-moment}
+![Local force-component view of the opposed balanced-cell actuator. Within each four-lane sum, the circumferential $F_\theta$ components cancel, while the ring-direction $F_s$ components add. In the opposed sectors, those surviving axial reactions push $A$ and $B$ apart while pulling $A{\prime}$ and $B{\prime}$ together, producing the couple sketched in @fig-opposed-cells.](../figures/figure-6-opposed-balanced-cells-moment.svg){#fig-opposed-cells-moment}
 
 So the physical picture is two-stage. Within each balanced cell, the unwanted circumferential reaction is removed by symmetry. Across the torus, the surviving $s$-directed reactions push $A$ and $B$ apart while pulling $A{\prime}$ and $B{\prime}$ together, so the opposed sectors generate a couple rather than a mere net force.
 
@@ -164,13 +164,13 @@ $$
 EI\,y'''' + \Pi\,y'' = q - \left(\Pi e\right)'' .
 $$ {#eq-beam-thrust}
 
-The first term matters only for wavelengths shorter than $2\pi\sqrt{EI/\Pi}$, which is under 200 m for any plausible shell. Beyond that the streams, not the shell, decide the shape, and the solution with no load is simply
+The first term matters only for wavelengths shorter than $2\pi\sqrt{EI/\Pi}$, which is about 120 m for the reference tube and under 200 m for any plausible shell. Beyond that the streams, not the shell, decide the shape, and the solution with no load is simply
 
 $$
 y = -e .
 $$ {#eq-structure-follows-thrust}
 
-The structure moves sideways by the offset, in the opposite direction, and the thrust line stays where it was. The squeezed-hoop picture, in which opposed tugs bend the torus the way hands would, holds only below the 200 m crossover. At the wavelengths where the tug field was meant to act, the couple does not bend the ring. It slides the structure relative to the streams.
+The structure moves sideways by the offset, in the opposite direction, and the thrust line stays where it was. The squeezed-hoop picture, in which opposed tugs bend the torus the way hands would, holds only below that crossover. At longer wavelengths the couple does not bend the ring. It slides the structure relative to the streams.
 
 @fig-thrust-line shows this on a frame model: two chords 100 m apart, each carrying half the streams, joined by rungs and cross-bracing. With the bracing in place the structure's centerline takes up the mirror image of the commanded offset. With the bracing made a million times softer, so that there is no shear path between the chords, nothing moves, and each chord simply keeps its own tug as tension.
 
@@ -228,7 +228,7 @@ $$
 
 so its entry and exit ramps produce equal and opposite tugs at different positions. Useful actuation therefore comes from placing those opposite gradient zones deliberately in space, so they put tension, a couple, or a transfer of load between streams and structure where it is wanted.
 
-So the useful mental picture is not "the ring has a slow patch." It is "the ring has a deliberately placed slow-down ramp here and a deliberately placed speed-up ramp somewhere else," with the separation between those ramps creating the useful internal couple.
+So the useful mental picture is not "the ring has a slow patch." It is "the ring has a deliberately placed slow-down ramp here and a deliberately placed speed-up ramp somewhere else," with the separation between those ramps creating the tension between them.
 
 The main constraints are instead collision and delay limits. For a monotone low-speed region with minimum speed $v_1$, the minimum spacing becomes
 
@@ -318,11 +318,11 @@ That is 0.22 MW per metre for each newton per metre at a wavelength of 1000 km, 
 
 Set against these, recall from @sec-funicular what the ring does about a 1% mismatch at 100 km if nothing is commanded at all: its shape shifts by 0.15 m.
 
-The conclusion is that tug fields are the wrong tool for holding the ring's shape. Sideways control should be done by sideways forces on the streams, which cost no power to first order. @sec-collective-stability shows how.
+The conclusion is that tug fields are the wrong tool for holding the ring's shape, except at the longest wavelengths, where weight trim is cheapest and steering turns out to have no room (@sec-changing-loads). Sideways control should be done by sideways forces on the streams, which cost no power to first order. @sec-collective-stability shows how.
 
 ## Control-channel coupling and allocation {#sec-control-channel-coupling-allocation}
 
-The tug channel is not dynamically independent. Spatial speed gradients generate structural tug, but the associated local speed field also changes helical prestress and stream weight.
+The tug channel is not dynamically independent. Spatial speed gradients generate structural tug, but the associated local speed field also changes helical prestress and the ring's weight.
 
 This is the point where the machine stops looking like three separate knobs and starts looking like a coupled control surface. Turning the "tug" knob also nudges the local pressure and local weight because all three are functions of the same lane-speed field.
 
@@ -418,7 +418,7 @@ $$
 \delta u = \left(\delta u_1,  \delta u_2,  \delta u_3,  \delta u_4\right)^T.
 $$
 
-Here $\mathbf{S}$ depends on lane placement, handedness, sector participation, and operating point. The present paper does not solve that allocation problem, but naming it explicitly makes clear what the next control-theory step must be.
+Here $\mathbf{S}$ depends on lane placement, handedness, sector participation, and operating point. The present paper does not solve that allocation problem, but naming it explicitly marks one of the control problems left open.
 
 In plain language, the controller is trying to combine four lane-speed trims into three useful local effects, while suppressing the residual unwanted ones. That is a recognizable control-allocation problem, not handwaving.
 
