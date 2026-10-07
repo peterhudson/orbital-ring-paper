@@ -9,7 +9,9 @@ The fixed-flux treatment is useful, but the slugs themselves cannot stay abstrac
 | $10~\mathrm{kg}$ | $\sim 5.4\times10^{3}~\mathrm{s}^{-1}$ | $\sim 1.8~\mathrm{m}$ | $\sim 0.18~\mathrm{ms}$ | $\sim 500~\mathrm{MJ}$ |
 | $100~\mathrm{kg}$ | $\sim 5.4\times10^{2}~\mathrm{s}^{-1}$ | $\sim 18~\mathrm{m}$ | $\sim 1.8~\mathrm{ms}$ | $\sim 5~\mathrm{GJ}$ |
 
-This is a genuine design fork.
+This is a genuine design fork, and @fig-slug-mass-trade shows both sides of it.
+
+![The two sides of the choice of slug mass in the reference case. Left: the time between slugs in one lane, and the timing accuracy that holds their spacing to 1%. Right: the kinetic energy of one slug at 10 km/s. The dot is the 10 kg bookkeeping slug.](../figures/generated/slug-mass-trade.svg){#fig-slug-mass-trade}
 
 - Small slugs reduce individual projectile energy, but demand extreme event rate, timing accuracy, sensing bandwidth, and electromagnetic switching frequency.
 - Large slugs relax rate and timing, but make each slug an individually catastrophic object.

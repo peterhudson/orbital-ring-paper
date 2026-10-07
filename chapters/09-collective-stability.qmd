@@ -199,6 +199,10 @@ Put together, the ring is held by a handful of mechanisms, each with its own ran
 | Uniform breathing ($n = 0$) | Nothing, if the slugs coast | Orbital mechanics | period 83 minutes |
 | Loads along the ring | Tension round the structure | Tug fields (@sec-tug-purpose) | as commanded |
 
+@fig-control-bands lays the same mechanisms out by wavelength.
+
+![What holds the ring's shape at each wavelength. The top scale is the time in which a shape error would grow e-fold if the streams simply followed the structure (@eq-local-growth). Uniform breathing and loads along the ring have no place on a wavelength scale and are left out.](../figures/generated/control-bands.svg){#fig-control-bands}
+
 Two things stand out. Stability of shape comes from sideways forces on the streams at all but the two lowest modes, and that costs room in the guide, not power. And the tug primitive of @sec-tug-fields has more to do than carry loads along the ring. It is the natural actuator for keeping the ring centered on the planet and for meeting changes of load at long wavelengths, where the guide has no room.
 
 ## What has and has not been shown {#sec-control-status}

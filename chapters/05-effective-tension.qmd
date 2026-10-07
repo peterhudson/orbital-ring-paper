@@ -89,7 +89,9 @@ $$
 y = \frac{\delta q}{T_\mathrm{eff}\,k^2} = -\frac{\delta q}{\Pi k^2} \qquad (N = 0) .
 $$ {#eq-funicular}
 
-A cable moves the way it is pushed. This ring moves the other way. Extra weight on one stretch makes that stretch rise, because the thrust line of an arch has to curve more sharply under a heavier load [@heyman1995stone]. The same expression holds for the whole ring with $k = n/R$ for $n$ waves round the circumference.
+A cable moves the way it is pushed. This ring moves the other way. Extra weight on one stretch makes that stretch rise, because the thrust line of an arch has to curve more sharply under a heavier load [@heyman1995stone]. The same expression holds for the whole ring with $k = n/R$ for $n$ waves round the circumference. @fig-cable-arch shows the two cases side by side.
+
+![A cable and an arch of momentum under the same loads, with their ends held. Both obey @eq-ring-equilibrium-parts, with opposite signs of effective tension, so each shape is the other turned upside down.](../figures/generated/cable-and-arch.svg){#fig-cable-arch}
 
 The size of the response is modest. A load mismatch of 1% of the supported weight, 100 N/m, displaces the reference ring by about 0.15 m at a wavelength of 100 km, 15 m at 1000 km, and 7 km for two waves round the ring. The ring does not need large forces to hold a nearly circular shape. Static authority is not the difficulty.
 
