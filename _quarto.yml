@@ -22,8 +22,10 @@ book:
     - chapters/07-four-lane-cell.qmd
     - chapters/08-tug-fields.qmd
     - chapters/09-collective-stability.qmd
-    - chapters/10-closure-screens.qmd
-    - chapters/11-conclusion.qmd
+    - chapters/10-prior-work.qmd
+    - chapters/11-closure-screens.qmd
+    - chapters/12-conclusion.qmd
+    - references.qmd
   appendices:
     - appendices/a-local-stability.qmd
     - appendices/b-tube-section.qmd
@@ -33,6 +35,8 @@ book:
     - appendices/f-reference-frames.qmd
 
 number-depth: 3
+
+bibliography: references.bib
 
 format:
   html:

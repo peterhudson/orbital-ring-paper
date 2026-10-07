@@ -1,0 +1,74 @@
+# Earlier work and what is new here {#sec-prior-work}
+
+The ideas in this paper touch four bodies of earlier work: rings round a planet, structures held up by moving mass, the mechanics of pipes and belts that carry a flow, and magnetic guides. This chapter says what each contributes, where this paper only restates a known result in new clothes, and what appears to be new.
+
+It comes late in the paper because the comparison needs the vocabulary of the chapters before it.
+
+## Rings round a planet {#sec-prior-rings}
+
+That a ring round a planet is unstable is one of the oldest results in the subject. Maxwell showed that a solid uniform ring cannot stay in place about a central body [@maxwell1859stability], and the off-center rate $\Omega/\sqrt 2$ of @eq-ring-growth is the same instability. For a rigid ring it acts in the ring's plane and not out of it [@mcinnes2003nonlinear], as it does here.
+
+The rings proposed as space structures before 1982 hold themselves up by orbiting. Polyakov's "necklace" sits just above geosynchronous orbit, joined to the ground by cables and kept taut by its own excess of centrifugal force [@polyakov1977space]. Breakwell analyzed the stability of an orbiting ring [@breakwell1981stability], and found a ring of satellites cabled together at synchronous altitude unstable unless the lengths of the cable segments between them are actively adjusted [@breakwell1983orbiting]. Beletsky and Levin give a chapter of their book on tethers to rings of connected satellites [@beletsky1993dynamics]. None of these carries a stream moving faster than orbital speed.
+
+The orbital ring as an active-support structure is Birch's [@birch1982orbital]. His ring is massive, in low orbit, and in free fall except where it is deflected by "skyhooks" that ride on it by magnetic levitation and are held stationary over the ground. He also describes a continuous skyhook: a stationary sheath that encloses two counter-rotating rings and is carried by them along its whole length. That is the arrangement of this paper. His analysis of its stability has three parts.
+
+- **Radius.** Pushed inward uniformly and released, the ring stays circular and its radius oscillates at the rate of a free orbit, because the rings keep their angular momentum. That is the breathing mode of @sec-shape-modes-grow with coasting slugs, which is stable for the same reason.
+- **Bending.** A bent element of tube that carries two opposed streams is "dynamically neutral in the absence of external forces". The tension at its ends, divided by its radius of curvature, equals the centrifugal force of the streams, so it tries neither to straighten nor to kink. In the language of @sec-effective-tension this is the case $T_\mathrm{eff} = 0$: a tube whose own tension equals the momentum flux of its streams.
+- **Skyhooks.** A separate skyhook is unstable through electromagnetic drag, on a time scale of about a month, and its linear motors must be actively controlled.
+
+From the first two he concludes that the continuous skyhook is dynamically stable. This paper concludes otherwise about its shape, and the difference is in the words "in the absence of external forces". A tube with nothing acting on it from outside carries a tension equal to the momentum flux of its streams, and is neutral. A ring that holds weight up against gravity cannot carry that tension. By @eq-ring-effective-tension its momentum flux exceeds its tension by the supported weight per unit length times the ring's radius. That excess is what holds the weight up, and it makes $T_\mathrm{eff}$ negative, so that a bent element pushes further into its bend and the shape modes grow (@sec-shape-modes-grow). The local model of this paper gives both results: no growth when the structure is given a tension equal to the momentum flux, and the rate of @eq-local-growth when it is given none.
+
+Birch's analysis covers the uniform radial motion and a local disturbance, which he expects to spread along the ring and die away. It does not treat the shape wave by wave. His later paper on dynamic compression members [@birch1989dynamic] is, by its title, the nearest earlier statement that a stream can carry a compressive load. It could not be obtained for this review.
+
+## Other structures held up by moving mass {#sec-prior-streams}
+
+Lofstrom's launch loop is a fast iron ribbon inside a sheath, turned round by deflector magnets at its two ends [@lofstrom1985launch]. His paper is the nearest prior art for the control problem of this one, and three of its points are restated here in different words.
+
+- The ribbon's attractive magnetic suspension is unstable and has to be controlled electronically. At the deflectors, where the acceleration is highest, a perturbation doubles in 180 microseconds, or 2.5 m of travel. That is the delay budget of @sec-delay-scale.
+- Measurements of the ribbon are stored and delivered to each control section downstream as the measured piece of ribbon reaches it. That is feedforward along the stream, the same use of the stream's known speed that the look-ahead of @sec-look-ahead makes.
+- Along the low-acceleration track he controls on both the spacing between ribbon and track and the absolute position of the track, notes that measuring the second is the costlier, and finds that long-wave perturbations grow as they travel down the ribbon unless the gains are chosen properly. That is the sensing requirement of @sec-mirror-limits and a first sight of the instability of @sec-following-fails.
+
+Where the loop climbs through the atmosphere, anchor cables to the ground hold it against the wind.
+
+Knapman's space cable carries streams of "bolts" in evacuated tubes that rise from the ground and return [@knapman2009stability]. Its lateral stability is treated with damped struts between the tubes [@knapman2009stability] and with what he calls active curvature control: the tubes bend with a side wind in such a way that the bolts traveling round the bends push back against it [@knapman2023innovation]. This uses the same force as the mirror law, the push of a stream on the outside of its bend, and it acts between stream and tube. The purpose differs. Active curvature control shapes tube and stream together so that the stream's push balances a side load. The mirror law of @sec-mirror-law steers the stream against the structure's own displacement, in order to change the sign of the structure's stiffness.
+
+Hyde's review of Earth-to-space transport covers the family as it stood in 1988 [@hyde1988earthbreak]. The tethered ring [@swan2023techno] is the most developed current proposal for a ring held up by moving mass. Its published analysis covers the magnetic confinement and friction of the moving rings, the tethers and the economics. It notes that loads will perturb the rings and that the control fields must respond, and gives no analysis of the ring's shape modes.
+
+## Pipes, belts and the name of the instability {#sec-prior-pipes}
+
+The result of @sec-no-self-centering, that a guided stream pushes further into any bend, is the central result of the mechanics of pipes conveying fluid [@housner1952bending; @paidoussis2014fluid], with $\lambda v^2$ in the place of the fluid's $MU^2$. What that literature adds is a classification that the first version of this paper had wrong. When the flow has no free end, its forces on the pipe are conservative, and the pipe fails by buckling, a static divergence [@benjamin1961dynamicsI; @holmes1978pipes]. The nonconservative "follower force" that makes a hose flail belongs to the pipe with a free end [@gregory1966unstableI]. A ring has no free end. So this paper speaks of the path-following term, and means a conservative, anti-restoring stiffness.
+
+The same reduction appears for belts and band saws, where a moving band is a gyroscopic system that loses stability by divergence at a critical speed [@wickert1990classical]. The riser literature combines a pipe's wall tension with the pressure of its contents into an effective tension in the same way [@sparks1984influence], and @sec-effective-tension takes the name from there. What differs in an active-support structure is the sign. Everywhere else the flow's contribution is a correction to be kept smaller than the tension. Here it exceeds the tension on purpose, because the excess is the lift.
+
+Two further results from this literature are used or needed. Separate masses moving along a beam can destabilize it where a continuous flow of the same mean density would not, as a train of masses [@nelson1971dynamic] and even as a single one [@metrikine1997instability]. That is an open question for this paper (@sec-app-slug-discreteness). And damping can destabilize a system that gyroscopic terms had kept stable [@krechetnikov2007dissipation], which is why the stability appendices cannot rely on the convective term of a one-way stream.
+
+The picture of the ring's shape as a funicular, and of opposed tugs as a shift of the thrust line, is the ordinary statics of arches [@heyman1995stone] applied to an arch made of momentum.
+
+## Guides, bearings and motors {#sec-prior-guides}
+
+No arrangement of fixed magnets holds a body in stable equilibrium [@earnshaw1842nature], so a guide is either dynamic or active. Electrodynamic guides, in which the moving body induces the currents that repel it [@powell1971magnetic], are stable in themselves, and in the passive Halbach-array version their ratio of lift to drag rises in proportion to speed [@post1996inductrack; @post2000inductrack]. That is the property any estimate of guide loss will turn on (@sec-full-system-faces-closure). Their stability is a subject of its own, because their magnetic forces depend on the motion [@cai1997dynamic]. Attractive electromagnetic guides are unstable without control [@sinha1987electromagnetic; @lofstrom1985launch] and are stabilized by fast feedback on the gap.
+
+The mirror law needs the second kind, or the first kind with an active trim, because it commands force. Its set point (@sec-set-point) is borrowed from zero-power magnetic levitation, in which the controller drives the steady coil current to zero, so that the gap moves to where permanent magnets carry the steady load [@morishita1988zero]. A suspension controlled that way moves toward an added load instead of away from it, which is the backward response of @sec-funicular.
+
+The stators that hold each slug in a traveling wave are linear synchronous motors [@gieras2011linear]. The optimal state feedback used for the off-center mode is the standard linear-quadratic regulator [@anderson1990optimal].
+
+## Tabletop analogues {#sec-prior-tabletop}
+
+A loop of chain or string driven fast holds a shape and can be pushed about as if it were stiff, as Aitken reported in 1878 [@aitken1878account]. The "string shooter" toy does the same, and it is tempting to present it as a tabletop active-support structure. It is a good picture of a stream that keeps its shape. It is a poor model of lift: recent work shows that the string shooter's loop is held up by air drag and not by its own inertia [@taberlet2019propelled; @daerr2019charmed]. The chain fountain is closer in spirit, in that its rise comes from a reaction force that grows with the square of the chain's speed [@biggins2014understanding].
+
+## Neighbors of the helix idea {#sec-prior-helix}
+
+No earlier use was found of streams wound helically round a tube to pressurize it. The nearest neighbors are of two kinds. In fluid-structure work, swirl in the flow through an elastic tube has been studied, and found to make the motion unstable above a threshold of vorticity, with large oscillations of the tube's cross-section [@ivanov2020swirling]. No one seems to have looked to it for prestress. In space structures, the magnetically inflated cable is a loop of superconductor that expands under its own static magnetic force against restraining tethers [@powell2001mic]: hoop inflation without moving mass.
+
+## What appears to be new {#sec-prior-new}
+
+Four things in this paper were not found in the literature searched.
+
+1. Winding the streams helically round a tube at a small angle, so that a small part of their momentum flux inflates and prestresses the tube (@sec-helical-shell).
+2. The four-lane balanced cell and the tug field: a force along the structure, placed by a stationary gradient of stream speed, to which counter-propagating lanes contribute with the same sign and no net momentum (@sec-four-lane-cell, @sec-tug-fields).
+3. The statement that a ring held up by momentum is an arch with negative effective tension, and the shape-mode analysis that follows from it for a ring with separate, coasting streams (@sec-effective-tension). Birch's neutral tube is the boundary of this case, and his conclusion for the loaded ring is the opposite one (@sec-prior-rings).
+4. Steering the streams toward the mirror image of the structure's shape to make that arch a string, with look-ahead for damping, set points for steady loads, and the division of work between steering and stators that the whole ring requires (@sec-collective-stability).
+
+Items 1 and 2 are the paper's original proposals. Items 3 and 4 build directly on the pipe literature, on Birch's bending argument and on Lofstrom's and Knapman's control ideas, and their novelty is narrower: the sign, the ring, and the particular law.
+
+These are claims about a search, and the search had limits. It was made online in October 2026. The Journal of the British Interplanetary Society before 2000 is thinly indexed, and several databases and publishers could not be reached. Parts II and III of Birch's series, his 1989 paper and the unpublished 1981 "Starbridge" manuscript of Hyde and others were not read. Several sources are cited from their abstracts or from other authors' accounts of them, because the full text could not be reached: Breakwell's two papers, Knapman's 2009 paper, the magnetically inflated cable, Aitken's paper, and the pipe papers of Benjamin, Holmes, and Gregory and Païdoussis. Any of these could hold something that narrows the claims above, and they should be read before the claims are made anywhere more formal than this.

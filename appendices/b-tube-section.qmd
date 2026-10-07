@@ -1,14 +1,14 @@
 # Local multi-lane tube-section eigenvalue screen {#sec-app-tube-section}
 
-The main text shows that helical momentum redirection can generate steady inflation pressure and hoop prestress. That is not enough to prove a stable operating point. The same moving streams that create the steady preload also create nonconservative follower-force terms when the guide path is perturbed. The relevant question is therefore not merely whether the steady forces exist, but whether the shell/guide/stream/controller system has a stable linearized equilibrium.
+The main text shows that helical momentum redirection can generate steady inflation pressure and hoop prestress. That is not enough to prove a stable operating point. The same moving streams that create the steady preload also create destabilizing path-following terms when the guide path is perturbed. The relevant question is therefore not merely whether the steady forces exist, but whether the shell/guide/stream/controller system has a stable linearized equilibrium.
 
 This appendix gives a local multi-lane eigenvalue screen for that question.
 
 The purpose is deliberately narrower than a full orbital-ring dynamics model. The goal is to test the local and middle wavelength bands of the guide shell: the regime where lane carriers, ribs, shell ovalization, local guide control, and neighboring-lane coupling dominate. Global ring modes, station-keeping, tether interaction, and long-wave orbital dynamics are outside the scope of this appendix. The ring's shape modes are the subject of @sec-collective-stability.
 
-The screen asks the following falsification question: Is there any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands?
+The screen asks the following falsification question: Is there any plausible local shell/guide/controller parameter regime in which the moving-stream path-following terms can be stabilized over the local and middle wavelength bands?
 
-The answer from the reduced-order map is conditional. The architecture is not immediately ruled out by local follower-force instability, but it survives only if the guide system acts as a high-bandwidth transverse magnetic bearing or equivalent local active suspension. The helical prestress alone is not stabilizing tangent stiffness. The balanced-cell axial tug field alone is also not a local transverse stabilizer unless its control-influence matrix is explicitly shown to couple into the unstable shell/lane modes.
+The answer from the reduced-order map is conditional. The architecture is not immediately ruled out by local path-following instability, but it survives only if the guide system acts as a high-bandwidth transverse magnetic bearing or equivalent local active suspension. The helical prestress alone is not stabilizing tangent stiffness. The balanced-cell axial tug field alone is also not a local transverse stabilizer unless its control-influence matrix is explicitly shown to couple into the unstable shell/lane modes.
 
 ## Local coordinates and Fourier modes {#sec-local-coordinates-fourier-modes}
 
@@ -48,7 +48,7 @@ $$ {#eq-lane-wavenumber}
 
 For shallow helix angle $\alpha$, the first term usually dominates for short axial wavelengths, but the cross-section term becomes important for high-$n$ ovalization or shear modes at long axial wavelength.
 
-## Fixed-flux follower-force scale {#sec-fixed-flux-follower-force}
+## Fixed-flux path-following scale {#sec-fixed-flux-follower-force}
 
 For one fixed-flux slug lane, the effective line density is
 
@@ -66,7 +66,7 @@ T_{\mathrm{eq,lane}}
 \end{aligned}
 $$
 
-This is not a passive material tension. It is the coefficient multiplying the curvature-follower term in the linearized moving-stream reaction.
+This is not a passive material tension. It is the coefficient multiplying the curvature-following term in the linearized moving-stream reaction.
 
 Using the reference case,
 
@@ -86,7 +86,7 @@ T_{\mathrm{eq,lane}}
 5.4\times10^8~\mathrm{N}.
 $$
 
-For each lane, the destabilizing follower stiffness per unit lane length is
+For each lane, the destabilizing path-following stiffness per unit lane length is
 
 $$
 K_{\mathrm{follow},j} = T_{\mathrm{eq,lane}}k_{\parallel,j}^2 .
@@ -102,7 +102,7 @@ a=50~\mathrm{m},
 \alpha\approx0.014~\mathrm{rad},
 $$
 
-the following table gives the worst-case follower stiffness for several representative axial wavelengths and cross-section mode numbers, taking the handedness sign that maximizes $|k_{\parallel,j}|$.
+the following table gives the worst-case path-following stiffness for several representative axial wavelengths and cross-section mode numbers, taking the handedness sign that maximizes $|k_{\parallel,j}|$.
 
 | Axial wavelength $L_s$ | Mode $n$ | $\lvert k_{\parallel}\rvert$ | $K_{\mathrm{follow}}$ | Load for $Y=1~\mathrm{mm}$ |
 | ---: | ---: | ---: | ---: | ---: |
@@ -153,11 +153,11 @@ Here:
 * $\mathbf{K}_{\mathrm{shell}}$ is the prestressed membrane/shell stiffness.
 * $\mathbf{K}_{\mathrm{rib}}$ is the rib, cross-brace, or internal guy-web stiffness.
 * $\mathbf{K}_{\mathrm{guide}}$ is passive guide stiffness.
-* $\mathbf{K}_{\mathrm{follow}}$ is the destabilizing follower-force stiffness.
+* $\mathbf{K}_{\mathrm{follow}}$ is the destabilizing path-following stiffness.
 * $\mathbf{B}$ is the actuator influence matrix.
 * $\mathbf{u}$ is the actuator command vector.
 
-The follower matrix has lane-level diagonal blocks of the form
+The path-following matrix has lane-level diagonal blocks of the form
 
 $$
 \left[\mathbf{K}_{\mathrm{follow}}\right]_{jj} = T_{\mathrm{eq},j}k_{\parallel,j}^2
@@ -165,7 +165,7 @@ $$
 
 projected into the corresponding lane-carrier and shell coordinates.
 
-The convective term for lane $j$ has the corresponding non-self-adjoint contribution
+The convective term for lane $j$ has the corresponding gyroscopic contribution
 
 $$
 \left[\mathbf{C}_{\mathrm{conv}}\right]_{jj} = \pm 2i\lambda_j v_j k_{\parallel,j},
@@ -207,7 +207,7 @@ $$
 
 This split is essential.
 
-A local transverse follower-force instability cannot be assumed controllable merely because the system has large axial tug authority. For each unstable open-loop mode $\boldsymbol{\phi}_r$, the relevant modal controllability condition is
+A local transverse path-following instability cannot be assumed controllable merely because the system has large axial tug authority. For each unstable open-loop mode $\boldsymbol{\phi}_r$, the relevant modal controllability condition is
 
 $$
 \boldsymbol{\phi}_r^\dagger \mathbf{B} \ne 0.
@@ -441,7 +441,7 @@ $$
 
 This is the case that determines whether the architecture has a plausible local-stability window.
 
-The reduced-order map indicates that the answer can be yes for wavelengths of order $100~\mathrm{m}$ and above if the transverse guide supplies several times the follower stiffness with sub-millisecond effective lag. It becomes severe around $30~\mathrm{m}$ and probably implausible as shell-level active control around $10~\mathrm{m}$ unless passive lane-carrier stiffness or very local magnetic-bearing loops dominate.
+The reduced-order map indicates that the answer can be yes for wavelengths of order $100~\mathrm{m}$ and above if the transverse guide supplies several times the path-following stiffness with sub-millisecond effective lag. It becomes severe around $30~\mathrm{m}$ and probably implausible as shell-level active control around $10~\mathrm{m}$ unless passive lane-carrier stiffness or very local magnetic-bearing loops dominate.
 
 ### Case D1: one actuator degraded {.unnumbered}
 
@@ -503,12 +503,12 @@ The reduced-order tube-section screen gives the following qualitative map.
 
 | Band                                         | Dominant problem                                                                 | Likely stabilizing mechanism                                                    | Result                                                 |
 | -------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| $L_s \lesssim 10~\mathrm{m}$                 | Very large follower stiffness and sub-$0.1~\mathrm{ms}$ delay budget             | Passive guide stiffness, very local magnetic-bearing loops, stiff lane carriers | Not credible as ordinary shell-level active control    |
+| $L_s \lesssim 10~\mathrm{m}$                 | Very large path-following stiffness and sub-$0.1~\mathrm{ms}$ delay budget             | Passive guide stiffness, very local magnetic-bearing loops, stiff lane carriers | Not credible as ordinary shell-level active control    |
 | $L_s \sim 30~\mathrm{m}$                     | Tens of kN/m per lane for millimetre motion; delay budget $\sim0.25~\mathrm{ms}$ | Passive guide stiffness plus extremely fast local transverse bearing            | Severe / marginal                                      |
 | $L_s \sim 100~\mathrm{m}$                    | Few kN/m per lane for millimetre motion; delay budget $\sim0.8~\mathrm{ms}$      | High-bandwidth transverse guide control                                         | Plausible future-technology window                     |
-| $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lower follower stiffness but larger structural participation                     | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
+| $L_s \sim 300~\mathrm{m}$ to $1~\mathrm{km}$ | Lower path-following stiffness but larger structural participation                     | Local shell/guide control plus cell coordination                                | Plausible if actuator matrix has rank and phase margin |
 | $L_s \gtrsim 10^2$ to $10^3~\mathrm{km}$     | Long-wave ring shape and alignment                                               | Distributed balanced-cell tug fields                                            | Natural domain of macro actuator                       |
 
 The most important negative result is Case T: axial tug authority by itself does not close the local stability problem. It is not enough to show that neighboring lanes can generate large internal axial forces. The transverse influence matrix must have the right rank, sign, phase, and saturation margin.
 
-The most important positive result is Case G: the local follower-force problem is not an immediate theoretical impossibility if the lane guide is treated as a high-bandwidth active transverse bearing. At $100~\mathrm{m}$ wavelength, the reference-case destabilizing load for a $1~\mathrm{mm}$ perturbation is only a few kilonewtons per metre per lane. With a stiffness margin of order three, the required corrective force is of order $6$ to $10~\mathrm{kN/m}$ for low-to-moderate cross-section mode number. That is severe, but not obviously beyond future magnetic-guide authority.
+The most important positive result is Case G: the local path-following problem is not an immediate theoretical impossibility if the lane guide is treated as a high-bandwidth active transverse bearing. At $100~\mathrm{m}$ wavelength, the reference-case destabilizing load for a $1~\mathrm{mm}$ perturbation is only a few kilonewtons per metre per lane. With a stiffness margin of order three, the required corrective force is of order $6$ to $10~\mathrm{kN/m}$ for low-to-moderate cross-section mode number. That is severe, but not obviously beyond future magnetic-guide authority.

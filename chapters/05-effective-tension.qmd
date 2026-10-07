@@ -20,7 +20,7 @@ $$
 T_\mathrm{eff} = N - \Pi ,
 $$ {#eq-effective-tension}
 
-counted positive in tension. This paper calls $T_\mathrm{eff}$ the effective tension. It is the ring-scale version of the dynamic-tension scale $T_\mathrm{eq}$ of @eq-dynamic-tension, with the sign and the structure's own tension included.
+counted positive in tension. This paper calls $T_\mathrm{eff}$ the effective tension, the name given in the mechanics of marine risers to the same kind of combination, of wall tension with the pressure of the contents [@sparks1984influence]. It is the ring-scale version of the dynamic-tension scale $T_\mathrm{eq}$ of @eq-dynamic-tension, with the sign and the structure's own tension included.
 
 Because the lanes are balanced, the streams' momentum density sums to zero even though their momentum flux does not. A balanced set of streams therefore adds two things to the structure and nothing else: its mass $\lambda$, which rides with the structure in any sideways motion, and a compressive stress resultant $\Pi$. There is no net convective term.
 
@@ -48,7 +48,7 @@ With no tension in the structure, $\Pi = \lambda u^2 = (m+\lambda) g_h R$, which
 
 A cable has $T_\mathrm{eff} > 0$ and hangs. A ring that supports itself has $T_\mathrm{eff} < 0$ and stands. It is an arch, and its compression member is made of momentum. In the reference case $\Pi$ is about 164 GN.
 
-The same combined quantity appears wherever moving mass runs along a flexible path. A pipe conveying fluid at speed $U$ behaves as if its tension were reduced by $MU^2$, and a moving belt or band-saw blade as if reduced by $\rho v^2$. What is particular to an active-support structure is that the reduction is not a correction. It is larger than the tension, on purpose, because the difference is the lift.
+The same combined quantity appears wherever moving mass runs along a flexible path. A pipe conveying fluid at speed $U$ behaves as if its tension were reduced by $MU^2$ [@housner1952bending; @paidoussis2014fluid], and a moving belt or band-saw blade as if reduced by $\rho v^2$ [@wickert1990classical]. What is particular to an active-support structure is that the reduction is not a correction. It is larger than the tension, on purpose, because the difference is the lift. Birch's result that a tube carrying opposed streams is neutral in bending is the case between the two, $T_\mathrm{eff} = 0$ (@sec-prior-rings).
 
 ## Effective tension is the same all round a free ring {#sec-teff-uniform}
 
@@ -89,7 +89,7 @@ $$
 y = \frac{\delta q}{T_\mathrm{eff}\,k^2} = -\frac{\delta q}{\Pi k^2} \qquad (N = 0) .
 $$ {#eq-funicular}
 
-A cable moves the way it is pushed. This ring moves the other way. Extra weight on one stretch makes that stretch rise, because the thrust line of an arch has to curve more sharply under a heavier load. The same expression holds for the whole ring with $k = n/R$ for $n$ waves round the circumference.
+A cable moves the way it is pushed. This ring moves the other way. Extra weight on one stretch makes that stretch rise, because the thrust line of an arch has to curve more sharply under a heavier load [@heyman1995stone]. The same expression holds for the whole ring with $k = n/R$ for $n$ waves round the circumference.
 
 The size of the response is modest. A load mismatch of 1% of the supported weight, 100 N/m, displaces the reference ring by about 0.15 m at a wavelength of 100 km, 15 m at 1000 km, and 7 km for two waves round the ring. The ring does not need large forces to hold a nearly circular shape. Static authority is not the difficulty.
 
@@ -120,7 +120,7 @@ $$
 \sigma_n^2 = \Omega^2\left(n^2 - 1\right) \quad\text{(out of plane)} .
 $$ {#eq-ring-growth}
 
-The in-plane $n=1$ mode is the ring drifting off center as a whole. Its rate, $\Omega/\sqrt 2$, is the classical result for a solid ring round a planet. The out-of-plane $n=1$ mode is a tilt of the whole ring, which is just a different orbital plane, and it is neutral. For large $n$ both expressions tend to $\sigma = n\Omega$, which is @eq-local-growth again.
+The in-plane $n=1$ mode is the ring drifting off center as a whole. Its rate, $\Omega/\sqrt 2$, is that of the classical instability of a solid ring round a planet [@maxwell1859stability]. The out-of-plane $n=1$ mode is a tilt of the whole ring, which is just a different orbital plane, and it is neutral. For large $n$ both expressions tend to $\sigma = n\Omega$, which is @eq-local-growth again.
 
 Now suppose the slugs coast, pushed sideways by the guide and not at all along the track. Then they behave like anything else in orbit. A stretch of stream that is carried outward slows down, and the slugs bunch there. Out of the ring's plane nothing changes. In the plane every mode grows a little more slowly: for large $n$ the rate tends to $\sigma_n^2 = \Omega^2\left(n^2 - 1.2\right)$, against $\Omega^2\left(n^2 - 1\right)$ with speed held.
 

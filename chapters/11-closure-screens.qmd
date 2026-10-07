@@ -68,6 +68,8 @@ In words:
 4. those burdens demand more containment, thermal hardware, and power infrastructure,
 5. which raises ring weight again.
 
+For the loss in step 3, what matters most is how the guide's drag changes with speed. In a passive electrodynamic guide the ratio of lift to drag rises in proportion to speed [@post1996inductrack; @post2000inductrack], which favors a fast stream. Whether that holds at 10 km/s, and what an actively trimmed guide adds to it, is not established here.
+
 The concept stands or falls on whether this loop converges.
 
 One brutal scale number is worth stating explicitly. In the illustrative 500 km, $u=10~\mathrm{km/s}$ reference case,

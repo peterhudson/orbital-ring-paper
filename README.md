@@ -59,6 +59,7 @@ python -m analysis.make_figures
 | `figures/` | Figure files. `figures/generated/` is drawn by `analysis/make_figures.py`. |
 | `analysis/` | Calculations and simulations |
 | `tests/` | Checks that tie the text to the calculations |
+| `references.bib` | Bibliography. Each entry was checked against a publisher or library record. |
 | `_quarto.yml` | Book configuration: chapter order, output formats |
 
 ## Editing conventions
@@ -69,5 +70,6 @@ python -m analysis.make_figures
   - figures: `![Caption](../figures/file.svg){#fig-name}`, then `@fig-name`
   - equations: `$$ ... $$ {#eq-name}`, then `@eq-name`
 - **Equations** are labeled only when they are a result or are referred to elsewhere.
+- **Citations** use keys from `references.bib`: `[@lofstrom1985launch]`. Cite a source only for what it has been checked to say.
 - **Symbols** are listed in `notation.qmd`. Add new ones there, and check the list before reusing a letter.
 - **Units** are SI.

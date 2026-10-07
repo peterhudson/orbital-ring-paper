@@ -78,7 +78,7 @@ This prestress plausibly helps with:
 - increasing local indentation stiffness,
 - and providing a stable substrate onto which guides, sensors, power hardware, and auxiliary structure can be mounted.
 
-The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress. But that does not by itself prove local dynamic stability. Perturbations about the helical path still have follower-force character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
+The imposed helical curvature converts the dominant **steady** curvature load into useful membrane prestress. But that does not by itself prove local dynamic stability. Perturbations about the helical path still have path-following character. The moving stream still carries an effective dynamic-tension scale $T_\mathrm{eq} \sim \dot m v$, and displaced lane segments can still generate incremental curvature-following loads unless the membrane, guide, and controller supply enough incremental stiffness and damping.
 
 A more honest way to write the screening condition is in the frequency domain. Define the total incremental stiffness as
 
@@ -152,7 +152,7 @@ The homogenized shell picture should also be bounded in wavelength. With about 3
 
 ## Prestress is not tangent stiffness {#sec-prestress-tangent-stiffness}
 
-The helical stream-generated load must not be double-counted. The same moving masses that generate the steady outward preload also generate nonconservative incremental follower-force terms when the guide path is perturbed.
+The helical stream-generated load must not be double-counted. The same moving masses that generate the steady outward preload also generate incremental path-following terms that work against it when the guide path is perturbed.
 
 For one lane, the moving-stream dynamic-tension scale is
 
@@ -166,7 +166,7 @@ $$
 T_{\mathrm{eq,lane}}\approx5.4\times10^8~\mathrm{N}.
 $$
 
-For a perturbation of wavelength $L$, the quasi-static follower contribution scales as
+For a perturbation of wavelength $L$, the quasi-static path-following contribution scales as
 
 $$
 q_{\mathrm{follow}}\sim T_{\mathrm{eq,lane}}\left(\frac{2\pi}{L}\right)^2Y .
@@ -182,8 +182,8 @@ For $Y=1~\mathrm{mm}$ this gives approximately:
 
 The steady helical normal load in the same reference case is only about 2.1 kN/m per lane. Thus, at 100 m wavelength, a 1 mm perturbation already creates an anti-restoring incremental load comparable to the entire steady helical preload; at 10 m wavelength it is roughly two orders of magnitude larger.
 
-This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local follower-force instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e. internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
+This does not mean the architecture is impossible, but it sharply limits what the helical preload can be claimed to do. The moving stream supplies a useful steady load channel. It does not by itself supply the stabilizing tangent stiffness required to suppress local path-following instability. That stiffness must come from the conservative membrane/rib/guide structure (i.e. internal guy wires) and from active local control, with the moving stream terms included on the destabilizing side of the linearized dynamics.
 
-Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream follower-force scale remains of order $\dot m u$. Meaningful direct competition with the follower-force scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
+Increasing $\alpha$ raises the steady preload, but it does not provide an easy stability escape within the shallow-helix architecture. At fixed useful ring-direction momentum flux, the preload channel grows as $\tan^2\alpha$, while the moving-stream path-following scale remains of order $\dot m u$. Meaningful direct competition with the path-following scale would require helix angles of order tens of degrees, at which point the architecture is no longer the shallow nearly axial lane system used for macro lift. Therefore $\alpha$ should be treated as a preload-design variable, not as a local-stability solution.
 
 A full eigenvalue analysis of both the local lane and local tube levels is presented in @sec-app-local-stability and @sec-app-tube-section.

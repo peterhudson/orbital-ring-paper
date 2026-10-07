@@ -1,12 +1,12 @@
 # Local closed-loop stability screen {#sec-app-local-stability}
 
-The perturbation argument in the main text shows that the moving streams generate nonconservative follower-force terms. A steady force balance is therefore not sufficient. A viable architecture must possess a stable linearized equilibrium.
+The perturbation argument in the main text shows that the moving streams generate destabilizing path-following terms. A steady force balance is therefore not sufficient. A viable architecture must possess a stable linearized equilibrium.
 
 The scope of this appendix is one lane against a shell that is taken to stay where it is. It is the inner loop: can a lane be held to its carrier. The motion of the shell itself, carrying all its lanes, is the outer problem, and @sec-collective-stability treats it differently, by steering the streams instead of making them follow.
 
-This appendix gives a deliberately minimal local eigenvalue screen, it asks whether there exists any plausible local shell/guide/controller parameter regime in which the moving-stream follower terms can be stabilized over the local and middle wavelength bands.
+This appendix gives a deliberately minimal local eigenvalue screen, it asks whether there exists any plausible local shell/guide/controller parameter regime in which the moving-stream path-following terms can be stabilized over the local and middle wavelength bands.
 
-The answer from this screen is conditional. The follower-force instability is not automatically fatal at wavelengths of order $100~\mathrm{m}$ and longer, provided the local guide supplies high-bandwidth transverse stiffness and damping with sub-millisecond effective delay. At wavelengths of order $10~\mathrm{m}$ and below, active control becomes severe enough that the burden probably has to move to passive guide stiffness, local carrier bending stiffness, very short magnetic-bearing loops, or a different lane architecture. The balanced-cell tug actuator by itself should not be credited with stabilizing those short and middle wavelengths unless its transverse control-influence matrix is explicitly demonstrated.
+The answer from this screen is conditional. The path-following instability is not automatically fatal at wavelengths of order $100~\mathrm{m}$ and longer, provided the local guide supplies high-bandwidth transverse stiffness and damping with sub-millisecond effective delay. At wavelengths of order $10~\mathrm{m}$ and below, active control becomes severe enough that the burden probably has to move to passive guide stiffness, local carrier bending stiffness, very short magnetic-bearing loops, or a different lane architecture. The balanced-cell tug actuator by itself should not be credited with stabilizing those short and middle wavelengths unless its transverse control-influence matrix is explicitly demonstrated.
 
 ## Reference lane parameters {#sec-reference-lane-parameters}
 
@@ -35,7 +35,7 @@ $$
 y(s,t)=Y e^{i k s},
 $$
 
-the quasi-static follower-force contribution has stiffness magnitude per unit lane length
+the quasi-static path-following contribution has stiffness magnitude per unit lane length
 
 $$
 K_{\mathrm{follow}}(k)=
@@ -81,10 +81,10 @@ Here:
 * $C$ is passive damping per lane length.
 * $B k^4$ represents short-wave lane-carrier, rib, or local guide bending stiffness.
 * $K_0$ represents transverse shell/guide restoring stiffness.
-* $T_{\mathrm{eq,lane}}k^2$ is the destabilizing follower-force stiffness.
-* $2i\lambda v k\sigma$ is the non-self-adjoint convective term.
+* $T_{\mathrm{eq,lane}}k^2$ is the destabilizing path-following stiffness.
+* $2i\lambda v k\sigma$ is the convective (gyroscopic) term.
 
-The sign convention above has the stabilizing stiffness terms positive and the moving-stream follower stiffness negative. The necessary open-loop static-stiffness condition is therefore
+The sign convention above has the stabilizing stiffness terms positive and the moving-stream path-following stiffness negative. The open-loop static-stiffness condition is therefore
 
 $$
 B k^4 + K_0 > T_{\mathrm{eq,lane}}k^2.
@@ -100,7 +100,7 @@ If this margin is negative, the mode is locally divergent unless active control 
 
 ## Passive stiffness alone is unlikely to cover all wavelengths {#sec-passive-stiffness-alone-unlikely}
 
-Bending stiffness helps at short wavelength because it scales as $k^4$. It is ineffective at long wavelength compared with the follower term, which scales as $k^2$.
+Bending stiffness helps at short wavelength because it scales as $k^4$. It is ineffective at long wavelength compared with the path-following term, which scales as $k^2$.
 
 If one tried to stabilize a mode using bending stiffness alone, the requirement would be
 
@@ -163,6 +163,8 @@ $$
 
 This is the minimum local eigenvalue test. Any full shell model should reduce to this form in the single-lane/single-mode limit.
 
+The convective term does no work, and for a single one-way lane on a closed path it can keep a mode oscillating some way past this limit. That margin is not to be relied on. A lane and its counter-propagating partner cancel each other's convective terms in the modes they share, and any damping in the structure turns a mode held only by the convective term into a growing one [@krechetnikov2007dissipation]. The static condition is therefore treated as necessary.
+
 ## Delay scale {#sec-delay-scale}
 
 A disturbance with wavelength $L$ convects past local hardware on the timescale
@@ -189,6 +191,8 @@ At $v=10~\mathrm{km/s}$,
 
 This immediately separates the problem into bands. Metre-scale disturbances cannot be stabilized by ordinary sector-level control. The $100~\mathrm{m}$ band is severe but not obviously impossible for local electromagnetic guide hardware. Kilometre-scale modes are much less demanding in delay, but may involve more shell mass and more cross-section coupling.
 
+The launch loop faces the same budget. At its deflectors, where the acceleration is highest, a perturbation of the ribbon doubles in 180 microseconds, and the measurements are passed downstream to meet the piece of ribbon they describe [@lofstrom1985launch].
+
 ## Worked scalar eigenvalue screen {#sec-worked-scalar-eigenvalue-screen}
 
 To test whether @eq-closed-loop-cubic has any plausible stable region, take a deliberately simple active-guide law:
@@ -197,7 +201,7 @@ $$
 K_c = 3T_{\mathrm{eq,lane}}k^2,
 $$ {#eq-gain-choice}
 
-so the controller supplies three times the destabilizing follower stiffness. The resulting net positive stiffness margin, ignoring passive $B$ and $K_0$, is then approximately
+so the controller supplies three times the destabilizing path-following stiffness. The resulting net positive stiffness margin, ignoring passive $B$ and $K_0$, is then approximately
 
 $$
 \begin{aligned}
@@ -231,7 +235,7 @@ The table below gives the largest real part of the closed-loop eigenvalues for s
 | $300~\mathrm{m}$ |                        $-2.6\times10^1~\mathrm{s^{-1}}$ |                        $-2.4\times10^1~\mathrm{s^{-1}}$ |                        $-2.2\times10^1~\mathrm{s^{-1}}$ |
 |  $1~\mathrm{km}$ |                                  $-7.7~\mathrm{s^{-1}}$ |                                  $-7.6~\mathrm{s^{-1}}$ |                                  $-7.4~\mathrm{s^{-1}}$ |
 
-This toy calculation gives a useful answer. The local follower-force problem is not mathematically hopeless. There are stable closed-loop eigenvalues for the $100~\mathrm{m}$ to kilometre band with sub-millisecond to millisecond-class local actuation. But the same controller becomes unstable at $10$ to $30~\mathrm{m}$ once delay rises into the $0.5$ to $1.0~\mathrm{ms}$ range.
+This toy calculation gives a useful answer. The local path-following problem is not mathematically hopeless. There are stable closed-loop eigenvalues for the $100~\mathrm{m}$ to kilometre band with sub-millisecond to millisecond-class local actuation. But the same controller becomes unstable at $10$ to $30~\mathrm{m}$ once delay rises into the $0.5$ to $1.0~\mathrm{ms}$ range.
 
 The force scale is also revealing. At $L=100~\mathrm{m}$, the active stiffness choice above corresponds to approximately
 
