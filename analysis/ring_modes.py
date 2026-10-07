@@ -88,6 +88,8 @@ FOLLOW = GuideLaw()
 class RingModes:
     case: RefCase = EARTH_500
     ea: float = 5.0e10              # hoop stiffness of the structure, N
+    flux_imbalance: float = 0.0     # the +s streams carry (1 + this) times the mean mass per metre, the -s streams (1 - this)
+    speed_imbalance: float = 0.0    # the +s streams run at (1 + this) times the mean speed, the -s streams at (1 - this)
 
     # ---- scales -----------------------------------------------------------------
     @property
@@ -111,7 +113,13 @@ class RingModes:
         return self.ea / (self.case.m_passive * self.case.g_h * self.case.R)
 
     def _streams(self):
-        return [(0.5 * self.ell, +self.nu), (0.5 * self.ell, -self.nu)]
+        """(line density over passive line density, speed over orbital speed) for
+        the two directions of travel. With an imbalance the densities are scaled
+        together so that the streams still carry the structure's weight."""
+        fast, slow = self.nu * (1.0 + self.speed_imbalance), self.nu * (1.0 - self.speed_imbalance)
+        up, down = 0.5 * self.ell * (1.0 + self.flux_imbalance), 0.5 * self.ell * (1.0 - self.flux_imbalance)
+        scale = self.ell * (self.nu**2 - 1.0) / (up * (fast**2 - 1.0) + down * (slow**2 - 1.0))
+        return [(up * scale, +fast), (down * scale, -slow)]
 
     # ---- plant with inputs --------------------------------------------------------
     def plant(self, n: int):
