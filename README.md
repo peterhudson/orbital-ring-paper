@@ -38,6 +38,10 @@ python -m unittest discover -s tests -v
 
 Three models of the whole ring check one another. `analysis/truss.py` is a pin-jointed frame whose members also carry streams; `analysis/ring.py` and `analysis/ladder.py` build the ring and a two-chord frame from it. `analysis/ring_modes.py` is a linear model, one mode at a time, in which each stream has its own position, speed and spacing. `analysis/ring_particles.py` is a nonlinear simulation of the ring with the streams as separate slugs. `tests/test_ring.py` and `tests/test_ring_modes.py` compare them with each other and with the closed forms in the text.
 
+Shape control has its own pair of models for a straight run of ring, `analysis/collective.py` (eigenvalues per wavelength) and `analysis/particles.py` (a particle simulation), and `analysis/ring_control.py` builds the controllers for the whole ring, which `analysis/ring_particles.py` can then run. `tests/test_collective.py` and `tests/test_ring_control.py` check the simulations against the linear predictions.
+
+The whole suite takes about a minute, most of it in the particle simulations.
+
 Figures drawn from the calculations live in `figures/generated/` and are committed, so the book builds without Python. To redraw them:
 
 ```sh

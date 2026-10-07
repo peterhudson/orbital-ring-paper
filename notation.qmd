@@ -80,6 +80,21 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $\mathbf{S}$ | Local map from lane speed trims to tug, pressure and weight outputs | – |
 | $\tau_d$ | Total sensing, computation and actuation delay | s |
 
+## Shape control {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $\eta_j$, $\bar\eta$ | Sideways position of stream $j$'s centerline; mean over the streams | m |
+| $\eta^*$ | Commanded path of a stream | m |
+| $D_j$ | Rate of change following the slugs of stream $j$, $\partial/\partial t \pm u\,\partial/\partial s$ | s$^{-1}$ |
+| $f_j$ | Guide force on stream $j$ per unit ring length | N/m |
+| $c_m$ | Mirror gain: commanded path over structure displacement, with sign reversed | – |
+| $d_a$ | Distance ahead at which a stream reads the structure's shape | m |
+| $\delta_\mathrm{max}$ | Largest offset of a stream from the structure that the guide allows | m |
+| $z$, $z_d$ | Set points added to the commanded paths: to both streams, and with opposite signs to the two | m |
+| $\epsilon_z$ | Set-point adaptation rate as a fraction of $ku$ | – |
+| $K$, $C$ | Stiffness and damping of the guide's hold on the commanded path | N/m², N s/m² |
+
 ## Stability appendices {.unnumbered}
 
 | Symbol | Meaning | Unit |
@@ -117,6 +132,9 @@ A few letters are reused in separate parts of the paper. Context and typeface te
 | $B$, $\mathbf{B}$ | Magnetic flux density; lane-carrier bending stiffness; actuator influence matrix (bold) |
 | $M$, $\mathbf{M}$ | Couple from opposed sectors; supported mass per unit lane length; mass matrix (bold) |
 | $n$ | Slug number density; number of waves round the ring; cross-section mode number. As a subscript, the normal direction. |
+| $j$ | Index of a lane; in the shape-control chapter, of the two directions of travel |
+| $\eta$ | With a subscript such as load, an efficiency; otherwise the sideways position of a stream |
+| $K$, $C$ | Guide stiffness and damping, per unit lane length in the stability appendices and per unit ring length for all lanes together in the shape-control chapter |
 | $h$, $h_j$ | Time headway; lane handedness. As a subscript in $g_h$, altitude. |
 | $u$, $\mathbf{u}$ | Ring-direction slug speed; actuator command vector (bold) |
 | $y$, $\mathbf{y}$ | Transverse displacement; measured-output vector (bold) |

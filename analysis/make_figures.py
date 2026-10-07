@@ -3,7 +3,7 @@ import importlib
 import sys
 import time
 
-MODULES = ["ring_modes", "speed_ripple", "thrust_line"]
+MODULES = ["ring_modes", "speed_ripple", "thrust_line", "mirror_sketch", "guide_laws", "local_runs", "ring_control_rates", "ring_recovery", "actuator_travel", "sudden_load"]
 
 
 def main(names=None):
