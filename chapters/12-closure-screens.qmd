@@ -6,9 +6,9 @@ Before going through them one by one, the main unresolved closure gates can be n
 
 | Closure gate | Representative screening variable | Why it is central |
 | --- | --- | --- |
-| Passive-mass convergence | supported passive weight per metre $w_p$ | It closes directly into required momentum flux, stored energy, thermal hardware, and containment burden. |
+| Passive-mass convergence | the loop gain $G$ of @eq-loop-gain | Supported weight closes directly into required momentum flux, guide force, stored energy, thermal hardware, and containment burden. The loop closes only if $G < 1$. |
 | Shape control in a real machine | accuracy of the shape measurement, room in the guide against the size and suddenness of real loads | @sec-collective-stability holds every shape mode in models that assume the shape is measured, the guide force is commanded, and the tube's cross-section plays no part (@sec-control-status). |
-| Guide feasibility | allowable loss, gap-control bandwidth, and bidirectional power-transfer efficiency | The lane can look gentle in force density while still being extreme in switching rate, synchronization, and power flow. |
+| Guide feasibility | ratio of guide normal force to drag, gap-control bandwidth, and bidirectional power-transfer efficiency | The lane can look gentle in force density while still being extreme in switching rate, synchronization, and power flow. With the reference prestress the closure loop needs a drag of about a hundred-thousandth of the normal force or less (@sec-closure-gain). |
 | Four-lane balance | timing, mass, and speed mismatch budget | The balanced cell is only useful if residual momentum channels stay well below commanded tug channels. |
 | Shell load transfer | cross-sectional transfer efficiency $\eta_\mathrm{load}$ and rib spacing | Opposed sector tugs shift the thrust line only if lane loads can cross the tube's section as shear rather than as local ovalization (@sec-load-path-lane-tug). |
 | Fault containment | isolated domain energy and response time | The stored energy density is high enough that fault handling is likely a dominant feasibility gate rather than a secondary detail. |
@@ -107,6 +107,53 @@ The harder message is that the moving-energy burden scales linearly with passive
 | 100 kN/m | about 16,000 kg/m | about 820 GJ/m |
 
 So the closure loop is not a subtle second-order effect. If containment, thermal hardware, guide modules, ribs, and fault isolation drive passive weight up by a factor of only a few, the moving-energy burden rises by the same factor.
+
+## The loop has a gain {#sec-closure-gain}
+
+Every link in @eq-closure-loop is a proportion, so the loop can be given a number. Let $m_0$ be the passive mass per metre that is there for its own sake: structure, shell, payload. Guides, radiators and power supply are passive mass too, and the amount of each is proportional to the weight carried. If they come to $G$ kilograms for every kilogram carried, the total is
+
+$$
+m = m_0 + G\,m = \frac{m_0}{1 - G} .
+$$ {#eq-closure-gain}
+
+The loop closes if $G < 1$, and the margin is what matters: at $G = 0.5$ the ring is twice as heavy as its useful part, and at $G = 0.9$ ten times.
+
+**Guide force.** The guides push on the streams with the force that lifts the ring, $w_p$ per metre, and with the force that turns the streams round the tube. The second is $2\pi$ times the hoop force it produces (@eq-hoop-force), so the guides' total normal force per unit of supported weight is
+
+$$
+\phi = 1 + 2\pi\Gamma .
+$$ {#eq-guide-force-ratio}
+
+At the reference prestress, $\Gamma = 10$, that is 64. The guides carry 638 kN/m to hold up 10 kN/m. The helix adds almost nothing to the momentum the streams must carry, but its prestress is paid for in guide force, sixty times over.
+
+**Drag.** Whatever the guide, write its drag as its normal force divided by a ratio $D$. Drag takes $\phi\,w_p u/D$ of power out of the streams for every metre of ring. The stators have to put it back, and all of it ends as heat on the ring.
+
+**The gain.** Let the guide and stator hardware weigh one kilogram for every $f_g$ newtons of normal force, the radiators one kilogram for every $s_r$ watts rejected, the power supply one kilogram for every $s_p$ watts delivered, and let a fraction $\eta$ of the supplied power reach the slugs. Then
+
+$$
+G = \phi\,g_h\left[\frac{1}{f_g} + \frac{u}{D\,\eta}\left(\frac{1}{s_r} + \frac{1}{s_p}\right)\right] .
+$$ {#eq-loop-gain}
+
+@fig-closure-gain evaluates it for $f_g = 2{,}000$ N/kg, $s_r = 500$ W/kg, $s_p = 200$ W/kg and $\eta = 0.9$. These four numbers are assumptions made here to show the shape of the answer. They are not predictions of what hardware can do, and anyone with better ones can put them into @eq-loop-gain.
+
+![Left: the gain of the closure loop, @eq-loop-gain, against the guide's ratio of normal force to drag, for four levels of helix prestress and the hardware assumptions in the text. Above the broken line the loop does not close. Right: the power that has to be supplied to make up guide drag round the whole reference ring.](../figures/generated/closure-gain.svg){#fig-closure-gain}
+
+| Guide's force over drag, $D$ | Drag heat per metre | Power for the whole ring | Gain $G$ | Passive mass over useful mass |
+| -----------------: | -----------------: | -----------------: | -----------------: | -----------------: |
+| $10^4$ | 640 kW | 31 TW | 4.5 | does not close |
+| $10^5$ | 64 kW | 3.1 TW | 0.69 | 3.2 |
+| $10^6$ | 6.4 kW | 310 GW | 0.31 | 1.5 |
+| $10^7$ | 0.64 kW | 31 GW | 0.27 | 1.4 |
+
+: The closure loop for the reference case, $\Gamma = 10$, under the hardware assumptions in the text. {#tbl-closure}
+
+Three things follow. The assumed numbers move the thresholds, not the conclusions.
+
+1. With the reference prestress the loop closes only if the guide's ratio is above about 60,000, and closes with a twofold margin only above 180,000. The power to run the ring is then still in terawatts. A passive electrodynamic guide's ratio rises in proportion to speed [@post2000inductrack], which is the right direction, but nothing here shows that $10^5$ or $10^6$ can be had at 10 km/s.
+2. The helix's prestress is the expensive part. Without it the same guide would close the loop at a ratio of about a thousand, and the ring's power at $10^5$ would be 48 GW. Every unit of $\Gamma$ adds $2\pi$ units of guide force. So $\Gamma$ should be as small as the shell can work with, and $\Gamma = 10$, which @sec-helix-angle-likely-small called a lower bound on grounds of stiffness, is already costly on grounds of loss. At $\Gamma = 30$ the guide hardware alone, at the weight assumed here, takes the gain to 0.8.
+3. Once drag is small, the gain settles at the weight of the guides themselves, $\phi\,g_h/f_g$: 0.27 here. The guide hardware has to deliver thousands of newtons of normal force for every kilogram of its own mass.
+
+The loop above leaves out two burdens. Containment is one: no mass that could ride on the ring would absorb 82 GJ/m, so containment has to work by isolating and steering faults, not by soaking them up (@sec-fault-domains-need-explicit). The other is the heat left in the slugs themselves, which can shed it only by radiating to the tube wall.
 
 ## Fault domains still need an explicit architecture {#sec-fault-domains-need-explicit}
 

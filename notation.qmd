@@ -100,6 +100,18 @@ SI units throughout. Quantities written "per unit ring length" are measured alon
 | $\epsilon_z$ | Set-point adaptation rate as a fraction of $ku$ | – |
 | $K$, $C$ | Stiffness and damping of the guide's hold on the commanded path | N/m², N s/m² |
 
+## Closure loop {.unnumbered}
+
+| Symbol | Meaning | Unit |
+| ------ | ------------------------------ | ----- |
+| $m_0$ | Passive mass per unit length that is not guide, radiator or power supply | kg/m |
+| $G$ | Gain of the closure loop: guide, radiator and supply mass per unit of mass carried | – |
+| $\phi$ | Guide normal force per unit of supported weight, $1 + 2\pi\Gamma$ | – |
+| $D$ | Guide's ratio of normal force to drag ([closure screens](#sec-closure-gain)) | – |
+| $f_g$ | Normal force per unit mass of guide and stator hardware | N/kg |
+| $s_r$, $s_p$ | Heat rejected per unit mass of radiator; power delivered per unit mass of supply | W/kg |
+| $\eta$ | Fraction of supplied power that reaches the slugs ([closure screens](#sec-closure-gain)) | – |
+
 ## Stability appendices {.unnumbered}
 
 | Symbol | Meaning | Unit |
@@ -138,6 +150,8 @@ A few letters are reused in separate parts of the paper. Context and typeface te
 | $M$, $\mathbf{M}$ | Couple from opposed sectors; supported mass per unit lane length; mass matrix (bold) |
 | $n$ | Slug number density; number of waves round the ring; cross-section mode number. As a subscript, the normal direction. |
 | $j$ | Index of a lane; in the shape-control chapter, of the two directions of travel |
+| $D$, $D_j$ | Guide's ratio of normal force to drag; with a subscript, rate of change following the slugs of stream $j$ |
+| $\eta$, $\eta_j$ | Fraction of supplied power that reaches the slugs; with a subscript, sideways position of stream $j$ |
 | $\eta$ | With a subscript such as load, an efficiency; otherwise the sideways position of a stream |
 | $K$, $C$ | Guide stiffness and damping, per unit lane length in the stability appendices and per unit ring length for all lanes together in the shape-control chapter |
 | $h$, $h_j$ | Time headway; lane handedness. As a subscript in $g_h$, altitude. |
