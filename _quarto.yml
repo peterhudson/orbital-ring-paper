@@ -22,9 +22,10 @@ book:
     - chapters/07-four-lane-cell.qmd
     - chapters/08-tug-fields.qmd
     - chapters/09-collective-stability.qmd
-    - chapters/10-prior-work.qmd
-    - chapters/11-closure-screens.qmd
-    - chapters/12-conclusion.qmd
+    - chapters/10-beyond-the-ring.qmd
+    - chapters/11-prior-work.qmd
+    - chapters/12-closure-screens.qmd
+    - chapters/13-conclusion.qmd
     - references.qmd
   appendices:
     - appendices/a-local-stability.qmd
