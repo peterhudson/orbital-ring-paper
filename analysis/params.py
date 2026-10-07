@@ -13,6 +13,7 @@ import math
 from dataclasses import dataclass, replace
 
 MU_0 = 4.0e-7 * math.pi  # permeability of free space, T m / A
+HOOP_EA = 5.0e10          # axial (hoop) stiffness of the reference structure, N
 
 
 @dataclass(frozen=True)
@@ -143,15 +144,32 @@ class RefCase:
 
     @property
     def beta_w(self) -> float:
-        """Weight-coupling coefficient g_h/u^2, 1/m: the net speed sensitivity
-        of the normal balance once the structure's tension is counted."""
+        """Stream-weight coupling coefficient g_h/u^2, 1/m: the speed
+        sensitivity of the normal balance from the streams alone, once the
+        structure's tension is counted. `weight_coupling` adds the structure."""
         return self.g_h / self.u**2
 
     @property
     def weight_multiplier(self) -> float:
         """Change in stream weight, as a fraction of the supported load, per
-        fractional speed change."""
+        fractional speed change. Streams only; see `total_weight_multiplier`."""
         return self.beta_w / (1.0 / self.R - self.g_h / self.u**2)
+
+    def weight_factor(self, ea: float = HOOP_EA) -> float:
+        """Total weight shifted by a speed change, as a multiple of the stream
+        weight shifted: 1 + m u^2 / EA. Where the streams run slower their
+        momentum flux is lower, the structure's tension is lower by the same
+        amount, and the structure, less stretched, is denser there."""
+        return 1.0 + self.m_passive * self.u**2 / ea
+
+    def weight_coupling(self, ea: float = HOOP_EA) -> float:
+        """`beta_w` with the structure's share included, 1/m."""
+        return self.weight_factor(ea) * self.beta_w
+
+    def total_weight_multiplier(self, ea: float = HOOP_EA) -> float:
+        """Change in the ring's weight, streams and structure, as a fraction
+        of the supported load, per fractional speed change."""
+        return self.weight_factor(ea) * self.weight_multiplier
 
     # ---- helix and prestress ----------------------------------------------
     def alpha_cross(self, gamma: float | None = None) -> float:

@@ -2,7 +2,7 @@
 
 @sec-effective-tension showed that every shape mode of the ring grows if the streams follow the structure. @sec-tug-fields showed that tug fields are the wrong tool for stopping it. This chapter asks what the right tool is.
 
-The answer is to stop making the streams follow the structure. If each stream is steered toward the mirror image of the structure's shape, the push of the streams on the structure changes sign, and the ring becomes a string in tension instead of an arch in compression. The rest of the chapter works out what that takes: how the motion is damped, how much room the guide needs, what happens under steady load, and what changes on the scale of the whole ring, where the stators turn out to be needed after all.
+The answer is to stop making the streams follow the structure. If each stream is steered toward the mirror image of the structure's shape, the push of the streams on the structure changes sign, and the ring becomes a string in tension instead of an arch in compression. The rest of the chapter works out what that takes: how the motion is damped, how much room the guide needs, what happens under steady load, and what changes on the scale of the whole ring, where the stators turn out to be needed after all, and what it takes to carry loads that change, where for the longest modes the streams go back to following and the stators hold the shape.
 
 ## Stream and structure as two things {#sec-two-body-model}
 
@@ -166,15 +166,15 @@ The streams take 72 minutes to go round, which is the time scale of the instabil
 
 So the stators are the long-wave actuator and steering the short-wave one, with a wide overlap. The difference is in what they cost. Steering does no work to first order. Stators handle power in proportion to the load they shift, at the rate of @eq-weight-trim-cost.
 
-**At the scale of the ring the guide has almost no room for loads.** @eq-stroke-capacity falls as the square of the wavelength, and the ring is long. In @fig-sudden-load a sudden load of 0.1 mN/m with three waves round the ring, a hundred-millionth of the supported weight, takes 17 mm of offset before the set points catch up. A point load of $F$ puts $F/\pi R$ into every mode, so without set points the two-wave part of a point load of 500 N would fill a 20 mm guide. Steering can keep the long modes stable. It cannot carry changes of load in them. Those have to arrive slowly enough for the set points to follow, or be met by the stators, which have the authority: a speed change of one part in ten thousand moves 1.4 N/m of stream weight. This paper has not designed that loop.
+**At the scale of the ring the guide has almost no room for loads.** @eq-stroke-capacity falls as the square of the wavelength, and the ring is long. In @fig-sudden-load a sudden load of 0.1 mN/m with three waves round the ring, a hundred-millionth of the supported weight, takes 17 mm of offset before the set points catch up. A point load of $F$ puts $F/\pi R$ into every mode, so without set points the two-wave part of a point load of 500 N would fill a 20 mm guide. Steering can keep the long modes stable. It cannot carry changes of load in them. Those have to arrive slowly enough for the set points to follow, or be met by the stators, which have the authority: a speed change of one part in ten thousand moves 4.7 N/m of weight. @sec-changing-loads gives the long modes to the stators for that reason.
 
 Out of the ring's plane none of the complications arise. Nothing along the track is involved, and the mirror law with look-ahead damps every out-of-plane mode from the tilt of the whole ring upward.
 
-Steady loads behave on the ring as they do locally, with larger numbers. Without set points, a steady load of 1 N/m with two waves round the ring would displace the structure by 560 m and ask for 830 m of offset. With them, the ring settles 66 m backward with no offset. The Moon's tide is a load of this shape, about 2.5 mN/m in its radial part. Seen from a ring that turns with the Earth it comes round every 12.4 hours, too fast for the set points to follow, and left to them it would ask for something like half a metre of offset. But it is known in advance. It has to be canceled at its source, to within a few percent, by a speed ripple of about 2 mm/s that turns with the Moon.
+Steady loads behave on the ring as they do locally, with larger numbers. Without set points, a steady load of 1 N/m with two waves round the ring would displace the structure by 560 m and ask for 830 m of offset. With them, the ring settles 66 m backward with no offset. The Moon's tide is a load of this shape, about 2.5 mN/m. Seen from a ring that turns with the Earth it comes round every 12.4 hours, too fast for the set points to follow, and left to them it would ask for more than half a metre of offset. It has to be met by the stators, with a speed ripple of a millimetre or two a second that turns with the Moon. The stators of @sec-changing-loads do that without being told the tide is coming.
 
 ## The whole ring in simulation {#sec-ring-simulation}
 
-The complete controller was run on the particle simulation of @sec-momentum-truss: a structure of 120 masses and hoop springs, 1,200 slugs, inverse-square gravity, the guide pushing at right angles to the structure, @eq-guide-law steering modes 2 and up toward the mirror image with look-ahead, the stators' soft hold on the slugs, and the stator feedback on mode 1. The guide in the simulation is deliberately slow. It holds its commanded path with a bandwidth of 0.5 rad/s, and the command lags by about a second, so that the simulation can take long time steps. The first term of @eq-guide-law is what makes so slow a guide enough.
+The complete controller was run on the particle simulation of @sec-momentum-truss: a structure of 120 masses and hoop springs, 1,200 slugs, inverse-square gravity, the guide pushing at right angles to the structure, @eq-guide-law steering modes 2 and up toward the mirror image with look-ahead, the stators' soft hold on the slugs, and the stator feedback on mode 1. The guide in the simulation is deliberately slow. It holds its commanded path with a bandwidth of 0.5 rad/s, and the command lags by about a second, so that the simulation can take long time steps. The first term of @eq-guide-law is what makes so slow a guide enough for the modes these runs keep.
 
 @fig-ring-recovery starts the ring with its first three shape modes displaced by 10, 5 and 3 mm. With a guide that follows, the fastest of them reaches hundreds of metres within the hour. Under the controller they die away, the offset of the streams from the structure never exceeds 12 mm, and no slug's speed changes by more than 0.1 mm/s. The simulation follows the linear model's prediction to within 1% of the largest amplitude.
 
@@ -184,6 +184,55 @@ A second run displaced every mode from 1 to 30 at once, at random, by 1 to 2 mm 
 
 Three limits of these runs should be plain. The simulation moves the slugs and the structure under the full equations of motion, but it works out the guide's geometry to first order in the structure's displacement, so it tests the linear models for small motions and says nothing about large ones. It keeps only the ring's longest modes, down to a wavelength of 1,400 km in the second run. And the local simulation of @sec-look-ahead covers wavelengths of a few kilometres. Between the two the evidence is the linear models, which agree with each other where they overlap.
 
+## Loads that change {#sec-changing-loads}
+
+A ring that is to be used has to carry loads that come and go: vehicles, payloads on tethers, the tide. Steering alone does this badly, and @eq-stroke-capacity says why. To push back against a load the mirror law has to offset the streams from the structure, and at long wavelengths a small load needs a large offset. A point load is the hard case. It puts the same load, $F/\pi R$, into every mode of the ring, down to the longest.
+
+Loads in this section are given in tonnes, meaning 9.8 kN each. At the ring's height a tonne of mass weighs 14% less than that.
+
+With steering holding every mode from $n = 2$ upward, as in the runs above, a point load of 56 kg put on suddenly fills 20 mm of guide. The set points do not rescue it. They adapt at a rate tied to the wavelength (@eq-set-point), and for the longest waves that means hours.
+
+**The stators can hold the long modes instead.** The feedback that keeps the ring on center works for any long mode. Let the streams follow the structure in that mode, so that there is no offset to run out of, and hold the shape with the stators. Designed mode by mode in the way it was for $n = 1$, this feedback makes every mode from 2 to 170 decay within half an hour: in 29 minutes for two waves round the ring and in about 15 for the rest.
+
+Under a load the streams stay centered, and the stators answer by changing the slugs' speed near the load. Where the slugs are slowed the ring is heavier, by the streams' bunching and by the structure's (@eq-weight-shift-total), and that extra weight is what balances an outward load. The feedback designed here lets the structure settle a little way out in the direction of the load. There the arch pushes it further, so the stators end up holding it with more weight than the load alone would need.
+
+@fig-stator-held-load shows the particle simulation with the stators holding modes 1 to 3, under the load of @fig-sudden-load. Where steering needed 17 mm of offset, the offset now stays under 3 micrometres. The structure moves 1.9 mm and the slugs' speed changes by 0.04 mm/s. The simulation follows the linear model to within 0.5% of the largest amplitude.
+
+![The whole ring in the particle simulation under the sudden load of @fig-sudden-load, 0.1 mN/m with three waves round the ring, with the stators holding modes 1 to 3 and the streams following the structure in them.](../figures/generated/stator-held-load.svg){#fig-stator-held-load}
+
+**What the ring can then carry.** The table gives the largest point load for three divisions of the work, from the linear model. The first is the arrangement of @sec-ring-simulation.
+
+| The stators hold | Put on suddenly | Moving at 10 m/s | At 100 m/s | At 1 km/s | Stators' limit | Power per tonne |
+| ------------------------------ | ---------: | ---------: | ---------: | ---------: | ---------: | ---------: |
+| the off-center mode only | 56 kg | 8.2 t | 0.8 t | 76 kg | — | — |
+| the 30 longest modes | 1.6 t | 157 t | 15 t | 1.8 t | 110 t | 0.7 GW |
+| the 170 longest modes | 9.0 t | 876 t | 85 t | 10 t | 16 t | 5 GW |
+
+: The largest point load that keeps every stream within 20 mm of the structure, put on suddenly and moving along the ring at three speeds; the largest that the stators answer with no more than 1 m/s of speed change; and the power that a load which stays keeps passing between the counter-moving lanes, in each direction of travel. {#tbl-load-capacity}
+
+The offset that remains comes from the modes left to steering, and the longest of those are the weakest. Giving more modes to the stators raises the load the guide can take in proportion. It lowers the load the stators can answer, because they then gather the balancing weight into a shorter stretch of ring, 250 km for 170 modes, and that takes a larger change of speed. The two limits pull in opposite directions (@fig-load-capacity).
+
+![The largest point load the reference ring can carry as the load moves along it, for the three divisions of work of @tbl-load-capacity. Solid lines are the limit set by 20 mm of guide room. Broken lines are the limit set by 1 m/s of stator speed change, which is off the scale for the first arrangement.](../figures/generated/load-capacity.svg){#fig-load-capacity}
+
+Below a few hundred metres a second the guide's limit is inversely proportional to the load's speed, because the set points of the steered modes follow a slow load. Their rate is 3% of the stream's transit rate, so a load that moves at more than about 3% of the stream speed outruns them. With 170 modes the limit levels off at 8 tonnes for a load moving at 2 or 3 km/s.
+
+**The power.** A stream that is slowed and then let go again gives up power on the way in and takes it back on the way out. Slowing one direction's streams by $\delta u$ takes $\tfrac12\Pi\,\delta u$ out of them, 82 MW for every millimetre a second, and at each end of the slow stretch the counter-moving lanes pass that much between them. Holding a tonne with 170 modes changes the speed by 61 mm/s and keeps 5 GW moving in each direction of travel for as long as the load stays. This is the cost that @sec-tug-power-cost put on weight trim, and it is why the stators should hold no more modes than the loads require, and should not go on holding a load that has come to stay.
+
+**The tide** is the same problem in a single mode. The Moon pulls on structure and slugs alike, outward and along the ring in turn, with an acceleration of 0.9 µm/s². Left to steering it asks for 0.6 m of offset. With the stators holding that mode the offset is nothing, the ring's shape moves by 0.06 m, and the speed ripple is 1.3 mm/s.
+
+**Margins.** The stator feedback was checked against errors in the model it was designed on. Every mode from 2 to 170 stays stable with the hoop stiffness anywhere from half to three times its value, the supported load 20% off, the stream speed 30 m/s off, and the gain halved or doubled. Two things have less margin. If the streams move 2% further than the structure where they should move exactly with it, the highest modes go unstable, and at 10% every mode above 53 does. And the path command has to keep up: with a bandwidth of 1 Hz the modes from 155 up are lost. The first thirty modes tolerate all of these. The motion that decays most slowly within each mode is a wave in the slugs' spacing, with a damping ratio of 2% at mode 30 and 0.4% at mode 170.
+
+**Limits.** In round numbers, a ring with 20 mm of guide room and 1 m/s of stator authority carries a point load of about eight tonnes without preparation, put on suddenly or moving at any speed up to 3 km/s. Several things qualify that.
+
+- The eight tonnes come from the linear model. The simulation has run one stator-held mode, under a load nearly forty times smaller than eight tonnes would put into it.
+- Heavier loads are not excluded, but they need more room in the guide, or preparation: a slow approach, or weight placed by the stators before the load arrives. That preparation has not been designed.
+- A load that stays should be handed over to the ring's shape, as the set points do for the steered modes, so that the stators stop spending power on it. That is not designed either.
+- The stators' feedback for each mode uses the full state of that mode: the shape of the structure and the position, speed and spacing of the slugs, all the way round the ring. And the split between the modes that follow and the modes that are steered has to be clean, because a stream that half-follows is in neither regime.
+- The uniform part of a point load sets the ring breathing: its radius grows by 50 mm for each tonne and swings by as much again, with a period of 83 minutes, and nothing in this model damps that swing. Loads that come and go will keep kicking it.
+- The speed changes put the structure's tension up and down by $\Pi\,\delta u/u$, 1 MN for each tonne held with 170 modes. A structure with no tension to spare would go slack.
+- Weight acts in the plane of the ring. Against a sideways load at long wavelength the stators have nothing to shift, and steering, with the small capacity of the table's first row, is all there is.
+- How much the stators can shift depends on the structure's stiffness through $\chi$. A stiffer hoop leaves them less.
+
 ## The control hierarchy {#sec-control-hierarchy}
 
 Put together, the ring is held by a handful of mechanisms, each with its own range.
@@ -191,11 +240,11 @@ Put together, the ring is held by a handful of mechanisms, each with its own ran
 | Range | What would go wrong | What holds it | How fast |
 | -------------------- | ---------------------------- | ---------------------------------------- | ------------------ |
 | Wavelengths under 300 m | Nothing, once the streams stop following wrinkles this short | Bending stiffness and structural damping. The streams fly a smooth path. | the structure's own |
-| 300 m to half the ring ($n \ge 2$) | Every shape mode grows | Steering: the mirror law with look-ahead | damping ratio 0.43 |
+| 300 m to 250 km, or to half the ring if loads never change | Every shape mode grows | Steering: the mirror law with look-ahead | damping ratio 0.43 |
 | The same, for steady loads | The guide runs out of room | The set points move the ring to the funicular position | a minute at 100 km, hours at ring scale |
-| The same, for changing loads at long wavelength | The guide runs out of room | Stators: weight trim. Not designed here. | |
+| Above 250 km, when loads change | Every shape mode grows, and steering has no room for loads | Stators hold the shape by shifting weight, and the streams follow (@sec-changing-loads) | 15 to 29 minutes |
 | Slug spacing, all wavelengths | Bunching | Stators hold each slug softly in the traveling wave | decays in 30 to 50 minutes |
-| Ring off center ($n = 1$) | Grows in 12 to 17 minutes | Stators: a speed ripple that shifts stream weight | hours |
+| Ring off center ($n = 1$) | Grows in 12 to 17 minutes | Stators: a speed ripple that shifts weight | hours |
 | Uniform breathing ($n = 0$) | Nothing, if the slugs coast | Orbital mechanics | period 83 minutes |
 | Loads along the ring | Tension round the structure | Tug fields (@sec-tug-purpose) | as commanded |
 
@@ -203,22 +252,23 @@ Put together, the ring is held by a handful of mechanisms, each with its own ran
 
 ![What holds the ring's shape at each wavelength. The top scale is the time in which a shape error would grow e-fold if the streams simply followed the structure (@eq-local-growth). Uniform breathing and loads along the ring have no place on a wavelength scale and are left out.](../figures/generated/control-bands.svg){#fig-control-bands}
 
-Two things stand out. Stability of shape comes from sideways forces on the streams at all but the two lowest modes, and that costs room in the guide, not power. And the tug primitive of @sec-tug-fields has more to do than carry loads along the ring. It is the natural actuator for keeping the ring centered on the planet and for meeting changes of load at long wavelengths, where the guide has no room.
+Two things stand out. Where steering holds the shape, stability comes from sideways forces on the streams, and costs room in the guide, not power. And the tug primitive of @sec-tug-fields has more to do than carry loads along the ring. It keeps the ring centered on the planet, and it meets changes of load at long wavelengths, where the guide has no room. There it costs power, and the designer chooses how many modes to give it by what the loads require.
 
 ## What has and has not been shown {#sec-control-status}
 
 Shown, in linear models and in particle simulations that agree with them for small motions:
 
-- A guide that makes the streams follow the structure cannot hold the ring's shape at any stiffness.
+- A guide that makes the streams follow the structure cannot by itself hold the ring's shape at any stiffness.
 - Under the mirror law with look-ahead, a soft stator hold on slug spacing, and stator feedback on the off-center mode, every shape mode of the reference ring decays, in and out of plane, except uniform breathing, which is stable and undamped. Three models cover the range between them: the local model from 3 m to ring scale, with a real guide and control delay but no bunching; the ring model for mode numbers up to 30,000, with bunching and a real guide; and the ring simulation for the thirty longest modes.
 - Steady loads can be carried with every stream in the middle of its guide.
+- In the linear model, with the stators holding the 170 longest modes while the streams follow the structure in them, every mode still decays, and a point load of 9 tonnes put on suddenly, or of 8 tonnes moving at up to 3 km/s, stays within 20 mm of guide room. Only one stator-held mode under a small load has been run in the particle simulation.
 - For errors of millimetres, the stream offsets needed are millimetres and the speed changes a fraction of a millimetre per second.
 
 Not shown:
 
 - **Sensing.** The law assumes the ring's shape is known against an absolute reference at every wavelength from 300 m up. How well it must be known, and how, is open.
 - **The guide as a force actuator.** A real magnetic guide has its own stiffness, positive or negative, that the control has to cancel. The models command force directly.
-- **Disturbances, and loads at long wavelength.** The room in the guide has been set against the loads it can hold, not against the loads a real ring would see. At the scale of the ring the capacity is so small that changes of load must be met by the stators, and that loop is not designed.
+- **Disturbances and heavy loads.** The room in the guide has been set against point loads, not against the loads a real ring would see. Loads beyond about eight tonnes need preparation that is not designed here, loads that stay need handing over to the ring's shape, and sideways loads at long wavelength have only steering to meet them (@sec-changing-loads).
 - **The tube.** These models have two streams and one sideways direction at a time. The real ring has 300 lanes wound helically round a tube 100 m across, so the two sideways directions are coupled along every lane, and the tube has cross-section modes of its own (@sec-app-tube-section). Below a few hundred metres a tube that wide does not bend like the slender beam assumed here.
 - **A ring that turns with the Earth.** The models hold the structure still. Turning with the Earth makes the two directions of travel unequal by 5% in speed and adds Coriolis terms.
 - **Large motions and saturation.** The simulations confirm the linear models for small motions and show that the law fails abruptly when the guide runs out of room. What a recovery from that looks like has not been studied.

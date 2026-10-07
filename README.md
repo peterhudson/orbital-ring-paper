@@ -40,6 +40,8 @@ Three models of the whole ring check one another. `analysis/truss.py` is a pin-j
 
 Shape control has its own pair of models for a straight run of ring, `analysis/collective.py` (eigenvalues per wavelength) and `analysis/particles.py` (a particle simulation), and `analysis/ring_control.py` builds the controllers for the whole ring, which `analysis/ring_particles.py` can then run. `tests/test_collective.py` and `tests/test_ring_control.py` check the simulations against the linear predictions.
 
+`analysis/ring_loads.py` adds up the modes to give the ring's response to a point load, put on suddenly or moving, with steering alone and with the stators holding the long modes (`tests/test_ring_loads.py`).
+
 `analysis/generalize.py` applies the same force balance to arches and columns of momentum and to rings on other worlds (`tests/test_generalize.py`). `tests/test_figures.py` pins the numbers behind the explanatory figures.
 
 The whole suite takes about a minute, most of it in the particle simulations.

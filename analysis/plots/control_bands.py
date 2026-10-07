@@ -17,7 +17,7 @@ def bands(case=EARTH_500):
         ("Bending stiffness and structural damping", SHORT, CUTOFF, "passive"),
         ("Steering: mirror law with look-ahead", CUTOFF, ring / 2.0, "designed"),
         ("Steering set points, for steady loads", CUTOFF, ring / 2.0, "designed"),
-        ("Stator weight trim, for changing loads", STATOR_BETTER, ring / 2.0, "open"),
+        ("Stators hold the shape when loads change", STATOR_BETTER, ring / 2.0, "designed"),
         ("Stators hold slug spacing", SHORT, ring, "designed"),
         ("Stator feedback holds the ring on center", ring, ring, "designed"),
     ]
@@ -44,7 +44,7 @@ def make(outdir=None):
     rows = bands(case)
     fig, ax = style.figure(6.8, 3.7)
     colours = {"passive": style.MUTED, "designed": style.SERIES[0], "open": style.SERIES[1]}
-    names = {"passive": "Needs no control", "designed": "Designed and simulated here", "open": "Needed, not designed here"}
+    names = {"passive": "Needs no control", "designed": "Designed here", "open": "Needed, not designed here"}
     seen = set()
     for i, (label, lo, hi, kind) in enumerate(rows):
         y = len(rows) - 1 - i
@@ -56,7 +56,7 @@ def make(outdir=None):
             continue
         ax.barh(y, hi - lo, left=lo, height=0.52, color=colours[kind], edgecolor=style.SURFACE, linewidth=1.0,
                 hatch="///" if kind == "open" else None, label=name)
-        if kind == "open" or lo > 10.0 * SHORT and hi / lo < 1e3:
+        if lo > 10.0 * CUTOFF and hi / lo < 1e3:
             ax.annotate(label, (lo, y), xytext=(-6, 0), textcoords="offset points", ha="right", va="center", color=style.INK, fontsize=8.5)
         else:
             ax.text(math.sqrt(lo * hi), y + 0.43, label, ha="center", va="bottom", color=style.INK, fontsize=8.5)

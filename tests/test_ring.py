@@ -87,6 +87,30 @@ class SpeedRipple(Base):
             self.about(ratio, n1 / (C.Pi_total * eps), 2e-3)
             self.assertGreater(ratio, 0.99)
 
+    def test_a_structure_that_stretches_shifts_its_own_weight_too(self):
+        """At the reference hoop stiffness the shape change is larger by
+        chi = 1 + m u^2 / EA, and the part that remains with the stream weight
+        held uniform is the structure's share, (chi - 1) / chi of it."""
+        from analysis.params import HOOP_EA
+        chi = C.weight_factor()
+        self.about(chi, 3.4, 0.01)
+        for p, eps in ((8, 1e-4), (40, 1e-4)):
+            W, ratio, spread = self.run_case(p, eps, True, ea=HOOP_EA, n=720)
+            W_stiff, _ = ring.speed_ripple_response(eps, p)
+            self.about(W, chi * W_stiff, 0.03)
+            self.assertLess(spread, 1e-5)
+            self.assertGreater(ratio, 0.97)
+            W_no_shift, _, _ = self.run_case(p, eps, False, ea=HOOP_EA, n=720)
+            self.about(W_no_shift / W, (chi - 1.0) / chi, 0.02)
+        W, _, _ = self.run_case(8, 1e-4, True, ea=HOOP_EA, n=720)
+        self.about(abs(W), 20.5, 0.02)                               # "about 20 m" in the text
+        W_no_shift, _, _ = self.run_case(8, 1e-4, False, ea=HOOP_EA, n=720)
+        self.about(abs(W_no_shift), 14.4, 0.02)                      # "14 m"
+        # at the longest wavelengths the hoop's give lowers the tension ripple and the factor
+        W2, ratio2, _ = self.run_case(2, 1e-5, True, ea=HOOP_EA, n=720)
+        self.assertLess(ratio2, 0.7)
+        self.about(W2 / ring.speed_ripple_response(1e-5, 2)[0], 2.5, 0.03)
+
     def test_shape_change_is_the_weight_shift_alone(self):
         for p, eps in ((2, 1e-5), (8, 1e-4), (40, 1e-3)):
             W, _, _ = self.run_case(p, eps, True)

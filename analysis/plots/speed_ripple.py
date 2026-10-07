@@ -1,20 +1,23 @@
 """What a stationary speed ripple does to the ring: the tug goes into hoop
-tension, and the shape moves only because stream weight moves."""
+tension, and the shape moves only because weight moves, the streams' and the
+stretching structure's."""
 import numpy as np
 
 from .. import ring
-from ..params import EARTH_500 as C
+from ..params import EARTH_500 as C, HOOP_EA
 from . import style
 
 
 def make(outdir=None):
-    n, p, eps, ea = 720, 8, 1e-4, 5e13
+    n, p, eps, ea = 720, 8, 1e-4, HOOP_EA
     angles = ring.member_angles(n)
     ripple = 1 + eps * np.cos(p * angles)
     truss, x0 = ring.ring_truss(n_nodes=n, ea=ea, speed_ratio=ripple)
     x, _ = truss.equilibrium(x0)
     truss_fixed, _ = ring.ring_truss(n_nodes=n, ea=ea, speed_ratio=ripple, shift_weight=False)
     x_fixed, _ = truss_fixed.equilibrium(x0)
+    truss_stiff, x0_stiff = ring.ring_truss(n_nodes=n, ea=1000.0 * ea, speed_ratio=ripple, shift_weight=False)
+    x_stiff, _ = truss_stiff.equilibrium(x0_stiff)
     deg = np.degrees(angles)
     node_deg = np.degrees(np.arctan2(x[:, 1], x[:, 0])) % 360
     order = np.argsort(node_deg)
@@ -33,12 +36,13 @@ def make(outdir=None):
     top.legend(loc="upper center", ncol=3, bbox_to_anchor=(0.5, -0.02), columnspacing=1.2, handlelength=1.4)
     w = ring.radial_displacement(x)
     w_fixed = ring.radial_displacement(x_fixed)
-    bottom.plot(node_deg[order], w[order], color=style.SERIES[0], label="Slugs bunch where they slow (real case)")
+    bottom.plot(node_deg[order], w[order], color=style.SERIES[0], label="The real case")
     bottom.plot(node_deg[order], w_fixed[order], color=style.SERIES[1], label="Stream weight held uniform")
+    bottom.plot(node_deg[order], ring.radial_displacement(x_stiff)[order], color=style.SERIES[2], label="And a structure too stiff to stretch")
     bottom.set_ylabel("Radial displacement (m)")
     bottom.set_xlabel("Angle round the ring (degrees)")
     bottom.set_xlim(0, 360)
     bottom.set_xticks(np.arange(0, 361, 45))
-    bottom.set_title("The shape changes only because stream weight moves")
-    bottom.legend(loc="upper center", ncol=2, bbox_to_anchor=(0.5, -0.22))
+    bottom.set_title("The shape changes because weight moves")
+    bottom.legend(loc="upper center", ncol=3, bbox_to_anchor=(0.5, -0.22), columnspacing=1.2, handlelength=1.4)
     return style.save(fig, "speed-ripple-response", outdir)
